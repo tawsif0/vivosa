@@ -241,36 +241,61 @@ export default function ContractFurniture() {
               </p>
             </div>
           </div>
-          {/* Hard-coded Application Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 gap-x-12 border-t border-primary/10 pt-20">
-            <div className="mb-12 text-center">
-              <p className="font-body-lg text-primary text-lg">
-                Our finest hides are ideal for making all types of furnishings — from homes and hotels to restaurants, offices, hospitals, cinemas, and more. Applications include:
+          {/* Redesigned Premium Application Grid */}
+          <div className="border-t border-primary/10 pt-24 mt-8">
+            {/* Elegant Centered Header */}
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <span className="inline-block text-matte-gold font-label-caps mb-3 tracking-[0.2em] uppercase text-xs font-semibold">
+                Versatile Furniture Solutions
+              </span>
+              <h3 className="font-headline-xl text-3xl md:text-4xl text-primary mb-6 font-semibold">
+                Premium Applications &amp; Uses
+              </h3>
+              <div className="w-16 h-[2px] bg-matte-gold mx-auto mb-6"></div>
+              <p className="font-body-lg text-secondary/80 text-lg leading-relaxed">
+                Our finest hides are ideal for making all types of furnishings — from homes and hotels to restaurants, offices, hospitals, cinemas, and more.
               </p>
             </div>
-            {[
-              { icon: "chair", label: "Sofas" },
-              { icon: "event_seat", label: "Armchairs" },
-              { icon: "table_restaurant", label: "Dining chairs" },
-              { icon: "local_bar", label: "Bar and pub stools" },
-              { icon: "weekend", label: "Cushions" },
-              { icon: "desk", label: "Tables and desks" },
-              { icon: "chair_alt", label: "Benches" },
-              { icon: "architecture", label: "Interior linings" },
-              { icon: "medical_services", label: "Hospital & clinical-use chairs" },
-              { icon: "shopping_bag", label: "Accessories & decorative elements" },
-              { icon: "star", label: "Inserts and ornamental details" },
-              { icon: "more_horiz", label: "Numerous other applications" },
-            ].map((app) => (
-              <div key={app.label} className="flex items-center gap-5 group cursor-pointer">
-                <span className="material-symbols-outlined text-matte-gold text-3xl transition-transform duration-500 group-hover:scale-120">
-                  {app.icon}
-                </span>
-                <span className="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">
-                  {app.label}
-                </span>
-              </div>
-            ))}
+
+            {/* Premium Interactive Applications Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+              {[
+                { icon: "chair", label: "Sofas", desc: "Luxury lounges & family living" },
+                { icon: "event_seat", label: "Armchairs", desc: "Statement accent seating" },
+                { icon: "table_restaurant", label: "Dining chairs", desc: "Fine dining & hospitality" },
+                { icon: "local_bar", label: "Bar and pub stools", desc: "High-traffic commercial setups" },
+                { icon: "weekend", label: "Cushions", desc: "Plush ornamental details" },
+                { icon: "desk", label: "Tables and desks", desc: "Sophisticated executive workspaces" },
+                { icon: "chair_alt", label: "Benches", desc: "Premium lobby & corridor seating" },
+                { icon: "architecture", label: "Interior linings", desc: "Wall panels & custom detailing" },
+                { icon: "medical_services", label: "Hospital & clinical chairs", desc: "Hygiene-compliant high endurance" },
+                { icon: "shopping_bag", label: "Accessories & decor", desc: "Luxury leather desk sets & elements" },
+                { icon: "star", label: "Inserts and details", desc: "Exquisite hand-finished trims" },
+                { icon: "more_horiz", label: "Other applications", desc: "Tailored to bespoke specifications" },
+              ].map((app) => (
+                <div 
+                  key={app.label} 
+                  className="bg-white/40 backdrop-blur-sm border border-primary/5 hover:border-matte-gold/30 hover:bg-white hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-out p-6 md:p-8 rounded-2xl flex flex-col items-center text-center group cursor-pointer"
+                >
+                  {/* Circular Icon Container */}
+                  <div className="w-16 h-16 rounded-full bg-white/80 shadow-inner flex items-center justify-center mb-5 group-hover:bg-primary transition-all duration-500 group-hover:scale-110">
+                    <span className="material-symbols-outlined text-matte-gold text-3xl transition-all duration-500 group-hover:text-white group-hover:rotate-6">
+                      {app.icon}
+                    </span>
+                  </div>
+                  
+                  {/* Label */}
+                  <h4 className="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold text-sm mb-2 group-hover:text-matte-gold transition-colors duration-300">
+                    {app.label}
+                  </h4>
+                  
+                  {/* Description text */}
+                  <p className="text-[11px] font-body-sm text-secondary/60 leading-relaxed max-w-[180px]">
+                    {app.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -446,7 +471,7 @@ export default function ContractFurniture() {
                 Quality & Sustainability in Leather Supply
               </h2>
               <p className="font-body-lg text-body-lg text-white/70 mb-8 leading-relaxed">
-                We work with leading sustainable leather manufacturers to supply high- quality leather directly to our customers, without involving any third parties or intermediaries. Our QC team carefully inspects each hide to ensure it meets strict quality and sustainability standards. Approximately 90% of our manufacturing partners are based in Europe, and 85% of our rawhide is sourced from Europe. While most of our partners are outside the UK, we maintain full oversight to guarantee excellence. However, if you would like more information about our leathers or processes, including:
+                We work with leading sustainable leather manufacturers to supply high-quality leather directly to our customers, with no third parties or intermediaries involved. Our QC team carefully inspects each hide to ensure it meets strict quality and sustainability standards. Approximately 90% of our manufacturing partners are based in Europe, and 85% of our rawhide is European. Although most of our partners are located outside the UK, we maintain full oversight to guarantee excellence. If you would like more information about our leathers or processes, including:
               </p>
             </div>
             {/* Hard-coded checklist */}
@@ -458,7 +483,7 @@ export default function ContractFurniture() {
                 "Drying techniques",
                 "Refinishing processes",
                 "Technical sheets & certifications",
-                "Manufacturing facility details, etc.…",
+                "Manufacturing facility details",
               ].map((item) => (
                 <div
                   key={item}
@@ -476,7 +501,7 @@ export default function ContractFurniture() {
                 </div>
               ))}
               <p className="font-body-lg text-body-lg text-white/70 mt-8 leading-relaxed italic">
-                please contact us, and we will respond promptly.
+                … please get in touch with us, and we will respond promptly.
               </p>
             </div>
           </div>

@@ -1,28 +1,109 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
+
+const sliderImages = [
+  "/images/auto_slider_1.png",
+  "/images/auto_slider_2.png"
+];
+
+const AutoSlider = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % sliderImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative w-full h-[600px] overflow-hidden group">
+      {sliderImages.map((src, index) => (
+        <img
+          key={index}
+          alt={`Slider image ${index + 1}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            index === currentIndex ? "opacity-100" : "opacity-0"
+          }`}
+          src={src}
+          loading={index === 0 ? "eager" : "lazy"}
+        />
+      ))}
+      {/* Navigation Dots */}
+      <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3 z-20">
+        {sliderImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+              index === currentIndex
+                ? "bg-matte-gold w-8"
+                : "bg-white/50 hover:bg-white/80"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+      
+      {/* Next/Prev Arrows */}
+      <button 
+        onClick={() => setCurrentIndex((prev) => (prev === 0 ? sliderImages.length - 1 : prev - 1))}
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 backdrop-blur-sm"
+      >
+        &#8592;
+      </button>
+      <button 
+        onClick={() => setCurrentIndex((prev) => (prev + 1) % sliderImages.length)}
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 backdrop-blur-sm"
+      >
+        &#8594;
+      </button>
+    </div>
+  );
+};
 
 export default function Automotive() {
   return (
     <div className="bg-background text-on-background font-body-md selection:bg-on-primary-container selection:text-primary">
       <main>
-        {/* Section 1: HERO */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-black/60 z-10"></div>
-          <img
-            alt="Luxury Car Interior"
-            className="absolute inset-0 w-full h-full object-cover"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_Ft10bsuVuB_r9KQcWlHzsF-d5hVe5V0aVc2StqY0B7wMBGJLRdPbR1VSlWh0tqKh2-dphNfGEoUi7ZjXYzzBA4vnLkngMFmh56z4RDaaldgvI7lgptdU0sj3FblkN4A5f_lszS8fA__yw8UZ-0sXnvL3CAeVIWTCozBF2T_i01-zaMR0veegune4Uo7MhEx0Y1mxLxAKHsO9-shQzzT6rE7OlA-VR1_gs00gx3F_TjsNAQAE08u75gmeO7va7SitVgknXo86Y5Y"
-          />
-          <div className="relative z-20 text-center px-margin-mobile max-w-4xl mx-auto">
+        {/* Section 1: HERO - Split Layout */}
+        <section className="min-h-screen flex flex-col md:flex-row overflow-hidden">
+          {/* Left: Text Panel */}
+          <div className="relative flex flex-col justify-center bg-primary px-10 md:px-16 lg:px-20 py-24 md:w-1/2 z-10">
+            {/* Subtle gold accent line */}
+            <div className="w-12 h-[2px] bg-matte-gold mb-8"></div>
             <span className="font-label-caps text-label-caps text-matte-gold tracking-[0.3em] mb-6 block uppercase">
               AUTOMOTIVE LEATHER COLLECTION
             </span>
-            <h1 className="font-display-lg text-display-lg text-on-primary leading-none mb-8 md:text-[100px]">
-              Automotive Leather Collection
+            <h1 className="font-display-lg text-display-lg text-on-primary leading-none mb-8 md:text-[64px] lg:text-[80px]">
+              Automotive<br />Leather<br />Collection
             </h1>
-            <p className="font-body-lg text-body-lg text-on-primary/80 max-w-2xl mx-auto leading-relaxed">
-              We are car-interior drivers. Not perfection. Crafted with care.
-              Formed with a work of love, and prepared to last long.
-            </p>
+            <div className="w-full h-[1px] bg-matte-gold/30 mb-8"></div>
+            <div className="flex flex-col gap-5 max-w-xl">
+              <p className="font-body-lg text-body-lg text-on-primary/90 leading-relaxed font-medium">
+                It's not just a leather interior. It's perfection. Crafted with care, finished with a touch of love, and designed for lasting luxury.
+              </p>
+              <p className="font-body-md text-body-md text-on-primary/70 leading-relaxed">
+                At VIVOSA, we supply premium automotive leather crafted by Tanneries with over 50 years of expertise. We partner with true industry leaders who create refined, durable, and luxurious leather while placing environmental responsibility at the heart of every process, protecting the planet, conserving resources, ensuring safe working conditions, and respecting the people behind every craft. Sister production uses top-quality European rawhides and premium materials and has achieved leading industry certifications. All production complies with strict European and international regulations, and both quality and environmental management systems are fully certified, including LWG, ensuring responsible and ethical manufacturing.
+              </p>
+            </div>
+          </div>
+
+          {/* Right: Image Panel */}
+          <div className="relative md:w-1/2 min-h-[50vh] md:min-h-screen overflow-hidden">
+            <img
+              alt="Luxury Automotive Leather Interior"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              src="/images/automotive_hero.png"
+              fetchpriority="high"
+            />
+            {/* Gradient overlap from left panel */}
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-primary to-transparent z-10"></div>
+            {/* Bottom label badge */}
+            <div className="absolute bottom-8 right-8 z-20 bg-black/70 backdrop-blur-sm border border-matte-gold/40 px-5 py-3">
+              <span className="font-label-caps text-label-caps text-matte-gold tracking-widest uppercase text-xs">
+                LWG Certified · European Rawhides
+              </span>
+            </div>
           </div>
         </section>
 
@@ -31,45 +112,33 @@ export default function Automotive() {
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-gutter items-center">
             <div className="pr-12 text-on-primary">
               <span className="font-label-caps text-label-caps text-on-primary-container tracking-widest block mb-4 uppercase">
-                HERITAGE OF PRECISION
+                QUALITY CONTROL STANDARDS
               </span>
               <h2 className="font-headline-xl text-headline-xl text-on-primary mb-8">
                 Engineering Luxury Behind the Wheel
               </h2>
-              <p className="font-body-lg text-body-lg text-on-primary/70 mb-6 leading-relaxed">
-                With over 50 years of specialized expertise in the tanning
-                industry, VIVOSA provides premium automotive leather that meets the
-                most rigorous performance standards of global luxury car
-                manufacturers.
+              <p className="font-body-lg text-body-lg text-on-primary/90 mb-6 leading-relaxed">
+                Our sustainable partners follow strict quality control standards at every step—from rawhide selection through tanning, including wet-blue, wet-white, and other retanning processes, and finally to finishing.
               </p>
-              <p className="font-body-md text-body-md text-on-primary/60 mb-10 leading-relaxed">
-                Our LWG certified facilities ensure that every hide is processed
-                with environmental responsibility, maintaining the natural tactile
-                quality while achieving the durability required for the automotive
-                environment.
+              <p className="font-body-md text-body-md text-on-primary/70 mb-10 leading-relaxed">
+                The result is consistently durable, high-performance leather, engineered for modern automotive interiors.
               </p>
-              <div className="inline-block border-b border-on-primary-container/30 pb-1">
-                <a
-                  className="font-label-caps text-label-caps text-on-primary hover:text-on-primary-container transition-colors duration-300"
-                  href="#"
-                >
-                  DISCOVER OUR PROCESS
-                </a>
-              </div>
             </div>
             <div className="grid grid-cols-1 gap-6 relative">
               <div className="border-[0.5px] border-matte-gold p-2">
                 <img
-                  alt="Steering Wheel Detail"
-                  className="w-full aspect-[4/3] object-cover grayscale-[0.2]"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwS7_BOS7BbWVkiMRuaHyhPKU-fFdc83PyzXBXD1U2TVvzGeQp9DQ_m5cWf11qAkyi_N7viXAekR-cs6dutzseDu5f8G1Zes-X6yIqearkjMctjLNK26Kry2nIHG8afKme6tNTG4nX7eiOtogfV38Db9Vq1qF3psRA7mASnwI1nSocHjCb67G8-SgruPpft2EvV3XSuNm49tZ0Gn3R5UeDWVNIB2QGhZpQowi6nAsGDZsGi79Jmlbft_B7Fir1Df3VbQzHKjTKqV4"
+                  alt="Rawhide Selection at Tannery"
+                  className="w-full aspect-[4/3] object-cover"
+                  src="/images/auto_rawhide.png"
+                  loading="lazy"
                 />
               </div>
               <div className="border-[0.5px] border-matte-gold p-2 ml-12 -mt-20 z-10 shadow-2xl bg-primary-container">
                 <img
-                  alt="Leather Seat Upholstery"
+                  alt="Leather Tanning Drum Process"
                   className="w-full aspect-square object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJFfM3UD334ZoTvhDlJIxOiK47EV8SH72wS5KoKrboqKm5po0AvDcTjtYuP5jxmCW-abv8vpOwNCWHYyM_jPucMh3BM5n4HtrhR_dCafD5WiIrqgAJZbbO_orwyvWk63F3gV_No_AlMvUVPMN6CQqw_jp644aiXGqACpFXkHWnmJEztD_5jbn5ruJVSHqUvwpnr7IvxZMSunidHqlnftulWHNUo-mvapq-rEeRl6TcutBdrW56dF2Zq05i4LlE1h-y9rl1tmyHAdY"
+                  src="/images/auto_tanning_drum.png"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -79,28 +148,16 @@ export default function Automotive() {
         {/* Section 3: INTRO 2 */}
         <section className="bg-surface py-section-gap px-margin-desktop">
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-gutter items-center">
-            <div className="relative">
-              <img
-                alt="Design Station"
-                className="w-full h-[600px] object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0qkIcotm7o6h01sNEqU7PBFPT1sqNj4IlcmMXQG_HXAfnq7ryxnjBJbrPjBoRFJ_PjdPtHl6KkBRCI5u3kt9dl0HfIW3Ds0yGrO2pK0itUSptnFWlS2sr40phL8fEJ23Mtepg6MVsmjZXQChdLHwNOVxgAMpYSgYkSNpoUN5m5mI-uoVcHXehHiK4joaaG95Oi8frv_Ikw66YgBheR32Dr0xzBpDL7JcJjrrDCWIT4REAtDDyRHfxRDrc60eWOcWy4g2AKUVO5G0"
-              />
-            </div>
+            <AutoSlider />
             <div className="md:pl-24">
               <h2 className="font-headline-xl text-headline-xl text-on-background mb-8">
                 Our Sustainable Manufacturing Promise
               </h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant mb-6 leading-relaxed">
-                We maintain absolute precision control over the entire supply
-                chain. From the initial selection of raw hides to the final custom
-                finishing, our process is optimized for minimal waste and maximum
-                performance.
+                Our sourcing manufacturer is committed to the community and the environment while developing advanced leather formulations. Every stage of production is precisely controlled using high-performance technology, ensuring consistently high-quality, durable, and luxurious leather.
               </p>
               <p className="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
-                Our laboratory offers comprehensive custom color matching and physical
-                testing to ensure that our leather not only meets but exceeds
-                industry standards for UV resistance, heat stability, and flex
-                endurance.
+                We work exclusively with sustainable manufacturers, giving you the freedom to customise products without ever compromising on quality. Our eco-friendly partners offer exquisite Aniline, Semi-Aniline, Nubuck, Full-Grain, Corrected-Grain, Tech, and other premium leathers, crafted through diverse tanning, retanning, and finishing techniques. These exceptional automotive leathers offer elegant, customisable designs and rich colour options that inspire and delight. They elevate car interiors so that buying a car feels like bringing home a dream, not simply making a purchase.
               </p>
               <div className="flex gap-12">
                 <div>
@@ -151,9 +208,7 @@ export default function Automotive() {
             </div>
             <div className="text-center">
               <p className="font-body-md text-body-md text-on-secondary/50 max-w-3xl mx-auto italic leading-relaxed">
-                Additionally, some of our manufacturers offer dedicated cutting
-                and stitching facilities, enabling us to deliver semi-finished or
-                finished components directly to the assembly line.
+                Additionally, some of our manufacturers offer dedicated cutting and stitching facilities, where you can cut and stitch leather exactly to your design specifications.
               </p>
             </div>
           </div>
@@ -164,9 +219,7 @@ export default function Automotive() {
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter">
             <div className="flex items-center">
               <blockquote className="font-headline-xl text-headline-xl italic text-on-background leading-tight pr-12">
-                "Every piece of leather has a story, a texture that demands
-                respect. In the automotive world, that story is one of endurance,
-                precision, and the silent luxury of touch."
+                "Our sister company has been combining history, uniqueness, and durable leather for 50 years. With lively designs that you can fully customize in shape, colours, and style, we continue to create sustainably and ethically, building a better world in the automotive sector."
               </blockquote>
             </div>
             <div className="bg-primary text-on-primary p-12 flex flex-col justify-center">
@@ -174,10 +227,7 @@ export default function Automotive() {
                 OUR PHILOSOPHY
               </h3>
               <p className="font-body-lg text-body-lg text-white mb-8 leading-relaxed">
-                We believe that the interior of a vehicle is a sanctuary. Our
-                leather is engineered to provide tactile comfort and aesthetic
-                continuity, ensuring that every drive is an elevated sensory
-                experience.
+                We believe that creating styles which reflect your clients’ lifestyles and aspirations not only helps you achieve your goals, but also opens a world of possibilities, confidence, and lasting satisfaction. At Vivosa, it is our commitment to guide you In selecting the right leather for the right project.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-center gap-4">
@@ -186,7 +236,7 @@ export default function Automotive() {
                     TANNED FOR LONGEVITY
                   </span>
                 </li>
-                <li class="flex items-center gap-4">
+                <li className="flex items-center gap-4">
                   <span className="w-2 h-2 bg-matte-gold"></span>
                   <span className="font-label-caps text-label-caps tracking-widest text-white uppercase">
                     HAND-SELECTED HIDES

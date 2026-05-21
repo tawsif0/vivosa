@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { leatherGoodsProducts } from "./leatherGoodsData";
 
 export default function LeatherGoods() {
+  const slides = [
+    { src: "/slides/leather_goods_slide1.jpg", alt: "Luxury Leather Tote Bag" },
+    { src: "/slides/leather_goods_slide2.png", alt: "Premium Leather Goods Collection" }
+  ];
+
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % slides.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="bg-background text-on-surface selection:bg-primary-fixed selection:text-primary overflow-x-hidden">
       <main className="pt-20 md:pt-[88px]">
@@ -12,7 +28,7 @@ export default function LeatherGoods() {
             <img
               alt="Luxury Leather Goods"
               className="w-full h-full object-cover transform scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxKQXa67rNufL7XPAmbnNHUlGfBLazS2ppPc8XITD7sj6K6RZ3WSVaonEKxU7DwnecCeLOpQjA9SkFrd0KciphWXQxKTprCcnlb7rvuDzxmy-JphpAXU6imwO0ZXINb6R3dQ2QCoQbg_OsZ-eD0dlMieuGGhsHm6-_s_gR0tXr-mowJfchndeVzePFBF7bMg4YPbkBTm4eIXINmHymrbv3i9KRTeE5rNyhDfQX96s7JhoblehYKhC9AtTg6yYUd3IQhRqASOA2O9I"
+              src="/slides/leather_goods_hero.png"
             />
           </div>
           {/* Right 60%: Cream Panel */}
@@ -29,11 +45,9 @@ export default function LeatherGoods() {
               <h1 className="font-display text-[40px] sm:text-[56px] lg:text-[72px] xl:text-[84px] text-primary mb-8 leading-none">
                 Leather Goods
               </h1>
-              <p className="font-body text-body-lg text-on-surface-variant max-w-md leading-relaxed">
-                Precision in every stitch. Vivosa specializes in the environmentally
-                conscious manufacture of premium leather articles, utilizing
-                JMD-certified sustainable leather for global luxury houses. Our
-                commitment to ethical sourcing defines every piece we create.
+              <p className="font-body text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+                Our environmentally conscious manufacturer sources eco-friendly products without
+                compromising quality for several decades and proudly serving millions of customers worldwide. We welcome the opportunity to collaborate with you, as we believe our customers are at the heart of our success. We source only the highest-quality leather from sustainable manufacturers (LWG-certified), offering an exquisite range of textures, colours, and finishes, enabling the creation of unique and exclusive leather goods and accessories that embody exceptional beauty, durability, style, and luxury.
               </p>
               <div className="mt-12 h-[1px] w-24 bg-matte-gold"></div>
             </div>
@@ -45,31 +59,53 @@ export default function LeatherGoods() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
             <div className="pr-0 md:pr-16">
               <p className="font-body-lg text-body-lg text-on-surface leading-relaxed italic mb-6">
-                Bridging the gap between heritage craft and futuristic innovation.
+                The fashion industry innovates through millions of different styles with the support of technology, researchers, designers, and models, but true satisfaction comes from what makes you feel happy on an individual level considering colours, design, shape, and sustainability.
               </p>
               <p className="font-body-md text-body-md text-on-surface-variant leading-loose">
-                In an era of rapid consumption, Vivosa stands as a beacon for individual
-                satisfaction through durability and ethical design. We innovate within the
-                fashion industry by harmonizing industrial-scale precision with the soul
-                of hand-finished excellence. Every hide processed in our facility meets
-                the most stringent international ecological standards.
+                Our goal is to work with you to achieve your objectives, helping you select the leather that best suits your project in terms of colour and style. We are committed to supporting you every step of the way to reach your goals.
               </p>
             </div>
             <div className="relative group">
               <div className="absolute -top-12 -left-6 text-matte-gold opacity-20 transform scale-[4] select-none font-display-lg">
                 “
               </div>
-              <div className="bg-primary p-12 md:p-16 text-on-primary shadow-xl">
-                <blockquote className="font-headline-md text-headline-md italic mb-8 leading-snug text-white">
+              <div className="bg-white p-12 md:p-16 text-primary shadow-xl">
+                <blockquote className="font-headline-md text-headline-md italic mb-8 leading-snug text-primary">
                   "We believe in ethical sourcing. Vivosa Crafting Both Beauty &amp; Idea
                   at the heart of our sustainability mission."
                 </blockquote>
-                <div className="w-full h-[300px] overflow-hidden mt-8">
-                  <img
-                    alt="Artisan at work"
-                    className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbDK6OHyEYrQ0R1TTPNQ9hT9bsSU0NVBuXsTDVHycci7uZYyOCYXFCouMKTy8cCqaSHf6lOfPVVaO4fO2R5MmktDekxAjTwbSDHNxWKxgew8ONxQsWw1dLrEOrOL8wAgnioarOicyPaqgXtfZxod0W8GE_Dfi4EOf-Sa3ykef_M6ZKo89aMShMcUJgnXHqzb9pjmcVyzswgTsj4CRKpj-E8n-JLVzVGrIWKxVtDIrN6tB_2L3-2ayieA3mzsQNYOmGsz6DV_m8vNc"
-                  />
+                <div className="w-full h-[300px] overflow-hidden mt-8 relative group/slider">
+                  {slides.map((slide, index) => (
+                    <div
+                      key={index}
+                      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                        index === activeSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                      }`}
+                    >
+                      <img
+                        alt={slide.alt}
+                        className="w-full h-full object-cover transition-all duration-700"
+                        src={slide.src}
+                      />
+                    </div>
+                  ))}
+                  
+                  {/* Slider Dots */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                    {slides.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setActiveSlide(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          index === activeSlide 
+                            ? "bg-matte-gold w-4" 
+                            : "bg-white/50 hover:bg-white"
+                        }`}
+                        aria-label={`Go to slide ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -100,267 +136,33 @@ export default function LeatherGoods() {
         <section className="bg-surface-container-low py-section-gap px-margin-mobile md:px-margin-desktop">
           <div className="max-w-container-max mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-16">
-              {/* Item 1 */}
-              <div className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    alt="F016CMNO"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDV0hsvYQLJL7wk-WTZc_Q_QGc4PlaJMsBYY2BUcV3lO8dGLVvq1q50ndpe0AjaN81Mo7xtypREMBPntpM7OJsTgJ8zTUfMqLVX5Gk3yreyhgv7TYK7Bd6WJZLvmr1AQyZtXejzhBQzjawF3VTIRWS5k8bZOPvlOfqd6OgvB2JTdR9X8XEHc2n3o9148GlAvJnTOcj-V8UySteoIdNxy4mhWMkXfkAY0jVtprSVMBk_amNn2k79UDUF6WAqy8FGKrv0JqgwiPliKk"
-                  />
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="font-label-caps text-[10px] text-matte-gold tracking-widest uppercase">
-                      Semi-Aniline / Full Grain
-                    </span>
-                    <span className="font-label-caps text-[10px] text-on-surface-variant">
-                      F016CMNO
-                    </span>
+              {leatherGoodsProducts.slice(0, 9).map((product) => (
+                <Link
+                  key={product.id}
+                  to={`/leather-goods/${product.id}`}
+                  className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm"
+                >
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      alt={product.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      src={product.src}
+                    />
                   </div>
-                  <h3 className="font-headline-md text-headline-md text-primary mb-2">
-                    Cream
-                  </h3>
-                  <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
-                    1.2 / 1.4 mm • EU + GB Origin
-                  </p>
-                  <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
-                    This substantial round-hand leather is distinguished by its chrome retannage and technologically enhanced finish, providing a luxurious, smooth feel that satisfies customers’ demands for leather goods and footwear.
-                  </p>
-                </div>
-              </div>
-              {/* Item 2 */}
-              <div className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    alt="F011CL"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrzOcrrHnWcP4-ZDIhzHPaerzAnmbY0QTeD78AeYWdPnAt1b5Vdl-42EmThFBF6DqUAE_AGCCcRbjvWDqu5MMOqhe07lhCCHyP5B8MBocHiZEWhd4yttz1XL6Wf5kBnGvxPT23Z5m1cO6LOKNAezF78aukEdrXDiwbEVfcn0jaB0L1PNCWwWMSxI8VXjlD--25wyvTRIdr9zyaO-iqEbmVDc9me1CNhTP-YAhB4My0gAIfElrFJK3ChLv-y9owkiJ1JR20OrWjVZk"
-                  />
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="font-label-caps text-[10px] text-matte-gold tracking-widest uppercase">
-                      Aniline / Full Grain
-                    </span>
-                    <span className="font-label-caps text-[10px] text-on-surface-variant">
-                      F011CL
-                    </span>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <h3 className="font-headline-md text-headline-md text-primary mb-3 leading-snug">
+                      {product.title}
+                    </h3>
+                    <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
+                      {product.thickness} • {product.rawhide} Origin
+                    </p>
+                    <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
+                      {product.desc}
+                    </p>
                   </div>
-                  <h3 className="font-headline-md text-headline-md text-primary mb-2">
-                    Brown
-                  </h3>
-                  <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
-                    1.1 – 1.2 mm • European Origin
-                  </p>
-                  <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
-                    Natural-grain, wax-mixed oil dyeing with a warm feel that offers a smooth and shiny appearance. Ideal for leather goods such as luxury handbags, belts, and garments.
-                  </p>
-                </div>
-              </div>
-              {/* Item 3 */}
-              <div className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    alt="F017CD"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMj-RpRx81-0OTg051514GlZ1o0T5psG6DCtFfh920kxZR4V-hw3GEXth_WXnPPK8awVFd9UX4PZRLB5BW4RxSxRnvW948dah0KaSZIjCoBQhpn5ac-k0oj1LqXnkdEkNVQ3oQrMczudDPW_chbPx8mctF4fIX16JJgJSOQ3LdZKg4hOQGyhL3TLzP4YNt8VVh6rodOs9gcvVK0D02rlaoYd2IgBcdfk2akXlJgJqONF9NoD1GxU5btUmk1xDJSI-Qapem9EvKapc"
-                  />
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="font-label-caps text-[10px] text-matte-gold tracking-widest uppercase">
-                      Semi-Aniline / Full Grain
-                    </span>
-                    <span className="font-label-caps text-[10px] text-on-surface-variant">
-                      F017CD
-                    </span>
-                  </div>
-                  <h3 className="font-headline-md text-headline-md text-primary mb-2">
-                    Black
-                  </h3>
-                  <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
-                    1.3 – 1.5 mm • GB + EU Origin
-                  </p>
-                  <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
-                    This is a full-grain leather characterized by chrome retannage and a semi-aniline finish with a regular grain, designed to meet the needs of customers in both the footwear and leather goods sectors.
-                  </p>
-                </div>
-              </div>
-              {/* Item 4 */}
-              <div className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    alt="F01TS"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfwT3GpeVX7RyANPYg7YczIT7S8Tehs7SEmz-UardO_-3lzgtY1txsCzMLDOantS1lpRHh4tQwrm38OHZrLlgodPjyvHXegoEBBcc3odegp6p5bc6scH_7xaXvWAr4uCKDELcuKCBRAnkhY5Ju9JiCs2WYDbTAgBhV_lRtCbPCzDCJ7L4Q2QFL0CT6C_ySy5Xg6AC5WEmKWZVAz4tmiWK1CiRAXPM7GuoDGGPjsZJY6TYnvxg85_DwHnAmoQZAP0kLgZE4EohpUSQ"
-                  />
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="font-label-caps text-[10px] text-matte-gold tracking-widest uppercase">
-                      Semi-Aniline / Vintage
-                    </span>
-                    <span className="font-label-caps text-[10px] text-on-surface-variant">
-                      F01TS
-                    </span>
-                  </div>
-                  <h3 className="font-headline-md text-headline-md text-primary mb-2">
-                    Lavender
-                  </h3>
-                  <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
-                    0.8 – 1.0 mm • EU + Extra Origin
-                  </p>
-                  <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
-                    Soft, laminated cowhide with a natural crackled appearance and light thickness. Perfect for stylish leather goods such as handbags, small accessories, and garments.
-                  </p>
-                </div>
-              </div>
-              {/* Item 5 */}
-              <div className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    alt="F01OTS"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuABUYLhiCRldj4Gf9R33o1unMG_0n0ZqWv89Q1cA4v1v72QIi8rQJYtBm2w-JZXt9bhVIxGYLYpy1WvLkRc3wMBtURJVrtsoNpR4-_XpmKJ33XfpDkgqjz0nA5em84KCLSUaX81jWl0GpeQtoNP4BE-J2PjfHdJkro0k_NBDsD8bpyr0oReGAlkHuaal_ZnnALxEJUXQ0yx9y-iTgzkPBqCXFMel9dt_AvLPhBU1KmheRzfwt4KmkVenhMGcuTfOtI1h6uh9pDAQao"
-                  />
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="font-label-caps text-[10px] text-matte-gold tracking-widest uppercase">
-                      Aniline / Full Grain
-                    </span>
-                    <span className="font-label-caps text-[10px] text-on-surface-variant">
-                      F010TS
-                    </span>
-                  </div>
-                  <h3 className="font-headline-md text-headline-md text-primary mb-2">
-                    Light Purple
-                  </h3>
-                  <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
-                    0.9 – 1.2 mm • European Origin
-                  </p>
-                  <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
-                    Full-grain cow leather with a natural grain, mixed tanning, and an aniline finish featuring a glossy patent effect. It has a solid colour and a soft touch, ideal for clothing.
-                  </p>
-                </div>
-              </div>
-              {/* Item 6 */}
-              <div className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    alt="F09TS"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxicWjU7_ludSEogSoA_iLzRTsDnYuPey79Asz36Lt5Mmwyxhhu3ZkHXEXGcfTPI6NI_YySCjVV8k4PHkNDEAgK7Hc2rpX5ImKz-Rv55oeDVlqHtw0zsNlWqf2Z7UWLNQfQNnbOfy8loDPLkfL05EADJqpWZ5mDuyoNifElG8Eu2DMwvjZZs2U1mW9J6wdXdc1hyfjMt4vXdMVeuciD6MDBgWP9gfR3sNCFIHNOxtYSKyeCgzAKKAgBetmoTdHyMrwqJJ7CVky2ZQ"
-                  />
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="font-label-caps text-[10px] text-matte-gold tracking-widest uppercase">
-                      Nappa / Full Grain
-                    </span>
-                    <span className="font-label-caps text-[10px] text-on-surface-variant">
-                      F08TS
-                    </span>
-                  </div>
-                  <h3 className="font-headline-md text-headline-md text-primary mb-2">
-                    Maroon
-                  </h3>
-                  <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
-                    0.9 – 1.1 mm • Italian Origin
-                  </p>
-                  <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
-                    This Nappa leather features a smooth texture with a natural fine grain and a pleasant, soft touch. Perfect for leather goods and footwear.
-                  </p>
-                </div>
-              </div>
-              {/* Item 7 */}
-              <div className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    alt="F011TF"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgh7CAgensyvL117soJQQ_Q5RCxZFoaf7D5Lk94XuHEUnnJuEawphc6zcU99mhGc5rwzKZp8X2rHcvrjoXuRljFuPThUugzuepwR2FnctNklWww1ayc7pOuum6STU2tHGMKoSiq8LNZdt7vReyYx-KgKP93MjH3Wb6UAS9aSmAZvxmaUQeKxtsaG-0cI11lGr_uXkl0kbQB8-ohcwVD4V1afguqx4Vj0UDMkHwB5jotiImiCsa3Mj0-vEX4hgccJXVSPxWry6Tx5k"
-                  />
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="font-label-caps text-[10px] text-matte-gold tracking-widest uppercase">
-                      Semi-Aniline / Vintage
-                    </span>
-                    <span className="font-label-caps text-[10px] text-on-surface-variant">
-                      F011TF
-                    </span>
-                  </div>
-                  <h3 className="font-headline-md text-headline-md text-primary mb-2">
-                    Brunt Orange
-                  </h3>
-                  <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
-                    1.2 – 1.4 mm • EU + GB Origin
-                  </p>
-                  <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
-                    This article features an oily pull-up effect, a silky, waxy texture, and a subtle shine. Combining modern technology with exceptional craftsmanship, it offers a vintage appearance and a distinctive crackling sensation.
-                  </p>
-                </div>
-              </div>
-              {/* Item 8 */}
-              <div className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    alt="F64DB"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ_09AcyuWmqU1dYq3BfE0UX4u-scXi6WYZQI8wrk3gmNpJ64_iHI3N3ZnEmYX_hoZ4mP2RFQXwBKkJ-JujPhiAut39gUR9OnegDv_S4dVsEY0NF2nehLFZQsfEgLFGLEnPgknzCH8Az_5MXtLZbN6tYw9YfB7MGkvIO7KVRoWTfY69x9EZjWIe2xtZ7_zqtbZCgGYRgWFrWZHcgjDr9yOJS-xz6-m3mPZ6Yq1Wy07dg3Tv3pOz2MI6RRCqBgpEQ6FQbA9zRe1pQg"
-                  />
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="font-label-caps text-[10px] text-matte-gold tracking-widest uppercase">
-                      Semi-Aniline / Full Grain
-                    </span>
-                    <span className="font-label-caps text-[10px] text-on-surface-variant">
-                      F04DB
-                    </span>
-                  </div>
-                  <h3 className="font-headline-md text-headline-md text-primary mb-2">
-                    Olive
-                  </h3>
-                  <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
-                    1.4 – 1.6 mm • EU Origin
-                  </p>
-                  <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
-                    This article has a dry touch and is distinguished by its round and full hand. It develops a unique and inimitable patina over time, enhancing the value and longevity of your creations.
-                  </p>
-                </div>
-              </div>
-              {/* Item 9 */}
-              <div className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    alt="F011N"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdxAhFC5HX_xJK7MxZbSX86-avDCFpx844zx4_3EU9cmE6_w_ptw8puISigkE38se9LbvfTx83RUdzPs2sAWw8kc6b9SgcLhwAqzpXp0roRl2-4MeSgntofhEwHjZqonDeoo2b_wP1LnJAYMqIlht5SnenE3vjoic7zSXzDWgQrRfCo_8QoE2uzv73_ehbfeTNqpzmbycoRqeejvvjHP9vs0Bn8Me8R6XLVtQsF77us_gVAXaaP1qmq3pXq5KvGA1UG6_LF1Nf1T4"
-                  />
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="font-label-caps text-[10px] text-matte-gold tracking-widest uppercase">
-                      Semi-Aniline / Corrected Grain
-                    </span>
-                    <span className="font-label-caps text-[10px] text-on-surface-variant">
-                      F011TN
-                    </span>
-                  </div>
-                  <h3 className="font-headline-md text-headline-md text-primary mb-2">
-                    Crimson Red
-                  </h3>
-                  <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
-                    1.2 – 1.4 mm • European Origin
-                  </p>
-                  <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
-                    This bovine leather is distinguished by its unique and timeless corrected grain. It features a subtle two-tone effect, a glossy appearance on the tips, and a soft, natural feel.
-                  </p>
-                </div>
-              </div>
+                </Link>
+              ))}
+
               {/* Large Brand Image Card (Spans 2 columns) */}
               <div className="md:col-span-2 relative min-h-[400px] overflow-hidden group shadow-md">
                 <img
@@ -379,35 +181,56 @@ export default function LeatherGoods() {
                   </div>
                 </div>
               </div>
-              {/* Item 10 */}
-              <div className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    alt="F04D5O"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOEwbsMWF75DhBG3j2YxIH8K_RjRAVPDUNZCV8tKl2ZStGZByUkA6QLW7kKIpnE4qiPL5qDkX3wdALJ9F0tZDDAcFQQAYKNadDJMSM8mqmd2-E4vWaBvI6GUzXjVAhecnINr99_ftuEXgSSjcuniZQBc9kPwXpPc2wyiAg8ydIPBfd7EFQiQQLmOiMGSLibuzEtU_27wufqR1-wF46x8wUqLwjzfrRSUcJo20YfhZtdi4Nb_uXN3dFK849OF7IDVjXmNaBm4lpLIs"
-                  />
-                </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="font-label-caps text-[10px] text-matte-gold tracking-widest uppercase">
-                      Semi-Aniline / Full Grain
-                    </span>
-                    <span className="font-label-caps text-[10px] text-on-surface-variant">
-                      F06DSO
-                    </span>
+
+              {leatherGoodsProducts.slice(9, 10).map((product) => (
+                <Link
+                  key={product.id}
+                  to={`/leather-goods/${product.id}`}
+                  className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm"
+                >
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      alt={product.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      src={product.src}
+                    />
                   </div>
-                  <h3 className="font-headline-md text-headline-md text-primary mb-2">
-                    Orange
-                  </h3>
-                  <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
-                    1.4 – 1.6 mm • EU Origin
-                  </p>
-                  <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
-                    It’s even grain throughout the leather makes it suitable for the most demanding leather goods. The semi-washed effect gives each item a unique character and refinement.
-                  </p>
-                </div>
-              </div>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <h3 className="font-headline-md text-headline-md text-primary mb-3 leading-snug">
+                      {product.title}
+                    </h3>
+                    <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
+                      {product.thickness} • {product.rawhide} Origin
+                    </p>
+                    <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
+                      {product.desc}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Premium Collections & Customization Section */}
+        <section className="relative bg-[#FAF9F5] py-20 px-6 md:px-16 lg:px-24 border-b border-neutral-100 overflow-hidden">
+          {/* Subtle minimalist background decorations */}
+          <div className="absolute top-0 left-0 w-24 h-24 border-t border-l border-neutral-200/50 pointer-events-none"></div>
+          <div className="absolute bottom-0 right-0 w-24 h-24 border-b border-r border-neutral-200/50 pointer-events-none"></div>
+
+          <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+            <span className="font-label-caps text-[10px] md:text-[11px] tracking-[0.25em] text-matte-gold uppercase font-bold block">
+              OUR BESPOKE COMMITMENT
+            </span>
+            
+            <h3 className="font-display text-[15px] sm:text-[17px] md:text-[19px] lg:text-[21px] text-neutral-800 leading-[1.8] font-light tracking-wide max-w-3xl mx-auto">
+              We offer a wide range of leather collections. Please contact us with the articles and colours of interest, or feel free to send us a sample. We will provide exceptional, expertly finished products that bring lasting beauty to any project. We prioritize our clients’ values and preferences. Clients are always welcome to customize any product to meet their specific requirements, as long as it complies with industry standards and regulations.
+            </h3>
+
+            <div className="flex justify-center items-center gap-3 pt-2">
+              <span className="w-1.5 h-1.5 bg-[#8B6914] rotate-45"></span>
+              <div className="h-[1px] w-12 bg-neutral-300"></div>
+              <span className="w-1.5 h-1.5 bg-[#8B6914] rotate-45"></span>
             </div>
           </div>
         </section>
@@ -422,41 +245,46 @@ export default function LeatherGoods() {
                 </h2>
                 <div className="space-y-6 font-body-md text-white/80 leading-loose">
                   <p>
-                    At Vivosa, we view leather as a byproduct of the food industry that,
-                    when processed responsibly, becomes one of the most durable and
-                    sustainable materials available to the fashion industry. Our
-                    closed-loop water treatment and chrome-free options lead the way in
-                    modern tanning technology.
+                    We work with leading sustainable leather manufacturers to supply high-quality leather directly to our customers, with no third parties or intermediaries involved. Our QC team carefully inspects each hide to ensure it meets strict quality and sustainability standards.
                   </p>
                   <p>
-                    Every stage of our production is audited for traceability, ensuring
-                    that your final products are not only beautiful but carry a legacy of
-                    ethical manufacturing and environmental protection.
+                    Approximately 90% of our manufacturing partners are based in Europe, and 85% of our rawhide is European. Although most of our partners are located outside the UK, we maintain full oversight to guarantee excellence.
+                  </p>
+                  <p>
+                    If you would like more information about our leathers or processes, including:
                   </p>
                 </div>
               </div>
-              <div className="bg-white/5 p-12 border border-on-primary-container/20 shadow-xl">
-                <ul className="space-y-6">
+              <div className="bg-white/5 p-12 border border-on-primary-container/20 shadow-xl space-y-8">
+                <ul className="space-y-4">
                   {[
-                    "Traceable Raw Hides Origin (LWG Certified)",
-                    "Advanced Eco-Tanning Methods",
-                    "Strict Defect Classification Standards",
-                    "REACH & International Compliance",
-                    "Ethical Labor Practices & Certification",
+                    "Types of raw hides & their origin",
+                    "Tanning & retanning methods",
+                    "Defect classification",
+                    "Drying techniques",
+                    "Refinishing processes",
+                    "Technical sheets & certifications",
+                    "Manufacturing facility details",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-4">
                       <span
-                        className="material-symbols-outlined text-matte-gold shrink-0"
+                        className="material-symbols-outlined text-matte-gold shrink-0 text-[18px]"
                         style={{ fontVariationSettings: "'FILL' 1" }}
                       >
                         check_circle
                       </span>
-                      <span className="font-label-caps text-label-caps tracking-wider text-white uppercase">
+                      <span className="font-label-caps text-label-caps tracking-wider text-white uppercase text-[12px]">
                         {item}
                       </span>
                     </li>
                   ))}
                 </ul>
+                
+                <div className="pt-4 border-t border-white/10">
+                  <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
+                    … please get in touch with us, and we will respond promptly.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
