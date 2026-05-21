@@ -1,0 +1,864 @@
+import React, { useEffect, useRef, useState } from "react";
+
+export default function Landing() {
+  const logoScrollRef = useRef(null);
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
+  const [isLogoDragging, setIsLogoDragging] = useState(false);
+  const startLogoXRef = useRef(0);
+  const scrollLeftLogoRef = useRef(0);
+
+  const [apparelSlide, setApparelSlide] = useState(0);
+  const [leatherSlide, setLeatherSlide] = useState(0);
+
+  const apparelSlides = [
+    { src: "/slides/slide_apparel_1.jpg", alt: "Apparel Sourcing Slide 1" },
+    { src: "/slides/slide_apparel_2.jpg", alt: "Apparel Sourcing Slide 2" },
+    { src: "/slides/slide_apparel_3.jpg", alt: "Apparel Sourcing Slide 3" },
+    { src: "/slides/slide_apparel_4.jpg", alt: "Apparel Sourcing Slide 4" },
+    { src: "/slides/slide_apparel_5.jpg", alt: "Apparel Sourcing Slide 5" }
+  ];
+
+  const leatherSlides = [
+    { src: "/slides/slide_leather_1.webp", alt: "Leather Sourcing Slide 1" },
+    { src: "/slides/slide_leather_2.webp", alt: "Leather Sourcing Slide 2" },
+    { src: "/slides/slide_leather_3.webp", alt: "Leather Sourcing Slide 3" },
+    { src: "/slides/slide_leather_4.webp", alt: "Leather Sourcing Slide 4" },
+    { src: "/slides/slide_leather_5.jpg", alt: "Leather Sourcing Slide 5" },
+    { src: "/slides/slide_leather_6.jpg", alt: "Leather Sourcing Slide 6" },
+    { src: "/slides/slide_leather_7.jpg", alt: "Leather Sourcing Slide 7" },
+    { src: "/slides/slide_leather_8.jpg", alt: "Leather Sourcing Slide 8" }
+  ];
+
+  // Auto-advance sliders independently
+  useEffect(() => {
+    const apparelTimer = setInterval(() => {
+      setApparelSlide((prev) => (prev + 1) % apparelSlides.length);
+    }, 6000);
+    const leatherTimer = setInterval(() => {
+      setLeatherSlide((prev) => (prev + 1) % leatherSlides.length);
+    }, 7000);
+    return () => {
+      clearInterval(apparelTimer);
+      clearInterval(leatherTimer);
+    };
+  }, []);
+
+  // Butter-smooth continuous infinite autoplay marquee loop for Accreditations
+  useEffect(() => {
+    let animationFrameId;
+
+    const animate = () => {
+      if (!isLogoHovered && !isLogoDragging && logoScrollRef.current) {
+        const el = logoScrollRef.current;
+        el.scrollLeft += 0.8; // Smooth moderate speed
+
+        if (el.scrollLeft >= el.scrollWidth / 2) {
+          el.scrollLeft = 0;
+        }
+      }
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isLogoHovered, isLogoDragging]);
+
+  const handleLogoMouseDown = (e) => {
+    setIsLogoDragging(true);
+    if (logoScrollRef.current) {
+      startLogoXRef.current = e.pageX - logoScrollRef.current.offsetLeft;
+      scrollLeftLogoRef.current = logoScrollRef.current.scrollLeft;
+    }
+  };
+
+  const handleLogoMouseMove = (e) => {
+    if (!isLogoDragging || !logoScrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - logoScrollRef.current.offsetLeft;
+    const walk = (x - startLogoXRef.current) * 1.5;
+    const el = logoScrollRef.current;
+    let targetScroll = scrollLeftLogoRef.current - walk;
+
+    if (targetScroll < 0) {
+      targetScroll += el.scrollWidth / 2;
+    } else if (targetScroll >= el.scrollWidth / 2) {
+      targetScroll -= el.scrollWidth / 2;
+    }
+
+    el.scrollLeft = targetScroll;
+  };
+
+  const handleLogoMouseUpOrLeave = () => {
+    setIsLogoDragging(false);
+  };
+
+  const accreditationLogos = [
+    {
+      alt: "Better Cotton Initiative Logo",
+      src: "/logos/better-cotton.png",
+    },
+    {
+      alt: "OEKO-TEX Certified Logo",
+      src: "/logos/cert-1000046080.jpg",
+    },
+    {
+      alt: "GOTS Certified Logo",
+      src: "/logos/cert-1000046081.png",
+    },
+    {
+      alt: "Global Standard Certification",
+      src: "/logos/cert-1000046082.jpg",
+    },
+    {
+      alt: "BSI Certification",
+      src: "/logos/bsi.jpg",
+    },
+    {
+      alt: "BSCI Certified Factory",
+      src: "/logos/bsic.jpg",
+    },
+    {
+      alt: "ISO Standard Compliance",
+      src: "/logos/iso.png",
+    },
+    {
+      alt: "LWG - Leather Working Group Logo",
+      src: "/logos/lwg.jpg",
+    },
+    {
+      alt: "Accredited Sourcing Standard Logo",
+      src: "/logos/chrome-screenshot.jpg",
+    },
+  ];
+
+  return (
+    <div
+      id="top"
+      className="bg-surface text-on-surface selection:bg-gold-accent selection:text-pure-black"
+    >
+      {/* Hero Section */}
+      <header className="relative min-h-[100svh] flex items-center overflow-hidden pt-28 pb-16 lg:py-32 bg-gradient-to-br from-deep-forest to-[#002115]">
+        <div className="absolute inset-0 z-0">
+          <img
+            className="w-full h-full object-cover object-[50%_center] brightness-[0.22] contrast-[1.05]"
+            alt="Vivosa Leather Sourcing Factory Worker with Green Leather"
+            src="/hero-bg.jpg"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-deep-forest/95 via-deep-forest/75 to-[#002115]/60"></div>
+        </div>
+
+        <div className="relative z-10 max-w-container-max mx-auto w-full text-off-white px-4 sm:px-6 lg:px-margin-desktop">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left Column: Text Content */}
+            <div className="lg:col-span-6 max-w-2xl">
+              <span className="font-label-caps text-gold-accent tracking-[0.3em] uppercase block mb-6">
+                Redefining Craftsmanship
+              </span>
+              <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg mb-8">
+                Welcome to Vivosa.
+              </h1>
+              <p className="font-body-lg text-body-lg mb-6 text-surface-variant/90 leading-relaxed">
+                We are delighted to hear your ideas and designs, and we love
+                working together ethically bring your dream project to life.
+              </p>
+              <p className="font-body-lg text-body-lg mb-10 text-surface-variant/90 leading-relaxed">
+                Our commitment is to sustainable sourcing with honesty and
+                integrity and providing the best service. We believe that
+                experience, efficiency, professionalism, social responsibility,
+                environmental awareness, and a relentless drive for innovation are
+                the keys to creating authentic products.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                <a
+                  className="px-8 sm:px-10 py-4 bg-deep-forest border border-deep-forest text-off-white font-label-caps uppercase hover:bg-transparent hover:border-off-white transition-all duration-300 text-center"
+                  href="#about"
+                >
+                  View More
+                </a>
+                <a
+                  className="px-8 sm:px-10 py-4 border border-off-white text-off-white font-label-caps uppercase hover:bg-off-white hover:text-deep-forest transition-all duration-300 text-center"
+                  href="#contact"
+                >
+                  Contact Us
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Overlapping Images Layout */}
+            <div className="lg:col-span-6 relative flex justify-center items-center mt-12 lg:mt-0">
+              <div className="relative w-full max-w-[500px] h-[350px] sm:h-[450px] md:h-[480px]">
+                {/* Left Image: Apparel (Smiling girls stitching) */}
+                <div className="absolute left-0 bottom-4 w-[62%] aspect-[4/3] rounded-2xl overflow-hidden border-[10px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-10 transition-all duration-500 hover:scale-105 hover:z-30">
+                  <img
+                    src="https://vivosa.co.uk/wp-content/uploads/2025/07/indian-women-stitching-cloths-by-machine_835895-11182-300x300.avif"
+                    alt="Apparel manufacturing stitching"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                {/* Right Image: Leather Cutting */}
+                <div className="absolute right-0 top-4 w-[58%] aspect-[3/4] rounded-2xl overflow-hidden border-[10px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 transition-all duration-500 hover:scale-105 hover:z-30">
+                  <img
+                    src="https://vivosa.co.uk/wp-content/uploads/2025/07/close-up-hand-cutting-leather-1024x726.jpg"
+                    alt="Artisan hands cutting leather"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div 
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 cursor-pointer group z-20 hidden lg:flex"
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
+        >
+          <span className="font-label-caps text-[10px] tracking-[0.2em] text-white/80 group-hover:text-gold-accent transition-colors duration-300">
+            SCROLL DOWN
+          </span>
+          <div className="w-[30px] h-[50px] rounded-full border-2 border-white/60 group-hover:border-gold-accent flex justify-center p-1.5 transition-colors duration-300">
+            <div className="w-[4px] h-[10px] bg-white group-hover:bg-gold-accent rounded-full animate-wheel-scroll"></div>
+          </div>
+        </div>
+      </header>
+
+      {/* Excellence Section (Vision & Mission Statement) */}
+      <section
+        className="py-16 md:py-section-gap max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop"
+        id="about"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="relative group">
+            <div className="absolute -top-6 -left-6 sm:-top-10 sm:-left-10 w-28 h-28 sm:w-40 sm:h-40 bg-emerald-mint -z-10 transition-transform duration-500 group-hover:scale-110"></div>
+            <div className="overflow-hidden shadow-2xl">
+              <img
+                className="w-full aspect-[4/5] object-cover hover-zoom-img"
+                alt="Real Machine Layout inside Vivosa Partner Garment Factory"
+                src="https://vivosa.co.uk/wp-content/uploads/2025/07/Machine-Layout-for-T-Shirt-in-Apparel-Industry.jpg"
+              />
+            </div>
+          </div>
+          <div>
+            <span className="font-label-caps text-gold-accent tracking-widest block mb-4">
+              Our Core Strategy
+            </span>
+            <h2 className="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-deep-forest mb-8">
+              Our Vision &amp; Mission
+            </h2>
+            <div className="space-y-8 font-body-lg text-on-surface-variant leading-relaxed">
+              <div>
+                <h4 className="font-label-caps text-sm text-gold-accent uppercase tracking-wider mb-2 font-semibold">
+                  OUR VISION
+                </h4>
+                <p className="mb-3">
+                  Our vision extends outside our business. We aspire to make a good impact on the globe, from the communities where we obtain our raw materials to how our products help our consumers live livelier.
+                </p>
+                <p>
+                  Our top priorities are customer satisfaction and their values and working together to build a pleasant and trustable work environment. We are committed to listening to our customers and consistently offering reliable, innovative, and long-lasting quality solutions to guarantee their safety and sustainability.
+                </p>
+              </div>
+              
+              <div>
+                <h4 className="font-label-caps text-sm text-gold-accent uppercase tracking-wider mb-2 font-semibold">
+                  OUR MISSION
+                </h4>
+                <p className="mb-3">
+                  Our mission is to work with our partners to create a brighter future for people, the region, and for the coming generation by fostering a work culture and a love of excellence.
+                </p>
+                <p>
+                  In our commitment to sustainability, we actively seek social, economic, and environmental sustainability, placing a high priority on the welfare of our employees and the community, prioritizing constant enhancement and proactive growth.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-10 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-8">
+              <div className="text-center">
+                <span className="block font-display-lg text-4xl text-gold-accent mb-2">
+                  100%
+                </span>
+                <span className="font-label-caps text-[10px] text-on-surface-variant">
+                  Sustainable Sourcing
+                </span>
+              </div>
+              <div className="text-center">
+                <span className="block font-display-lg text-4xl text-gold-accent mb-2">
+                  50+
+                </span>
+                <span className="font-label-caps text-[10px] text-on-surface-variant">
+                  Global Partners
+                </span>
+              </div>
+              <div className="text-center">
+                <span className="block font-display-lg text-4xl text-gold-accent mb-2">
+                  Zero
+                </span>
+                <span className="font-label-caps text-[10px] text-on-surface-variant">
+                  Compromise
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      {/* Identity & Philosophy Section */}
+      <section className="py-16 md:py-24 bg-surface-container-low border-b border-outline/5">
+        <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-5">
+              <span className="font-label-caps text-gold-accent tracking-widest block mb-4">
+                Our Identity
+              </span>
+              <h2 className="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-deep-forest mb-6">
+                Stay Lively. Express Yourself.
+              </h2>
+              <p className="font-display-lg text-2xl md:text-3xl text-leather-tan leading-snug italic font-normal">
+                &quot;Vivosa means stay lively — expressing your individuality and inner self through your choices.&quot;
+              </p>
+            </div>
+            <div className="lg:col-span-7 space-y-6 font-body-lg text-on-surface-variant leading-relaxed">
+              <p>
+                <strong>Vivosa</strong> is a young, active firm that is deeply involved in both the leather and apparel industries. It was founded by individuals with over 30 years of professional experience, proven technical proficiency, and a constant willingness to take on new challenges and accomplish new goals. 
+              </p>
+              <p>
+                Our primary objective is sourcing materials ethically from sustainable manufacturers who are ecologically conscious, strictly follow fair business practices, and have been working in the sector for decades. As a result, we have built a strong presence in the UK, Europe, and numerous other global markets.
+              </p>
+              <p>
+                We believe that wearing and using what resonates with you and makes you feel confident is far more important than following trends blindly. Every individual is unique, with their own choices and lifestyle. By combining these individual needs with premium craftsmanship, exceptional pricing, and sustainability, we design products that keep our customers satisfied and lively. This is the core reason behind selecting <strong>Vivosa</strong> as our company name.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us - Values */}
+      <section className="py-16 md:py-section-gap max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop" id="why-choose-us">
+        <div className="text-center mb-12 md:mb-20 max-w-4xl mx-auto">
+          <span className="font-label-caps text-gold-accent tracking-widest block mb-4">
+            Core Philosophy
+          </span>
+          <h2 className="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-deep-forest mb-6">
+            WHY CHOOSE US
+          </h2>
+          <div className="space-y-4 font-body-lg text-on-surface-variant leading-relaxed">
+            <p className="font-semibold text-lg text-deep-forest">
+              Customers choose us for our expertise, efficiency, and commitment to building long-term partnerships based on trust and value. We understand that sourcing is more than just finding products — it is about fostering lasting relationships, ensuring quality, and creating value for every stakeholder.
+            </p>
+            <p>
+              Because of our years of experience in apparel and leather manufacturing, we have become a trusted partner for global buyers, brands, suppliers, and factories. We work exclusively with carefully selected manufacturers who hold internationally recognized certifications, ensuring that every product meets the highest standards of quality, safety, sustainability, and ethical practices.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {/* Card 1: Ethical Sourcing */}
+          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+            <div>
+              <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
+                eco
+              </span>
+              <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
+                Ethical Sourcing
+              </h4>
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+                We guarantee that materials are sourced from internationally renowned sustainable producers who care about the community and environment and have been making ethical products for over 50 years.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 2: Wide Range */}
+          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+            <div>
+              <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
+                category
+              </span>
+              <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
+                Wide range of products
+              </h4>
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+                To satisfy all your sourcing demands, we provide an extensive variety of premium products in both sustainable leather and bespoke clothing manufacturing.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 3: Customizations */}
+          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+            <div>
+              <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
+                tune
+              </span>
+              <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
+                Customizations
+              </h4>
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+                We welcome modifications in your approved order, confirmed by samples, including any cut, style, colour, pattern, packing, or print ideas you wish to bring to life.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 4: Quality Control */}
+          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+            <div>
+              <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
+                verified
+              </span>
+              <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
+                Quality control
+              </h4>
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+                Our in-house quality control team conducts rigorous pre-production, inline, and final inspections to ensure both leather and apparel products contain zero defects.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 5: Exceptional Price */}
+          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+            <div>
+              <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
+                payments
+              </span>
+              <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
+                Exceptionals price
+              </h4>
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+                We guarantee that our premium products are reasonably priced. We encourage clients to check our quality and pricing with quotes and samples from other vendors.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 6: Research & Innovation */}
+          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+            <div>
+              <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
+                psychology
+              </span>
+              <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
+                Researching and innovation
+              </h4>
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+                Our team conducts extensive research to support innovation, offering cutting-edge technologies and deep market insight to drive new products and procedures.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 7: Customer Satisfaction */}
+          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+            <div>
+              <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
+                sentiment_very_satisfied
+              </span>
+              <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
+                Customer Satisfaction
+              </h4>
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+                Your satisfaction is our top priority. We guarantee a hassle-free and enjoyable experience from the initial order placement to final delivery.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 8: Fast Delivery */}
+          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+            <div>
+              <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
+                local_shipping
+              </span>
+              <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
+                First Delivery
+              </h4>
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+                We work directly with trusted global logistics partners to ensure all deliveries happen strictly on schedule, no matter where you are located.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Custom Side-by-Side Apparel & Leather Sliders Showcase */}
+      <section className="bg-[#0e7448] py-20 relative overflow-hidden select-none" id="production">
+        {/* Decorative background grid and blurs */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/[0.03] via-transparent to-transparent pointer-events-none"></div>
+
+        <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">
+            
+            {/* Left Column: APPAREL Slider */}
+            <div className="flex flex-col items-center w-full">
+              <div className="w-full text-left mb-6">
+                <h3 className="font-display-lg text-4xl md:text-5xl lg:text-[50px] font-bold text-off-white tracking-widest uppercase relative inline-block pb-3 border-b-[5px] border-off-white">
+                  APPAREL
+                </h3>
+              </div>
+
+              {/* Slider Image Container */}
+              <div className="w-full aspect-[4/3] rounded-sm overflow-hidden border border-white/10 shadow-2xl relative bg-black/10 group cursor-pointer">
+                <img
+                  src={apparelSlides[apparelSlide].src}
+                  alt={apparelSlides[apparelSlide].alt}
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                  loading="eager"
+                  onClick={() => setApparelSlide((prev) => (prev + 1) % apparelSlides.length)}
+                />
+                
+                {/* Visual Glass Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+              </div>
+
+              {/* Slider Indicators (Dots) */}
+              <div className="flex items-center gap-3 mt-6">
+                {apparelSlides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setApparelSlide(idx)}
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                      apparelSlide === idx ? "bg-[#e53e3e] scale-110" : "bg-white/40 hover:bg-white/70"
+                    }`}
+                    aria-label={`Go to apparel slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: LEATHER Slider */}
+            <div className="flex flex-col items-center w-full">
+              <div className="w-full text-left mb-6">
+                <h3 className="font-display-lg text-4xl md:text-5xl lg:text-[50px] font-bold text-off-white tracking-widest uppercase relative inline-block pb-3 border-b-[5px] border-off-white">
+                  LEATHER
+                </h3>
+              </div>
+
+              {/* Slider Image Container */}
+              <div className="w-full aspect-[4/3] rounded-sm overflow-hidden border border-white/10 shadow-2xl relative bg-black/10 group cursor-pointer">
+                <img
+                  src={leatherSlides[leatherSlide].src}
+                  alt={leatherSlides[leatherSlide].alt}
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                  loading="eager"
+                  onClick={() => setLeatherSlide((prev) => (prev + 1) % leatherSlides.length)}
+                />
+                
+                {/* Visual Glass Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+              </div>
+
+              {/* Slider Indicators (Dots) */}
+              <div className="flex items-center gap-3 mt-6">
+                {leatherSlides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setLeatherSlide(idx)}
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                      leatherSlide === idx ? "bg-[#e53e3e] scale-110" : "bg-white/40 hover:bg-white/70"
+                    }`}
+                    aria-label={`Go to leather slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+          {/* Bottom Custom Double-Line Shopping Bag Divider */}
+          <div className="w-full flex items-center justify-center gap-6 mt-16 md:mt-24">
+            <div className="flex-1 flex flex-col gap-1">
+              <div className="h-[1px] bg-white/20 w-full"></div>
+              <div className="h-[1px] bg-white/20 w-full"></div>
+            </div>
+            <div className="w-12 h-12 rounded-full border-2 border-white/30 flex items-center justify-center text-white/90 bg-white/5 backdrop-blur-sm shadow-lg hover:scale-110 hover:border-white transition-all duration-300">
+              <span className="material-symbols-outlined text-2xl font-light">shopping_bag</span>
+            </div>
+            <div className="flex-1 flex flex-col gap-1">
+              <div className="h-[1px] bg-white/20 w-full"></div>
+              <div className="h-[1px] bg-white/20 w-full"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Luxury Dual Sourcing Showcase: Apparel & Leather Overview */}
+      <section className="py-24 bg-[#faf8f5] relative overflow-hidden border-b border-outline/5 select-none" id="sourcing-details">
+        {/* Abstract organic elegant design background details */}
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gold-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
+        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-emerald-mint/5 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop space-y-32">
+          
+          {/* Row 1: Apparel Sourcing (Image Left, Text Right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            {/* Left Image Frame with offset luxury gallery border */}
+            <div className="lg:col-span-6 relative group">
+              <div className="absolute -bottom-4 -right-4 w-full h-full border border-[#0e7448]/30 rounded-lg pointer-events-none -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
+              <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl border border-outline/10 bg-surface-container">
+                <img
+                  src="/slides/slide_apparel_row.jpg"
+                  alt="Premium Apparel Sourcing Factory"
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute top-6 left-6 px-4 py-2 bg-[#0e7448]/90 backdrop-blur-md border border-[#cda250]/30 text-[#cda250] font-label-caps text-[10px] tracking-widest rounded shadow-lg">
+                  01 / DIVISION
+                </div>
+              </div>
+            </div>
+
+            {/* Right Text Block */}
+            <div className="lg:col-span-6 space-y-6">
+              <span className="font-label-caps text-[#cda250] tracking-widest uppercase block text-xs">
+                Elite Apparel Sourcing
+              </span>
+              <h3 className="font-display-lg text-4xl lg:text-[45px] font-bold text-[#0e7448] leading-tight">
+                Apparel manufacturing
+              </h3>
+              <div className="w-16 h-[2px] bg-[#cda250]"></div>
+              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
+                We source premium raw materials from trusted mills and suppliers across Bangladesh and beyond. Our in-house and partner factories are equipped with modern machinery and skilled labour to manage the full production process.
+              </p>
+              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
+                This process includes design and fabric procurement, cutting, sewing, finishing, quality control, and shipping — all carried out to meet international standards and customer demands. Each stage, from fabric sourcing to cutting, stitching, finishing, and quality control, is conducted under strict supervision to ensure excellence.
+              </p>
+              <div className="pt-4">
+                <a
+                  href="/knitwear"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-[#0e7448] text-off-white font-label-caps text-xs font-bold uppercase tracking-wider hover:bg-[#cda250] hover:text-pure-black hover:scale-[1.03] transition-all duration-300 rounded-sm shadow-lg"
+                >
+                  Check Apparel
+                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Row 2: Leather Sourcing (Text Left, Image Right - Alternating for premium editorial layout) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            {/* Left Text Block */}
+            <div className="lg:col-span-6 space-y-6 order-2 lg:order-1">
+              <span className="font-label-caps text-[#cda250] tracking-widest uppercase block text-xs">
+                Artisanal Leather Sourcing
+              </span>
+              <h3 className="font-display-lg text-4xl lg:text-[45px] font-bold text-[#0e7448] leading-tight">
+                Leather
+              </h3>
+              <div className="w-16 h-[2px] bg-[#cda250]"></div>
+              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
+                Similarly,” from desalting to finishing, each raw hide goes through multiple stages of production, with every colour of leather carrying its own unique story.
+              </p>
+              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
+                The process involves technicians, designers, and skilled artisans, all working with dedication to meet the highest quality standards and ensure customer satisfaction. This reflects our manufacturing company’s capabilities and commitment to excellence, ensuring that each piece of leather is the result of outstanding craftsmanship.
+              </p>
+              <div className="pt-4">
+                <a
+                  href="/leather-goods"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-[#0e7448] text-off-white font-label-caps text-xs font-bold uppercase tracking-wider hover:bg-[#cda250] hover:text-pure-black hover:scale-[1.03] transition-all duration-300 rounded-sm shadow-lg"
+                >
+                  Check Leather
+                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Image Frame with offset luxury gallery border */}
+            <div className="lg:col-span-6 relative group order-1 lg:order-2">
+              <div className="absolute -bottom-4 -left-4 w-full h-full border border-[#0e7448]/30 rounded-lg pointer-events-none -z-10 group-hover:-translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
+              <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl border border-outline/10 bg-surface-container">
+                <img
+                  src="/slides/slide_leather_row.jpg"
+                  alt="Premium Leather Processing Factory"
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute top-6 right-6 px-4 py-2 bg-[#0e7448]/90 backdrop-blur-md border border-[#cda250]/30 text-[#cda250] font-label-caps text-[10px] tracking-widest rounded shadow-lg">
+                  02 / DIVISION
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Accreditations (Logos) */}
+      <section className="py-20 bg-surface-container-low border-y border-outline/5 overflow-hidden select-none">
+        <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop mb-12 text-center">
+          <span className="font-label-caps text-gold-accent tracking-widest uppercase block mb-4">
+            Certifications
+          </span>
+          <h2 className="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-deep-forest mb-6">
+            Our Accreditation Speaks For Itself
+          </h2>
+          <p className="font-body-lg text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
+            We work with selected manufacturers who have achieved internationally recognized certifications, giving you full confidence in our practices. Below are some of the key certifications in apparel and leather manufacturing, relevant to buyers, factories, suppliers, and brands. These certifications confirm compliance with international standards for quality, environmental responsibility, safety, and ethical practices.
+          </p>
+        </div>
+
+        {/* Infinite Marquee Wrapper */}
+        <div className="w-full relative flex py-4">
+          <div 
+            ref={logoScrollRef}
+            onMouseEnter={() => setIsLogoHovered(true)}
+            onMouseLeave={() => {
+              handleLogoMouseUpOrLeave();
+              setIsLogoHovered(false);
+            }}
+            onMouseDown={handleLogoMouseDown}
+            onMouseMove={handleLogoMouseMove}
+            onMouseUp={handleLogoMouseUpOrLeave}
+            className="flex overflow-x-auto gap-8 px-6 md:px-margin-desktop hide-scrollbar cursor-grab active:cursor-grabbing select-none py-2 w-full"
+            style={{ scrollBehavior: "auto", scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {[...accreditationLogos, ...accreditationLogos].map((logo, idx) => (
+              <div 
+                key={`${logo.alt}-${idx}`} 
+                className="h-20 w-40 flex-shrink-0 bg-white p-4 rounded shadow-sm flex items-center justify-center border border-outline/5 transition-all duration-300 hover:shadow-md cursor-pointer relative group/item select-none"
+              >
+                <img 
+                  alt={logo.alt} 
+                  className="h-12 w-auto object-contain max-w-full opacity-80 group-hover/item:scale-105 transition-transform duration-500 pointer-events-none select-none"
+                  src={logo.src} 
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section
+        className="py-16 md:py-section-gap max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop"
+        id="contact"
+      >
+        <div className="bg-deep-forest text-off-white overflow-hidden shadow-2xl flex flex-col md:flex-row">
+          <div className="md:w-1/2 p-6 sm:p-10 lg:p-20 relative">
+            <div className="relative z-10">
+              <h2 className="font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-8">
+                Get In Touch
+              </h2>
+              <p className="font-body-lg text-surface-variant/80 mb-12">
+                We are ready to bring your vision to life. Visit our office or
+                reach out to our global logistics team.
+              </p>
+
+              <div className="space-y-6 sm:space-y-8">
+                <div className="flex gap-6 items-start">
+                  <span className="material-symbols-outlined text-gold-accent">
+                    location_on
+                  </span>
+                  <div>
+                    <span className="font-label-caps block mb-1">
+                      Our Studio
+                    </span>
+                    <p className="font-body-md opacity-80">
+                      19 Northampton Rd, Wellingborough,
+                      <br />
+                      NN8 3HG, UK
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 items-start">
+                  <span className="material-symbols-outlined text-gold-accent">
+                    mail
+                  </span>
+                  <div>
+                    <span className="font-label-caps block mb-1">
+                      Inquiries
+                    </span>
+                    <p className="font-body-md opacity-80">
+                      enquiries@vivosa.co.uk
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 items-start">
+                  <span className="material-symbols-outlined text-gold-accent">
+                    phone_iphone
+                  </span>
+                  <div>
+                    <span className="font-label-caps block mb-1">
+                      Direct Lines
+                    </span>
+                    <p className="font-body-md opacity-80">
+                      02-074-126-809
+                      <br />
+                      +44 7912 843155
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
+              <img
+                className="w-full h-full object-cover"
+                alt="A subtle atelier background texture."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwFIii4Gd-uHSJLqfabNtXwCdbUGm_ua6-rZDXiak4jlnQ3nw48PB3lvUOzj3Qgz5rBV2CrgNpw1J3LgmRPcP0dRnIR1hxFPddXP2d5j2QSoseYVvulBukCWag4gKRSLeqOvytMoMUIgJz4TvMWgf5aOJW3cs7C-yAR8kJaSsjfd7tkl7GNxJygfwnSck26OGnKJomOVGoZ7GUahLN-HyeRNLIiGfmxtZqxkBZVMUfJ0fAu3CQg89PXfoSSJI9f5elFemfF0O-ayXu"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <div className="md:w-1/2 bg-off-white p-6 sm:p-10 lg:p-20 text-on-surface">
+            <form
+              className="space-y-8"
+              onSubmit={(event) => event.preventDefault()}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                <div className="relative">
+                  <label className="block font-label-caps text-[10px] text-deep-forest mb-2">
+                    First Name
+                  </label>
+                  <input
+                    className="w-full bg-transparent border-0 border-b border-deep-forest py-2 focus:ring-0 focus:border-deep-forest transition-colors px-0"
+                    type="text"
+                    name="firstName"
+                  />
+                </div>
+                <div className="relative">
+                  <label className="block font-label-caps text-[10px] text-deep-forest mb-2">
+                    Last Name
+                  </label>
+                  <input
+                    className="w-full bg-transparent border-0 border-b border-deep-forest py-2 focus:ring-0 focus:border-deep-forest transition-colors px-0"
+                    type="text"
+                    name="lastName"
+                  />
+                </div>
+              </div>
+
+              <div className="relative">
+                <label className="block font-label-caps text-[10px] text-deep-forest mb-2">
+                  Email Address
+                </label>
+                <input
+                  className="w-full bg-transparent border-0 border-b border-deep-forest py-2 focus:ring-0 focus:border-deep-forest transition-colors px-0"
+                  type="email"
+                  name="email"
+                />
+              </div>
+
+              <div className="relative">
+                <label className="block font-label-caps text-[10px] text-deep-forest mb-2">
+                  Message
+                </label>
+                <textarea
+                  className="w-full bg-transparent border-0 border-b border-deep-forest py-2 focus:ring-0 focus:border-deep-forest transition-colors px-0 resize-none"
+                  rows="4"
+                  name="message"
+                ></textarea>
+              </div>
+
+              <button
+                className="w-full py-5 bg-deep-forest text-off-white font-label-caps uppercase tracking-widest hover:bg-gold-accent hover:text-pure-black transition-all duration-500 flex items-center justify-center gap-3"
+                type="submit"
+              >
+                Send Message
+                <span className="material-symbols-outlined">send</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
