@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3f3f3"/>
+      <stop offset="1" stop-color="#e7e7e7"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#g)"/>
+  <rect x="80" y="120" width="740" height="960" rx="28" fill="#f8f8f8" stroke="#d9d9d9" stroke-width="3"/>
+  <path d="M280 350c65-75 110-110 170-110s105 35 170 110" fill="none" stroke="#c7c7c7" stroke-width="10" stroke-linecap="round"/>
+  <path d="M300 360c-35 65-55 145-55 240v220c0 40 32 72 72 72h266c40 0 72-32 72-72V600c0-95-20-175-55-240" fill="none" stroke="#c7c7c7" stroke-width="10" stroke-linecap="round"/>
+  <path d="M450 380v520" stroke="#d2d2d2" stroke-width="8" stroke-linecap="round" stroke-dasharray="10 18"/>
+  <text x="450" y="1040" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#9a9a9a" letter-spacing="6">
+    JACKET IMAGE
+  </text>
+</svg>
+

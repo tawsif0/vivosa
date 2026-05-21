@@ -476,7 +476,7 @@ export default function Landing() {
       </section>
 
       {/* Custom Side-by-Side Apparel & Leather Sliders Showcase */}
-      <section className="bg-[#0e7448] py-20 relative overflow-hidden select-none" id="production">
+      <section className="bg-[#387158] py-20 relative overflow-hidden select-none" id="production">
         {/* Decorative background grid and blurs */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/[0.03] via-transparent to-transparent pointer-events-none"></div>
 

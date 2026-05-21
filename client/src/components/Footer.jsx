@@ -145,7 +145,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/apparel" onClick={(e) => { e.preventDefault(); window.location.href = "/apparel"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-                  Apparel Info
+                  Info
                 </a>
               </li>
               <li>
@@ -191,4 +191,3 @@ export default function Footer() {
     </footer>
   );
 }
-

@@ -106,8 +106,8 @@ function MobileAccordion({ label, items, isOpen, isActive, onToggle, onItemClick
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [desktopOpenDropdown, setDesktopOpenDropdown] = useState(null); // "leather" | "apparel" | null
-  const [mobileOpenSection, setMobileOpenSection] = useState(null); // "leather" | "apparel" | null
+  const [desktopOpenDropdown, setDesktopOpenDropdown] = useState(null); // "leather" | "mens" | "womens" | null
+  const [mobileOpenSection, setMobileOpenSection] = useState(null); // "leather" | "mens" | "womens" | null
   const location = useLocation();
 
   const data = useMemo(
@@ -123,12 +123,28 @@ export default function Navbar() {
           { label: "Marine Leather", href: "/marine-leather" },
         ],
       },
-      apparel: {
-        label: "Apparel",
+      mens: {
+        label: "Men's",
         items: [
-          { label: "Info", href: "/apparel" },
-          { label: "Mensware", href: "/mensware" },
-          { label: "Womenswear", href: "/womenswear" },
+          { label: "Sweaters", href: "/mens/sweaters" },
+          { label: "Jackets & Coats", href: "/mens/jackets-and-coats" },
+          { label: "Pants", href: "/mens/pants" },
+          { label: "Joggers", href: "/mens/joggers" },
+          { label: "Polo Shirt", href: "/mens/polo-shirt" },
+          { label: "Shirts", href: "/mens/shirts" },
+          { label: "T-shirts", href: "/mens/t-shirts" },
+        ],
+      },
+      womens: {
+        label: "Women's",
+        items: [
+          { label: "Sweaters", href: "/womens/sweaters" },
+          { label: "Jackets & Coats", href: "/womens/jackets-and-coats" },
+          { label: "Pants", href: "/womens/pants" },
+          { label: "Polo Shirts", href: "/womens/polo-shirts" },
+          { label: "Shirts", href: "/womens/shirts" },
+          { label: "T-shirts", href: "/womens/t-shirts" },
+          { label: "Swim & Lingerie", href: "/womens/swim-lingerie" },
         ],
       },
     }),
@@ -210,17 +226,42 @@ export default function Navbar() {
           />
 
           <DesktopDropdown
-            label={data.apparel.label}
-            items={data.apparel.items}
-            isOpen={desktopOpenDropdown === "apparel"}
-            isActive={data.apparel.items.some(item => location.pathname === item.href)}
+            label={data.mens.label}
+            items={data.mens.items}
+            isOpen={desktopOpenDropdown === "mens"}
+            isActive={data.mens.items.some(item => location.pathname === item.href)}
             onToggle={() =>
               setDesktopOpenDropdown((value) =>
-                value === "apparel" ? null : "apparel",
+                value === "mens" ? null : "mens",
               )
             }
             onClose={() => setDesktopOpenDropdown(null)}
           />
+
+          <DesktopDropdown
+            label={data.womens.label}
+            items={data.womens.items}
+            isOpen={desktopOpenDropdown === "womens"}
+            isActive={data.womens.items.some(item => location.pathname === item.href)}
+            onToggle={() =>
+              setDesktopOpenDropdown((value) =>
+                value === "womens" ? null : "womens",
+              )
+            }
+            onClose={() => setDesktopOpenDropdown(null)}
+          />
+
+          <Link
+            className={
+              location.pathname === "/kids"
+                ? "font-body-md text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent border-b border-deep-forest dark:border-gold-accent pb-1 transition-colors duration-300"
+                : "font-body-md text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300"
+            }
+            to="/kids"
+            onClick={handleNavClick}
+          >
+            Kids
+          </Link>
         </div>
 
         <div className="flex items-center gap-3">
@@ -283,17 +324,38 @@ export default function Navbar() {
               />
 
               <MobileAccordion
-                label={data.apparel.label}
-                items={data.apparel.items}
-                isOpen={mobileOpenSection === "apparel"}
-                isActive={data.apparel.items.some(item => location.pathname === item.href)}
+                label={data.mens.label}
+                items={data.mens.items}
+                isOpen={mobileOpenSection === "mens"}
+                isActive={data.mens.items.some(item => location.pathname === item.href)}
                 onToggle={() =>
                   setMobileOpenSection((value) =>
-                    value === "apparel" ? null : "apparel",
+                    value === "mens" ? null : "mens",
                   )
                 }
                 onItemClick={handleNavClick}
               />
+
+              <MobileAccordion
+                label={data.womens.label}
+                items={data.womens.items}
+                isOpen={mobileOpenSection === "womens"}
+                isActive={data.womens.items.some(item => location.pathname === item.href)}
+                onToggle={() =>
+                  setMobileOpenSection((value) =>
+                    value === "womens" ? null : "womens",
+                  )
+                }
+                onItemClick={handleNavClick}
+              />
+
+              <Link
+                className="font-body-md text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300 py-2"
+                to="/kids"
+                onClick={handleNavClick}
+              >
+                Kids
+              </Link>
 
               <a
                 className="font-body-md text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300 py-2"
