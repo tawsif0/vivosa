@@ -105,42 +105,6 @@ export default function LeatherFootwearDetail() {
           </div>
         </section>
 
-        {/* Section A: KEEP INFORMED ABOUT OUR NEWS (Same-to-Same as mockup) */}
-        <section className="bg-neutral-50 py-16 px-6 md:px-24 border-t border-neutral-200/60">
-          <div className="max-w-xl mx-auto text-center space-y-6">
-            <h3 className="font-display text-[12px] md:text-[13px] tracking-[0.3em] uppercase text-neutral-800 font-bold">
-              KEEP INFORMED ABOUT OUR NEWS
-            </h3>
-            
-            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row items-stretch justify-center max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="ENTER YOUR EMAIL ADDRESS"
-                className="w-full bg-white border border-neutral-300 px-4 py-3 text-[11px] text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-neutral-500 font-display tracking-widest uppercase text-center sm:text-left h-11"
-                required
-              />
-              <button
-                type="submit"
-                className="bg-[#222222] hover:bg-neutral-800 text-white font-display text-[11px] tracking-widest px-8 py-3 transition-colors duration-300 font-semibold uppercase sm:ml-[-1px] mt-2 sm:mt-0 flex-shrink-0 h-11"
-              >
-                SUBSCRIBE
-              </button>
-            </form>
-
-            <div className="flex items-center justify-center gap-2 text-[10px] text-neutral-500 max-w-sm mx-auto leading-relaxed">
-              <input 
-                type="checkbox" 
-                id="privacy-policy" 
-                className="mt-0.5 border-neutral-300 rounded-sm cursor-pointer accent-[#222]" 
-                required 
-              />
-              <label htmlFor="privacy-policy" className="cursor-pointer select-none">
-                I declare that I have read and accepted the privacy policy. <a href="/privacy" className="underline hover:text-neutral-800">(read the policy)</a>
-              </label>
-            </div>
-          </div>
-        </section>
-
         {/* Section B: HOW TO CONTACT US (Same-to-Same as mockup with 45deg rotated black diamonds) */}
         <section className="bg-white py-20 px-6 md:px-24 border-t border-neutral-100">
           <div className="max-w-5xl mx-auto text-center space-y-16">

@@ -11,22 +11,22 @@ export default function Landing() {
   const [leatherSlide, setLeatherSlide] = useState(0);
 
   const apparelSlides = [
-    { src: "/slides/slide_apparel_1.jpg", alt: "Apparel Sourcing Slide 1" },
-    { src: "/slides/slide_apparel_2.jpg", alt: "Apparel Sourcing Slide 2" },
-    { src: "/slides/slide_apparel_3.jpg", alt: "Apparel Sourcing Slide 3" },
-    { src: "/slides/slide_apparel_4.jpg", alt: "Apparel Sourcing Slide 4" },
-    { src: "/slides/slide_apparel_5.jpg", alt: "Apparel Sourcing Slide 5" }
+    { src: "/slides/L1.png", alt: "Apparel Sourcing Slide 1" },
+    { src: "/slides/L2.png", alt: "Apparel Sourcing Slide 2" },
+    { src: "/slides/L3.png", alt: "Apparel Sourcing Slide 3" },
+    { src: "/slides/L4.png", alt: "Apparel Sourcing Slide 4" },
+    { src: "/slides/L5.png", alt: "Apparel Sourcing Slide 5" }
   ];
 
   const leatherSlides = [
-    { src: "/slides/slide_leather_1.webp", alt: "Leather Sourcing Slide 1" },
-    { src: "/slides/slide_leather_2.webp", alt: "Leather Sourcing Slide 2" },
-    { src: "/slides/slide_leather_3.webp", alt: "Leather Sourcing Slide 3" },
-    { src: "/slides/slide_leather_4.webp", alt: "Leather Sourcing Slide 4" },
-    { src: "/slides/slide_leather_5.jpg", alt: "Leather Sourcing Slide 5" },
-    { src: "/slides/slide_leather_6.jpg", alt: "Leather Sourcing Slide 6" },
-    { src: "/slides/slide_leather_7.jpg", alt: "Leather Sourcing Slide 7" },
-    { src: "/slides/slide_leather_8.jpg", alt: "Leather Sourcing Slide 8" }
+    { src: "/slides/s1.png", alt: "Leather Sourcing Slide 1" },
+    { src: "/slides/s2.png", alt: "Leather Sourcing Slide 2" },
+    { src: "/slides/s3.png", alt: "Leather Sourcing Slide 3" },
+    { src: "/slides/s4.png", alt: "Leather Sourcing Slide 4" },
+    { src: "/slides/s5.png", alt: "Leather Sourcing Slide 5" },
+    { src: "/slides/s6.png", alt: "Leather Sourcing Slide 6" },
+    { src: "/slides/s7.png", alt: "Leather Sourcing Slide 7" },
+    { src: "/slides/s8.png", alt: "Leather Sourcing Slide 8" }
   ];
 
   // Auto-advance sliders independently
@@ -195,7 +195,7 @@ export default function Landing() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                
+
                 {/* Right Image: Leather Cutting */}
                 <div className="absolute right-0 top-4 w-[58%] aspect-[3/4] rounded-2xl overflow-hidden border-[10px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 transition-all duration-500 hover:scale-105 hover:z-30">
                   <img
@@ -209,7 +209,7 @@ export default function Landing() {
           </div>
         </div>
 
-        <div 
+        <div
           className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 cursor-pointer group z-20 hidden lg:flex"
           onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
         >
@@ -233,8 +233,8 @@ export default function Landing() {
             <div className="overflow-hidden shadow-2xl">
               <img
                 className="w-full aspect-[4/5] object-cover hover-zoom-img"
-                alt="Real Machine Layout inside Vivosa Partner Garment Factory"
-                src="https://vivosa.co.uk/wp-content/uploads/2025/07/Machine-Layout-for-T-Shirt-in-Apparel-Industry.jpg"
+                alt="Leather Sourcing and Craftsmanship"
+                src="/slides/about_hero.avif"
               />
             </div>
           </div>
@@ -257,7 +257,7 @@ export default function Landing() {
                   Our top priorities are customer satisfaction and their values and working together to build a pleasant and trustable work environment. We are committed to listening to our customers and consistently offering reliable, innovative, and long-lasting quality solutions to guarantee their safety and sustainability.
                 </p>
               </div>
-              
+
               <div>
                 <h4 className="font-label-caps text-sm text-gold-accent uppercase tracking-wider mb-2 font-semibold">
                   OUR MISSION
@@ -320,7 +320,7 @@ export default function Landing() {
             </div>
             <div className="lg:col-span-7 space-y-6 font-body-lg text-on-surface-variant leading-relaxed">
               <p>
-                <strong>Vivosa</strong> is a young, active firm that is deeply involved in both the leather and apparel industries. It was founded by individuals with over 30 years of professional experience, proven technical proficiency, and a constant willingness to take on new challenges and accomplish new goals. 
+                <strong>Vivosa</strong> is a young, active firm that is deeply involved in both the leather and apparel industries. It was founded by individuals with over 30 years of professional experience, proven technical proficiency, and a constant willingness to take on new challenges and accomplish new goals.
               </p>
               <p>
                 Our primary objective is sourcing materials ethically from sustainable manufacturers who are ecologically conscious, strictly follow fair business practices, and have been working in the sector for decades. As a result, we have built a strong presence in the UK, Europe, and numerous other global markets.
@@ -475,102 +475,225 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Custom Side-by-Side Apparel & Leather Sliders Showcase */}
-      <section className="bg-[#387158] py-20 relative overflow-hidden select-none" id="production">
-        {/* Decorative background grid and blurs */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/[0.03] via-transparent to-transparent pointer-events-none"></div>
+      {/* Premium Dual Category Cinematic Showcase */}
+      <section className="relative overflow-hidden select-none" id="production">
+        {/* Ken Burns zoom keyframes + progress-bar fill */}
+        <style>{`
+          @keyframes kenBurnsZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+          }
+          @keyframes progressFill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+          }
+        `}</style>
 
-        <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">
-            
-            {/* Left Column: APPAREL Slider */}
-            <div className="flex flex-col items-center w-full">
-              <div className="w-full text-left mb-6">
-                <h3 className="font-display-lg text-4xl md:text-5xl lg:text-[50px] font-bold text-off-white tracking-widest uppercase relative inline-block pb-3 border-b-[5px] border-off-white">
-                  APPAREL
-                </h3>
-              </div>
+        {/* ── Section Header ── */}
+        <div className="relative z-10 bg-[#0c1a14] text-center pt-20 pb-14 px-4">
+          <div
+            className="absolute inset-0 opacity-[0.04] pointer-events-none"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, #fff 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
+          />
+          <span className="relative font-label-caps text-gold-accent tracking-[0.35em] uppercase block mb-5 text-xs">
+            What We Source
+          </span>
+          <h2 className="relative font-display-lg text-4xl md:text-6xl lg:text-7xl text-white font-bold leading-tight">
+            Two Industries.{" "}
+            <span
+              className="italic font-light"
+              style={{ color: "#cda250" }}
+            >
+              One Vision.
+            </span>
+          </h2>
+          <div
+            className="w-16 h-[2px] mx-auto mt-7"
+            style={{ background: "#cda250" }}
+          />
+        </div>
 
-              {/* Slider Image Container */}
-              <div className="w-full aspect-[4/3] rounded-sm overflow-hidden border border-white/10 shadow-2xl relative bg-black/10 group cursor-pointer">
-                <img
-                  src={apparelSlides[apparelSlide].src}
-                  alt={apparelSlides[apparelSlide].alt}
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-                  loading="eager"
-                  onClick={() => setApparelSlide((prev) => (prev + 1) % apparelSlides.length)}
-                />
-                
-                {/* Visual Glass Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
-              </div>
+        {/* ── Full-bleed Split Panels ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {/* ─── LEFT: APPAREL ─── */}
+          <div
+            className="relative group overflow-hidden cursor-pointer"
+            style={{ height: "clamp(480px, 70vh, 780px)" }}
+            onClick={() =>
+              setApparelSlide((prev) => (prev + 1) % apparelSlides.length)
+            }
+          >
+            {/* Slider image with Ken Burns zoom */}
+            <img
+              key={`apparel-${apparelSlide}`}
+              src={apparelSlides[apparelSlide].src}
+              alt={apparelSlides[apparelSlide].alt}
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ animation: "kenBurnsZoom 6s ease-out forwards" }}
+              loading="eager"
+            />
 
-              {/* Slider Indicators (Dots) */}
-              <div className="flex items-center gap-3 mt-6">
+            {/* Rich gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/10 pointer-events-none" />
+
+            {/* Gold vertical divider on right edge (desktop) */}
+            <div
+              className="absolute top-0 right-0 w-[1px] h-full pointer-events-none hidden md:block"
+              style={{
+                background:
+                  "linear-gradient(to bottom, transparent, #cda250 40%, #cda250 60%, transparent)",
+                opacity: 0.35,
+              }}
+            />
+
+            {/* Category badge */}
+            <div className="absolute top-8 left-8 z-10">
+              <span
+                className="px-4 py-2 font-label-caps text-xs tracking-widest backdrop-blur-sm border"
+                style={{
+                  borderColor: "rgba(205,162,80,0.45)",
+                  color: "#cda250",
+                  background: "rgba(0,0,0,0.45)",
+                }}
+              >
+                01 / APPAREL
+              </span>
+            </div>
+
+            {/* Bottom content */}
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
+              <h3 className="font-display-lg text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-widest uppercase leading-none mb-4">
+                APPAREL
+              </h3>
+
+              {/* Animated underline */}
+              <div
+                className="h-[2px] mb-5 transition-all duration-700 origin-left group-hover:w-24"
+                style={{ width: "3rem", background: "#cda250" }}
+              />
+
+              <p className="text-white/70 text-sm leading-relaxed max-w-sm mb-7 font-body-lg">
+                Knitwear, woven, denim &amp; workwear — sourced from
+                Bangladesh's finest BSCI-certified, sustainably operating
+                factories.
+              </p>
+
+              {/* Progress-bar slide indicators */}
+              <div className="flex gap-2 items-center">
                 {apparelSlides.map((_, idx) => (
                   <button
                     key={idx}
-                    onClick={() => setApparelSlide(idx)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                      apparelSlide === idx ? "bg-[#e53e3e] scale-110" : "bg-white/40 hover:bg-white/70"
-                    }`}
-                    aria-label={`Go to apparel slide ${idx + 1}`}
-                  />
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setApparelSlide(idx);
+                    }}
+                    aria-label={`Apparel slide ${idx + 1}`}
+                    className="relative h-[3px] rounded-full overflow-hidden"
+                    style={{
+                      width: apparelSlide === idx ? "2.5rem" : "0.75rem",
+                      background: "rgba(255,255,255,0.15)",
+                      transition: "width 0.4s ease",
+                    }}
+                  >
+                    {apparelSlide === idx && (
+                      <span
+                        key={`apparel-progress-${apparelSlide}`}
+                        className="absolute inset-y-0 left-0 rounded-full"
+                        style={{
+                          background: "#cda250",
+                          animation: "progressFill 6s linear forwards",
+                        }}
+                      />
+                    )}
+                  </button>
                 ))}
               </div>
             </div>
+          </div>
 
-            {/* Right Column: LEATHER Slider */}
-            <div className="flex flex-col items-center w-full">
-              <div className="w-full text-left mb-6">
-                <h3 className="font-display-lg text-4xl md:text-5xl lg:text-[50px] font-bold text-off-white tracking-widest uppercase relative inline-block pb-3 border-b-[5px] border-off-white">
-                  LEATHER
-                </h3>
-              </div>
+          {/* ─── RIGHT: LEATHER ─── */}
+          <div
+            className="relative group overflow-hidden cursor-pointer"
+            style={{ height: "clamp(480px, 70vh, 780px)" }}
+            onClick={() =>
+              setLeatherSlide((prev) => (prev + 1) % leatherSlides.length)
+            }
+          >
+            <img
+              key={`leather-${leatherSlide}`}
+              src={leatherSlides[leatherSlide].src}
+              alt={leatherSlides[leatherSlide].alt}
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ animation: "kenBurnsZoom 7s ease-out forwards" }}
+              loading="eager"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/10 pointer-events-none" />
 
-              {/* Slider Image Container */}
-              <div className="w-full aspect-[4/3] rounded-sm overflow-hidden border border-white/10 shadow-2xl relative bg-black/10 group cursor-pointer">
-                <img
-                  src={leatherSlides[leatherSlide].src}
-                  alt={leatherSlides[leatherSlide].alt}
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-                  loading="eager"
-                  onClick={() => setLeatherSlide((prev) => (prev + 1) % leatherSlides.length)}
-                />
-                
-                {/* Visual Glass Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
-              </div>
+            {/* Category badge */}
+            <div className="absolute top-8 left-8 z-10">
+              <span
+                className="px-4 py-2 font-label-caps text-xs tracking-widest backdrop-blur-sm border"
+                style={{
+                  borderColor: "rgba(205,162,80,0.45)",
+                  color: "#cda250",
+                  background: "rgba(0,0,0,0.45)",
+                }}
+              >
+                02 / LEATHER
+              </span>
+            </div>
 
-              {/* Slider Indicators (Dots) */}
-              <div className="flex items-center gap-3 mt-6">
+            {/* Bottom content */}
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
+              <h3 className="font-display-lg text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-widest uppercase leading-none mb-4">
+                LEATHER
+              </h3>
+
+              <div
+                className="h-[2px] mb-5 transition-all duration-700 origin-left group-hover:w-24"
+                style={{ width: "3rem", background: "#cda250" }}
+              />
+
+              <p className="text-white/70 text-sm leading-relaxed max-w-sm mb-7 font-body-lg">
+                Premium Italian-tanned hides for furniture, footwear, leather
+                goods &amp; automotive — over 1,000 articles in a vast range of
+                colours and finishes.
+              </p>
+
+              {/* Progress-bar slide indicators */}
+              <div className="flex gap-2 items-center">
                 {leatherSlides.map((_, idx) => (
                   <button
                     key={idx}
-                    onClick={() => setLeatherSlide(idx)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                      leatherSlide === idx ? "bg-[#e53e3e] scale-110" : "bg-white/40 hover:bg-white/70"
-                    }`}
-                    aria-label={`Go to leather slide ${idx + 1}`}
-                  />
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setLeatherSlide(idx);
+                    }}
+                    aria-label={`Leather slide ${idx + 1}`}
+                    className="relative h-[3px] rounded-full overflow-hidden"
+                    style={{
+                      width: leatherSlide === idx ? "2.5rem" : "0.75rem",
+                      background: "rgba(255,255,255,0.15)",
+                      transition: "width 0.4s ease",
+                    }}
+                  >
+                    {leatherSlide === idx && (
+                      <span
+                        key={`leather-progress-${leatherSlide}`}
+                        className="absolute inset-y-0 left-0 rounded-full"
+                        style={{
+                          background: "#cda250",
+                          animation: "progressFill 7s linear forwards",
+                        }}
+                      />
+                    )}
+                  </button>
                 ))}
               </div>
-            </div>
-
-          </div>
-
-          {/* Bottom Custom Double-Line Shopping Bag Divider */}
-          <div className="w-full flex items-center justify-center gap-6 mt-16 md:mt-24">
-            <div className="flex-1 flex flex-col gap-1">
-              <div className="h-[1px] bg-white/20 w-full"></div>
-              <div className="h-[1px] bg-white/20 w-full"></div>
-            </div>
-            <div className="w-12 h-12 rounded-full border-2 border-white/30 flex items-center justify-center text-white/90 bg-white/5 backdrop-blur-sm shadow-lg hover:scale-110 hover:border-white transition-all duration-300">
-              <span className="material-symbols-outlined text-2xl font-light">shopping_bag</span>
-            </div>
-            <div className="flex-1 flex flex-col gap-1">
-              <div className="h-[1px] bg-white/20 w-full"></div>
-              <div className="h-[1px] bg-white/20 w-full"></div>
             </div>
           </div>
         </div>
@@ -583,7 +706,7 @@ export default function Landing() {
         <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-emerald-mint/5 rounded-full blur-[150px] pointer-events-none"></div>
 
         <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop space-y-32">
-          
+
           {/* Row 1: Apparel Sourcing (Image Left, Text Right) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             {/* Left Image Frame with offset luxury gallery border */}
@@ -693,7 +816,7 @@ export default function Landing() {
 
         {/* Infinite Marquee Wrapper */}
         <div className="w-full relative flex py-4">
-          <div 
+          <div
             ref={logoScrollRef}
             onMouseEnter={() => setIsLogoHovered(true)}
             onMouseLeave={() => {
@@ -707,14 +830,14 @@ export default function Landing() {
             style={{ scrollBehavior: "auto", scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {[...accreditationLogos, ...accreditationLogos].map((logo, idx) => (
-              <div 
-                key={`${logo.alt}-${idx}`} 
+              <div
+                key={`${logo.alt}-${idx}`}
                 className="h-20 w-40 flex-shrink-0 bg-white p-4 rounded shadow-sm flex items-center justify-center border border-outline/5 transition-all duration-300 hover:shadow-md cursor-pointer relative group/item select-none"
               >
-                <img 
-                  alt={logo.alt} 
+                <img
+                  alt={logo.alt}
                   className="h-12 w-auto object-contain max-w-full opacity-80 group-hover/item:scale-105 transition-transform duration-500 pointer-events-none select-none"
-                  src={logo.src} 
+                  src={logo.src}
                   loading="lazy"
                 />
               </div>

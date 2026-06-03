@@ -4,55 +4,13 @@ import { Link } from "react-router-dom";
 export default function DetailsExtraSections({ privacyId = "privacy" }) {
   return (
     <>
-      {/* Centered KEEP INFORMED Section */}
-      <section className="bg-[#f9f9f9] py-16 px-4 border-t border-neutral-100 text-center">
-        <div className="max-w-md mx-auto">
-          <h2 className="text-[11px] font-bold tracking-[0.35em] uppercase text-black mb-6 font-sans">
-            KEEP INFORMED ABOUT OUR NEWS
-          </h2>
-          <form
-            className="flex flex-col sm:flex-row gap-0 max-w-sm mx-auto border border-neutral-300 overflow-hidden"
-            onSubmit={(e) => {
-              e.preventDefault();
-              // eslint-disable-next-line no-alert
-              alert("Subscribed successfully!");
-            }}
-          >
-            <input
-              type="email"
-              placeholder="ENTER YOUR EMAIL ADDRESS"
-              className="w-full px-4 py-3 bg-white text-xs font-sans placeholder-neutral-400 focus:outline-none border-0 text-black rounded-none no-hover-scale"
-              required
-            />
-            <button
-              type="submit"
-              className="bg-[#1c1c1c] text-white px-6 py-3 font-semibold text-xs tracking-widest uppercase hover:bg-black transition-colors shrink-0 rounded-none no-hover-scale"
-            >
-              SUBSCRIBE
-            </button>
-          </form>
-          <div className="mt-4 flex items-center justify-center gap-2 text-[10px] text-neutral-500">
-            <input
-              type="checkbox"
-              id={privacyId}
-              className="accent-black cursor-pointer"
-              required
-            />
-            <label htmlFor={privacyId} className="cursor-pointer font-sans select-none">
-              I declare that I have read and accepted the privacy policy.{" "}
-              <span className="underline cursor-pointer">(Read the policy)</span>
-            </label>
-          </div>
-        </div>
-      </section>
-
       {/* Three-Column HOW TO CONTACT US Section */}
       <section className="bg-white py-16 px-4 border-t border-neutral-100">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-[11px] font-bold tracking-[0.4em] uppercase text-black mb-12 font-sans">
+          <h2 className="text-[12px] md:text-[13px] font-bold tracking-[0.4em] uppercase text-black mb-12 font-sans">
             HOW TO CONTACT US
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left text-xs max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left text-sm md:text-base max-w-4xl mx-auto">
             <div className="flex gap-4 items-start">
               <div className="bg-[#1c1c1c] text-white p-2 shrink-0">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -63,7 +21,7 @@ export default function DetailsExtraSections({ privacyId = "privacy" }) {
                 <h3 className="font-bold tracking-[0.2em] uppercase text-neutral-400 mb-1 font-sans">
                   PHONE
                 </h3>
-                <p className="text-neutral-900 font-sans tracking-wide leading-relaxed font-light">
+                <p className="text-neutral-900 font-sans tracking-wide leading-relaxed font-light text-sm md:text-base">
                   +44 (0) 123 456 789
                 </p>
               </div>
@@ -79,7 +37,7 @@ export default function DetailsExtraSections({ privacyId = "privacy" }) {
                 <h3 className="font-bold tracking-[0.2em] uppercase text-neutral-400 mb-1 font-sans">
                   ADDRESS
                 </h3>
-                <p className="text-neutral-900 font-sans tracking-wide leading-relaxed font-light">
+                <p className="text-neutral-900 font-sans tracking-wide leading-relaxed font-light text-sm md:text-base">
                   19 Northampton Rd, Wellingborough,
                   <br />
                   NN8 3HG, United Kingdom
@@ -97,7 +55,7 @@ export default function DetailsExtraSections({ privacyId = "privacy" }) {
                 <h3 className="font-bold tracking-[0.2em] uppercase text-neutral-400 mb-1 font-sans">
                   EMAIL
                 </h3>
-                <p className="text-neutral-900 font-sans tracking-wide leading-relaxed font-light">
+                <p className="text-neutral-900 font-sans tracking-wide leading-relaxed font-light text-sm md:text-base">
                   london@vivosa.com
                 </p>
               </div>
@@ -108,12 +66,12 @@ export default function DetailsExtraSections({ privacyId = "privacy" }) {
 
       {/* Dark call-to-action Footer Banner */}
       <section className="bg-[#0f0f0f] text-white py-12 px-4 text-center border-t border-neutral-800">
-        <h3 className="text-[11px] font-bold tracking-[0.25em] uppercase mb-6 text-neutral-400 font-sans">
+        <h3 className="text-[12px] md:text-[13px] font-bold tracking-[0.25em] uppercase mb-6 text-neutral-400 font-sans">
           WOULD YOU LIKE TO RECEIVE MORE INFORMATION ABOUT OUR PRODUCTS?
         </h3>
         <Link
           to="/contact"
-          className="inline-block bg-[#dcdcdc] text-black font-semibold text-[10px] tracking-[0.25em] uppercase py-3 px-8 hover:bg-white transition-colors rounded-none no-hover-scale"
+          className="inline-block bg-[#dcdcdc] text-black font-semibold text-[11px] md:text-[12px] tracking-[0.25em] uppercase py-3 px-8 hover:bg-white transition-colors rounded-none no-hover-scale"
         >
           CONTACT US
         </Link>
@@ -121,4 +79,3 @@ export default function DetailsExtraSections({ privacyId = "privacy" }) {
     </>
   );
 }
-

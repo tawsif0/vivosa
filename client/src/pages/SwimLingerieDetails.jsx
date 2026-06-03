@@ -109,41 +109,6 @@ export default function SwimLingerieDetails() {
         </div>
       </div>
 
-      {/* Centered KEEP INFORMED Section */}
-      <section className="bg-[#f9f9f9] py-16 px-4 border-t border-neutral-100 text-center">
-        <div className="max-w-md mx-auto">
-          <h2 className="text-[11px] font-bold tracking-[0.35em] uppercase text-black mb-6 font-sans">
-            KEEP INFORMED ABOUT OUR NEWS
-          </h2>
-          <form
-            className="flex flex-col sm:flex-row gap-0 max-w-sm mx-auto border border-neutral-300 overflow-hidden"
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("Subscribed successfully!");
-            }}
-          >
-            <input
-              type="email"
-              placeholder="ENTER YOUR EMAIL ADDRESS"
-              className="w-full px-4 py-3 bg-white text-xs font-sans placeholder-neutral-400 focus:outline-none border-0 text-black rounded-none no-hover-scale"
-              required
-            />
-            <button
-              type="submit"
-              className="bg-[#1c1c1c] text-white px-6 py-3 font-semibold text-xs tracking-widest uppercase hover:bg-black transition-colors shrink-0 rounded-none no-hover-scale"
-            >
-              SUBSCRIBE
-            </button>
-          </form>
-          <div className="mt-4 flex items-center justify-center gap-2 text-[10px] text-neutral-500">
-            <input type="checkbox" id="privacy" className="accent-black cursor-pointer" required />
-            <label htmlFor="privacy" className="cursor-pointer font-sans select-none">
-              I declare that I have read and accepted the privacy policy. <span className="underline cursor-pointer">(Read the policy)</span>
-            </label>
-          </div>
-        </div>
-      </section>
-
       {/* Three-Column HOW TO CONTACT US Section */}
       <section className="bg-white py-16 px-4 border-t border-neutral-100">
         <div className="max-w-6xl mx-auto text-center">

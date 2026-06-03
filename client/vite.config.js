@@ -5,10 +5,10 @@ export default defineConfig({
   plugins: [tailwindcss()],
   server: {
     port: 5180,
-    strictPort: true,
+    strictPort: false,
   },
   preview: {
     port: 5180,
-    strictPort: true,
+    strictPort: false,
   },
 });

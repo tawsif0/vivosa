@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { submitContactForm } from "../api/contact";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -9,17 +11,33 @@ export default function Contact() {
     interest: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const contactLinkClass =
+    "inline-flex w-fit items-center gap-2 text-primary transition-colors duration-300 hover:text-on-tertiary-container hover:underline hover:underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-on-tertiary-container/40 rounded-sm";
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setFormData({ name: "", company: "", email: "", phone: "", interest: "", message: "" });
+    setIsSubmitting(true);
+    try {
+      await submitContactForm(formData);
+      setFormData({
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+        interest: "",
+        message: "",
+      });
+      toast.success("Your inquiry has been submitted");
+    } catch (error) {
+      toast.error(error.response?.data?.error || "Failed to submit inquiry");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -62,14 +80,16 @@ export default function Contact() {
                 </p>
                 <div className="font-body-md text-body-md text-primary flex flex-col gap-2">
                   <a
-                    className="hover:text-on-tertiary-container transition-colors duration-300"
+                    className={contactLinkClass}
                     href="tel:+440123456789"
+                    aria-label="Call the UK headquarters"
                   >
                     +44 (0) 123 456 789
                   </a>
                   <a
-                    className="hover:text-on-tertiary-container transition-colors duration-300"
+                    className={contactLinkClass}
                     href="mailto:london@vivosa.com"
+                    aria-label="Email the UK headquarters"
                   >
                     london@vivosa.com
                   </a>
@@ -91,14 +111,16 @@ export default function Contact() {
                 </p>
                 <div className="font-body-md text-body-md text-primary flex flex-col gap-2">
                   <a
-                    className="hover:text-on-tertiary-container transition-colors duration-300"
+                    className={contactLinkClass}
                     href="tel:+39021234567"
+                    aria-label="Call the Italy office"
                   >
                     +39 02 123 4567
                   </a>
                   <a
-                    className="hover:text-on-tertiary-container transition-colors duration-300"
+                    className={contactLinkClass}
                     href="mailto:milano@vivosa.com"
+                    aria-label="Email the Italy office"
                   >
                     milano@vivosa.com
                   </a>
@@ -120,14 +142,16 @@ export default function Contact() {
                 </p>
                 <div className="font-body-md text-body-md text-primary flex flex-col gap-2">
                   <a
-                    className="hover:text-on-tertiary-container transition-colors duration-300"
+                    className={contactLinkClass}
                     href="tel:+88029876543"
+                    aria-label="Call the Bangladesh office"
                   >
                     +880 2 987 6543
                   </a>
                   <a
-                    className="hover:text-on-tertiary-container transition-colors duration-300"
+                    className={contactLinkClass}
                     href="mailto:production@vivosa.com"
+                    aria-label="Email the Bangladesh office"
                   >
                     production@vivosa.com
                   </a>
@@ -141,12 +165,6 @@ export default function Contact() {
             <h2 className="font-headline-xl text-4xl md:text-headline-xl text-primary mb-8">
               Inquiry Form
             </h2>
-
-            {submitted && (
-              <div className="mb-8 px-6 py-4 bg-on-primary-container/20 border border-on-tertiary-container/40 text-primary font-label-caps text-label-caps tracking-widest">
-                ✓ YOUR INQUIRY HAS BEEN SUBMITTED. WE'LL BE IN TOUCH SOON.
-              </div>
-            )}
 
             <form className="space-y-10" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -233,7 +251,7 @@ export default function Contact() {
               {/* Interest Select */}
               <div className="relative">
                 <select
-                  className="w-full bg-transparent border-0 border-b border-outline py-4 focus:ring-0 focus:border-outline appearance-none transition-all font-body-md text-on-surface cursor-pointer"
+                  className="w-full bg-transparent border-0 border-b border-outline py-4 pr-4 focus:ring-0 focus:border-outline appearance-none transition-all font-body-md text-on-surface cursor-pointer"
                   id="interest"
                   name="interest"
                   value={formData.interest}
@@ -247,9 +265,6 @@ export default function Contact() {
                   <option value="sourcing">Sustainable Sourcing</option>
                   <option value="custom">Custom Projects</option>
                 </select>
-                <span className="material-symbols-outlined absolute right-0 top-4 text-on-surface-variant pointer-events-none text-[18px]">
-                  expand_more
-                </span>
               </div>
 
               {/* Message */}
@@ -273,10 +288,11 @@ export default function Contact() {
               </div>
 
               <button
+                disabled={isSubmitting}
                 className="w-full md:w-auto px-8 py-4 md:px-12 md:py-5 bg-on-tertiary-container text-surface-container-lowest font-label-caps text-label-caps flex items-center justify-center gap-3 hover:bg-on-tertiary-fixed-variant transition-all duration-500 group cursor-pointer tracking-widest"
                 type="submit"
               >
-                SUBMIT INQUIRY
+                {isSubmitting ? "SENDING..." : "SUBMIT INQUIRY"}
                 <span className="material-symbols-outlined transition-transform group-hover:translate-x-1 text-[18px]">
                   arrow_forward
                 </span>
