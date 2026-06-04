@@ -248,7 +248,7 @@ export default function ContractFurniture() {
             <p className="font-headline-md text-headline-md mb-16 text-primary italic leading-relaxed">
               We ethically source premium leathers from sustainable manufacturers who have over 50 years of expertise, delivering highquality, responsibly produced leathers for all types of furniture”
             </p>
-            <div className="bg-primary text-on-primary p-12 text-left border-l-4 border-matte-gold relative shadow-xl">
+            <div className="bg-primary text-on-primary p-12 text-left border-l-4 border-light-gold relative shadow-xl">
               <p className="font-body-lg text-body-lg leading-relaxed text-white/80 mb-6">
                 Every piece reflects our dedication to sustainability, durability, and timeless elegance, offering endless grace and designs that suit your personal preferences in leather furniture.
               </p>
@@ -388,7 +388,7 @@ export default function ContractFurniture() {
         <section className="bg-primary py-section-gap overflow-hidden shadow-2xl">
           <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid md:grid-cols-2 gap-24 items-center">
             <div className="text-on-primary">
-              <span className="font-label-caps text-label-caps text-matte-gold mb-6 block tracking-[0.3em] uppercase">
+              <span className="font-label-caps text-label-caps text-light-gold mb-6 block tracking-[0.3em] uppercase">
                 Quality & Sustainability
               </span>
               <h2 className="font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-10 leading-[1.1] text-white">
@@ -411,15 +411,15 @@ export default function ContractFurniture() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="flex items-center gap-4 p-4 border-l border-white/10 group cursor-pointer"
+                  className="flex items-start gap-4 p-4 border-l border-white/10 group cursor-pointer"
                 >
                   <span
-                    className="material-symbols-outlined text-matte-gold text-lg"
-                    style={{ fontVariationSettings: "'FILL' 1" }}
+                    className="material-symbols-outlined text-light-gold text-[18px] select-none mt-[2px] flex-shrink-0"
+                    style={{ fontVariationSettings: "'FILL' 1", color: "#dfc06f" }}
                   >
-                    fiber_manual_record
+                    check_circle
                   </span>
-                  <span className="font-label-caps text-[13px] text-white tracking-widest uppercase">
+                  <span className="font-label-caps text-[13px] text-white tracking-widest uppercase leading-normal">
                     {item}
                   </span>
                 </div>

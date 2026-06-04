@@ -130,18 +130,18 @@ export default function LeatherGoods() {
         <section className="bg-primary py-24 px-margin-mobile text-center overflow-hidden">
           <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
             <div className="flex items-center gap-4 w-full">
-              <div className="h-[0.5px] flex-grow bg-matte-gold/40"></div>
-              <div className="w-2 h-2 rounded-full bg-matte-gold"></div>
-              <div className="h-[0.5px] flex-grow bg-matte-gold/40"></div>
+              <div className="h-[0.5px] flex-grow bg-light-gold/40"></div>
+              <div className="w-2 h-2 rounded-full bg-light-gold"></div>
+              <div className="h-[0.5px] flex-grow bg-light-gold/40"></div>
             </div>
-            <h2 className="font-label-caps text-label-caps text-matte-gold tracking-[0.3em] uppercase leading-relaxed text-sm md:text-md">
+            <h2 className="font-label-caps text-label-caps text-light-gold tracking-[0.3em] uppercase leading-relaxed text-sm md:text-md">
               The collection of some popular articles in their final appearance from our
               manufacturing firm
             </h2>
             <div className="flex items-center gap-4 w-full">
-              <div className="h-[0.5px] flex-grow bg-matte-gold/40"></div>
-              <div className="w-2 h-2 rounded-full bg-matte-gold"></div>
-              <div className="h-[0.5px] flex-grow bg-matte-gold/40"></div>
+              <div className="h-[0.5px] flex-grow bg-light-gold/40"></div>
+              <div className="w-2 h-2 rounded-full bg-light-gold"></div>
+              <div className="h-[0.5px] flex-grow bg-light-gold/40"></div>
             </div>
           </div>
         </section>
@@ -150,7 +150,7 @@ export default function LeatherGoods() {
         <section className="bg-surface-container-low py-section-gap px-margin-mobile md:px-margin-desktop">
           <div className="max-w-container-max mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-16">
-              {leatherGoodsProducts.slice(0, 9).map((product) => (
+              {leatherGoodsProducts.map((product) => (
                 <Link
                   key={product._id}
                   to={`/leather-goods/${product._id}`}
@@ -177,53 +177,25 @@ export default function LeatherGoods() {
                   </div>
                 </Link>
               ))}
+            </div>
+          </div>
+        </section>
 
-              {/* Large Brand Image Card (Spans 2 columns) */}
-              <div className="md:col-span-2 relative min-h-[400px] overflow-hidden group shadow-md">
-                <img
-                  alt="Vivosa Brand Vision"
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBCRk0VN3gGRk8WHZTVCinAHrE_hCXytuO81ZMYlIgZtpFGQJXhP-BGJv5QwwpjgcEzKX7Chi4rgOlFfLUJNFHPVcGv-hanDbIN7yp-VyALmcWD9qpcbtr0YTinAzZUYFZmyMGKJtY4oVw4AHRprxNzNFY_o_EmBOxAUjmDYPCOCHTzngwU1tuz4G07GGNZLwKOp52xXU9vrA0e-IOqSMNWM3UYwPZDl_vvrqxQhcJhO1zfa2MiZ7CPdUDzofUq_wN1wf0Ije3iP8"
-                />
-                <div className="absolute inset-0 bg-primary/40 flex flex-col justify-center items-center p-12 text-center z-10">
-                  <div className="border border-matte-gold p-12 backdrop-blur-sm">
-                    <h2 className="font-display-lg text-headline-xl text-on-primary mb-6 text-white leading-tight">
-                      VIVOSA delivers premium, ethically sourced leather.
-                    </h2>
-                    <p className="font-label-caps text-label-caps text-matte-gold tracking-widest uppercase">
-                      Global Standards in Precision Manufacturing
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {leatherGoodsProducts.slice(9, 10).map((product) => (
-                <Link
-                  key={product._id}
-                  to={`/leather-goods/${product._id}`}
-                  className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm text-left"
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      alt={product.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      src={product.image?.url}
-                    />
-                  </div>
-                  <div className="p-8 flex flex-col flex-grow">
-                    <h3 className="font-headline-md text-headline-md text-primary mb-3 leading-snug">
-                      {product.title}
-                    </h3>
-                    <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
-                      {product.thickness} • {product.rawhide} Origin
-                    </p>
-                    <div 
-                      className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed rich-content"
-                      dangerouslySetInnerHTML={{ __html: product.desc }}
-                    />
-                  </div>
-                </Link>
-              ))}
+        {/* Large Brand Image Banner (Moved outside the card grid) */}
+        <section className="relative h-[calc(100vh-12rem)] min-h-[350px] max-h-[550px] overflow-hidden group shadow-md w-full">
+          <img
+            alt="Vivosa Brand Vision"
+            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBCRk0VN3gGRk8WHZTVCinAHrE_hCXytuO81ZMYlIgZtpFGQJXhP-BGJv5QwwpjgcEzKX7Chi4rgOlFfLUJNFHPVcGv-hanDbIN7yp-VyALmcWD9qpcbtr0YTinAzZUYFZmyMGKJtY4oVw4AHRprxNzNFY_o_EmBOxAUjmDYPCOCHTzngwU1tuz4G07GGNZLwKOp52xXU9vrA0e-IOqSMNWM3UYwPZDl_vvrqxQhcJhO1zfa2MiZ7CPdUDzofUq_wN1wf0Ije3iP8"
+          />
+          <div className="absolute inset-0 bg-primary/40 flex flex-col justify-center items-center p-12 text-center z-10">
+            <div className="border border-light-gold p-12 backdrop-blur-sm">
+              <h2 className="font-display-lg text-headline-xl text-on-primary mb-6 text-white leading-tight">
+                VIVOSA delivers premium, ethically sourced leather.
+              </h2>
+              <p className="font-label-caps text-label-caps text-light-gold tracking-widest uppercase">
+                Global Standards in Precision Manufacturing
+              </p>
             </div>
           </div>
         </section>
@@ -284,12 +256,12 @@ export default function LeatherGoods() {
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-4">
                       <span
-                        className="material-symbols-outlined text-matte-gold shrink-0 text-[18px]"
-                        style={{ fontVariationSettings: "'FILL' 1" }}
+                        className="material-symbols-outlined text-light-gold shrink-0 text-[18px] mt-[2px]"
+                        style={{ fontVariationSettings: "'FILL' 1", color: "#dfc06f" }}
                       >
                         check_circle
                       </span>
-                      <span className="font-label-caps text-label-caps tracking-wider text-white uppercase text-[12px]">
+                      <span className="font-label-caps text-label-caps tracking-wider text-white uppercase text-[12px] leading-normal">
                         {item}
                       </span>
                     </li>

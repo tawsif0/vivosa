@@ -43,6 +43,9 @@ export default function LeatherLiningDetail() {
   const articleName = product.title || product.name;
   const spacedName = articleName.toUpperCase().split("").join(" ");
 
+  let sectionIndex = 1;
+  const hasSpecs = !!(product.rawMaterial || product.processing || product.productDetails);
+
   return (
     <div className="bg-white text-primary font-body min-h-screen selection:bg-accent-gold/30">
       <main className="pt-20 md:pt-[88px]">
@@ -94,7 +97,7 @@ export default function LeatherLiningDetail() {
               {product.rawMaterial && (
                 <div className="space-y-3 max-w-xl">
                   <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
-                    1. RAW MATERIAL
+                    {sectionIndex++}. RAW MATERIAL
                   </h3>
                   <p className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light">
                     {product.rawMaterial}
@@ -106,7 +109,7 @@ export default function LeatherLiningDetail() {
               {product.processing && (
                 <div className="space-y-3 max-w-xl">
                   <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
-                    2. PROCESSING
+                    {sectionIndex++}. PROCESSING
                   </h3>
                   <p className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light">
                     {product.processing}
@@ -118,7 +121,7 @@ export default function LeatherLiningDetail() {
               {product.productDetails && (
                 <div className="space-y-3 max-w-xl">
                   <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
-                    3. PRODUCT
+                    {sectionIndex++}. PRODUCT
                   </h3>
                   <div className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light space-y-4">
                     <p>
@@ -133,7 +136,7 @@ export default function LeatherLiningDetail() {
                   </div>
                 </div>
               )}
-              <div className="pt-6 border-t border-neutral-100">
+              <div className={hasSpecs ? "pt-6 border-t border-neutral-100" : ""}>
                 <Link
                   className="text-xs font-sans text-neutral-400 hover:text-black tracking-[0.2em] uppercase transition-colors underline underline-offset-4"
                   to="/leather-lining"

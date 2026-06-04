@@ -70,7 +70,7 @@ export default function LeatherLining() {
           {/* Right Side: Dark Card */}
           <div className="w-full md:w-[45%] bg-primary p-margin-mobile md:p-margin-desktop text-on-primary flex flex-col justify-between">
             <div>
-              <span className="font-label-caps text-label-caps text-matte-gold mb-4 block tracking-[0.2em]">
+              <span className="font-label-caps text-label-caps text-light-gold mb-4 block tracking-[0.2em]">
                 VIVOSA
               </span>
               <h2 className="font-headline-xl text-headline-xl text-on-primary mb-8 uppercase">
@@ -262,12 +262,12 @@ export default function LeatherLining() {
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-4">
                       <span
-                        className="material-symbols-outlined text-matte-gold shrink-0 text-[18px]"
-                        style={{ fontVariationSettings: "'FILL' 1" }}
+                        className="material-symbols-outlined text-light-gold shrink-0 text-[18px] mt-[2px]"
+                        style={{ fontVariationSettings: "'FILL' 1", color: "#dfc06f" }}
                       >
                         check_circle
                       </span>
-                      <span className="font-label-caps text-label-caps tracking-wider text-white uppercase text-[12px]">
+                      <span className="font-label-caps text-label-caps tracking-wider text-white uppercase text-[12px] leading-normal">
                         {item}
                       </span>
                     </li>
