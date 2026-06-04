@@ -43,6 +43,201 @@ const Sidebar = ({
 
     if (user?.userType === "admin") {
       items.push({
+        tab: "sustainable-leather",
+        label: "Sustainable Leather",
+        icon: FiFolder,
+        children: [
+          {
+            tab: "sustainable-leather-contract-furniture",
+            label: "Contract & Furniture",
+            icon: FiFolder,
+            children: [
+              { tab: "sustainable-leather-contract-furniture-create", label: "Create", icon: FiPlus },
+              { tab: "sustainable-leather-contract-furniture-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "sustainable-leather-footwear",
+            label: "Leather for Footwear",
+            icon: FiFolder,
+            children: [
+              { tab: "sustainable-leather-footwear-create", label: "Create", icon: FiPlus },
+              { tab: "sustainable-leather-footwear-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "sustainable-leather-goods",
+            label: "Leather Goods",
+            icon: FiFolder,
+            children: [
+              { tab: "sustainable-leather-goods-create", label: "Create", icon: FiPlus },
+              { tab: "sustainable-leather-goods-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "sustainable-leather-lining",
+            label: "Leather Lining",
+            icon: FiFolder,
+            children: [
+              { tab: "sustainable-leather-lining-create", label: "Create", icon: FiPlus },
+              { tab: "sustainable-leather-lining-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "sustainable-leather-automotive",
+            label: "Automotive",
+            icon: FiFolder,
+            children: [
+              { tab: "sustainable-leather-automotive-create", label: "Create", icon: FiPlus },
+              { tab: "sustainable-leather-automotive-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+        ],
+      });
+
+      items.push({
+        tab: "men",
+        label: "Men",
+        icon: FiFolder,
+        children: [
+          {
+            tab: "men-sweater",
+            label: "Sweater",
+            icon: FiFolder,
+            children: [
+              { tab: "men-sweater-create", label: "Create", icon: FiPlus },
+              { tab: "men-sweater-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "men-jackets-coats",
+            label: "Jackets & Coats",
+            icon: FiFolder,
+            children: [
+              { tab: "men-jackets-coats-create", label: "Create", icon: FiPlus },
+              { tab: "men-jackets-coats-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "men-pants",
+            label: "Pants",
+            icon: FiFolder,
+            children: [
+              { tab: "men-pants-create", label: "Create", icon: FiPlus },
+              { tab: "men-pants-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "men-joggers",
+            label: "Joggers",
+            icon: FiFolder,
+            children: [
+              { tab: "men-joggers-create", label: "Create", icon: FiPlus },
+              { tab: "men-joggers-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "men-polo-shirt",
+            label: "Polo Shirt",
+            icon: FiFolder,
+            children: [
+              { tab: "men-polo-shirt-create", label: "Create", icon: FiPlus },
+              { tab: "men-polo-shirt-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "men-shirts",
+            label: "Shirts",
+            icon: FiFolder,
+            children: [
+              { tab: "men-shirts-create", label: "Create", icon: FiPlus },
+              { tab: "men-shirts-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "men-t-shirts",
+            label: "T-shirts",
+            icon: FiFolder,
+            children: [
+              { tab: "men-t-shirts-create", label: "Create", icon: FiPlus },
+              { tab: "men-t-shirts-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+        ],
+      });
+
+      items.push({
+        tab: "women",
+        label: "Women",
+        icon: FiFolder,
+        children: [
+          {
+            tab: "women-sweater",
+            label: "Sweater",
+            icon: FiFolder,
+            children: [
+              { tab: "women-sweater-create", label: "Create", icon: FiPlus },
+              { tab: "women-sweater-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "women-jackets-coats",
+            label: "Jackets & Coats",
+            icon: FiFolder,
+            children: [
+              { tab: "women-jackets-coats-create", label: "Create", icon: FiPlus },
+              { tab: "women-jackets-coats-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "women-pants",
+            label: "Pants",
+            icon: FiFolder,
+            children: [
+              { tab: "women-pants-create", label: "Create", icon: FiPlus },
+              { tab: "women-pants-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "women-polo-shirts",
+            label: "Polo Shirts",
+            icon: FiFolder,
+            children: [
+              { tab: "women-polo-shirts-create", label: "Create", icon: FiPlus },
+              { tab: "women-polo-shirts-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "women-shirts",
+            label: "Shirts",
+            icon: FiFolder,
+            children: [
+              { tab: "women-shirts-create", label: "Create", icon: FiPlus },
+              { tab: "women-shirts-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "women-t-shirts",
+            label: "T-shirts",
+            icon: FiFolder,
+            children: [
+              { tab: "women-t-shirts-create", label: "Create", icon: FiPlus },
+              { tab: "women-t-shirts-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "women-swim-lingerie",
+            label: "Swim & Lingerie",
+            icon: FiFolder,
+            children: [
+              { tab: "women-swim-lingerie-create", label: "Create", icon: FiPlus },
+              { tab: "women-swim-lingerie-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+        ],
+      });
+
+      items.push({
         tab: "kids",
         label: "Kids",
         icon: FiFolder,
@@ -79,8 +274,16 @@ const Sidebar = ({
   useEffect(() => {
     const activeParents = {};
     navItems.forEach((item) => {
-      if (Array.isArray(item.children) && item.children.some((child) => child.tab === activeTab)) {
-        activeParents[item.tab] = true;
+      if (Array.isArray(item.children)) {
+        item.children.forEach((child) => {
+          if (child.tab === activeTab) {
+            activeParents[item.tab] = true;
+          }
+          if (Array.isArray(child.children) && child.children.some((gc) => gc.tab === activeTab)) {
+            activeParents[item.tab] = true;
+            activeParents[child.tab] = true;
+          }
+        });
       }
     });
     if (Object.keys(activeParents).length > 0) {
@@ -181,23 +384,62 @@ const Sidebar = ({
             {item.children.map((child) => {
               const childActive = activeTab === child.tab;
               const ChildIcon = child.icon;
+              const hasGrandchildren = Array.isArray(child.children) && child.children.length > 0;
+              const isGrandmenuOpen = Boolean(openSubmenus[child.tab]);
 
               return (
-                <li key={child.tab}>
+                <li key={child.tab} className="space-y-1">
                   <motion.button
                     type="button"
                     whileTap={{ scale: 0.98 }}
                     onClick={() => handleNavItemClick(child, isMobileView)}
                     className={`flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm transition-colors ${
-                      childActive ? "bg-gray-200 text-gray-900" : "text-gray-600 hover:bg-gray-100 hover:text-black"
+                      childActive || (hasGrandchildren && child.children.some(gc => activeTab === gc.tab))
+                        ? "bg-gray-200 text-gray-900 font-semibold"
+                        : "text-gray-600 hover:bg-gray-100 hover:text-black"
                     }`}
                     title={child.label}
                   >
                     <span className="flex h-4 w-4 items-center justify-center shrink-0">
                       <ChildIcon className="h-3.5 w-3.5" />
                     </span>
-                    <span className="truncate">{child.label}</span>
+                    <span className="flex-1 truncate">{child.label}</span>
+                    {hasGrandchildren ? <FiChevronDown className={`h-3 w-3 transition-transform ${isGrandmenuOpen ? "rotate-180" : ""}`} /> : null}
                   </motion.button>
+
+                  {hasGrandchildren && isGrandmenuOpen ? (
+                    <motion.ul
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.12 }}
+                      className="ml-4 space-y-1 border-l border-black/8 pl-2"
+                    >
+                      {child.children.map((grandchild) => {
+                        const grandchildActive = activeTab === grandchild.tab;
+                        const GrandchildIcon = grandchild.icon;
+
+                        return (
+                          <li key={grandchild.tab}>
+                            <motion.button
+                              type="button"
+                              whileTap={{ scale: 0.98 }}
+                              onClick={() => handleNavItemClick(grandchild, isMobileView)}
+                              className={`flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left text-xs transition-colors ${
+                                grandchildActive ? "bg-gray-300 text-gray-900 font-semibold" : "text-gray-500 hover:bg-gray-100 hover:text-black"
+                              }`}
+                              title={grandchild.label}
+                            >
+                              <span className="flex h-3 w-3 items-center justify-center shrink-0">
+                                <GrandchildIcon className="h-3.5 w-3.5" />
+                              </span>
+                              <span className="truncate">{grandchild.label}</span>
+                            </motion.button>
+                          </li>
+                        );
+                      })}
+                    </motion.ul>
+                  ) : null}
                 </li>
               );
             })}

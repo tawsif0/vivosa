@@ -1,18 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { leatherLiningProducts } from "./leatherLiningData";
+import { fetchPublicSustainableLeather } from "../api/sustainableLeather";
 
 export default function LeatherLiningDetail() {
   const { productId } = useParams();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const product =
-    leatherLiningProducts.find((p) => p.id === productId) ||
-    leatherLiningProducts[0];
+  useEffect(() => {
+    const loadProduct = async () => {
+      try {
+        const data = await fetchPublicSustainableLeather(productId);
+        setProduct(data);
+      } catch (err) {
+        console.error("Failed to load lining product details:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadProduct();
+  }, [productId]);
 
-  const articleName = product.title.includes(",")
-    ? product.title.split(",")[1].trim()
-    : product.title;
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white text-primary">
+        <div className="animate-pulse tracking-widest font-label-caps text-sm">LOADING DETAILS...</div>
+      </div>
+    );
+  }
 
+  if (!product) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-white text-primary space-y-4">
+        <h2 className="font-display text-2xl tracking-wider">PRODUCT NOT FOUND</h2>
+        <Link to="/leather-lining" className="text-accent-gold font-semibold uppercase text-xs tracking-widest border-b border-accent-gold/40 pb-1">
+          Back to Collection
+        </Link>
+      </div>
+    );
+  }
+
+  const articleName = product.title || product.name;
   const spacedName = articleName.toUpperCase().split("").join(" ");
 
   return (
@@ -33,14 +61,12 @@ export default function LeatherLiningDetail() {
 
             {/* Right Column: Breadcrumbs */}
             <div className="font-label-caps text-[10px] md:text-[11px] tracking-[0.2em] text-[#8e8e8e] uppercase mt-6 md:mt-0 flex flex-wrap items-center gap-1.5 font-medium">
-              <Link to="/" className="hover:text-accent-gold transition-colors duration-300">
+              <Link to="/" className="hover:text-white hover:font-bold transition-colors duration-300">
                 HOME
               </Link>
               <span className="text-[#555555] select-none">/</span>
-              <span className="text-[#8e8e8e]">PRODUCTS</span>
-              <span className="text-[#555555] select-none">/</span>
-              <Link to="/leather-lining" className="hover:text-accent-gold transition-colors duration-300">
-                LINING
+              <Link to="/leather-lining" className="hover:text-white hover:font-bold transition-colors duration-300">
+                LEATHER LINING
               </Link>
               <span className="text-[#555555] select-none">/</span>
               <span className="text-white font-semibold">{articleName.toUpperCase()}</span>
@@ -57,7 +83,7 @@ export default function LeatherLiningDetail() {
               <img
                 className="w-full h-full object-cover"
                 alt={product.fullName}
-                src={product.src}
+                src={product.image?.url}
               />
             </div>
 
@@ -65,40 +91,56 @@ export default function LeatherLiningDetail() {
             <div className="py-16 px-6 sm:px-12 lg:px-20 xl:px-24 flex flex-col justify-center space-y-10 bg-white">
 
               {/* 1. RAW MATERIAL */}
-              <div className="space-y-3 max-w-xl">
-                <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
-                  1. RAW MATERIAL
-                </h3>
-                <p className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light">
-                  {product.rawMaterial}
-                </p>
-              </div>
+              {product.rawMaterial && (
+                <div className="space-y-3 max-w-xl">
+                  <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
+                    1. RAW MATERIAL
+                  </h3>
+                  <p className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light">
+                    {product.rawMaterial}
+                  </p>
+                </div>
+              )}
 
               {/* 2. PROCESSING */}
-              <div className="space-y-3 max-w-xl">
-                <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
-                  2. PROCESSING
-                </h3>
-                <p className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light">
-                  {product.processing}
-                </p>
-              </div>
+              {product.processing && (
+                <div className="space-y-3 max-w-xl">
+                  <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
+                    2. PROCESSING
+                  </h3>
+                  <p className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light">
+                    {product.processing}
+                  </p>
+                </div>
+              )}
 
               {/* 3. PRODUCT */}
-              <div className="space-y-3 max-w-xl">
-                <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
-                  3. PRODUCT
-                </h3>
-                <div className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light space-y-4">
-                  <p>
-                    <span className="font-medium text-neutral-800">{articleName}</span> is a premium lining leather article, with a customized thickness of{" "}
-                    <span className="font-medium text-neutral-800">{product.thickness}</span>, crafted carefully using fine{" "}
-                    <span className="font-medium text-neutral-800">{product.rawhide}</span> hides.
-                  </p>
-                  <p>{product.productDetails}</p>
+              {product.productDetails && (
+                <div className="space-y-3 max-w-xl">
+                  <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
+                    3. PRODUCT
+                  </h3>
+                  <div className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light space-y-4">
+                    <p>
+                      <span className="font-medium text-neutral-800">{articleName}</span> is a premium lining leather article, with a customized thickness of{" "}
+                      <span className="font-medium text-neutral-800">{product.thickness}</span>, crafted carefully using fine{" "}
+                      <span className="font-medium text-neutral-800">{product.rawhide}</span> hides.
+                    </p>
+                    <div
+                      className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light space-y-4 rich-content"
+                      dangerouslySetInnerHTML={{ __html: product.productDetails }}
+                    />
+                  </div>
                 </div>
+              )}
+              <div className="pt-6 border-t border-neutral-100">
+                <Link
+                  className="text-xs font-sans text-neutral-400 hover:text-black tracking-[0.2em] uppercase transition-colors underline underline-offset-4"
+                  to="/leather-lining"
+                >
+                  Back to Lining Collection
+                </Link>
               </div>
-
             </div>
           </div>
         </section>
@@ -172,25 +214,6 @@ export default function LeatherLiningDetail() {
           </div>
         </section>
 
-        {/* Bottom Navigation */}
-        <section className="bg-white py-12 px-6 md:px-12 lg:px-24 border-t border-neutral-100">
-          <div className="max-w-7xl mx-auto flex justify-between items-center w-full">
-            <Link
-              to="/leather-lining"
-              className="inline-flex items-center gap-2 text-accent-gold hover:text-primary font-label-caps text-xs tracking-widest transition-colors duration-300 font-bold"
-            >
-              <span>← Back to Lining Collection</span>
-            </Link>
-
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-[#222222] hover:bg-accent-gold text-white hover:text-primary font-label-caps text-[11px] tracking-widest px-6 py-3 transition-all duration-300 rounded-sm font-semibold"
-            >
-              <span>Inquire Swatch</span>
-              <span>→</span>
-            </Link>
-          </div>
-        </section>
       </main>
     </div>
   );

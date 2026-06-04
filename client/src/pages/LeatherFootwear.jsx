@@ -1,8 +1,22 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { footwearProducts } from "./footwearData";
+import { fetchPublicSustainableLeathers } from "../api/sustainableLeather";
 
 export default function LeatherFootwear() {
+  const [footwearProducts, setFootwearProducts] = useState([]);
+
+  useEffect(() => {
+    const loadFootwear = async () => {
+      try {
+        const data = await fetchPublicSustainableLeathers("leather-footwear");
+        setFootwearProducts(data);
+      } catch (err) {
+        console.error("Failed to load footwear leathers:", err);
+      }
+    };
+    loadFootwear();
+  }, []);
+
   const scrollContainerRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -406,18 +420,17 @@ export default function LeatherFootwear() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
               {footwearProducts.map((sample) => (
                 <Link
-                  key={sample.id}
-                  to={`/leather-footwear/${sample.id}`}
-                  className="bg-white overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline/10 hover-lift hover-lift-gold transition-all duration-500 flex flex-col rounded-xl group"
+                  key={sample._id}
+                  to={`/leather-footwear/${sample._id}`}
+                  className="bg-white overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline/10 hover-lift hover-lift-gold transition-all duration-500 flex flex-col rounded-xl group text-left"
                 >
                   <div className="aspect-[350/300] bg-surface overflow-hidden relative border-b border-outline/10">
                     <img
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       alt={sample.fullName}
-                      src={sample.src}
+                      src={sample.image?.url}
                       loading="lazy"
                     />
-                    {/* Soft luxury gold overlay hover effect */}
                     <div className="absolute inset-0 bg-accent-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   </div>
                   <div className="p-6 md:p-7 flex flex-col flex-grow">
@@ -430,9 +443,10 @@ export default function LeatherFootwear() {
                     <p className="text-[13px] text-secondary font-bold leading-normal mb-4">
                       Rawhide: <span className="font-normal text-secondary/80">{sample.rawhide}</span>
                     </p>
-                    <p className="text-[13px] text-secondary/70 leading-relaxed font-body mb-4 flex-grow">
-                      {sample.desc}
-                    </p>
+                    <div 
+                      className="text-[13px] text-secondary/70 leading-relaxed font-body mb-4 flex-grow rich-content"
+                      dangerouslySetInnerHTML={{ __html: sample.desc }}
+                    />
                     <div className="flex items-center gap-2 text-accent-gold font-label-caps text-[11px] font-bold tracking-widest mt-auto border-t border-gray-100 pt-4 group-hover:text-primary transition-colors duration-300">
                       <span>View Specifications</span>
                       <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>

@@ -1,6 +1,25 @@
 import React, { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { fetchPublicSustainableLeathers } from "../api/sustainableLeather";
 
 export default function ContractFurniture() {
+  const [swatches, setSwatches] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await fetchPublicSustainableLeathers("contract-furniture");
+        setSwatches(data);
+      } catch (err) {
+        console.error("Failed to load swatches:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, []);
+
   const scrollContainerRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -317,111 +336,15 @@ export default function ContractFurniture() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {[
-                {
-                  code: "F018MBD",
-                  img: "/images/contract-furniture/43_Screenshot_1-2.png",
-                  name: "Turquoise",
-                  desc: "Nubuck Top Grain • 1.0 / 1.2 mm",
-                  origin: "EU + GB",
-                  details: "This leather is characterized by a soft, velvety texture and a natural appearance, infused with a luxurious feel. It is suitable for all types of high-end and durable applications, including both contract and homefurniture uses. (More colours are available, and it can be customized through retanning, dyeing, and finishing processes to suit different product requirements)."
-                },
-                {
-                  code: "F029SA",
-                  img: "/images/contract-furniture/44_Screenshot_2-1.png",
-                  name: "Pale Beige",
-                  desc: "Pure Aniline / Full Grain • 1.0 / 1.2 mm",
-                  origin: "European",
-                  details: "This leather preserves the hide’s natural grain and patterns without the need for an outer coating or pigment, giving it a rich appearance and supple texture. It provides long-lasting durability and luxury for the furniture sector and is extraordinary for its natural look and feel. (More colors are available with customization."
-                },
-                {
-                  code: "F018TC",
-                  img: "/images/contract-furniture/45_Screenshot_3-1.png",
-                  name: "Orangey Brown",
-                  desc: "Semi-Aniline • 1.1 / 1.2 mm",
-                  origin: "GB+NZ",
-                  details: "This is natural grain leather that has been slightly buffed to give an aged appearance in specific areas of the hide. It is immersed in oil for several hours, producing a subtle two-tone effect with a natural gloss. (More colours are available, and customization is possible to suit different product requirements)."
-                },
-                {
-                  code: "F025 LEO",
-                  img: "/images/contract-furniture/46_Screenshot_4-1.png",
-                  name: "Deep Black",
-                  desc: "Semi-Aniline / Corrected Grain • 1.2 – 1.4 mm",
-                  origin: "GB, EU, BR",
-                  details: "This is a pigmented, corrected-grain leather with an anti-stain finish and a uniform appearance. It provides a smooth hand feel and a vibrant surface effect. A fine spray of pigment is applied during finishing,creating a compact coating that enhances durability and stain resistance. Highly suitable for all types of furniture applications. (More colours available. Can be customized during the retanning, dyeing, andfinishing processes for specific product requirements.)"
-                },
-                {
-                  code: "F45 MBGRC",
-                  img: "/images/contract-furniture/47_Screenshot_5-1.png",
-                  name: "Teal Blue",
-                  desc: "Aniline / Nappa • 1.0 – 1.2 mm",
-                  origin: "European",
-                  details: "This is a beautiful Nappa leather with a flat, consistent surface. Its soft touch and solid body make it particularly suitable for high-end furniture and leather goods, adding exceptional value and sophistication to luxurious designs. The leather's natural grain enhances its rich texture and depth of colour, reflecting the true elegance of fine European craftsmanship. (More colours available. Can be customized upon request.)"
-                },
-                {
-                  code: "F039LNB",
-                  img: "/images/contract-furniture/48_Screenshot_6-1.png",
-                  name: "Teflon Brown",
-                  desc: "Pure Aniline / Natural Grain • 1.0 – 1.2 mm",
-                  origin: "EU + GB",
-                  details: "This is a pure aniline leather with a nubuck surface that has been treated with oils and waxes to enhance its natural nap. It features a natural grain, a soft, delicate hand, and a subtle waxy finish. Longbeach’s slightly napped surface is achieved through a special process that gives the leather a rich and refined appearance. More colours available, can be customized."
-                },
-                {
-                  code: "F013DB",
-                  img: "/images/contract-furniture/49_Screenshot_7-1.png",
-                  name: "White",
-                  desc: "Semi-Aniline / Pronounced Grain • 1.0 – 1.2 mm",
-                  origin: "EU + Extra",
-                  details: "This leather is inspired by the natural colours seen from a balcony or in a restaurant setting. It evokes the warmth of a sunny afternoon, with hues reminiscent of rolling hills and the sea — vibrant and full of life, instilling a profound sense of comfort and pleasure. Designed for outdoor use, itis resistant to water, sunlight, rain, salt, and humidity, ensuring long- lasting beauty and sophistication in any furniture application. (Morecolours available. Can be modified for different product uses)."
-                },
-                {
-                  code: "F05DHY",
-                  img: "/images/contract-furniture/50_Screenshot_8-1.png",
-                  name: "Lite Olive",
-                  desc: "Semi-aniline full grain • 1.2 – 1.4 mm",
-                  origin: "EU + Extra EU",
-                  details: "This leather is inspired by the colours of nature as seen from a balcony or restaurant setting. It offers the warmth of a sunny afternoon, where the tones of the earth, hills, and sea burst with vibrant colour, evoking a profound sense of pleasure. It is resistant to water, sunlight, rainfall, salt, and humidity, and is designed to last while adding a sophisticated and beautiful look to outdoor furniture. More colours available. Can be customized for different product uses."
-                },
-                {
-                  code: "F09MBEPL",
-                  img: "/images/contract-furniture/51_Screenshot_9-1.png",
-                  name: "Purple",
-                  desc: "Semi-aniline / Flat grain • 1.0 – 1.2 mm",
-                  origin: "Europe",
-                  details: "Tanned using advanced techniques and finished with a flat grain, thisleather features a subtle sheen and an even, consistent colour — makingit ideal for furniture and contract design. (More colours available. The tanning, re-tanning, dyeing, and finishing processes can be customizedfor different product applications)."
-                },
-                {
-                  code: "F011LEO",
-                  img: "/images/contract-furniture/52_Screenshot_10-1.png",
-                  name: "Peach",
-                  desc: "Pure Aniline / Fine Grain • 1.0 – 1.1 mm",
-                  origin: "Europe",
-                  details: "This leather embodies timeless elegance while maintaining its naturalfine-grain texture and softness. This high-quality material adds a sense of sophistication to any piece, making it an excellent choice for thoseseeking authentic and refined upholstery. (More colours available, with customization options for different applications)."
-                },
-                {
-                  code: "F035MAC",
-                  img: "/images/contract-furniture/53_Screenshot_11-1.png",
-                  name: "Dark Blue",
-                  desc: "Semi-Aniline / Full Grain • 1.3 – 1.5 mm",
-                  origin: "GB + EU",
-                  details: "This premium semi-aniline heavyweight leather is full-grain, supple, and naturally breathable. It offers outstanding durability and comfort, making it ideal for high-end furniture and interior applications where both luxuryand performance are desired. (More colours available. Customization options are also possible for different product uses)."
-                },
-                {
-                  code: "F09DODA",
-                  img: "/images/contract-furniture/54_Screenshot_12-1.png",
-                  name: "Grey",
-                  desc: "Semi-Aniline / Full Grain • 1.4 – 1.6 mm",
-                  origin: "EU + BR",
-                  details: "A special finishing technique enhances the surface of this leather, adding a refined gloss and transparency that highlight its natural grain. This medium-thick leather feels smooth, full, and warm to the touch.Versatile and elegant, it is ideal for luxury hospitality and interior furniture applications and is even perfect for leather goods. (More colours available, with customization options for different applications)."
-                },
-              ].map((swatch) => (
-                <div
-                  key={swatch.code}
-                  className="bg-surface-container-low group cursor-pointer border border-primary/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col h-full"
+              {swatches.map((swatch) => (
+                <Link
+                  key={swatch._id}
+                  to={`/contract-furniture/${swatch._id}`}
+                  className="bg-surface-container-low group cursor-pointer border border-primary/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col h-full text-left"
                 >
                   <div className="aspect-[4/3] relative overflow-hidden bg-white">
                     <img 
-                      src={swatch.img} 
+                      src={swatch.image?.url} 
                       alt={swatch.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
@@ -433,22 +356,23 @@ export default function ContractFurniture() {
                       </span>
                       <span className="text-[11px] font-label-caps text-matte-gold font-bold flex flex-col items-end">
                         <span className="text-secondary/50 text-[9px]">RAWHIDE</span>
-                        {swatch.origin}
+                        {swatch.rawhide}
                       </span>
                     </div>
                     <h3 className="font-headline-md text-2xl text-primary mb-2">
                       {swatch.name}
                     </h3>
                     <p className="font-label-caps text-[11px] text-secondary/80 mb-4 tracking-wider uppercase border-b border-primary/10 pb-4">
-                      {swatch.desc}
+                      {swatch.type} • {swatch.thickness}
                     </p>
-                    {swatch.details && (
-                      <p className="font-body-sm text-secondary/70 leading-relaxed flex-grow text-[13px]">
-                        {swatch.details}
-                      </p>
+                    {swatch.productDetails && (
+                      <div 
+                        className="font-body-sm text-secondary/70 leading-relaxed flex-grow text-[13px] rich-content"
+                        dangerouslySetInnerHTML={{ __html: swatch.productDetails }}
+                      />
                     )}
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
             

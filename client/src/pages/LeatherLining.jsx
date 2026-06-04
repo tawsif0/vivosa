@@ -1,10 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { leatherLiningProducts } from "./leatherLiningData";
+import { fetchPublicSustainableLeathers } from "../api/sustainableLeather";
 
 export default function LeatherLining() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = ["/images/lining_slider_1.png", "/images/lining_slider_2.png"];
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await fetchPublicSustainableLeathers("leather-lining");
+        setProducts(data);
+      } catch (err) {
+        console.error("Failed to load lining products:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -88,14 +104,14 @@ export default function LeatherLining() {
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
               {slides.map((_, index) => (
                 <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentSlide
-                      ? "bg-primary w-6"
-                      : "bg-primary/50 hover:bg-primary/80"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
+                   key={index}
+                   onClick={() => setCurrentSlide(index)}
+                   className={`w-2 h-2 rounded-full transition-all ${
+                     index === currentSlide
+                       ? "bg-primary w-6"
+                       : "bg-primary/50 hover:bg-primary/80"
+                   }`}
+                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
@@ -163,34 +179,43 @@ export default function LeatherLining() {
         {/* Leather Grid */}
         <section className="bg-surface-container-low py-section-gap px-margin-mobile md:px-margin-desktop">
           <div className="max-w-container-max mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-16">
-              {leatherLiningProducts.map((product) => (
-                <Link
-                  key={product.id}
-                  to={`/leather-lining/${product.id}`}
-                  className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm"
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      alt={product.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      src={product.src}
-                    />
-                  </div>
-                  <div className="p-8 flex flex-col flex-grow">
-                    <h3 className="font-headline-md text-headline-md text-primary mb-3 leading-snug">
-                      {product.title}
-                    </h3>
-                    <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
-                      {product.thickness} • {product.rawhide} Origin
-                    </p>
-                    <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
-                      {product.desc}
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            {loading ? (
+              <div className="text-center font-label-caps text-sm tracking-widest text-primary">
+                LOADING LINING COLLECTION...
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-16">
+                {products.map((product) => (
+                  <Link
+                    key={product._id}
+                    to={`/leather-lining/${product._id}`}
+                    className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm"
+                  >
+                    <div className="aspect-[4/3] overflow-hidden">
+                      <img
+                        alt={product.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        src={product.image?.url}
+                      />
+                    </div>
+                    <div className="p-8 flex flex-col flex-grow">
+                      <h3 className="font-headline-md text-headline-md text-primary mb-3 leading-snug">
+                        {product.title}
+                      </h3>
+                      <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
+                        {product.thickness} • {product.rawhide} Origin
+                      </p>
+                      {product.desc && (
+                        <div 
+                          className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed rich-content"
+                          dangerouslySetInnerHTML={{ __html: product.desc }}
+                        />
+                      )}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
@@ -204,7 +229,6 @@ export default function LeatherLining() {
           </p>
         </section>
 
-        {/* Quality & Sustainability Section */}
         {/* Quality & Sustainability Section */}
         <section className="bg-surface py-section-gap">
           <div className="bg-primary-container text-on-primary shadow-inner">

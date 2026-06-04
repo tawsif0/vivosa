@@ -1,31 +1,106 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { mensPants } from "../data/mensPantsProducts";
+import { fetchPublicMenApparelById } from "../api/menApparel";
 import DetailsExtraSections from "../components/DetailsExtraSections";
+import { toRichTextHtml } from "../utils/richText";
+
+function ColorSwatches({ variants }) {
+  const colorVariants = variants.filter((v) => v.type === "color");
+  if (colorVariants.length === 0) return null;
+
+  return (
+    <div className="flex flex-wrap gap-3">
+      {colorVariants.map((v, i) => (
+        <span
+          key={i}
+          className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-white text-neutral-600"
+        >
+          <span
+            className="w-4 h-4 rounded-full"
+            style={{ backgroundColor: v.value }}
+            aria-label={v.label}
+            title={v.label}
+          />
+          <span className="text-xs font-sans">{v.label}</span>
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function CustomVariants({ variants }) {
+  const customVariants = variants.filter((v) => v.type === "custom");
+  if (customVariants.length === 0) return null;
+
+  return (
+    <div className="flex flex-wrap gap-3">
+      {customVariants.map((v, i) => {
+        const imageUrl = v.image?.url || v.preview;
+        return (
+          <div
+            key={i}
+            className="w-24 h-24 rounded-lg overflow-hidden bg-white flex items-center justify-center p-1"
+          >
+            {imageUrl ? (
+              <img src={imageUrl} alt={v.label} className="max-w-full max-h-full object-contain rounded" />
+            ) : (
+              <span className="text-[10px] text-neutral-500 font-sans">{v.label}</span>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function MensPantsDetails() {
-  const { id } = useParams();
-  const item = useMemo(() => mensPants.find(p => p.id === id), [id]);
+  const params = useParams();
+  const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [selectedVariant, setSelectedVariant] = useState(null);
+
+  useEffect(() => {
+    const loadItem = async () => {
+      try {
+        const data = await fetchPublicMenApparelById(params.id);
+        setItem(data);
+      } catch (error) {
+        setItem(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadItem();
+  }, [params.id]);
+
+  if (loading) {
+    return (
+      <div className="pt-32 px-4 md:px-margin-desktop max-w-container-max mx-auto min-h-screen">
+        <p className="text-on-surface-variant font-sans animate-pulse">Loading product...</p>
+      </div>
+    );
+  }
 
   if (!item) {
     return (
       <div className="pt-32 px-4 md:px-margin-desktop max-w-container-max mx-auto min-h-screen">
         <p className="text-on-surface-variant font-sans">Product not found.</p>
         <Link className="text-leather-tan underline mt-4 inline-block font-sans" to="/mens/pants">
-          Back to Men&#39;s Pants
+          Back to Men&apos;s Pants
         </Link>
       </div>
     );
   }
 
+  const activeImage = selectedVariant?.image?.url || item.image?.url;
+
   return (
     <div className="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden pt-20">
-      {/* Dark Title Bar */}
       <div className="bg-[#161616] text-white">
         <div className="max-w-[1440px] mx-auto px-6 md:px-16 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h1 className="font-sans text-xl md:text-2xl tracking-[0.35em] uppercase font-light text-white">
-              M E N &#39; S P A N T S
+              M E N &apos; S &nbsp; P A N T S
             </h1>
             <p className="mt-2 text-[9px] tracking-[0.25em] uppercase text-neutral-400 font-light">
               PREMIUM PANTS COLLECTION FOR MEN
@@ -34,61 +109,69 @@ export default function MensPantsDetails() {
           <div className="text-[10px] tracking-[0.2em] uppercase text-neutral-400 font-light font-sans">
             <Link to="/" className="hover:text-white transition-colors">HOME</Link>
             <span className="mx-2 text-neutral-700">/</span>
-            <Link to="/mens/pants" className="hover:text-white transition-colors">MEN&#39;S PANTS</Link>
+            <Link to="/mens/pants" className="hover:text-white transition-colors">MEN&apos;S PANTS</Link>
             <span className="mx-2 text-neutral-700">/</span>
             <span className="text-white font-normal">{item.title}</span>
           </div>
         </div>
       </div>
 
-      {/* Two-Column Details */}
       <div className="w-full flex flex-col lg:flex-row min-h-[500px] border-b border-neutral-100">
-        {/* Left: Images */}
         <div className="w-full lg:w-1/2 bg-[#f5f5f5] min-h-[420px] lg:min-h-[700px] overflow-hidden flex items-center justify-center p-8 md:p-12">
           <img
-            src={item.image}
+            src={activeImage}
             alt={item.title}
-            className="max-h-[560px] lg:max-h-[620px] w-full h-auto object-contain"
+            className="max-h-[560px] lg:max-h-[620px] w-full h-auto object-contain transition-all duration-300"
             loading="lazy"
           />
         </div>
-        {/* Right: Details */}
+
         <div className="w-full lg:w-1/2 bg-white flex flex-col justify-center px-6 py-16 md:px-16 lg:px-24">
           <div className="max-w-xl space-y-12">
-            {/* Style */}
             <div>
-              <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">1. STYLE</h2>
-              <p className="text-sm font-sans text-neutral-700 leading-relaxed font-light">{item.title}</p>
+              <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">
+                1. STYLE
+              </h2>
+              <p className="text-sm font-sans text-neutral-700 leading-relaxed font-light">
+                {item.title}
+              </p>
             </div>
-            {/* Materials */}
+
             <div>
-              <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">2. MATERIALS</h2>
-              <div className="text-sm font-sans text-neutral-700 leading-relaxed font-light space-y-2">
-                {item.composition.map((line, idx) => (
-                  <p key={idx}>{line}</p>
-                ))}
+              <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">
+                2. MATERIALS
+              </h2>
+              <div
+                className="prose prose-neutral max-w-none text-sm font-sans text-neutral-700 leading-relaxed font-light prose-p:my-0 prose-p:mb-2"
+                dangerouslySetInnerHTML={{ __html: toRichTextHtml(item.description) }}
+              />
+            </div>
+
+            {item.variants && item.variants.some((v) => v.type === "color") && (
+              <div>
+                <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">
+                  3. {item.colorSectionTitle || "AVAILABLE COLORS"}
+                </h2>
+                <ColorSwatches variants={item.variants} />
               </div>
-            </div>
-            {/* Colors */}
-            <div>
-              <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">3. COLORS</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {item.detailImages.map((src, idx) => (
-                  <img
-                    key={idx}
-                    src={src}
-                    alt={item.title}
-                    className="w-full h-auto max-h-24 object-contain border border-neutral-200 bg-white"
-                    loading="lazy"
-                  />
-                ))}
+            )}
+
+            {item.variants && item.variants.some((v) => v.type === "custom") && (
+              <div>
+                <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">
+                  4. {item.customSectionTitle || "OPTIONS & STYLES"}
+                </h2>
+                <CustomVariants variants={item.variants} />
               </div>
-            </div>
-            {/* Contact */}
+            )}
+
             <div className="pt-2 border-t border-neutral-100">
-              <p className="text-[11px] tracking-[0.28em] uppercase text-neutral-400 font-sans">Contact with us</p>
+              <p className="text-[11px] tracking-[0.28em] uppercase text-neutral-400 font-sans">
+                Contact with us
+              </p>
               <p className="mt-3 text-sm font-sans text-neutral-700 leading-relaxed font-light">
-                Want more information about this product? Contact our team for MOQ, colorways, and customization options.
+                Want more information about this product? Contact our team for MOQ,
+                colorways, and customization options.
               </p>
               <a
                 className="mt-6 inline-flex items-center justify-center px-10 py-3 bg-[#1c1c1c] text-white font-semibold text-xs tracking-[0.25em] uppercase hover:bg-black transition-colors font-sans"
@@ -101,7 +184,7 @@ export default function MensPantsDetails() {
                   className="text-xs font-sans text-neutral-400 hover:text-black tracking-[0.2em] uppercase transition-colors underline underline-offset-4"
                   to="/mens/pants"
                 >
-                  Back to Men&#39;s Pants
+                  Back to Men&apos;s Pants
                 </Link>
               </div>
             </div>

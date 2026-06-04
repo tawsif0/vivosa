@@ -10,7 +10,21 @@ import DashboardHome from "./DashboardHome";
 import AdminPanel from "./AdminPanel";
 import KidsCreate from "./KidsCreate";
 import KidsModify from "./KidsModify";
+import WomenCreate from "./WomenCreate";
+import WomenModify from "./WomenModify";
+import MenCreate from "./MenCreate";
+import MenModify from "./MenModify";
 import ContactUsers from "./ContactUsers";
+import ContractFurnitureCreate from "./ContractFurnitureCreate";
+import ContractFurnitureModify from "./ContractFurnitureModify";
+import LeatherFootwearCreate from "./LeatherFootwearCreate";
+import LeatherFootwearModify from "./LeatherFootwearModify";
+import LeatherGoodsCreate from "./LeatherGoodsCreate";
+import LeatherGoodsModify from "./LeatherGoodsModify";
+import LeatherLiningCreate from "./LeatherLiningCreate";
+import LeatherLiningModify from "./LeatherLiningModify";
+import AutomotiveCreate from "./AutomotiveCreate";
+import AutomotiveModify from "./AutomotiveModify";
 import { useAuth } from "../hooks/useAuth";
 import { fetchAdminContacts } from "../api/contact";
 
@@ -33,9 +47,52 @@ const Dashboard = () => {
 
   const [activeTab, setActiveTab] = useState(() => {
     const saved = localStorage.getItem("dashboardActiveTab") || "dashboard";
-    return (["dashboard", "settings", "kids-create", "kids-modify", "contact-users"].includes(saved))
-      ? saved
-      : "dashboard";
+    const allowed = [
+      "dashboard",
+      "settings",
+      "kids-create",
+      "kids-modify",
+      "contact-users",
+      "women-sweater-create",
+      "women-sweater-modify",
+      "women-jackets-coats-create",
+      "women-jackets-coats-modify",
+      "women-pants-create",
+      "women-pants-modify",
+      "women-polo-shirts-create",
+      "women-polo-shirts-modify",
+      "women-shirts-create",
+      "women-shirts-modify",
+      "women-t-shirts-create",
+      "women-t-shirts-modify",
+      "women-swim-lingerie-create",
+      "women-swim-lingerie-modify",
+      "men-sweater-create",
+      "men-sweater-modify",
+      "men-jackets-coats-create",
+      "men-jackets-coats-modify",
+      "men-pants-create",
+      "men-pants-modify",
+      "men-joggers-create",
+      "men-joggers-modify",
+      "men-polo-shirt-create",
+      "men-polo-shirt-modify",
+      "men-shirts-create",
+      "men-shirts-modify",
+      "men-t-shirts-create",
+      "men-t-shirts-modify",
+      "sustainable-leather-contract-furniture-create",
+      "sustainable-leather-contract-furniture-modify",
+      "sustainable-leather-footwear-create",
+      "sustainable-leather-footwear-modify",
+      "sustainable-leather-goods-create",
+      "sustainable-leather-goods-modify",
+      "sustainable-leather-lining-create",
+      "sustainable-leather-lining-modify",
+      "sustainable-leather-automotive-create",
+      "sustainable-leather-automotive-modify",
+    ];
+    return allowed.includes(saved) ? saved : "dashboard";
   });
 
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -139,6 +196,65 @@ const Dashboard = () => {
 
     if (activeTab === "contact-users") {
       return <ContactUsers onUnreadCountChange={setContactUnreadCount} />;
+    }
+
+    if (activeTab.startsWith("women-")) {
+      const parts = activeTab.split("-");
+      const action = parts[parts.length - 1];
+
+      let category = "";
+      if (activeTab.includes("sweater")) category = "sweater";
+      else if (activeTab.includes("jackets-coats")) category = "jackets-coats";
+      else if (activeTab.includes("pants")) category = "pants";
+      else if (activeTab.includes("polo-shirts")) category = "polo-shirts";
+      else if (activeTab.includes("t-shirts")) category = "t-shirts";
+      else if (activeTab.includes("shirts")) category = "shirts";
+      else if (activeTab.includes("swim-lingerie")) category = "swim-lingerie";
+
+      if (action === "create") {
+        return <WomenCreate key={category} category={category} />;
+      }
+      if (action === "modify") {
+        return <WomenModify key={category} category={category} />;
+      }
+    }
+
+    if (activeTab.startsWith("men-")) {
+      const parts = activeTab.split("-");
+      const action = parts[parts.length - 1];
+
+      let category = "";
+      if (activeTab.includes("sweater")) category = "sweater";
+      else if (activeTab.includes("jackets-coats")) category = "jackets-coats";
+      else if (activeTab.includes("pants")) category = "pants";
+      else if (activeTab.includes("joggers")) category = "joggers";
+      else if (activeTab.includes("polo-shirt")) category = "polo-shirt";
+      else if (activeTab.includes("t-shirts")) category = "t-shirts";
+      else if (activeTab.includes("shirts")) category = "shirts";
+
+      if (action === "create") {
+        return <MenCreate key={category} category={category} />;
+      }
+      if (action === "modify") {
+        return <MenModify key={category} category={category} />;
+      }
+    }
+
+    if (activeTab.startsWith("sustainable-leather-")) {
+      if (activeTab.endsWith("-create")) {
+        if (activeTab.includes("contract-furniture")) return <ContractFurnitureCreate />;
+        if (activeTab.includes("footwear")) return <LeatherFootwearCreate />;
+        if (activeTab.includes("goods")) return <LeatherGoodsCreate />;
+        if (activeTab.includes("lining")) return <LeatherLiningCreate />;
+        if (activeTab.includes("automotive")) return <AutomotiveCreate />;
+      }
+      if (activeTab.endsWith("-modify")) {
+        if (activeTab.includes("contract-furniture")) return <ContractFurnitureModify />;
+        if (activeTab.includes("footwear")) return <LeatherFootwearModify />;
+        if (activeTab.includes("goods")) return <LeatherGoodsModify />;
+        if (activeTab.includes("lining")) return <LeatherLiningModify />;
+        if (activeTab.includes("automotive")) return <AutomotiveModify />;
+      }
     }
 
     return user?.userType === "admin" ? <AdminPanel /> : <DashboardHome user={user} />;

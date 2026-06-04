@@ -1,8 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { leatherGoodsProducts } from "./leatherGoodsData";
+import { fetchPublicSustainableLeathers } from "../api/sustainableLeather";
 
 export default function LeatherGoods() {
+  const [leatherGoodsProducts, setLeatherGoodsProducts] = useState([]);
+
+  useEffect(() => {
+    const loadGoods = async () => {
+      try {
+        const data = await fetchPublicSustainableLeathers("leather-goods");
+        setLeatherGoodsProducts(data);
+      } catch (err) {
+        console.error("Failed to load leather goods:", err);
+      }
+    };
+    loadGoods();
+  }, []);
+
   const slides = [
     { src: "/slides/leather_goods_slide1.jpg", alt: "Luxury Leather Tote Bag" },
     { src: "/slides/leather_goods_slide2.png", alt: "Premium Leather Goods Collection" }
@@ -138,15 +152,15 @@ export default function LeatherGoods() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-16">
               {leatherGoodsProducts.slice(0, 9).map((product) => (
                 <Link
-                  key={product.id}
-                  to={`/leather-goods/${product.id}`}
-                  className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm"
+                  key={product._id}
+                  to={`/leather-goods/${product._id}`}
+                  className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm text-left"
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
                       alt={product.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      src={product.src}
+                      src={product.image?.url}
                     />
                   </div>
                   <div className="p-8 flex flex-col flex-grow">
@@ -156,9 +170,10 @@ export default function LeatherGoods() {
                     <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
                       {product.thickness} • {product.rawhide} Origin
                     </p>
-                    <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
-                      {product.desc}
-                    </p>
+                    <div 
+                      className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed rich-content"
+                      dangerouslySetInnerHTML={{ __html: product.desc }}
+                    />
                   </div>
                 </Link>
               ))}
@@ -184,15 +199,15 @@ export default function LeatherGoods() {
 
               {leatherGoodsProducts.slice(9, 10).map((product) => (
                 <Link
-                  key={product.id}
-                  to={`/leather-goods/${product.id}`}
-                  className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm"
+                  key={product._id}
+                  to={`/leather-goods/${product._id}`}
+                  className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm text-left"
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
                       alt={product.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      src={product.src}
+                      src={product.image?.url}
                     />
                   </div>
                   <div className="p-8 flex flex-col flex-grow">
@@ -202,9 +217,10 @@ export default function LeatherGoods() {
                     <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
                       {product.thickness} • {product.rawhide} Origin
                     </p>
-                    <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
-                      {product.desc}
-                    </p>
+                    <div 
+                      className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed rich-content"
+                      dangerouslySetInnerHTML={{ __html: product.desc }}
+                    />
                   </div>
                 </Link>
               ))}

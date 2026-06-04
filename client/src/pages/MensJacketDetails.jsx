@@ -1,46 +1,98 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { fetchPublicMenApparelById } from "../api/menApparel";
 import DetailsExtraSections from "../components/DetailsExtraSections";
-import { mensJackets } from "../data/mensJackets";
+import { toRichTextHtml } from "../utils/richText";
 
-function ColorSwatches({ colors }) {
+function ColorSwatches({ variants }) {
+  const colorVariants = variants.filter((v) => v.type === "color");
+  if (colorVariants.length === 0) return null;
+
   return (
     <div className="flex flex-wrap gap-3">
-      {colors.map((c) => (
-        <div key={c.name} className="flex items-center gap-2">
+      {colorVariants.map((v, i) => (
+        <span
+          key={i}
+          className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-white text-neutral-600"
+        >
           <span
-            className="w-4 h-4 rounded-full border border-neutral-300"
-            style={{ backgroundColor: c.hex }}
-            aria-label={c.name}
-            title={c.name}
+            className="w-4 h-4 rounded-full"
+            style={{ backgroundColor: v.value }}
+            aria-label={v.label}
+            title={v.label}
           />
-          <span className="text-xs text-neutral-600 font-sans">{c.name}</span>
-        </div>
+          <span className="text-xs font-sans">{v.label}</span>
+        </span>
       ))}
+    </div>
+  );
+}
+
+function CustomVariants({ variants }) {
+  const customVariants = variants.filter((v) => v.type === "custom");
+  if (customVariants.length === 0) return null;
+
+  return (
+    <div className="flex flex-wrap gap-3">
+      {customVariants.map((v, i) => {
+        const imageUrl = v.image?.url || v.preview;
+        return (
+          <div
+            key={i}
+            className="w-24 h-24 rounded-lg overflow-hidden bg-white flex items-center justify-center p-1"
+          >
+            {imageUrl ? (
+              <img src={imageUrl} alt={v.label} className="max-w-full max-h-full object-contain rounded" />
+            ) : (
+              <span className="text-[10px] text-neutral-500 font-sans">{v.label}</span>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
 
 export default function MensJacketDetails() {
   const params = useParams();
-  const item = useMemo(
-    () => mensJackets.find((p) => p.id === params.id),
-    [params.id],
-  );
+  const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [selectedVariant, setSelectedVariant] = useState(null);
+
+  useEffect(() => {
+    const loadItem = async () => {
+      try {
+        const data = await fetchPublicMenApparelById(params.id);
+        setItem(data);
+      } catch (error) {
+        setItem(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadItem();
+  }, [params.id]);
+
+  if (loading) {
+    return (
+      <div className="pt-32 px-4 md:px-margin-desktop max-w-container-max mx-auto min-h-screen">
+        <p className="text-on-surface-variant font-sans animate-pulse">Loading product...</p>
+      </div>
+    );
+  }
 
   if (!item) {
     return (
       <div className="pt-32 px-4 md:px-margin-desktop max-w-container-max mx-auto min-h-screen">
         <p className="text-on-surface-variant font-sans">Product not found.</p>
-        <Link
-          className="text-leather-tan underline mt-4 inline-block font-sans"
-          to="/mens/jackets-and-coats"
-        >
+        <Link className="text-leather-tan underline mt-4 inline-block font-sans" to="/mens/jackets-and-coats">
           Back to Men&apos;s Jackets
         </Link>
       </div>
     );
   }
+
+  const activeImage = selectedVariant?.image?.url || item.image?.url;
 
   return (
     <div className="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden pt-20">
@@ -55,16 +107,9 @@ export default function MensJacketDetails() {
             </p>
           </div>
           <div className="text-[10px] tracking-[0.2em] uppercase text-neutral-400 font-light font-sans">
-            <Link to="/" className="hover:text-white transition-colors">
-              HOME
-            </Link>
+            <Link to="/" className="hover:text-white transition-colors">HOME</Link>
             <span className="mx-2 text-neutral-700">/</span>
-            <Link
-              to="/mens/jackets-and-coats"
-              className="hover:text-white transition-colors"
-            >
-              MEN&apos;S
-            </Link>
+            <Link to="/mens/jackets-and-coats" className="hover:text-white transition-colors">MEN&apos;S</Link>
             <span className="mx-2 text-neutral-700">/</span>
             <span className="text-white font-normal">{item.title}</span>
           </div>
@@ -74,9 +119,9 @@ export default function MensJacketDetails() {
       <div className="w-full flex flex-col lg:flex-row min-h-[500px] border-b border-neutral-100">
         <div className="w-full lg:w-1/2 bg-[#f5f5f5] min-h-[420px] lg:min-h-[700px] overflow-hidden flex items-center justify-center p-8 md:p-12">
           <img
-            src={item.image}
+            src={activeImage}
             alt={item.title}
-            className="max-h-[560px] lg:max-h-[620px] w-full h-auto object-contain"
+            className="max-h-[560px] lg:max-h-[620px] w-full h-auto object-contain transition-all duration-300"
             loading="lazy"
           />
         </div>
@@ -96,19 +141,29 @@ export default function MensJacketDetails() {
               <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">
                 2. MATERIALS
               </h2>
-              <div className="text-sm font-sans text-neutral-700 leading-relaxed font-light space-y-2">
-                {item.composition.map((line) => (
-                  <p key={`${item.id}-${line}`}>{line}</p>
-                ))}
-              </div>
+              <div
+                className="prose prose-neutral max-w-none text-sm font-sans text-neutral-700 leading-relaxed font-light prose-p:my-0 prose-p:mb-2"
+                dangerouslySetInnerHTML={{ __html: toRichTextHtml(item.description) }}
+              />
             </div>
 
-            <div>
-              <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">
-                3. AVAILABLE COLORS
-              </h2>
-              <ColorSwatches colors={item.colors} />
-            </div>
+            {item.variants && item.variants.some((v) => v.type === "color") && (
+              <div>
+                <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">
+                  3. {item.colorSectionTitle || "AVAILABLE COLORS"}
+                </h2>
+                <ColorSwatches variants={item.variants} />
+              </div>
+            )}
+
+            {item.variants && item.variants.some((v) => v.type === "custom") && (
+              <div>
+                <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">
+                  4. {item.customSectionTitle || "OPTIONS & STYLES"}
+                </h2>
+                <CustomVariants variants={item.variants} />
+              </div>
+            )}
 
             <div className="pt-2 border-t border-neutral-100">
               <p className="text-[11px] tracking-[0.28em] uppercase text-neutral-400 font-sans">
@@ -141,4 +196,3 @@ export default function MensJacketDetails() {
     </div>
   );
 }
-

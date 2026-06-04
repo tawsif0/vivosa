@@ -294,8 +294,8 @@ button.cart-button,
   overflow: visible;
 }
 
-button.cart-button > span,
-[role="button"].cart-button > span {
+button.cart-button>span,
+[role="button"].cart-button>span {
   overflow: visible;
 }
 
@@ -308,29 +308,18 @@ button.cart-button > span,
   display: grid;
   align-items: stretch;
   gap: var(--section-card-gap, 12px);
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(var(--section-card-min-width, 220px), 1fr)
-  );
+  grid-template-columns: repeat(auto-fit,
+      minmax(var(--section-card-min-width, 220px), 1fr));
 }
 
 @media (min-width: 1024px) {
   .section-grid[data-fixed-columns="true"] {
-    --section-card-columns-effective: var(
-      --section-card-columns,
-      4
-    );
-    --section-card-fixed-width: max(
-      var(--section-card-min-width, 220px),
-      calc(
-        (100% - (var(--section-card-columns, 4) - 1) * var(--section-card-gap, 12px)) /
-          var(--section-card-columns, 4)
-      )
-    );
-    grid-template-columns: repeat(
-      var(--section-card-columns-effective),
-      minmax(0, var(--section-card-fixed-width))
-    );
+    --section-card-columns-effective: var(--section-card-columns,
+        4);
+    --section-card-fixed-width: max(var(--section-card-min-width, 220px),
+        calc((100% - (var(--section-card-columns, 4) - 1) * var(--section-card-gap, 12px)) / var(--section-card-columns, 4)));
+    grid-template-columns: repeat(var(--section-card-columns-effective),
+        minmax(0, var(--section-card-fixed-width)));
     justify-content: var(--section-card-justify, start);
   }
 }
@@ -343,6 +332,7 @@ button.cart-button > span,
   0% {
     transform: translate3d(0, 0, 0);
   }
+
   100% {
     transform: translate3d(-50%, 0, 0);
   }
@@ -357,20 +347,16 @@ button.cart-button > span,
 
 .marquee-mask {
   overflow: hidden;
-  mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(90deg,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%);
 }
 
 .marquee-track {
@@ -459,10 +445,12 @@ button.cart-button > span,
     transform: translateY(0);
     opacity: 1;
   }
+
   50% {
     transform: translateY(8px);
     opacity: 0.3;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -490,7 +478,8 @@ button.cart-button > span,
 .hover-lift-emerald:hover {
   border-color: rgba(226, 252, 238, 0.5) !important;
 }
-[role="button"].cart-button > span {
+
+[role="button"].cart-button>span {
   overflow: visible;
 }
 
@@ -503,29 +492,18 @@ button.cart-button > span,
   display: grid;
   align-items: stretch;
   gap: var(--section-card-gap, 12px);
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(var(--section-card-min-width, 220px), 1fr)
-  );
+  grid-template-columns: repeat(auto-fit,
+      minmax(var(--section-card-min-width, 220px), 1fr));
 }
 
 @media (min-width: 1024px) {
   .section-grid[data-fixed-columns="true"] {
-    --section-card-columns-effective: var(
-      --section-card-columns,
-      4
-    );
-    --section-card-fixed-width: max(
-      var(--section-card-min-width, 220px),
-      calc(
-        (100% - (var(--section-card-columns, 4) - 1) * var(--section-card-gap, 12px)) /
-          var(--section-card-columns, 4)
-      )
-    );
-    grid-template-columns: repeat(
-      var(--section-card-columns-effective),
-      minmax(0, var(--section-card-fixed-width))
-    );
+    --section-card-columns-effective: var(--section-card-columns,
+        4);
+    --section-card-fixed-width: max(var(--section-card-min-width, 220px),
+        calc((100% - (var(--section-card-columns, 4) - 1) * var(--section-card-gap, 12px)) / var(--section-card-columns, 4)));
+    grid-template-columns: repeat(var(--section-card-columns-effective),
+        minmax(0, var(--section-card-fixed-width)));
     justify-content: var(--section-card-justify, start);
   }
 }
@@ -538,6 +516,7 @@ button.cart-button > span,
   0% {
     transform: translate3d(0, 0, 0);
   }
+
   100% {
     transform: translate3d(-50%, 0, 0);
   }
@@ -552,20 +531,16 @@ button.cart-button > span,
 
 .marquee-mask {
   overflow: hidden;
-  mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(90deg,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%);
 }
 
 .marquee-track {
@@ -654,10 +629,12 @@ button.cart-button > span,
     transform: translateY(0);
     opacity: 1;
   }
+
   50% {
     transform: translateY(8px);
     opacity: 0.3;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -710,7 +687,7 @@ button.cart-button > span,
 
 .product-card-hover:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
   border-bottom: 2px solid var(--color-gold-accent);
 }
 
@@ -722,25 +699,32 @@ button.cart-button > span,
 .hero-split {
   min-height: 80vh;
 }
+
 .hairline-b {
   border-bottom: 0.5px solid rgba(0, 33, 19, 0.1);
 }
+
 .hairline-t {
   border-top: 0.5px solid rgba(0, 33, 19, 0.1);
 }
+
 .terracotta-badge {
   background-color: #C4956A;
   color: white;
 }
+
 .gold-thread-hover:hover {
   border-bottom: 2px solid var(--color-gold-accent);
 }
+
 .warm-shadow {
   box-shadow: 0 10px 30px -10px rgba(196, 149, 106, 0.15);
 }
+
 .warm-shadow-hover {
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .warm-shadow-hover:hover {
   box-shadow: 0 20px 40px -10px rgba(196, 149, 106, 0.25);
   transform: translateY(-4px);

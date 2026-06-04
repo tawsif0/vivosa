@@ -1,9 +1,24 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { womensJackets } from "../data/womensJackets";
+import { fetchPublicWomenApparel } from "../api/womenApparel";
 
 export default function WomensJackets() {
-  const items = useMemo(() => womensJackets, []);
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadItems = async () => {
+      try {
+        const data = await fetchPublicWomenApparel("jackets-coats");
+        setItems(data);
+      } catch (error) {
+        setItems([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadItems();
+  }, []);
 
   const formatTitle = (title) => (
     <span className="text-sm font-sans tracking-tight text-black leading-snug">
@@ -31,27 +46,32 @@ export default function WomensJackets() {
       </section>
 
       <section className="max-w-container-max mx-auto px-4 md:px-margin-desktop pb-20 md:pb-section-gap">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 md:gap-x-gutter md:gap-y-12">
-          {items.map((item) => (
-            <Link
-              key={item.id}
-              to={`/womens/jackets-and-coats/${item.id}`}
-              className="group flex flex-col bg-transparent overflow-hidden transition-all duration-300"
-            >
-              <div className="bg-[#f5f5f5] aspect-[3/4] overflow-hidden w-full relative">
-                <img
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  src={item.image}
-                />
-              </div>
-              <div className="pt-3 pb-2 px-1">{formatTitle(item.title)}</div>
-            </Link>
-          ))}
-        </div>
+        {loading ? (
+          <div className="text-center py-12 text-slate-500 font-sans">Loading jackets...</div>
+        ) : items.length === 0 ? (
+          <div className="text-center py-12 text-slate-500 font-sans">No jackets available yet.</div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 md:gap-x-gutter md:gap-y-12">
+            {items.map((item) => (
+              <Link
+                key={item._id}
+                to={`/womens/jackets-and-coats/${item._id}`}
+                className="group flex flex-col bg-transparent overflow-hidden transition-all duration-300"
+              >
+                <div className="bg-[#f5f5f5] aspect-[3/4] overflow-hidden w-full relative">
+                  <img
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    src={item.image?.url}
+                  />
+                </div>
+                <div className="pt-3 pb-2 px-1">{formatTitle(item.title)}</div>
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );
 }
-

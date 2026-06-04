@@ -120,27 +120,30 @@ const KidsCreate = () => {
             placeholder="Explain production notes, finishing, and product focus."
           />
 
+        </div>
+
+        <div className="space-y-6">
+          <ImageUploadBox
+            label="Image"
+            description="Click to upload product image"
+            preview={preview}
+            fileName={imageFile?.name}
+            inputId="kids-image-upload"
+            onChange={(event) => setImageFile(event.target.files?.[0] || null)}
+            onClear={() => setImageFile(null)}
+            uploadLabel="Upload Image"
+            replaceLabel="Replace Image"
+          />
+
           <button
             type="submit"
             disabled={isSubmitting}
-            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
           >
             <FiPlus className="h-4 w-4" />
             {isSubmitting ? "Creating..." : "Create Kids Item"}
           </button>
         </div>
-
-        <ImageUploadBox
-          label="Image"
-          description="Click to upload product image"
-          preview={preview}
-          fileName={imageFile?.name}
-          inputId="kids-image-upload"
-          onChange={(event) => setImageFile(event.target.files?.[0] || null)}
-          onClear={() => setImageFile(null)}
-          uploadLabel="Upload Image"
-          replaceLabel="Replace Image"
-        />
       </motion.form>
     </div>
   );

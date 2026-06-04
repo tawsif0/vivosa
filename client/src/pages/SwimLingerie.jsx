@@ -1,22 +1,31 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { swimLingerieProducts } from "../data/swimLingerieProducts";
+import { fetchPublicWomenApparel } from "../api/womenApparel";
 
 export default function SwimLingerie() {
-  const items = useMemo(() => swimLingerieProducts, []);
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadItems = async () => {
+      try {
+        const data = await fetchPublicWomenApparel("swim-lingerie");
+        setItems(data);
+      } catch (error) {
+        setItems([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadItems();
+  }, []);
 
   const formatTitle = (product) => {
-    const isLingerie = product.id === "p07" || product.id === "p08" || product.title.toLowerCase().includes("lingerie");
+    const isLingerie = product.title.toLowerCase().includes("lingerie");
     const prefix = isLingerie ? "LINGERIE" : "SWIMWEAR";
-    let cleaned = product.title;
-
-    if (cleaned.toLowerCase().startsWith("lingerie set")) {
-      cleaned = "Lingerie Set";
-    }
-
     return (
       <span className="text-sm font-sans tracking-tight text-black leading-snug">
-        <strong className="font-bold mr-1 text-[13px] tracking-normal uppercase">{prefix}</strong> {cleaned}
+        <strong className="font-bold mr-1 text-[13px] tracking-normal uppercase">{prefix}</strong> {product.title}
       </span>
     );
   };
@@ -32,33 +41,39 @@ export default function SwimLingerie() {
             Swim &amp; Lingerie
           </h1>
           <p className="font-body-lg text-on-surface-variant leading-relaxed">
-            Styles, materials, and details are based on our collection brief.
+            Browse our women&apos;s swim &amp; lingerie styles and materials.
           </p>
         </div>
       </section>
 
       <section className="max-w-container-max mx-auto px-4 md:px-margin-desktop pb-20 md:pb-section-gap">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 md:gap-x-gutter md:gap-y-12">
-          {items.map((product) => (
-            <Link
-              key={product.id}
-              to={`/womens/swim-lingerie/${product.id}`}
-              className="group flex flex-col bg-transparent overflow-hidden transition-all duration-300"
-            >
-              <div className="bg-[#f5f5f5] aspect-[3/4] overflow-hidden w-full relative">
-                <img
-                  alt={product.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  src={product.cardImage}
-                />
-              </div>
-              <div className="pt-3 pb-2 px-1">
-                {formatTitle(product)}
-              </div>
-            </Link>
-          ))}
-        </div>
+        {loading ? (
+          <div className="text-center py-12 text-slate-500 font-sans">Loading swim &amp; lingerie...</div>
+        ) : items.length === 0 ? (
+          <div className="text-center py-12 text-slate-500 font-sans">No swim or lingerie items available yet.</div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 md:gap-x-gutter md:gap-y-12">
+            {items.map((product) => (
+              <Link
+                key={product._id}
+                to={`/womens/swim-lingerie/${product._id}`}
+                className="group flex flex-col bg-transparent overflow-hidden transition-all duration-300"
+              >
+                <div className="bg-[#f5f5f5] aspect-[3/4] overflow-hidden w-full relative">
+                  <img
+                    alt={product.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    src={product.image?.url}
+                  />
+                </div>
+                <div className="pt-3 pb-2 px-1">
+                  {formatTitle(product)}
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );

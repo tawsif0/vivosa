@@ -1,12 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { footwearProducts } from "./footwearData";
+import { fetchPublicSustainableLeather } from "../api/sustainableLeather";
 
 export default function LeatherFootwearDetail() {
   const { productId } = useParams();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Find the matching product, default to the first if not found
-  const product = footwearProducts.find((p) => p.id === productId) || footwearProducts[0];
+  useEffect(() => {
+    const loadProduct = async () => {
+      try {
+        const data = await fetchPublicSustainableLeather(productId);
+        setProduct(data);
+      } catch (err) {
+        console.error("Failed to load product details:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadProduct();
+  }, [productId]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white text-primary">
+        <div className="animate-pulse tracking-widest font-label-caps text-sm">LOADING DETAILS...</div>
+      </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-white text-primary space-y-4">
+        <h2 className="font-display text-2xl tracking-wider">PRODUCT NOT FOUND</h2>
+        <Link to="/leather-footwear" className="text-accent-gold font-semibold uppercase text-xs tracking-widest border-b border-accent-gold/40 pb-1">
+          Back to Collection
+        </Link>
+      </div>
+    );
+  }
 
   // Extract the article name from the title (e.g. "F016CMVNO, Arctic" -> "Arctic")
   const articleName = product.title.includes(",")
@@ -32,15 +64,13 @@ export default function LeatherFootwearDetail() {
               </p>
             </div>
 
-            {/* Right Column: Breadcrumbs */}
+            {/* Right Column: Breadcrumbs (Refactored to match navbar naming structure) */}
             <div className="font-label-caps text-[10px] md:text-[11px] tracking-[0.2em] text-[#8e8e8e] uppercase mt-6 md:mt-0 flex flex-wrap items-center gap-1.5 font-medium">
-              <Link to="/" className="hover:text-accent-gold transition-colors duration-300">
+              <Link to="/" className="hover:text-white hover:font-bold transition-colors duration-300">
                 HOME
               </Link>
               <span className="text-[#555555] select-none">/</span>
-              <span className="text-[#8e8e8e]">PRODUCTS</span>
-              <span className="text-[#555555] select-none">/</span>
-              <Link to="/leather-footwear" className="hover:text-accent-gold transition-colors duration-300">
+              <Link to="/leather-footwear" className="hover:text-white hover:font-bold transition-colors duration-300">
                 FOOTWEAR
               </Link>
               <span className="text-[#555555] select-none">/</span>
@@ -52,72 +82,84 @@ export default function LeatherFootwearDetail() {
         {/* Dynamic Product Specification Section: Full-bleed 50/50 Catalog Layout */}
         <section className="bg-white border-b border-neutral-100">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch gap-0">
-            
-            {/* Left Column: Full-width, full-height image with 0 borders, 0 margin, 0 padding (exact mockup match) */}
+
+            {/* Left Column: Full-width, full-height image */}
             <div className="w-full h-[350px] sm:h-[450px] lg:h-auto min-h-[450px] overflow-hidden bg-neutral-100">
               <img
                 className="w-full h-full object-cover"
                 alt={product.fullName}
-                src={product.src}
+                src={product.image?.url}
               />
             </div>
 
             {/* Right Column: Detailed Product Specs with luxurious padding */}
             <div className="py-16 px-6 sm:px-12 lg:px-20 xl:px-24 flex flex-col justify-center space-y-10 bg-white">
-              
+
               {/* 1. RAW MATERIAL */}
-              <div className="space-y-3 max-w-xl">
-                <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
-                  1. RAW MATERIAL
-                </h3>
-                <p className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light">
-                  {product.rawMaterial}
-                </p>
-              </div>
-
-              {/* 2. PROCESSING */}
-              <div className="space-y-3 max-w-xl">
-                <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
-                  2. PROCESSING
-                </h3>
-                <p className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light">
-                  {product.processing}
-                </p>
-              </div>
-
-              {/* 3. PRODUCT */}
-              <div className="space-y-3 max-w-xl">
-                <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
-                  3. PRODUCT
-                </h3>
-                <div className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light space-y-4">
-                  <p>
-                    <span className="font-medium text-neutral-800">{articleName}</span> is a premium footwear leather article, with a customized thickness of <span className="font-medium text-neutral-800">{product.thickness}</span>, crafted carefully using fine <span className="font-medium text-neutral-800">{product.rawhide}</span> hides.
-                  </p>
-                  <p>
-                    {product.productDetails}
+              {product.rawMaterial && (
+                <div className="space-y-3 max-w-xl">
+                  <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
+                    1. RAW MATERIAL
+                  </h3>
+                  <p className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light">
+                    {product.rawMaterial}
                   </p>
                 </div>
-              </div>
+              )}
 
+              {/* 2. PROCESSING */}
+              {product.processing && (
+                <div className="space-y-3 max-w-xl">
+                  <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
+                    2. PROCESSING
+                  </h3>
+                  <p className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light">
+                    {product.processing}
+                  </p>
+                </div>
+              )}
+
+              {/* 3. PRODUCT */}
+              {product.productDetails && (
+                <div className="space-y-3 max-w-xl">
+                  <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
+                    3. PRODUCT
+                  </h3>
+                  <div className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light space-y-4">
+                    <p>
+                      <span className="font-medium text-neutral-800">{articleName}</span> is a premium footwear leather article, with a customized thickness of <span className="font-medium text-neutral-800">{product.thickness}</span>, crafted carefully using fine <span className="font-medium text-neutral-800">{product.rawhide}</span> hides.
+                    </p>
+                    <div
+                      className="rich-content"
+                      dangerouslySetInnerHTML={{ __html: product.productDetails }}
+                    />
+                  </div>
+                </div>
+              )}
+              <div className="pt-6 border-t border-neutral-100">
+                <Link
+                  className="text-xs font-sans text-neutral-400 hover:text-black tracking-[0.2em] uppercase transition-colors underline underline-offset-4"
+                  to="/leather-footwear"
+                >
+                  Back to Footwear Collection
+                </Link>
+              </div>
             </div>
 
           </div>
         </section>
 
-        {/* Section B: HOW TO CONTACT US (Same-to-Same as mockup with 45deg rotated black diamonds) */}
+        {/* Section B: HOW TO CONTACT US */}
         <section className="bg-white py-20 px-6 md:px-24 border-t border-neutral-100">
           <div className="max-w-5xl mx-auto text-center space-y-16">
             <h3 className="font-display text-[12px] md:text-[13px] tracking-[0.3em] uppercase text-neutral-800 font-bold">
               HOW TO CONTACT US
             </h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 text-left">
               {/* PHONE Column */}
               <div className="flex items-start gap-4">
-                {/* 45-degree rotated diamond container */}
                 <div className="w-8 h-8 bg-[#222222] rotate-45 flex items-center justify-center flex-shrink-0 mt-1 shadow-sm">
-                  {/* Icon unrotated inside */}
                   <span className="material-symbols-outlined text-white text-[14px] -rotate-45" style={{ fontVariationSettings: "'FILL' 1" }}>
                     call
                   </span>
@@ -134,7 +176,6 @@ export default function LeatherFootwearDetail() {
 
               {/* ADDRESS Column */}
               <div className="flex items-start gap-4">
-                {/* 45-degree rotated diamond container */}
                 <div className="w-8 h-8 bg-[#222222] rotate-45 flex items-center justify-center flex-shrink-0 mt-1 shadow-sm">
                   <span className="material-symbols-outlined text-white text-[14px] -rotate-45" style={{ fontVariationSettings: "'FILL' 1" }}>
                     location_on
@@ -154,7 +195,6 @@ export default function LeatherFootwearDetail() {
 
               {/* EMAIL Column */}
               <div className="flex items-start gap-4">
-                {/* 45-degree rotated diamond container */}
                 <div className="w-8 h-8 bg-[#222222] rotate-45 flex items-center justify-center flex-shrink-0 mt-1 shadow-sm">
                   <span className="material-symbols-outlined text-white text-[14px] -rotate-45" style={{ fontVariationSettings: "'FILL' 1" }}>
                     mail
@@ -175,7 +215,7 @@ export default function LeatherFootwearDetail() {
           </div>
         </section>
 
-        {/* Section C: Pure Black Bottom CTA Banner (Same-to-Same as mockup) */}
+        {/* Section C: Pure Black Bottom CTA Banner */}
         <section className="bg-[#111111] text-white py-16 px-6 md:px-24 text-center space-y-6">
           <h3 className="font-display text-[12px] md:text-[14px] lg:text-[15px] tracking-[0.25em] uppercase text-[#dddddd] font-light leading-relaxed max-w-4xl mx-auto">
             WOULD YOU LIKE TO RECEIVE MORE INFORMATION ABOUT OUR PRODUCTS?
@@ -190,25 +230,6 @@ export default function LeatherFootwearDetail() {
           </div>
         </section>
 
-        {/* Section D: Elegant Navigation Links (Positioned at the ABSOLUTE bottom of the page, below Section C) */}
-        <section className="bg-white py-12 px-6 md:px-12 lg:px-24 border-t border-neutral-100">
-          <div className="max-w-7xl mx-auto flex justify-between items-center w-full">
-            <Link
-              to="/leather-footwear"
-              className="inline-flex items-center gap-2 text-accent-gold hover:text-primary font-label-caps text-xs tracking-widest transition-colors duration-300 font-bold"
-            >
-              <span>← Back to Footwear Collection</span>
-            </Link>
-            
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-[#222222] hover:bg-accent-gold text-white hover:text-primary font-label-caps text-[11px] tracking-widest px-6 py-3 transition-all duration-300 rounded-sm font-semibold animate-shimmer"
-            >
-              <span>Inquire Swatch</span>
-              <span>→</span>
-            </Link>
-          </div>
-        </section>
       </main>
     </div>
   );

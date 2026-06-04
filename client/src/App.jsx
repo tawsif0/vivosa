@@ -19,14 +19,20 @@ const LeatherLiningDetail = lazy(() => import("./pages/LeatherLiningDetail"));
 const LeatherGoods = lazy(() => import("./pages/LeatherGoods"));
 const LeatherGoodsDetail = lazy(() => import("./pages/LeatherGoodsDetail"));
 const ContractFurniture = lazy(() => import("./pages/ContractFurniture"));
+const ContractFurnitureDetail = lazy(() => import("./pages/ContractFurnitureDetail"));
 const LeatherFootwear = lazy(() => import("./pages/LeatherFootwear"));
 const LeatherFootwearDetail = lazy(() => import("./pages/LeatherFootwearDetail"));
+const AutomotiveDetail = lazy(() => import("./pages/AutomotiveDetail"));
 const Apparel = lazy(() => import("./pages/Apparel"));
 const Kids = lazy(() => import("./pages/Kids"));
 const KidsDetails = lazy(() => import("./pages/KidsDetails"));
 const ApparelCategory = lazy(() => import("./pages/ApparelCategory"));
 const SwimLingerie = lazy(() => import("./pages/SwimLingerie"));
 const SwimLingerieDetails = lazy(() => import("./pages/SwimLingerieDetails"));
+const WomensCategoryPage = lazy(() => import("./pages/WomensCategoryPage"));
+const WomensCategoryDetailsPage = lazy(() => import("./pages/WomensCategoryDetailsPage"));
+const MensCategoryPage = lazy(() => import("./pages/MensCategoryPage"));
+const MensCategoryDetailsPage = lazy(() => import("./pages/MensCategoryDetailsPage"));
 const MensSweaters = lazy(() => import("./pages/MensSweaters"));
 const MensSweaterDetails = lazy(() => import("./pages/MensSweaterDetails"));
 const WomensSweaters = lazy(() => import("./pages/WomensSweaters"));
@@ -103,7 +109,21 @@ const AppLayout = () => {
             <Route path="/kids/:id" element={<KidsDetails />} />
             <Route path="/mens/hoodies-and-sweatshirts" element={<Navigate to="/mens/sweaters" replace />} />
             <Route path="/womens/hoodies-and-sweatshirts" element={<Navigate to="/womens/sweaters" replace />} />
+            <Route path="/mens/joggers" element={<MensCategoryPage category="joggers" />} />
+            <Route path="/mens/joggers/:id" element={<MensCategoryDetailsPage category="joggers" />} />
+            <Route path="/mens/polo-shirt" element={<MensCategoryPage category="polo-shirt" />} />
+            <Route path="/mens/polo-shirt/:id" element={<MensCategoryDetailsPage category="polo-shirt" />} />
+            <Route path="/mens/shirts" element={<MensCategoryPage category="shirts" />} />
+            <Route path="/mens/shirts/:id" element={<MensCategoryDetailsPage category="shirts" />} />
+            <Route path="/mens/t-shirts" element={<MensCategoryPage category="t-shirts" />} />
+            <Route path="/mens/t-shirts/:id" element={<MensCategoryDetailsPage category="t-shirts" />} />
             <Route path="/mens/:category" element={<ApparelCategory kind="mens" />} />
+            <Route path="/womens/polo-shirts" element={<WomensCategoryPage category="polo-shirts" />} />
+            <Route path="/womens/polo-shirts/:id" element={<WomensCategoryDetailsPage category="polo-shirts" />} />
+            <Route path="/womens/shirts" element={<WomensCategoryPage category="shirts" />} />
+            <Route path="/womens/shirts/:id" element={<WomensCategoryDetailsPage category="shirts" />} />
+            <Route path="/womens/t-shirts" element={<WomensCategoryPage category="t-shirts" />} />
+            <Route path="/womens/t-shirts/:id" element={<WomensCategoryDetailsPage category="t-shirts" />} />
             <Route path="/womens/:category" element={<ApparelCategory kind="womens" />} />
             <Route path="/mens/sweaters" element={<MensSweaters />} />
             <Route path="/mens/sweaters/:id" element={<MensSweaterDetails />} />
@@ -122,11 +142,13 @@ const AppLayout = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/marine-leather" element={<MarineLeather />} />
             <Route path="/automotive" element={<Automotive />} />
+            <Route path="/automotive/:productId" element={<AutomotiveDetail />} />
             <Route path="/leather-lining" element={<LeatherLining />} />
             <Route path="/leather-lining/:productId" element={<LeatherLiningDetail />} />
             <Route path="/leather-goods" element={<LeatherGoods />} />
             <Route path="/leather-goods/:productId" element={<LeatherGoodsDetail />} />
             <Route path="/contract-furniture" element={<ContractFurniture />} />
+            <Route path="/contract-furniture/:productId" element={<ContractFurnitureDetail />} />
             <Route path="/leather-footwear" element={<LeatherFootwear />} />
             <Route path="/leather-footwear/:productId" element={<LeatherFootwearDetail />} />
             <Route path="/apparel" element={<Apparel />} />

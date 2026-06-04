@@ -1,13 +1,84 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { swimLingerieProducts } from "../data/swimLingerieProducts";
+import { fetchPublicWomenApparelById } from "../api/womenApparel";
+import { toRichTextHtml } from "../utils/richText";
+
+function ColorSwatches({ variants }) {
+  const colorVariants = variants.filter((v) => v.type === "color");
+  if (colorVariants.length === 0) return null;
+
+  return (
+    <div className="flex flex-wrap gap-3">
+      {colorVariants.map((v, i) => (
+        <span
+          key={i}
+          className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-white text-neutral-600"
+        >
+          <span
+            className="w-4 h-4 rounded-full"
+            style={{ backgroundColor: v.value }}
+            aria-label={v.label}
+            title={v.label}
+          />
+          <span className="text-xs font-sans">{v.label}</span>
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function CustomVariants({ variants }) {
+  const customVariants = variants.filter((v) => v.type === "custom");
+  if (customVariants.length === 0) return null;
+
+  return (
+    <div className="flex flex-wrap gap-3">
+      {customVariants.map((v, i) => {
+        const imageUrl = v.image?.url || v.preview;
+        return (
+          <div
+            key={i}
+            className="w-24 h-24 rounded-lg overflow-hidden bg-white flex items-center justify-center p-1"
+          >
+            {imageUrl ? (
+              <img src={imageUrl} alt={v.label} className="max-w-full max-h-full object-contain rounded" />
+            ) : (
+              <span className="text-[10px] text-neutral-500 font-sans">{v.label}</span>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function SwimLingerieDetails() {
   const params = useParams();
-  const item = useMemo(
-    () => swimLingerieProducts.find((p) => p.id === params.id),
-    [params.id],
-  );
+  const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [selectedVariant, setSelectedVariant] = useState(null);
+
+  useEffect(() => {
+    const loadItem = async () => {
+      try {
+        const data = await fetchPublicWomenApparelById(params.id);
+        setItem(data);
+      } catch (error) {
+        setItem(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadItem();
+  }, [params.id]);
+
+  if (loading) {
+    return (
+      <div className="pt-32 px-4 md:px-margin-desktop max-w-container-max mx-auto min-h-screen">
+        <p className="text-on-surface-variant font-sans animate-pulse">Loading product...</p>
+      </div>
+    );
+  }
 
   if (!item) {
     return (
@@ -19,6 +90,8 @@ export default function SwimLingerieDetails() {
       </div>
     );
   }
+
+  const activeImage = selectedVariant?.image?.url || item.image?.url;
 
   return (
     <div className="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden pt-20">
@@ -45,26 +118,17 @@ export default function SwimLingerieDetails() {
 
       {/* Two-Column Details Area */}
       <div className="w-full flex flex-col lg:flex-row min-h-[500px] border-b border-neutral-100">
-        {/* Left Column: Full bleed image flush to left screen edge */}
-        <div className="w-full lg:w-1/2 bg-[#f5f5f5]">
-          <div className={`w-full h-full grid grid-cols-1 ${item.detailImages.length > 1 ? "md:grid-cols-2" : ""}`}>
-            {item.detailImages.map((src, idx) => (
-              <div key={idx} className="bg-[#f5f5f5] overflow-hidden aspect-[3/4] lg:aspect-auto min-h-[400px] lg:min-h-[700px] flex items-center justify-center p-6">
-                <img
-                  src={src}
-                  alt={item.title}
-                  className="w-full h-full object-contain"
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </div>
+        <div className="w-full lg:w-1/2 bg-[#f5f5f5] min-h-[420px] lg:min-h-[700px] overflow-hidden flex items-center justify-center p-8 md:p-12">
+          <img
+            src={activeImage}
+            alt={item.title}
+            className="max-h-[560px] lg:max-h-[620px] w-full h-auto object-contain transition-all duration-300"
+            loading="lazy"
+          />
         </div>
 
-        {/* Right Column: Numbered writings */}
         <div className="w-full lg:w-1/2 bg-white flex flex-col justify-center px-6 py-16 md:px-16 lg:px-24">
           <div className="max-w-xl space-y-12">
-            {/* Section 1 */}
             <div>
               <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">
                 1. STYLE &amp; DESIGN
@@ -74,29 +138,34 @@ export default function SwimLingerieDetails() {
               </p>
             </div>
 
-            {/* Section 2 */}
             <div>
               <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">
                 2. TECHNICAL SPECIFICATIONS
               </h2>
-              <div className="text-sm font-sans text-neutral-700 leading-relaxed font-light space-y-2">
-                {item.details.map((line, idx) => (
-                  <p key={idx}>{line}</p>
-                ))}
+              <div
+                className="prose prose-neutral max-w-none text-sm font-sans text-neutral-700 leading-relaxed font-light prose-p:my-0 prose-p:mb-2"
+                dangerouslySetInnerHTML={{ __html: toRichTextHtml(item.description) }}
+              />
+            </div>
+
+            {item.variants && item.variants.some((v) => v.type === "color") && (
+              <div>
+                <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">
+                  3. {item.colorSectionTitle || "AVAILABLE COLORS"}
+                </h2>
+                <ColorSwatches variants={item.variants} />
               </div>
-            </div>
+            )}
 
-            {/* Section 3 */}
-            <div>
-              <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">
-                3. PRODUCTION &amp; CUSTOMIZATION
-              </h2>
-              <p className="text-sm font-sans text-neutral-700 leading-relaxed font-light">
-                Designed with comfort, elasticity, and luxury touch. We offer full bespoke tailoring, colorways matching, and premium fabric weight customizations. Our manufacturing processes adhere to strict global quality and sustainability guidelines, ensuring high durability and premium wear.
-              </p>
-            </div>
+            {item.variants && item.variants.some((v) => v.type === "custom") && (
+              <div>
+                <h2 className="text-[11px] font-bold tracking-[0.3em] uppercase text-neutral-400 mb-3 font-sans">
+                  4. {item.customSectionTitle || "OPTIONS & STYLES"}
+                </h2>
+                <CustomVariants variants={item.variants} />
+              </div>
+            )}
 
-            {/* Back Button Link */}
             <div className="pt-4 border-t border-neutral-100">
               <Link
                 className="text-xs font-sans text-neutral-400 hover:text-black tracking-[0.2em] uppercase transition-colors underline underline-offset-4"

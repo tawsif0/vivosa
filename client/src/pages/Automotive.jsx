@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
+import { fetchPublicSustainableLeathers } from "../api/sustainableLeather";
 
 const sliderImages = [
   "/images/auto_slider_1.png",
@@ -62,6 +64,23 @@ const AutoSlider = () => {
 };
 
 export default function Automotive() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const data = await fetchPublicSustainableLeathers("automotive");
+        setProducts(data);
+      } catch (err) {
+        console.error("Failed to load automotive products:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadProducts();
+  }, []);
+
   return (
     <div className="bg-background text-on-background font-body-md selection:bg-on-primary-container selection:text-primary">
       <main>
@@ -298,7 +317,6 @@ export default function Automotive() {
             </div>
           </div>
         </section>
-
         {/* Section 7: SAMPLE GRID */}
         <section className="bg-secondary-container py-section-gap px-margin-desktop">
           <div className="max-w-container-max mx-auto">
@@ -317,140 +335,41 @@ export default function Automotive() {
                 </button>
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter">
-              {[
-                {
-                  code: "F08CNA",
-                  name: "Tan",
-                  type: "Nappa / Full-Grain",
-                  thickness: "1.0 – 1.2 mm",
-                  rawhide: "GB",
-                  desc: "This Nappa automotive leather is color-dyed through and embossed bovine leather. It features a completely water-based finishing process, offering a contemporary style with a smooth and silky feel.",
-                  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBMXTWlABE1FDHDLfNMMQpVQEqFst8PWm80zw3S5Lt7ifGxz4odH-DAfsRKE9z9pQs9VFBU4bvaOVsBuC3zKPBt1Ls_OJRAiFQIEuHvLyLEqRO3rfJVl_wKAI9ZWVjSh4ulD05dpU_edkjiWRLCVk3IcI6SV6U2I-VXPFpdevji2vxtNt80rGehxqYDw1qjmXXfJ3kGkMP-2X3Px14FTvrGNNS4fRnX8ccRYdwl1vD0fb2pUduCK32_C-7feFvV0D3PHfRLbt1WquE",
-                },
-                {
-                  code: "F012LECA",
-                  name: "Light Grey",
-                  type: "Semi-Aniline / Corrected Grain",
-                  thickness: "1.2 – 1.4 mm",
-                  rawhide: "Irish / GB",
-                  desc: "Features a thick, uniform finish treated with a resilient protective coating. Exceptional resistance to soiling, fading, abrasion, and cleaning solutions, while feeling natural and soft.",
-                  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCIN9GRef3wK6-MgVfPF45nKjGLDNydqpMOtwZbb9pvkSqQRX9XxAUuOwxcVHRgOKnLxPcK4wi-YW59exYvRGYwiLo4KofAJLWGdwOIY_7EOrhl-DXeKTxrNxhoERvPkXTaEqcI34JIwt6ziCP633m81dvZ14MWXzGveiouLpXgnTjBw4sOp4iLMRYG8aBwLhvaxatnThVXN8R1g7uEGQbztcNoNgCzWWsFB2ZCClhdC7lbnFNVH2Hriz17nrCMypm_xJ1I9oahwFA",
-                },
-                {
-                  code: "F029EELB",
-                  name: "Green",
-                  type: "Aniline / Full Grain",
-                  thickness: "1.2 – 1.4 mm",
-                  rawhide: "EU Sourcing",
-                  desc: "The softest, smoothest, and most premium aniline leather, while also being very strong, with a subtle batik appearance. Features the beautiful, organic markings of natural hides.",
-                  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBR1CxzW2mxYrYtpL7XjsPS4dKBNFizuh3L3AhnHaondDfie40K6PYkg9IZLPTRP_ztSiPJ2Nb6XKZ7YpfsRbHJzV48uakCWLHyqp26doL9RPkYGdluTdoVMSYC2aBktiB2rCP-EW3phFy_ZXOZsOBG6R5Xeb67vCDJQftxyN39JjxbCqO8PLOHigtHs9XPV28TMqChPO4uCoHV0sHGJb82VUStAKvbQ1et3pbAgyW747UcLAwiDg_4_HT7fuNOI3eJWrf33CMhgm4",
-                },
-                {
-                  code: "F018ELET",
-                  name: "Grey",
-                  type: "Semi-Aniline / Full Grain",
-                  thickness: "1.3 – 1.5 mm",
-                  rawhide: "EU Sourcing",
-                  desc: "Developed to meet strict automotive safety standards. Features a structured yet soft feel, combining extreme durability with the natural elegance of premium leather.",
-                  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuD3YDDwzXod-aPXAe0qVV2wlw72bN67d-LrrRkSLQQjIIc5WioT1ZT6tFmK6gy-08OCzGeXOik1ejgKWgNspmHWj_N7M0pNJtYLS-JKyCcppDcnL4WyQDWqex_oZJBDZDnMPCcZwihevHr29igRy65b9C7Kdz2lkIpJhsoHyMoi6_6Tlk6Atm1Owx9Rf9urYJG8a28uCilZFvSnvcOqPeeVx2Y5L_cMgc9yM9cg2uh24NAWWe4_wHoA75LEYVLJR8zSeJVc6i0VNa4",
-                },
-                {
-                  code: "F08WLNA",
-                  name: "Light Mauve",
-                  type: "Nappa / Full Grain",
-                  thickness: "1.0 – 1.2 mm",
-                  rawhide: "EU Sourcing",
-                  desc: "Distinctively smooth texture and a tender touch, making it the epitome of elegance. Aniline-dyed and carefully finished, perfect for upholstering luxury cars.",
-                  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCfwT3GpeVX7RyANPYg7YczIT7S8Tehs7SEmz-UardO_-3lzgtY1txsCzMLDOantS1lpRHh4tQwrm38OHZrLlgodPjyvHXegoEBBcc3odegp6p5bc6scH_7xaXvWAr4uCKDELcuKCBRAnkhY5Ju9JiCs2WYDbTAgBhV_lRtCbPCzDCJ7L4Q2QFL0CT6C_ySy5Xg6AC5WEmKWZVAz4tmiWK1CiRAXPM7GuoDGGPjsZJY6TYnvxg85_DwHnAmoQZAP0kLgZE4EohpUSQ",
-                },
-                {
-                  code: "F014WLD",
-                  name: "Leather",
-                  type: "Semi-Aniline / Pigmented",
-                  thickness: "1.1 – 1.2 mm",
-                  rawhide: "GB + EU Sourcing",
-                  desc: "Dakota's firm hand and tactile feel deliver high efficiency and dependability. Treated with premium water-based dyes and resins, blending style and everyday functionality.",
-                  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCBCRk0VN3gGRk8WHZTVCinAHrE_hCXytuO81ZMYlIgZtpFGQJXhP-BGJv5QwwpjgcEzKX7Chi4rgOlFfLUJNFHPVcGv-hanDbIN7yp-VyALmcWD9qpcbtr0YTinAzZUYFZmyMGKJtY4oVw4AHRprxNzNFY_o_EmBOxAUjmDYPCOCHTzngwU1tuz4G07GGNZLwKOp52xXU9vrA0e-IOqSMNWM3UYwPZDl_vvrqxQhcJhO1zfa2MiZ7CPdUDzofUq_wN1wf0Ije3iP8",
-                },
-                {
-                  code: "F018ELM",
-                  name: "Blue",
-                  type: "Aniline / Full Grain",
-                  thickness: "1.2 – 1.4 mm",
-                  rawhide: "GB Sourcing",
-                  desc: "Dyed with soluble aniline dyes for a soft, breathable, and luxurious finish. Ideal for premium automotive interior projects that demand absolute beauty and top performance.",
-                  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuC1_5H_g0d6y911Qe6mAi4-Y66ySxe2KtQOa1FgfAtgOja-U-GMDDqsvoyMTEDiI3mhZqBV95cemhCqUiD2ZRhpJtN6fT-tgqCiNlIU3LN7dRYF0MEXurXRLrAp8p3ZNwmIO4vJHY7gi6vA0Pc0-gmw5V31WKuI4dnLOFwEIlFUhEwnEvYY1DEol40EYKZw9NpEZoiVCh0bN7je1Wlz3SpSSl02EU2pRdLgO8jNSJcgFpEx7XUYVMN7ogpxyaGqn64yc66SzKGMK8g",
-                },
-                {
-                  code: "028MAT",
-                  name: "Ice White",
-                  type: "Semi-Aniline / Full Grain",
-                  thickness: "1.3 – 1.5 mm",
-                  rawhide: "GB Sourcing",
-                  desc: "A heavy, structured body with a soft touch. A light protective layer preserves the natural look and feel while offering high durability and stain resistance for a clean interior.",
-                  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuD_xAAvafea7t6RUbOCokwfkWzobVjcWxnY3aDWiTZHDpuFSuzNWQdmtU9NVIUnwIcXIjnxWiWz2Gbu9FTPHhzU7VK2ru44P9BTZ0q1s4NEttUTi9Ifg0mLdjFCa6YdtVy9wxEqbpFtKf3I9Xc97-7o8gBRmP3iJxu-ymI4FuqNbzX-x3fEnRQg_NHWaD-TJt4PMO7PChbVVp7PFO6cQxBvJQDojOuQBzE2C7irvMQuWFHgPBFZCxm-MgEswCFVUv44HPq26ZXhfAc",
-                },
-                {
-                  code: "010ELM",
-                  name: "Light Pink",
-                  type: "Semi-Aniline / Full Grain",
-                  thickness: "1.2 – 1.4 mm",
-                  rawhide: "European Sourcing",
-                  desc: "Features highly luxurious soft hand with self-cleaning, antiviral, and antibacterial properties. Chrome-free and metal-free, combining premium quality with sustainability.",
-                  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCIdX9HvIOsXzW9SJJK11fZGhkSVuiHSfJmuO8pWuv6moYwnHhF7mc5FFmNiMDt_FGLdCNEnniu3rYt5Y-4YJD07ybAoVoUzYKhfRKve68s_LP3YMtfCHEuDrHOkSq4IM4LzSaoLTdTVHhNQQs7bE1VjMxZo9vZy1aM4NZ9C2uU73QwD8bbv1Q72m3ovDM2biGTFa8dQiG8ElhFfgkTyY8gDSWIqhqz1K4U4nfWXxvu7HaYO3xVDKHP0PD60rvqZzB1VL1brwmk1iY",
-                },
-                {
-                  code: "F016DNMT",
-                  name: "Black",
-                  type: "Nubuck / Full Grain",
-                  thickness: "1.4 – 1.6 mm",
-                  rawhide: "EU Sourcing",
-                  desc: "Distinguished by its natural grain, offering personality and a rich, supple appearance. Features anti-stain, fire-resistant, and water-resistant properties.",
-                  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCMj-RpRx81-0OTg051514GlZ1o0T5psG6DCtFfh920kxZR4V-hw3GEXth_WXnPPK8awVFd9UX4PZRLB5BW4RxSxRnvW948dah0KaSZIjCoBQhpn5ac-k0oj1LqXnkdEkNVQ3oQrMczudDPW_chbPx8mctF4fIX16JJgJSOQ3LdZKg4hOQGyhL3TLzP4YNt8VVh6rodOs9gcvVK0D02rlaoYd2IgBcdfk2akXlJgJqONF9NoD1GxU5btUmk1xDJSI-Qapem9EvKapc",
-                },
-                {
-                  code: "F012ELMANL",
-                  name: "Brown",
-                  type: "Aniline / Full Grain",
-                  thickness: "1.3 – 1.5 mm",
-                  rawhide: "EU Sourcing",
-                  desc: "Pure Aniline representing the softest, smoothest, and most exclusive leather. Natural creases, fat lines, and small healed scars reflect its organic nature.",
-                  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDrzOcrrHnWcP4-ZDIhzHPaerzAnmbY0QTeD78AeYWdPnAt1b5Vdl-42EmThFBF6DqUAE_AGCCcRbjvWDqu5MMOqhe07lhCCHyP5B8MBocHiZEWhd4yttz1XL6Wf5kBnGvxPT23Z5m1cO6LOKNAezF78aukEdrXDiwbEVfcn0jaB0L1PNCWwWMSxI8VXjlD--25wyvTRIdr9zyaO-iqEbmVDc9me1CNhTP-YAhB4My0gAIfElrFJK3ChLv-y9owkiJ1JR20OrWjVZk",
-                },
-                {
-                  code: "F09DODA",
-                  name: "Grey",
-                  type: "Semi-Aniline / Full Grain",
-                  thickness: "1.4 – 1.6 mm",
-                  rawhide: "EU + BR Sourcing",
-                  desc: "Crafted using a special technique that adds gloss and transparency to the natural grain. With a medium thickness, it feels smooth, full, and warm to the touch.",
-                  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuD_Ft10bsuVuB_r9KQcWlHzsF-d5hVe5V0aVc2StqY0B7wMBGJLRdPbR1VSlWh0tqKh2-dphNfGEoUi7ZjXYzzBA4vnLkngMFmh56z4RDaaldgvI7lgptdU0sj3FblkN4A5f_lszS8fA__yw8UZ-0sXnvL3CAeVIWTCozBF2T_i01-zaMR0veegune4Uo7MhEx0Y1mxLxAKHsO9-shQzzT6rE7OlA-VR1_gs00gx3F_TjsNAQAE08u75gmeO7va7SitVgknXo86Y5Y",
-                },
-              ].map((sample) => (
-                <div
-                  key={sample.code}
-                  className="bg-[#FAFAF7] p-4 flex flex-col group cursor-pointer border border-transparent hover:border-outline-variant transition-all duration-300 shadow-sm"
-                >
-                  <div className="aspect-square mb-6 overflow-hidden">
-                    <img
-                      alt={`${sample.code} ${sample.name}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      src={sample.src}
-                    />
-                  </div>
-                  <span className="font-label-caps text-[10px] text-matte-gold mb-2 tracking-widest uppercase">
-                    {sample.thickness} THICKNESS
-                  </span>
-                  <h4 className="font-body-lg font-bold mb-2 text-primary">
-                    {sample.code} {sample.name}
-                  </h4>
-                  <p className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed text-sm">
-                    {sample.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
+            {loading ? (
+              <div className="text-center font-label-caps text-sm tracking-widest text-primary">
+                LOADING HIDES COLLECTION...
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter">
+                {products.map((sample) => (
+                  <Link
+                    key={sample._id}
+                    to={`/automotive/${sample._id}`}
+                    className="bg-[#FAFAF7] p-4 flex flex-col group cursor-pointer border border-transparent hover:border-outline-variant transition-all duration-300 shadow-sm text-left"
+                  >
+                    <div className="aspect-square mb-6 overflow-hidden">
+                      <img
+                        alt={`${sample.code} ${sample.name}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        src={sample.image?.url}
+                      />
+                    </div>
+                    <span className="font-label-caps text-[10px] text-matte-gold mb-2 tracking-widest uppercase">
+                      {sample.thickness} THICKNESS
+                    </span>
+                    <h4 className="font-body-lg font-bold mb-2 text-primary">
+                      {sample.code} {sample.name}
+                    </h4>
+                    {sample.desc && (
+                      <div 
+                        className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed text-sm rich-content"
+                        dangerouslySetInnerHTML={{ __html: sample.desc }}
+                      />
+                    )}
+                  </Link>
+                ))}
+              </div>
+            )}
             <div className="mt-12 text-center md:hidden">
               <button className="font-label-caps text-label-caps w-full py-4 bg-primary text-on-primary tracking-widest uppercase">
                 REQUEST SAMPLE BOOK
