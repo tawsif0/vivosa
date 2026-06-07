@@ -58,7 +58,7 @@ const Sidebar = ({
           },
           {
             tab: "sustainable-leather-footwear",
-            label: "Leather for Footwear",
+            label: "Footware",
             icon: FiFolder,
             children: [
               { tab: "sustainable-leather-footwear-create", label: "Create", icon: FiPlus },
@@ -76,7 +76,7 @@ const Sidebar = ({
           },
           {
             tab: "sustainable-leather-lining",
-            label: "Leather Lining",
+            label: "Lining",
             icon: FiFolder,
             children: [
               { tab: "sustainable-leather-lining-create", label: "Create", icon: FiPlus },
@@ -90,6 +90,15 @@ const Sidebar = ({
             children: [
               { tab: "sustainable-leather-automotive-create", label: "Create", icon: FiPlus },
               { tab: "sustainable-leather-automotive-modify", label: "Modify", icon: FiEdit },
+            ],
+          },
+          {
+            tab: "sustainable-leather-aviation",
+            label: "Aviation",
+            icon: FiFolder,
+            children: [
+              { tab: "sustainable-leather-aviation-create", label: "Create", icon: FiPlus },
+              { tab: "sustainable-leather-aviation-modify", label: "Modify", icon: FiEdit },
             ],
           },
         ],

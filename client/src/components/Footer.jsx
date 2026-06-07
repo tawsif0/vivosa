@@ -115,7 +115,7 @@ export default function Footer() {
               </li>
               <li>
                 <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/leather-footwear" onClick={(e) => { e.preventDefault(); window.location.href = "/leather-footwear"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-                  Leather for Footwear
+                  Footware
                 </a>
               </li>
               <li>
@@ -125,7 +125,7 @@ export default function Footer() {
               </li>
               <li>
                 <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/leather-lining" onClick={(e) => { e.preventDefault(); window.location.href = "/leather-lining"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-                  Leather Lining
+                  Lining
                 </a>
               </li>
               <li>
@@ -134,8 +134,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/marine-leather" onClick={(e) => { e.preventDefault(); window.location.href = "/marine-leather"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-                  Marine Leather
+                <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/aviation-leather" onClick={(e) => { e.preventDefault(); window.location.href = "/aviation-leather"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+                  Aviation
                 </a>
               </li>
             </ul>

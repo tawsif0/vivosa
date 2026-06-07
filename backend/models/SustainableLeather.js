@@ -18,7 +18,7 @@ const SustainableLeatherSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ["contract-furniture", "leather-footwear", "leather-goods", "leather-lining", "automotive"],
+      enum: ["contract-furniture", "leather-footwear", "leather-goods", "leather-lining", "automotive", "aviation"],
     },
     code: { type: String },
     name: { type: String },

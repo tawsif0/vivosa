@@ -115,12 +115,12 @@ export default function Navbar() {
       leather: {
         label: "Sustainable Leather",
         items: [
-          { label: "Contact & Furniture", href: "/contract-furniture" },
-          { label: "Leather for Footwear", href: "/leather-footwear" },
+          { label: "Contract & Furniture", href: "/contract-furniture" },
+          { label: "Footware", href: "/leather-footwear" },
           { label: "Leather Goods", href: "/leather-goods" },
-          { label: "Leather Lining", href: "/leather-lining" },
+          { label: "Lining", href: "/leather-lining" },
           { label: "Automotive", href: "/automotive" },
-          { label: "Marine Leather", href: "/marine-leather" },
+          { label: "Aviation", href: "/aviation-leather" },
         ],
       },
       mens: {

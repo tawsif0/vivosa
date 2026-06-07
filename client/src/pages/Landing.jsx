@@ -1,6 +1,49 @@
 import React, { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
+import { submitContactForm } from "../api/contact";
+
 
 export default function Landing() {
+  const [contactForm, setContactForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: ""
+  });
+  const [isSubmittingContact, setIsSubmittingContact] = useState(false);
+
+  const handleContactChange = (e) => {
+    setContactForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    if (isSubmittingContact) return;
+    setIsSubmittingContact(true);
+    try {
+      const payload = {
+        name: `${contactForm.firstName} ${contactForm.lastName}`.trim(),
+        email: contactForm.email,
+        message: contactForm.message,
+        company: "",
+        phone: "",
+        interest: "General Inquiry (Landing)"
+      };
+      await submitContactForm(payload);
+      setContactForm({
+        firstName: "",
+        lastName: "",
+        email: "",
+        message: ""
+      });
+      toast.success("Your message has been sent successfully!");
+    } catch (error) {
+      toast.error(error.response?.data?.error || "Failed to send message");
+    } finally {
+      setIsSubmittingContact(false);
+    }
+  };
+
   const logoScrollRef = useRef(null);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
   const [isLogoDragging, setIsLogoDragging] = useState(false);
@@ -263,7 +306,7 @@ export default function Landing() {
                   OUR MISSION
                 </h4>
                 <p className="mb-3">
-                  Our mission is to work with our partners to create a brighter future for people, the region, and for the coming generation by fostering a work culture and a love of excellence.
+                  Our mission is to work with our partners to create a brighter future. Engaging with us means we invite our clients to join.
                 </p>
                 <p>
                   In our commitment to sustainability, we actively seek social, economic, and environmental sustainability, placing a high priority on the welfare of our employees and the community, prioritizing constant enhancement and proactive growth.
@@ -521,24 +564,31 @@ export default function Landing() {
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* ─── LEFT: APPAREL ─── */}
           <div
-            className="relative group overflow-hidden cursor-pointer"
-            style={{ height: "clamp(480px, 70vh, 780px)" }}
+            className="relative group overflow-hidden cursor-pointer flex items-center justify-center bg-[#05110c]"
+            style={{ height: "420px" }}
             onClick={() =>
               setApparelSlide((prev) => (prev + 1) % apparelSlides.length)
             }
           >
-            {/* Slider image with Ken Burns zoom */}
+            {/* Background blurred image to fill space beautifully without pixelation */}
             <img
-              key={`apparel-${apparelSlide}`}
+              key={`apparel-bg-${apparelSlide}`}
+              src={apparelSlides[apparelSlide].src}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-35 scale-110 pointer-events-none"
+            />
+
+            {/* Foreground crisp native 300x300 resolution image */}
+            <img
+              key={`apparel-fg-${apparelSlide}`}
               src={apparelSlides[apparelSlide].src}
               alt={apparelSlides[apparelSlide].alt}
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ animation: "kenBurnsZoom 6s ease-out forwards" }}
+              className="relative w-[300px] h-[300px] object-contain z-10 pointer-events-none drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)] transition-transform duration-700 group-hover:scale-105 mb-12"
               loading="eager"
             />
 
-            {/* Rich gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/10 pointer-events-none" />
+            {/* Rich gradient overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#020705]/95 via-[#020705]/40 to-transparent pointer-events-none z-10" />
 
             {/* Gold vertical divider on right edge (desktop) */}
             <div
@@ -565,18 +615,18 @@ export default function Landing() {
             </div>
 
             {/* Bottom content */}
-            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
-              <h3 className="font-display-lg text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-widest uppercase leading-none mb-4">
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
+              <h3 className="font-display-lg text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-widest uppercase leading-none mb-3">
                 APPAREL
               </h3>
 
               {/* Animated underline */}
               <div
-                className="h-[2px] mb-5 transition-all duration-700 origin-left group-hover:w-24"
+                className="h-[2px] mb-4 transition-all duration-700 origin-left group-hover:w-24"
                 style={{ width: "3rem", background: "#cda250" }}
               />
 
-              <p className="text-white/70 text-sm leading-relaxed max-w-sm mb-7 font-body-lg">
+              <p className="text-white/70 text-xs leading-relaxed max-w-sm mb-4 font-body-lg">
                 Knitwear, woven, denim &amp; workwear — sourced from
                 Bangladesh's finest BSCI-certified, sustainably operating
                 factories.
@@ -617,21 +667,31 @@ export default function Landing() {
 
           {/* ─── RIGHT: LEATHER ─── */}
           <div
-            className="relative group overflow-hidden cursor-pointer"
-            style={{ height: "clamp(480px, 70vh, 780px)" }}
+            className="relative group overflow-hidden cursor-pointer flex items-center justify-center bg-[#05110c]"
+            style={{ height: "420px" }}
             onClick={() =>
               setLeatherSlide((prev) => (prev + 1) % leatherSlides.length)
             }
           >
+            {/* Background blurred image to fill space beautifully without pixelation */}
             <img
-              key={`leather-${leatherSlide}`}
+              key={`leather-bg-${leatherSlide}`}
+              src={leatherSlides[leatherSlide].src}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-35 scale-110 pointer-events-none"
+            />
+
+            {/* Foreground crisp native 300x300 resolution image */}
+            <img
+              key={`leather-fg-${leatherSlide}`}
               src={leatherSlides[leatherSlide].src}
               alt={leatherSlides[leatherSlide].alt}
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ animation: "kenBurnsZoom 7s ease-out forwards" }}
+              className="relative w-[300px] h-[300px] object-contain z-10 pointer-events-none drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)] transition-transform duration-700 group-hover:scale-105 mb-12"
               loading="eager"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/10 pointer-events-none" />
+
+            {/* Rich gradient overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#020705]/95 via-[#020705]/40 to-transparent pointer-events-none z-10" />
 
             {/* Category badge */}
             <div className="absolute top-8 left-8 z-10">
@@ -648,17 +708,17 @@ export default function Landing() {
             </div>
 
             {/* Bottom content */}
-            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
-              <h3 className="font-display-lg text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-widest uppercase leading-none mb-4">
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
+              <h3 className="font-display-lg text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-widest uppercase leading-none mb-3">
                 LEATHER
               </h3>
 
               <div
-                className="h-[2px] mb-5 transition-all duration-700 origin-left group-hover:w-24"
+                className="h-[2px] mb-4 transition-all duration-700 origin-left group-hover:w-24"
                 style={{ width: "3rem", background: "#cda250" }}
               />
 
-              <p className="text-white/70 text-sm leading-relaxed max-w-sm mb-7 font-body-lg">
+              <p className="text-white/70 text-xs leading-relaxed max-w-sm mb-4 font-body-lg">
                 Premium Italian-tanned hides for furniture, footwear, leather
                 goods &amp; automotive — over 1,000 articles in a vast range of
                 colours and finishes.
@@ -785,8 +845,8 @@ export default function Landing() {
               <div className="absolute -bottom-4 -left-4 w-full h-full border border-[#0e7448]/30 rounded-lg pointer-events-none -z-10 group-hover:-translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-2xl border border-outline/10 bg-surface-container">
                 <img
-                  src="/slides/slide_leather_row.jpg"
-                  alt="Premium Leather Processing Factory"
+                  src="/slides/slide_leather_sourcing.png"
+                  alt="Premium finished leather swatches for sourcing"
                   className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                   loading="lazy"
                 />
@@ -924,7 +984,7 @@ export default function Landing() {
           <div className="md:w-1/2 bg-off-white p-6 sm:p-10 lg:p-20 text-on-surface">
             <form
               className="space-y-8"
-              onSubmit={(event) => event.preventDefault()}
+              onSubmit={handleContactSubmit}
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <div className="relative">
@@ -935,6 +995,9 @@ export default function Landing() {
                     className="w-full bg-transparent border-0 border-b border-deep-forest py-2 focus:ring-0 focus:border-deep-forest transition-colors px-0"
                     type="text"
                     name="firstName"
+                    value={contactForm.firstName}
+                    onChange={handleContactChange}
+                    required
                   />
                 </div>
                 <div className="relative">
@@ -945,6 +1008,9 @@ export default function Landing() {
                     className="w-full bg-transparent border-0 border-b border-deep-forest py-2 focus:ring-0 focus:border-deep-forest transition-colors px-0"
                     type="text"
                     name="lastName"
+                    value={contactForm.lastName}
+                    onChange={handleContactChange}
+                    required
                   />
                 </div>
               </div>
@@ -957,6 +1023,9 @@ export default function Landing() {
                   className="w-full bg-transparent border-0 border-b border-deep-forest py-2 focus:ring-0 focus:border-deep-forest transition-colors px-0"
                   type="email"
                   name="email"
+                  value={contactForm.email}
+                  onChange={handleContactChange}
+                  required
                 />
               </div>
 
@@ -968,14 +1037,18 @@ export default function Landing() {
                   className="w-full bg-transparent border-0 border-b border-deep-forest py-2 focus:ring-0 focus:border-deep-forest transition-colors px-0 resize-none"
                   rows="4"
                   name="message"
+                  value={contactForm.message}
+                  onChange={handleContactChange}
+                  required
                 ></textarea>
               </div>
 
               <button
-                className="w-full py-5 bg-deep-forest text-off-white font-label-caps uppercase tracking-widest hover:bg-gold-accent hover:text-pure-black transition-all duration-500 flex items-center justify-center gap-3"
+                disabled={isSubmittingContact}
+                className="w-full py-5 bg-deep-forest text-off-white font-label-caps uppercase tracking-widest hover:bg-gold-accent hover:text-pure-black transition-all duration-500 flex items-center justify-center gap-3 disabled:opacity-50"
                 type="submit"
               >
-                Send Message
+                {isSubmittingContact ? "Sending..." : "Send Message"}
                 <span className="material-symbols-outlined">send</span>
               </button>
             </form>

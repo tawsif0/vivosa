@@ -161,65 +161,82 @@ const ContactUsers = ({ onUnreadCountChange }) => {
           <div className="p-6 text-center text-slate-600">No contact submissions found.</div>
         ) : (
           <div className="space-y-3 p-3 sm:p-4">
-            {contacts.map((contact) => (
-              <motion.div
-                key={contact._id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5"
-              >
-                <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
-                  <div className="min-w-0 flex-1 space-y-3">
-                    <div className="flex flex-wrap items-center gap-3">
-                      <h3 className="text-lg font-semibold text-slate-900">{contact.name}</h3>
-                      <span
-                        className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${
-                          contact.status === "read"
-                            ? "bg-emerald-100 text-emerald-700"
-                            : "bg-amber-100 text-amber-700"
-                        }`}
-                      >
-                        {contact.status || "new"}
-                      </span>
-                    </div>
-                    <div className="grid gap-2 text-sm text-slate-600 sm:grid-cols-2">
-                      <p>
-                        <span className="font-semibold text-slate-900">Company:</span>{" "}
-                        {contact.company || "-"}
-                      </p>
-                      <p>
-                        <span className="font-semibold text-slate-900">Email:</span>{" "}
-                        {contact.email ? (
-                          <a
-                            href={`mailto:${contact.email}`}
-                            className="inline-flex items-center text-slate-700 transition-colors hover:text-emerald-700 hover:underline hover:underline-offset-4"
-                            aria-label={`Email ${contact.name || "contact"}`}
-                          >
-                            {contact.email}
-                          </a>
+            {contacts.map((contact) => {
+              const isGetInTouch = contact.interest?.includes("(Landing)");
+              return (
+                <motion.div
+                  key={contact._id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5"
+                >
+                  <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
+                    <div className="min-w-0 flex-1 space-y-3">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <h3 className="text-lg font-semibold text-slate-900">{contact.name}</h3>
+                        <span
+                          className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${
+                            contact.status === "read"
+                              ? "bg-emerald-100 text-emerald-700"
+                              : "bg-amber-100 text-amber-700"
+                          }`}
+                        >
+                          {contact.status || "new"}
+                        </span>
+                        {isGetInTouch ? (
+                          <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-1 text-xs font-semibold text-blue-700">
+                            Get In Touch
+                          </span>
                         ) : (
-                          "-"
+                          <span className="inline-flex items-center rounded-full bg-slate-200 px-2.5 py-1 text-xs font-semibold text-slate-700">
+                            Contact Page
+                          </span>
                         )}
-                      </p>
-                      <p>
-                        <span className="font-semibold text-slate-900">Phone:</span>{" "}
-                        {contact.phone ? (
-                          <a
-                            href={`tel:${String(contact.phone).replace(/[^\d+]/g, "")}`}
-                            className="inline-flex items-center text-slate-700 transition-colors hover:text-emerald-700 hover:underline hover:underline-offset-4"
-                            aria-label={`Call ${contact.name || "contact"}`}
-                          >
-                            {contact.phone}
-                          </a>
-                        ) : (
-                          "-"
+                      </div>
+                      <div className="grid gap-2 text-sm text-slate-600 sm:grid-cols-2">
+                        {(!isGetInTouch || contact.company) && (
+                          <p>
+                            <span className="font-semibold text-slate-900">Company:</span>{" "}
+                            {contact.company || "-"}
+                          </p>
                         )}
-                      </p>
-                      <p>
-                        <span className="font-semibold text-slate-900">Interest:</span>{" "}
-                        {contact.interest || "-"}
-                      </p>
-                    </div>
+                        <p>
+                          <span className="font-semibold text-slate-900">Email:</span>{" "}
+                          {contact.email ? (
+                            <a
+                              href={`mailto:${contact.email}`}
+                              className="inline-flex items-center text-slate-700 transition-colors hover:text-emerald-700 hover:underline hover:underline-offset-4"
+                              aria-label={`Email ${contact.name || "contact"}`}
+                            >
+                              {contact.email}
+                            </a>
+                          ) : (
+                            "-"
+                          )}
+                        </p>
+                        {(!isGetInTouch || contact.phone) && (
+                          <p>
+                            <span className="font-semibold text-slate-900">Phone:</span>{" "}
+                            {contact.phone ? (
+                              <a
+                                href={`tel:${String(contact.phone).replace(/[^\d+]/g, "")}`}
+                                className="inline-flex items-center text-slate-700 transition-colors hover:text-emerald-700 hover:underline hover:underline-offset-4"
+                                aria-label={`Call ${contact.name || "contact"}`}
+                              >
+                                {contact.phone}
+                              </a>
+                            ) : (
+                              "-"
+                            )}
+                          </p>
+                        )}
+                        {!isGetInTouch && (
+                          <p>
+                            <span className="font-semibold text-slate-900">Interest:</span>{" "}
+                            {contact.interest || "-"}
+                          </p>
+                        )}
+                      </div>
                     <div className="rounded-2xl border border-slate-200 bg-white p-4">
                       <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
                         <FiMessageSquare className="h-4 w-4" />
@@ -257,7 +274,8 @@ const ContactUsers = ({ onUnreadCountChange }) => {
                   </div>
                 </div>
               </motion.div>
-            ))}
+            );
+          })}
           </div>
         )}
       </div>

@@ -25,6 +25,8 @@ import LeatherLiningCreate from "./LeatherLiningCreate";
 import LeatherLiningModify from "./LeatherLiningModify";
 import AutomotiveCreate from "./AutomotiveCreate";
 import AutomotiveModify from "./AutomotiveModify";
+import AviationCreate from "./AviationCreate";
+import AviationModify from "./AviationModify";
 import { useAuth } from "../hooks/useAuth";
 import { fetchAdminContacts } from "../api/contact";
 
@@ -91,6 +93,8 @@ const Dashboard = () => {
       "sustainable-leather-lining-modify",
       "sustainable-leather-automotive-create",
       "sustainable-leather-automotive-modify",
+      "sustainable-leather-aviation-create",
+      "sustainable-leather-aviation-modify",
     ];
     return allowed.includes(saved) ? saved : "dashboard";
   });
@@ -247,6 +251,7 @@ const Dashboard = () => {
         if (activeTab.includes("goods")) return <LeatherGoodsCreate />;
         if (activeTab.includes("lining")) return <LeatherLiningCreate />;
         if (activeTab.includes("automotive")) return <AutomotiveCreate />;
+        if (activeTab.includes("aviation")) return <AviationCreate />;
       }
       if (activeTab.endsWith("-modify")) {
         if (activeTab.includes("contract-furniture")) return <ContractFurnitureModify />;
@@ -254,6 +259,7 @@ const Dashboard = () => {
         if (activeTab.includes("goods")) return <LeatherGoodsModify />;
         if (activeTab.includes("lining")) return <LeatherLiningModify />;
         if (activeTab.includes("automotive")) return <AutomotiveModify />;
+        if (activeTab.includes("aviation")) return <AviationModify />;
       }
     }
 

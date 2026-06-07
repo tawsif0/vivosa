@@ -12,7 +12,8 @@ const Landing = lazy(() => import("./pages/Landing"));
 const Mensware = lazy(() => import("./pages/Mensware"));
 const Womenswear = lazy(() => import("./pages/Womenswear"));
 const Contact = lazy(() => import("./pages/Contact"));
-const MarineLeather = lazy(() => import("./pages/MarineLeather"));
+const AviationLeather = lazy(() => import("./pages/AviationLeather"));
+const AviationLeatherDetail = lazy(() => import("./pages/AviationLeatherDetail"));
 const Automotive = lazy(() => import("./pages/Automotive"));
 const LeatherLining = lazy(() => import("./pages/LeatherLining"));
 const LeatherLiningDetail = lazy(() => import("./pages/LeatherLiningDetail"));
@@ -140,7 +141,8 @@ const AppLayout = () => {
             <Route path="/womens/pants" element={<WomensPants />} />
             <Route path="/womens/pants/:id" element={<WomensPantsDetails />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/marine-leather" element={<MarineLeather />} />
+            <Route path="/aviation-leather" element={<AviationLeather />} />
+            <Route path="/aviation-leather/:productId" element={<AviationLeatherDetail />} />
             <Route path="/automotive" element={<Automotive />} />
             <Route path="/automotive/:productId" element={<AutomotiveDetail />} />
             <Route path="/leather-lining" element={<LeatherLining />} />

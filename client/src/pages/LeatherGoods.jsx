@@ -149,31 +149,25 @@ export default function LeatherGoods() {
         {/* LEATHER GOODS GRID */}
         <section className="bg-surface-container-low py-section-gap px-margin-mobile md:px-margin-desktop">
           <div className="max-w-container-max mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
               {leatherGoodsProducts.map((product) => (
                 <Link
                   key={product._id}
                   to={`/leather-goods/${product._id}`}
-                  className="bg-white border border-outline-variant/30 flex flex-col group transition-all duration-500 hover:border-matte-gold/50 shadow-sm text-left"
+                  className="flex flex-col group cursor-pointer border border-neutral-200 overflow-hidden bg-white hover:shadow-md transition-all duration-300 text-center"
                 >
-                  <div className="aspect-[4/3] overflow-hidden">
+                  <div className="aspect-[4/3] w-full overflow-hidden bg-white">
                     <img
-                      alt={product.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      alt={product.title || product.name}
                       src={product.image?.url}
+                      loading="lazy"
                     />
                   </div>
-                  <div className="p-8 flex flex-col flex-grow">
-                    <h3 className="font-headline-md text-headline-md text-primary mb-3 leading-snug">
-                      {product.title}
-                    </h3>
-                    <p className="text-xs text-matte-gold mb-4 font-bold tracking-tight uppercase">
-                      {product.thickness} • {product.rawhide} Origin
-                    </p>
-                    <div 
-                      className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed rich-content"
-                      dangerouslySetInnerHTML={{ __html: product.desc }}
-                    />
+                  <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
+                    <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase font-bold">
+                      {product.code}
+                    </h4>
                   </div>
                 </Link>
               ))}

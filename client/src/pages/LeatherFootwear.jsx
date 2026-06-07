@@ -422,35 +422,20 @@ export default function LeatherFootwear() {
                 <Link
                   key={sample._id}
                   to={`/leather-footwear/${sample._id}`}
-                  className="bg-white overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-outline/10 hover-lift hover-lift-gold transition-all duration-500 flex flex-col rounded-xl group text-left"
+                  className="flex flex-col group cursor-pointer border border-neutral-200 overflow-hidden bg-white hover:shadow-md transition-all duration-300 text-center"
                 >
-                  <div className="aspect-[350/300] bg-surface overflow-hidden relative border-b border-outline/10">
+                  <div className="aspect-[4/3] w-full overflow-hidden bg-white">
                     <img
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      alt={sample.fullName}
+                      alt={sample.fullName || sample.name}
                       src={sample.image?.url}
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-accent-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   </div>
-                  <div className="p-6 md:p-7 flex flex-col flex-grow">
-                    <h4 className="font-display text-[15px] md:text-[16px] text-primary font-bold leading-snug mb-3 group-hover:text-accent-gold transition-colors duration-300">
-                      {sample.fullName}
+                  <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
+                    <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase">
+                      {sample.code}
                     </h4>
-                    <p className="text-[13px] text-secondary font-bold leading-normal mb-1">
-                      Thickness: <span className="font-normal text-secondary/80">{sample.thickness}</span>
-                    </p>
-                    <p className="text-[13px] text-secondary font-bold leading-normal mb-4">
-                      Rawhide: <span className="font-normal text-secondary/80">{sample.rawhide}</span>
-                    </p>
-                    <div 
-                      className="text-[13px] text-secondary/70 leading-relaxed font-body mb-4 flex-grow rich-content"
-                      dangerouslySetInnerHTML={{ __html: sample.desc }}
-                    />
-                    <div className="flex items-center gap-2 text-accent-gold font-label-caps text-[11px] font-bold tracking-widest mt-auto border-t border-gray-100 pt-4 group-hover:text-primary transition-colors duration-300">
-                      <span>View Specifications</span>
-                      <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
-                    </div>
                   </div>
                 </Link>
               ))}

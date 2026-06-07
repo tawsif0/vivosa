@@ -345,27 +345,20 @@ export default function Automotive() {
                   <Link
                     key={sample._id}
                     to={`/automotive/${sample._id}`}
-                    className="bg-[#FAFAF7] p-4 flex flex-col group cursor-pointer border border-transparent hover:border-outline-variant transition-all duration-300 shadow-sm text-left"
+                    className="flex flex-col group cursor-pointer border border-neutral-200 overflow-hidden bg-white hover:shadow-md transition-all duration-300 text-center"
                   >
-                    <div className="aspect-square mb-6 overflow-hidden">
+                    <div className="aspect-[4/3] w-full overflow-hidden bg-white">
                       <img
                         alt={`${sample.code} ${sample.name}`}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         src={sample.image?.url}
                       />
                     </div>
-                    <span className="font-label-caps text-[10px] text-matte-gold mb-2 tracking-widest uppercase">
-                      {sample.thickness} THICKNESS
-                    </span>
-                    <h4 className="font-body-lg font-bold mb-2 text-primary">
-                      {sample.code} {sample.name}
-                    </h4>
-                    {sample.desc && (
-                      <div 
-                        className="font-body-md text-on-surface-variant line-clamp-3 leading-relaxed text-sm rich-content"
-                        dangerouslySetInnerHTML={{ __html: sample.desc }}
-                      />
-                    )}
+                    <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
+                      <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase">
+                        {sample.code}
+                      </h4>
+                    </div>
                   </Link>
                 ))}
               </div>

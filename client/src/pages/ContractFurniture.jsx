@@ -340,37 +340,19 @@ export default function ContractFurniture() {
                 <Link
                   key={swatch._id}
                   to={`/contract-furniture/${swatch._id}`}
-                  className="bg-surface-container-low group cursor-pointer border border-primary/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col h-full text-left"
+                  className="flex flex-col group cursor-pointer border border-neutral-200 overflow-hidden bg-white hover:shadow-md transition-all duration-300 text-center"
                 >
-                  <div className="aspect-[4/3] relative overflow-hidden bg-white">
+                  <div className="aspect-[4/3] w-full overflow-hidden bg-white">
                     <img 
                       src={swatch.image?.url} 
                       alt={swatch.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
-                  <div className="p-8 bg-[#F5F0E8]/40 flex-grow flex flex-col">
-                    <div className="flex justify-between items-start mb-4">
-                      <span className="font-label-caps text-[12px] text-secondary tracking-[0.1em] uppercase bg-white px-2 py-1 rounded-sm shadow-sm">
-                        {swatch.code}
-                      </span>
-                      <span className="text-[11px] font-label-caps text-matte-gold font-bold flex flex-col items-end">
-                        <span className="text-secondary/50 text-[9px]">RAWHIDE</span>
-                        {swatch.rawhide}
-                      </span>
-                    </div>
-                    <h3 className="font-headline-md text-2xl text-primary mb-2">
-                      {swatch.name}
-                    </h3>
-                    <p className="font-label-caps text-[11px] text-secondary/80 mb-4 tracking-wider uppercase border-b border-primary/10 pb-4">
-                      {swatch.type} • {swatch.thickness}
-                    </p>
-                    {swatch.productDetails && (
-                      <div 
-                        className="font-body-sm text-secondary/70 leading-relaxed flex-grow text-[13px] rich-content"
-                        dangerouslySetInnerHTML={{ __html: swatch.productDetails }}
-                      />
-                    )}
+                  <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
+                    <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase">
+                      {swatch.code}
+                    </h4>
                   </div>
                 </Link>
               ))}

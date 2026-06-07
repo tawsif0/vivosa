@@ -63,7 +63,7 @@ export default function About() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
               <div className="space-y-6 font-body text-body-lg text-secondary leading-relaxed">
                 <p>
-                  Vivosa is an authentically, dynamic company based in the UK, operating in both the leather and apparel industries. It was founded by professionals with over 30 years of experience in each sector, bringing proven technical expertise and a constant drive to embrace new challenges and achieve meaningful goals.
+                  Vivosa is a dynamic company based in the UK with an office and factory in Bangladesh, operating in both the leather and apparel industries. It was founded by professionals with over 30 years of experience in each sector, bringing proven technical expertise and a constant drive to embrace new challenges and achieve meaningful goals.
                 </p>
                 <p>
                   Our primary objective is to source materials ethically from our sister companies—experienced, environmentally conscious manufacturers with a long-standing commitment to quality. This approach enables us to strengthen our presence in the UK, Europe, and other international markets, supported by sustainable manufacturing partners who have been delivering high-quality products for over 50 years. By prioritizing ethical sourcing, leveraging extensive industry experience, and focusing on sustainability, we provide products that meet the highest standards and contribute to responsible business practices.
@@ -163,7 +163,7 @@ export default function About() {
                   <span className="text-[#ffaa00]">Footwear</span>,{" "}
                   <span className="text-[#2b8a3e]">Leather goods</span>,{" "}
                   <span className="text-[#e03131]">automotive</span>, and the{" "}
-                  <span className="text-[#c2255c]">marine industry</span>
+                  <span className="text-[#c2255c]">aviation industry</span>
                 </div>
               </div>
             </div>
@@ -188,10 +188,10 @@ export default function About() {
                   A country with a rich textile heritage that has been renowned for centuries. The textiles of historic Bengal were famous for their fine cotton and exceptional weaving, a tradition that continues today. This enduring craftsmanship ensures high-quality fabrics for modern apparel.
                 </p>
                 <p>
-                  Another reason we source from Bangladesh is that it is a top choice for garment production due to its cost competitiveness, superior quality, and large, skilled workforce. The country has a well-established textile infrastructure, specializing in the mass production of knitwear, woven, denim, and other garments, and serving millions of clients globally. Its commitment to innovation and consistent standards ensures that each product meets international expectations.
+                  Another reason we source from Bangladesh is that it is a top choice for garment buyers due to its cost competitiveness, superior quality, and skilled workforce. The country has a well-established textile infrastructure, specializing in the mass production of knitwear, woven, denim, and other garments, and serving millions of clients globally. Its commitment to innovation and consistent standards ensures that each product meets international expectations.
                 </p>
                 <p>
-                  Most factories in Bangladesh are increasingly compliant with international safety and sustainability standards. Additionally, its vertical integration allows for efficient, large-scale production and quicker lead times, making it a reliable sourcing hub. However, we also source from other countries, such as Vietnam, China, and India, to meet specific customer requirements. We partner only with manufacturers who operate sustainably, are certified, follow fair business practices, and comply with international standards.
+                  Most factories in Bangladesh are compliant with international safety and sustainability standards. Additionally, its vertical integration allows for efficient, large-scale production and quicker lead times, making it a reliable sourcing hub. However, we also source from other countries, such as Vietnam, China, and India, to meet specific customer requirements. We partner only with manufacturers who operate sustainably, are certified, follow fair business practices, and comply with international standards.
                 </p>
               </div>
               <div className="md:col-span-5 order-1 md:order-2 mb-12 md:mb-0">
