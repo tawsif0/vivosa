@@ -396,11 +396,11 @@ export default function LeatherFootwear() {
               </span>
               
               <h3 className="font-display text-headline-lg md:text-headline-xl text-primary leading-tight max-w-4xl mx-auto mb-6">
-                Explore some of our traditional leather articles and popular colours, shown here with their final finishes.
+                Available Now
               </h3>
               
               <p className="font-body text-body-lg text-secondary max-w-3xl mx-auto leading-relaxed">
-                This is just an example—our full range includes many articles, colours, and finishes for a variety of applications, all available with customisation options. Please get in touch with us to find the articles and colours best suited for your project.
+                Explore a selection of some popular articles from our trusted manufacturers, each presented in finished form. A number of these articles are held in stock for rapid delivery with low MOQs— Please get in touch with us to find the articles and colours best suited to your project.
               </p>
             </div>
           </div>
@@ -432,11 +432,13 @@ export default function LeatherFootwear() {
                       loading="lazy"
                     />
                   </div>
-                  <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
-                    <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase">
-                      {sample.code}
-                    </h4>
-                  </div>
+                  {(sample.code?.trim() || sample.name?.trim()) && (
+                    <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
+                      <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase">
+                        {sample.code || sample.name || sample.title}
+                      </h4>
+                    </div>
+                  )}
                 </Link>
               ))}
             </div>
@@ -455,13 +457,27 @@ export default function LeatherFootwear() {
                   workspace_premium
                 </span>
                 <span className="font-label-caps text-label-caps text-accent-gold tracking-widest text-xs font-bold">
-                  Bespoke Sourcing &amp; Customization
+                  CRAFTSMANSHIP &amp; RESPONSIBILITY
                 </span>
               </div>
 
-              <p className="font-body text-body-lg text-secondary leading-relaxed">
-                <strong className="text-primary font-bold border-b border-accent-gold/40 pb-0.5">We offer</strong> a wide range of collections, as mentioned earlier. Please contact us if you are interested in other articles, different colours, or if you would like to send us a sample. We will deliver <span className="text-primary font-semibold underline decoration-accent-gold/50 decoration-2 underline-offset-4">exceptional, expertly finished products</span> that bring endless beauty to your project. We prioritize our clients’ values and preferences, and they are always welcome to <span className="text-accent-gold font-bold">customize any product to meet their specific requirements</span>, as long as it complies with international standards and regulations.
-              </p>
+              <div className="font-body text-body-lg text-secondary leading-relaxed space-y-6">
+                <p>
+                  Each article shown above carries its own story of skilled craftsmanship, produced with a commitment to sustainability and responsible manufacturing.
+                </p>
+                <p>
+                  Through close collaboration with our trusted partners, we craft an extensive range of exquisite leathers to suit every vision — <strong>pure aniline, semi-aniline, full grain, fine grain, Nappa, Nubuck, and many more.</strong>
+                </p>
+                <p>
+                  Each leather is designed with comfort, breathability, and timeless appeal, with optional treatments available on request, including anti-stain, fire-retardant, moisture-wicking, and other innovative technological finishes. Choose from a wide palette of colours and finishes, with options including vegetable tanning and a variety of dyed finishes.
+                </p>
+                <p>
+                  We invite you to get in touch to discuss your project requirements, or to send us a sample alongside your specifications. Our team is ready to help guide you towards an exceptional result. We take pride in delivering expertly finished products that bring lasting beauty to every project we're part of.
+                </p>
+                <p>
+                  Your vision matters to us. We welcome customisation requests to meet your specific needs, ensuring all solutions align with the relevant standards and regulations.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -475,7 +491,7 @@ export default function LeatherFootwear() {
                   Ethical Sourcing
                 </span>
                 <h2 className="font-display text-[36px] md:text-display-lg mb-8 text-white leading-tight">
-                  Quality &amp; Sustainability
+                  Quality and Sustainability
                   <br />
                   in Leather Supply
                 </h2>
@@ -490,9 +506,10 @@ export default function LeatherFootwear() {
                     "Tanning & retanning methods",
                     "Defect classification",
                     "Drying techniques",
-                    "Refinishing processes",
+                    "Finishing processes",
                     "Technical sheets & certifications",
-                    "Manufacturing facility details"
+                    "Manufacturing facility details",
+                    "And much more"
                   ].map((item, index) => (
                     <div key={index} className="flex items-start group">
                       <div className="w-5 h-5 rounded-md border border-accent-gold/40 flex items-center justify-center bg-accent-gold/10 mt-0.5 group-hover:border-accent-gold transition-colors duration-300 flex-shrink-0">

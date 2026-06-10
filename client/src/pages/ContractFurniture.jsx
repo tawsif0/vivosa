@@ -330,7 +330,7 @@ export default function ContractFurniture() {
                   Traditional &amp; Popular Leather Articles
                 </h2>
                 <p className="font-body-lg text-secondary/80 max-w-4xl">
-                  Discover a selection of traditional and popular leather articles and colors from our sister manufacturers, shown as they appear in finished form. This is just an example—our range includes many other articles for a variety of applications, all available with customization options. Please contact us to find the leather that is best suited for your project.
+                  Explore a selection of some popular articles from our trusted manufacturers, each presented in finished form. A number of these articles are held in stock for rapid delivery with low MOQs—please get in touch if you have a project that suits any of them.
                 </p>
               </div>
             </div>
@@ -349,18 +349,32 @@ export default function ContractFurniture() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
-                  <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
-                    <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase">
-                      {swatch.code}
-                    </h4>
-                  </div>
+                  {(swatch.code?.trim() || swatch.name?.trim()) && (
+                    <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
+                      <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase font-bold">
+                        {swatch.code || swatch.name || swatch.title}
+                      </h4>
+                    </div>
+                  )}
                 </Link>
               ))}
             </div>
             
-            <div className="mt-16 bg-surface-container-low p-8 border-l-4 border-matte-gold">
-              <p className="font-body-md text-primary/80 italic">
-                We offer a wide range of collections, as mentioned above. Please contact us if you are interested in other articles, different colours, or if you would like to send us a sample. We are dedicated to providing exceptional, expertly finished products that bring lasting beauty to your projects. We value our clients' preferences and welcome customization requests to meet specific requirements, as long as they comply with international standards and regulations.
+            <div className="mt-16 bg-surface-container-low p-8 border-l-4 border-matte-gold text-left space-y-6">
+              <h4 className="font-headline-sm text-headline-sm text-primary font-bold">
+                Craftsmanship &amp; Responsibility
+              </h4>
+              <p className="font-body-md text-primary/80 leading-relaxed">
+                Each article shown above carries its own story of skilled craftsmanship, produced with a commitment to sustainability and responsible manufacturing.
+              </p>
+              <p className="font-body-md text-primary/80 leading-relaxed">
+                Through close collaboration with our trusted partners, we are able to offer an extensive range of collections to suit every vision. Choose from a wide palette of colours and finishes, with options including vegetable tanning and a variety of dyed finishes.
+              </p>
+              <p className="font-body-md text-primary/80 leading-relaxed">
+                We invite you to get in touch to discuss your project requirements, or to send us a sample alongside your specifications. Our team is ready to help guide you towards an exceptional result. We take pride in delivering expertly finished products that bring lasting beauty to every project we're part of.
+              </p>
+              <p className="font-body-md text-primary/80 leading-relaxed">
+                Your vision matters to us. We welcome customisation requests to meet your specific needs, ensuring all solutions align with the relevant standards and regulations.
               </p>
             </div>
           </div>
@@ -377,7 +391,7 @@ export default function ContractFurniture() {
                 Quality & Sustainability in Leather Supply
               </h2>
               <p className="font-body-lg text-body-lg text-white/70 mb-8 leading-relaxed">
-                We work with leading sustainable leather manufacturers to supply high-quality leather directly to our customers, with no third parties or intermediaries involved. Our QC team carefully inspects each hide to ensure it meets strict quality and sustainability standards. Approximately 90% of our manufacturing partners are based in Europe, and 85% of our rawhide is European. Although most of our partners are located outside the UK, we maintain full oversight to guarantee excellence. If you would like more information about our leathers or processes, including:
+                We work with leading sustainable leather manufacturers to supply high-quality leather directly to our customers, with no third parties or intermediaries involved. Our QC team carefully inspects each hide to ensure it meets strict quality and sustainability standards. Approximately 90% of our manufacturing partners are based in Europe, and 85% of our raw hide is European. While most of our partners are located outside the UK, we maintain full oversight to guarantee excellence. If you would like more information about our leathers or processes, including:
               </p>
             </div>
             {/* Hard-coded checklist */}
@@ -387,9 +401,10 @@ export default function ContractFurniture() {
                 "Tanning & retanning methods",
                 "Defect classification",
                 "Drying techniques",
-                "Refinishing processes",
+                "Finishing processes",
                 "Technical sheets & certifications",
                 "Manufacturing facility details",
+                "And much more",
               ].map((item) => (
                 <div
                   key={item}

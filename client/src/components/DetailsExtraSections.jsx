@@ -4,6 +4,19 @@ import { Link } from "react-router-dom";
 export default function DetailsExtraSections({ privacyId = "privacy" }) {
   return (
     <>
+      {/* Contact CTA */}
+      <section className="bg-[#0f0f0f] text-white py-12 px-4 text-center border-t border-neutral-800">
+        <h3 className="mx-auto max-w-4xl text-[12px] md:text-[13px] font-bold tracking-[0.18em] uppercase mb-6 text-neutral-300 font-sans leading-relaxed">
+          Please contact us to learn more, including full specifications and technical datasheets.
+        </h3>
+        <Link
+          to="/contact"
+          className="inline-block bg-[#dcdcdc] text-black font-semibold text-[11px] md:text-[12px] tracking-[0.25em] uppercase py-3 px-8 hover:bg-white transition-colors rounded-none no-hover-scale"
+        >
+          CONTACT US
+        </Link>
+      </section>
+
       {/* Three-Column HOW TO CONTACT US Section */}
       <section className="bg-white py-16 px-4 border-t border-neutral-100">
         <div className="max-w-6xl mx-auto text-center">
@@ -62,19 +75,6 @@ export default function DetailsExtraSections({ privacyId = "privacy" }) {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Dark call-to-action Footer Banner */}
-      <section className="bg-[#0f0f0f] text-white py-12 px-4 text-center border-t border-neutral-800">
-        <h3 className="text-[12px] md:text-[13px] font-bold tracking-[0.25em] uppercase mb-6 text-neutral-400 font-sans">
-          WOULD YOU LIKE TO RECEIVE MORE INFORMATION ABOUT OUR PRODUCTS?
-        </h3>
-        <Link
-          to="/contact"
-          className="inline-block bg-[#dcdcdc] text-black font-semibold text-[11px] md:text-[12px] tracking-[0.25em] uppercase py-3 px-8 hover:bg-white transition-colors rounded-none no-hover-scale"
-        >
-          CONTACT US
-        </Link>
       </section>
     </>
   );

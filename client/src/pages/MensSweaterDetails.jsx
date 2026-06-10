@@ -166,19 +166,6 @@ export default function MensSweaterDetails() {
             )}
 
             <div className="pt-2 border-t border-neutral-100">
-              <p className="text-[11px] tracking-[0.28em] uppercase text-neutral-400 font-sans">
-                Contact with us
-              </p>
-              <p className="mt-3 text-sm font-sans text-neutral-700 leading-relaxed font-light">
-                Want more information about this product? Contact our team for MOQ,
-                colorways, and customization options.
-              </p>
-              <a
-                className="mt-6 inline-flex items-center justify-center px-10 py-3 bg-[#1c1c1c] text-white font-semibold text-xs tracking-[0.25em] uppercase hover:bg-black transition-colors font-sans"
-                href="/contact"
-              >
-                Contact Us
-              </a>
               <div className="mt-6">
                 <Link
                   className="text-xs font-sans text-neutral-400 hover:text-black tracking-[0.2em] uppercase transition-colors underline underline-offset-4"

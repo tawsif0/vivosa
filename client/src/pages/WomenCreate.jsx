@@ -4,12 +4,9 @@ import toast from "react-hot-toast";
 import { FiPlus, FiType, FiTrash2, FiImage, FiX } from "react-icons/fi";
 import { createWomenApparel } from "../api/womenApparel";
 import ImageUploadBox from "../components/Kids/ImageUploadBox";
-import RichTextBox from "../components/Kids/RichTextBox";
-import { stripRichText } from "../utils/richText";
 
 const emptyForm = {
   title: "",
-  description: "",
 };
 
 const PRESET_COLORS = [
@@ -45,16 +42,6 @@ const categoryTitlePlaceholders = {
   "swim-lingerie": "e.g. Lace Lingerie Set",
 };
 
-const categoryDescriptionPlaceholders = {
-  sweater: "Add sweater materials like wool composition...",
-  "jackets-coats": "Add outerwear details, lining, and fabrics...",
-  pants: "Add trouser materials, fabric blend, and cut...",
-  "polo-shirts": "Add polo fabrics, collar type, and knit details...",
-  shirts: "Add shirt composition, buttons, and cuffs info...",
-  "t-shirts": "Add t-shirt cotton weight and neck design details...",
-  "swim-lingerie": "Add stretch materials, lining, and lace details...",
-};
-
 const WomenCreate = ({ category }) => {
   const [form, setForm] = useState(emptyForm);
   const [imageFile, setImageFile] = useState(null);
@@ -75,7 +62,6 @@ const WomenCreate = ({ category }) => {
 
   const categoryLabel = categoryNames[category] || "Product";
   const titlePlaceholder = categoryTitlePlaceholders[category] || "e.g. Premium item";
-  const descriptionPlaceholder = categoryDescriptionPlaceholders[category] || "Enter product description details here...";
 
   useEffect(() => {
     if (!imageFile) {
@@ -139,8 +125,8 @@ const WomenCreate = ({ category }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!form.title.trim() || !stripRichText(form.description) || !imageFile) {
-      toast.error("Title, main image, and materials description are required");
+    if (!form.title.trim() || !imageFile) {
+      toast.error("Title and main image are required");
       return;
     }
 
@@ -150,7 +136,6 @@ const WomenCreate = ({ category }) => {
     try {
       const payload = new FormData();
       payload.append("title", form.title.trim());
-      payload.append("description", form.description);
       payload.append("category", category);
       payload.append("image", imageFile);
       payload.append("colorSectionTitle", colorSectionTitle.trim());
@@ -214,19 +199,10 @@ const WomenCreate = ({ category }) => {
               name="title"
               value={form.title}
               onChange={handleChange}
-              placeholder={titlePlaceholder}
+          placeholder={titlePlaceholder}
               className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-slate-900"
             />
           </label>
-
-          <RichTextBox
-            label="Materials & Description"
-            value={form.description}
-            onChange={(value) => setForm((previous) => ({ ...previous, description: value }))}
-            placeholder={descriptionPlaceholder}
-            helper="Use the editor toolbar to format the details."
-          />
-
 
 
           {/* Variants Management */}

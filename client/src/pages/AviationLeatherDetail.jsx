@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchPublicSustainableLeather } from "../api/sustainableLeather";
+import DetailsExtraSections from "../components/DetailsExtraSections";
 
 export default function AviationLeatherDetail() {
   const { productId } = useParams();
@@ -54,8 +55,8 @@ export default function AviationLeatherDetail() {
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center relative z-10">
             {/* Left Column: Title and Subtitle */}
             <div className="space-y-3">
-              <h1 className="font-display text-2xl md:text-3xl lg:text-4xl tracking-[0.4em] font-light uppercase text-white leading-tight">
-                {spacedName}
+              <h1 className="font-display text-xl md:text-2xl lg:text-3xl tracking-[0.15em] font-light uppercase text-white leading-tight">
+                {articleName.toUpperCase()}
               </h1>
               <p className="font-label-caps text-label-caps text-[#8e8e8e] text-[10px] md:text-[11px] tracking-[0.2em] uppercase font-medium">
                 PREMIUM AVIATION LEATHER HIDE
@@ -94,27 +95,38 @@ export default function AviationLeatherDetail() {
             <div className="py-16 px-6 sm:px-12 lg:px-20 xl:px-24 flex flex-col justify-center space-y-10 bg-white">
 
               <div className="space-y-2 border-b border-neutral-100 pb-6 max-w-xl">
-                <h2 className="font-display text-xl md:text-2xl font-light tracking-[0.08em] text-neutral-800">
-                  {product.code}
+                <h2 className="font-display text-2xl md:text-3xl font-light tracking-wide text-neutral-800 uppercase">
+                  {product.name || product.title}
                 </h2>
-                <div className="grid grid-cols-2 gap-4 mt-4">
-                  <div>
-                    <span className="font-label-caps text-[10px] tracking-widest text-[#a8a29e] uppercase font-bold block">
-                      Origin
-                    </span>
-                    <span className="font-body text-sm font-semibold uppercase text-neutral-700">
-                      {product.rawhide} HIDES
-                    </span>
+                {product.code && (
+                  <p className="font-label-caps text-xs tracking-widest text-neutral-500 uppercase">
+                    {product.code}
+                  </p>
+                )}
+                {(product.rawhide || product.thickness) && (
+                  <div className="grid grid-cols-2 gap-4 mt-4">
+                    {product.rawhide && (
+                      <div>
+                        <span className="font-label-caps text-[10px] tracking-widest text-[#a8a29e] uppercase font-bold block">
+                          Origin
+                        </span>
+                        <span className="font-body text-sm font-semibold uppercase text-neutral-700">
+                          {product.rawhide} HIDES
+                        </span>
+                      </div>
+                    )}
+                    {product.thickness && (
+                      <div>
+                        <span className="font-label-caps text-[10px] tracking-widest text-[#a8a29e] uppercase font-bold block">
+                          Thickness
+                        </span>
+                        <span className="font-body text-sm font-semibold text-neutral-700">
+                          {product.thickness}
+                        </span>
+                      </div>
+                    )}
                   </div>
-                  <div>
-                    <span className="font-label-caps text-[10px] tracking-widest text-[#a8a29e] uppercase font-bold block">
-                      Thickness
-                    </span>
-                    <span className="font-body text-sm font-semibold text-neutral-700">
-                      {product.thickness}
-                    </span>
-                  </div>
-                </div>
+                )}
               </div>
 
               {/* Specifications Accordion/Grid */}
@@ -128,9 +140,10 @@ export default function AviationLeatherDetail() {
                           Raw Material
                         </h3>
                       </div>
-                      <p className="font-body text-sm text-neutral-600 leading-relaxed pl-8">
-                        {product.rawMaterial}
-                      </p>
+                      <div
+                        className="font-body text-sm text-neutral-600 leading-relaxed pl-8 rich-content"
+                        dangerouslySetInnerHTML={{ __html: product.rawMaterial }}
+                      />
                     </div>
                   )}
 
@@ -139,12 +152,13 @@ export default function AviationLeatherDetail() {
                       <div className="flex items-center gap-3">
                         <span className="font-display text-lg text-[#d4af37]/80">0{sectionIndex++}</span>
                         <h3 className="font-label-caps text-xs tracking-widest text-[#1c1917] uppercase font-bold">
-                          Processing &amp; Tanning
+                          Processing
                         </h3>
                       </div>
-                      <p className="font-body text-sm text-neutral-600 leading-relaxed pl-8">
-                        {product.processing}
-                      </p>
+                      <div
+                        className="font-body text-sm text-neutral-600 leading-relaxed pl-8 rich-content"
+                        dangerouslySetInnerHTML={{ __html: product.processing }}
+                      />
                     </div>
                   )}
 
@@ -153,7 +167,7 @@ export default function AviationLeatherDetail() {
                       <div className="flex items-center gap-3">
                         <span className="font-display text-lg text-[#d4af37]/80">0{sectionIndex++}</span>
                         <h3 className="font-label-caps text-xs tracking-widest text-[#1c1917] uppercase font-bold">
-                          Technical Details
+                          Product Details
                         </h3>
                       </div>
                       <div 
@@ -167,12 +181,12 @@ export default function AviationLeatherDetail() {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4 max-w-xl">
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact?interest=sample_book"
                   className="flex-1 text-center font-label-caps text-xs tracking-[0.2em] font-semibold py-4 px-6 bg-primary text-on-primary hover:bg-neutral-800 transition-colors duration-300"
                 >
                   REQUEST SAMPLE BOOK
-                </a>
+                </Link>
                 <Link
                   to="/aviation-leather"
                   className="flex-1 text-center font-label-caps text-xs tracking-[0.2em] font-semibold py-4 px-6 border border-neutral-300 text-neutral-700 hover:bg-neutral-50 transition-colors duration-300"
@@ -194,11 +208,13 @@ export default function AviationLeatherDetail() {
               </span>
               <div 
                 className="font-body text-base md:text-lg text-neutral-600 leading-relaxed italic rich-content"
-                dangerouslySetInnerHTML={{ __html: product.desc }}
+              dangerouslySetInnerHTML={{ __html: product.desc }}
               />
             </div>
           </section>
         )}
+
+        <DetailsExtraSections privacyId="privacy-aviation-detail" />
       </main>
     </div>
   );

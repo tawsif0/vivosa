@@ -4,13 +4,10 @@ import toast from "react-hot-toast";
 import { FiEdit2, FiImage, FiRefreshCw, FiTrash2, FiType, FiPlus, FiX } from "react-icons/fi";
 import ConfirmModal from "../components/ConfirmModal";
 import ImageUploadBox from "../components/Kids/ImageUploadBox";
-import RichTextBox from "../components/Kids/RichTextBox";
 import { deleteWomenApparel, fetchAdminWomenApparel, updateWomenApparel } from "../api/womenApparel";
-import { stripRichText, toRichTextHtml } from "../utils/richText";
 
 const emptyForm = {
   title: "",
-  description: "",
 };
 
 const PRESET_COLORS = [
@@ -46,16 +43,6 @@ const categoryTitlePlaceholders = {
   "swim-lingerie": "e.g. Lace Lingerie Set",
 };
 
-const categoryDescriptionPlaceholders = {
-  sweater: "Add sweater materials like wool composition...",
-  "jackets-coats": "Add outerwear details, lining, and fabrics...",
-  pants: "Add trouser materials, fabric blend, and cut...",
-  "polo-shirts": "Add polo fabrics, collar type, and knit details...",
-  shirts: "Add shirt composition, buttons, and cuffs info...",
-  "t-shirts": "Add t-shirt cotton weight and neck design details...",
-  "swim-lingerie": "Add stretch materials, lining, and lace details...",
-};
-
 const WomenModify = ({ category }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -81,7 +68,6 @@ const WomenModify = ({ category }) => {
 
   const categoryLabel = categoryNames[category] || "Product";
   const titlePlaceholder = categoryTitlePlaceholders[category] || "e.g. Premium item";
-  const descriptionPlaceholder = categoryDescriptionPlaceholders[category] || "Enter product description details here...";
 
   const loadItems = async () => {
     setLoading(true);
@@ -125,7 +111,6 @@ const WomenModify = ({ category }) => {
     setEditingItem(item);
     setForm({
       title: item.title,
-      description: item.description || "",
     });
     setImageFile(null);
     setPreview(item.image?.url || "");
@@ -189,8 +174,8 @@ const WomenModify = ({ category }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!form.title.trim() || !stripRichText(form.description)) {
-      toast.error("Title and materials description are required");
+    if (!form.title.trim()) {
+      toast.error("Title is required");
       return;
     }
 
@@ -200,7 +185,6 @@ const WomenModify = ({ category }) => {
     try {
       const payload = new FormData();
       payload.append("title", form.title.trim());
-      payload.append("description", form.description);
       payload.append("category", category);
       payload.append("colorSectionTitle", colorSectionTitle.trim());
       payload.append("customSectionTitle", customSectionTitle.trim());
@@ -314,13 +298,6 @@ const WomenModify = ({ category }) => {
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-slate-900"
                 />
               </label>
-
-              <RichTextBox
-                label="Materials & Description"
-                value={form.description}
-                onChange={(val) => setForm((prev) => ({ ...prev, description: val }))}
-                placeholder={descriptionPlaceholder}
-              />
 
               {/* Variants Panel */}
               <div className="border-t border-slate-100 pt-6">
@@ -608,10 +585,6 @@ const WomenModify = ({ category }) => {
                         <div className="max-w-[200px] sm:max-w-xs md:max-w-md lg:max-w-lg truncate">
                           {item.title}
                         </div>
-                        <div
-                          className="mt-1 text-[11px] text-slate-400 font-normal line-clamp-1 max-w-[200px] sm:max-w-xs md:max-w-md lg:max-w-lg"
-                          dangerouslySetInnerHTML={{ __html: toRichTextHtml(item.description) }}
-                        />
                       </td>
                       <td className="py-3 pr-4">
                         <div className="flex flex-wrap gap-1.5 max-w-[260px]">

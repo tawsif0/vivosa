@@ -4,13 +4,10 @@ import toast from "react-hot-toast";
 import { FiEdit2, FiImage, FiRefreshCw, FiTrash2, FiType, FiPlus, FiX } from "react-icons/fi";
 import ConfirmModal from "../components/ConfirmModal";
 import ImageUploadBox from "../components/Kids/ImageUploadBox";
-import RichTextBox from "../components/Kids/RichTextBox";
 import { deleteMenApparel, fetchAdminMenApparel, updateMenApparel } from "../api/menApparel";
-import { stripRichText, toRichTextHtml } from "../utils/richText";
 
 const emptyForm = {
   title: "",
-  description: "",
 };
 
 const PRESET_COLORS = [
@@ -46,16 +43,6 @@ const categoryTitlePlaceholders = {
   "t-shirts": "e.g. Mens Heavyweight Cotton Tee",
 };
 
-const categoryDescriptionPlaceholders = {
-  sweater: "Add sweater materials, wool composition, knit style details...",
-  "jackets-coats": "Add outerwear details, weatherproofing, shell/lining composition...",
-  pants: "Add chino cotton blend, stretch percent, and waist details...",
-  joggers: "Add comfort fleece blend, waistband, and athletic fit details...",
-  "polo-shirt": "Add polo pique fabric, collar design, and cuffs details...",
-  shirts: "Add linen/cotton weave, pocket style, and fit details...",
-  "t-shirts": "Add tee fabric weight (GSM), neck design, and comfort details...",
-};
-
 const MenModify = ({ category }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -81,7 +68,6 @@ const MenModify = ({ category }) => {
 
   const categoryLabel = categoryNames[category] || "Product";
   const titlePlaceholder = categoryTitlePlaceholders[category] || "e.g. Premium item";
-  const descriptionPlaceholder = categoryDescriptionPlaceholders[category] || "Enter product description details here...";
 
   const loadItems = async () => {
     setLoading(true);
@@ -125,7 +111,6 @@ const MenModify = ({ category }) => {
     setEditingItem(item);
     setForm({
       title: item.title,
-      description: item.description || "",
     });
     setImageFile(null);
     setPreview(item.image?.url || "");
@@ -189,8 +174,8 @@ const MenModify = ({ category }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!form.title.trim() || !stripRichText(form.description)) {
-      toast.error("Title and materials description are required");
+    if (!form.title.trim()) {
+      toast.error("Title is required");
       return;
     }
 
@@ -200,7 +185,6 @@ const MenModify = ({ category }) => {
     try {
       const payload = new FormData();
       payload.append("title", form.title.trim());
-      payload.append("description", form.description);
       payload.append("category", category);
       payload.append("colorSectionTitle", colorSectionTitle.trim());
       payload.append("customSectionTitle", customSectionTitle.trim());
@@ -314,13 +298,6 @@ const MenModify = ({ category }) => {
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-slate-900"
                 />
               </label>
-
-              <RichTextBox
-                label="Materials & Description"
-                value={form.description}
-                onChange={(val) => setForm((prev) => ({ ...prev, description: val }))}
-                placeholder={descriptionPlaceholder}
-              />
 
               {/* Variants Panel */}
               <div className="border-t border-slate-100 pt-6">
@@ -608,10 +585,6 @@ const MenModify = ({ category }) => {
                         <div className="max-w-[200px] sm:max-w-xs md:max-w-md lg:max-w-lg truncate">
                           {item.title}
                         </div>
-                        <div
-                          className="mt-1 text-[11px] text-slate-400 font-normal line-clamp-1 max-w-[200px] sm:max-w-xs md:max-w-md lg:max-w-lg"
-                          dangerouslySetInnerHTML={{ __html: toRichTextHtml(item.description) }}
-                        />
                       </td>
                       <td className="py-3 pr-4">
                         <div className="flex flex-wrap gap-1.5 max-w-[260px]">

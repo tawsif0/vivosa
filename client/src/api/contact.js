@@ -26,3 +26,12 @@ export const deleteContact = async (id) => {
   const response = await axios.delete(`${baseUrl}/contact/admin/${id}`);
   return response.data;
 };
+
+export const composeEmail = async (payload) => {
+  const response = await axios.post(`${baseUrl}/contact/admin/compose-email`, payload, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  return response.data;
+};

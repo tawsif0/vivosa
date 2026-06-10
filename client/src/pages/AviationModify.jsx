@@ -91,24 +91,13 @@ const AviationModify = () => {
     event.preventDefault();
     if (!editingItem) return;
 
-    if (
-      !form.code.trim() ||
-      !form.name.trim() ||
-      !form.type.trim() ||
-      !form.thickness.trim() ||
-      !form.rawhide.trim() ||
-      !stripRichText(form.desc)
-    ) {
-      toast.error("All fields are required");
-      return;
-    }
-
     setIsSubmitting(true);
     const loadingToast = toast.loading("Updating aviation leather item...");
 
     try {
       const payload = new FormData();
-      payload.append("title", `${form.code.trim()} ${form.name.trim()}`);
+      const titleVal = [form.code.trim(), form.name.trim()].filter(Boolean).join(" ") || "Untitled Leather";
+      payload.append("title", titleVal);
       payload.append("code", form.code.trim());
       payload.append("name", form.name.trim());
       payload.append("type", form.type.trim());
@@ -271,31 +260,17 @@ const AviationModify = () => {
                 </label>
               </div>
 
-              <label className="block">
-                <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                  1. Raw Material
-                </span>
-                <textarea
-                  name="rawMaterial"
-                  value={form.rawMaterial}
-                  onChange={handleFormChange}
-                  rows={2}
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none text-sm"
-                />
-              </label>
+              <RichTextBox
+                label="1. Raw Material"
+                value={form.rawMaterial}
+                onChange={(value) => setForm((previous) => ({ ...previous, rawMaterial: value }))}
+              />
 
-              <label className="block">
-                <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                  2. Processing
-                </span>
-                <textarea
-                  name="processing"
-                  value={form.processing}
-                  onChange={handleFormChange}
-                  rows={2}
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none text-sm"
-                />
-              </label>
+              <RichTextBox
+                label="2. Processing"
+                value={form.processing}
+                onChange={(value) => setForm((previous) => ({ ...previous, processing: value }))}
+              />
 
               <RichTextBox
                 label="3. Product Details"

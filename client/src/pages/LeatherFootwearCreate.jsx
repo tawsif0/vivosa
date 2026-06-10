@@ -42,16 +42,8 @@ const LeatherFootwearCreate = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (
-      !form.title.trim() ||
-      !form.fullName.trim() ||
-      !form.subtitle.trim() ||
-      !form.thickness.trim() ||
-      !form.rawhide.trim() ||
-      !stripRichText(form.desc) ||
-      !imageFile
-    ) {
-      toast.error("All fields and image are required");
+    if (!imageFile) {
+      toast.error("Swatch image is required");
       return;
     }
 
@@ -61,7 +53,8 @@ const LeatherFootwearCreate = () => {
     try {
       const payload = new FormData();
       payload.append("category", "leather-footwear");
-      payload.append("title", form.title.trim());
+      const titleVal = form.title.trim() || "Untitled Leather";
+      payload.append("title", titleVal);
       payload.append("fullName", form.fullName.trim());
       payload.append("subtitle", form.subtitle.trim());
       payload.append("thickness", form.thickness.trim());
@@ -180,33 +173,19 @@ const LeatherFootwearCreate = () => {
             </label>
           </div>
 
-          <label className="block">
-            <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-              1. Raw Material
-            </span>
-            <textarea
-              name="rawMaterial"
-              value={form.rawMaterial}
-              onChange={handleChange}
-              rows={2}
-              placeholder="e.g. We use best bovine and calf skins of European origin."
-              className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-slate-900 text-sm"
-            />
-          </label>
+          <RichTextBox
+            label="1. Raw Material"
+            value={form.rawMaterial}
+            onChange={(value) => setForm((previous) => ({ ...previous, rawMaterial: value }))}
+            placeholder="e.g. We use best bovine and calf skins of European origin."
+          />
 
-          <label className="block">
-            <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-              2. Processing
-            </span>
-            <textarea
-              name="processing"
-              value={form.processing}
-              onChange={handleChange}
-              rows={2}
-              placeholder="e.g. On our premises we carry out chrome retanning, advanced dyeing..."
-              className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-slate-900 text-sm"
-            />
-          </label>
+          <RichTextBox
+            label="2. Processing"
+            value={form.processing}
+            onChange={(value) => setForm((previous) => ({ ...previous, processing: value }))}
+            placeholder="e.g. On our premises we carry out chrome retanning, advanced dyeing..."
+          />
 
           <RichTextBox
             label="3. Product Details"

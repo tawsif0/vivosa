@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
+import { useSearchParams } from "react-router-dom";
 import { submitContactForm } from "../api/contact";
 
 export default function Contact() {
+  const [searchParams] = useSearchParams();
+  const interestParam = searchParams.get("interest");
+
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -12,6 +16,20 @@ export default function Contact() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (interestParam) {
+      setFormData((prev) => ({ ...prev, interest: interestParam }));
+      
+      // Delay slightly to allow full render before scrolling
+      setTimeout(() => {
+        const element = document.getElementById("inquiry-form-section");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, [interestParam]);
   const contactLinkClass =
     "inline-flex w-fit items-center gap-2 text-primary transition-colors duration-300 hover:text-on-tertiary-container hover:underline hover:underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-on-tertiary-container/40 rounded-sm";
 
@@ -161,7 +179,7 @@ export default function Contact() {
           </div>
 
           {/* Right: Inquiry Form */}
-          <div className="lg:col-span-7 bg-surface-container-lowest p-6 md:p-16 border border-outline-variant/10 shadow-sm">
+          <div id="inquiry-form-section" className="lg:col-span-7 bg-surface-container-lowest p-6 md:p-16 border border-outline-variant/10 shadow-sm">
             <h2 className="font-headline-xl text-4xl md:text-headline-xl text-primary mb-8">
               Inquiry Form
             </h2>
@@ -264,6 +282,7 @@ export default function Contact() {
                   <option value="apparel">Apparel Manufacturing</option>
                   <option value="sourcing">Sustainable Sourcing</option>
                   <option value="custom">Custom Projects</option>
+                  <option value="sample_book">Sample Book</option>
                 </select>
               </div>
 

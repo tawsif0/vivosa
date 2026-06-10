@@ -134,10 +134,12 @@ export default function LeatherGoods() {
               <div className="w-2 h-2 rounded-full bg-light-gold"></div>
               <div className="h-[0.5px] flex-grow bg-light-gold/40"></div>
             </div>
-            <h2 className="font-label-caps text-label-caps text-light-gold tracking-[0.3em] uppercase leading-relaxed text-sm md:text-md">
-              The collection of some popular articles in their final appearance from our
-              manufacturing firm
+            <h2 className="font-headline-md text-headline-md text-light-gold mb-4">
+              Available Now
             </h2>
+            <p className="font-body-md text-[#FAF9F5]/70 max-w-2xl mx-auto leading-relaxed">
+              Explore a selection of some popular articles from our trusted manufacturers, each presented in finished form. A number of these articles are held in stock for rapid delivery with flexible MOQs—please get in touch if you have a project that suits any of them.
+            </p>
             <div className="flex items-center gap-4 w-full">
               <div className="h-[0.5px] flex-grow bg-light-gold/40"></div>
               <div className="w-2 h-2 rounded-full bg-light-gold"></div>
@@ -164,11 +166,13 @@ export default function LeatherGoods() {
                       loading="lazy"
                     />
                   </div>
-                  <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
-                    <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase font-bold">
-                      {product.code}
-                    </h4>
-                  </div>
+                  {(product.code?.trim() || product.name?.trim()) && (
+                    <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
+                      <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase font-bold">
+                        {product.code || product.name || product.title}
+                      </h4>
+                    </div>
+                  )}
                 </Link>
               ))}
             </div>
@@ -202,12 +206,26 @@ export default function LeatherGoods() {
 
           <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
             <span className="font-label-caps text-[10px] md:text-[11px] tracking-[0.25em] text-matte-gold uppercase font-bold block">
-              OUR BESPOKE COMMITMENT
+              CRAFTSMANSHIP &amp; RESPONSIBILITY
             </span>
             
-            <h3 className="font-display text-[15px] sm:text-[17px] md:text-[19px] lg:text-[21px] text-neutral-800 leading-[1.8] font-light tracking-wide max-w-3xl mx-auto">
-              We offer a wide range of leather collections. Please contact us with the articles and colours of interest, or feel free to send us a sample. We will provide exceptional, expertly finished products that bring lasting beauty to any project. We prioritize our clients’ values and preferences. Clients are always welcome to customize any product to meet their specific requirements, as long as it complies with industry standards and regulations.
-            </h3>
+            <div className="font-display text-[15px] sm:text-[17px] md:text-[19px] lg:text-[21px] text-neutral-800 leading-[1.8] font-light tracking-wide max-w-3xl mx-auto space-y-6">
+              <p>
+                Each article shown above carries its own story of skilled craftsmanship, produced with a commitment to sustainability and responsible manufacturing.
+              </p>
+              <p>
+                Through close collaboration with our trusted partners, we craft an extensive range of exquisite leathers to suit every vision — <strong>Pure aniline, semi-aniline, full grain, fine grain, Nappa, Nubuck, and many more.</strong>
+              </p>
+              <p>
+                Each leather is designed with comfort, breathability, and timeless appeal, with optional treatments available on request, including anti-stain, fire-retardant, moisture-wicking, and other innovative technological finishes. Choose from a wide palette of colours and finishes, with options including vegetable tanning and a variety of dyed finishes.
+              </p>
+              <p>
+                We invite you to get in touch to discuss your project requirements, or to send us a sample alongside your specifications. Our team is ready to help guide you towards an exceptional result. We take pride in delivering expertly finished products that bring lasting beauty to every project we're part of.
+              </p>
+              <p>
+                Your vision matters to us. We welcome customisation requests to meet your specific needs, ensuring all solutions align with the relevant standards and regulations.
+              </p>
+            </div>
 
             <div className="flex justify-center items-center gap-3 pt-2">
               <span className="w-1.5 h-1.5 bg-[#8B6914] rotate-45"></span>
@@ -244,9 +262,10 @@ export default function LeatherGoods() {
                     "Tanning & retanning methods",
                     "Defect classification",
                     "Drying techniques",
-                    "Refinishing processes",
+                    "Finishing processes",
                     "Technical sheets & certifications",
                     "Manufacturing facility details",
+                    "And more",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-4">
                       <span

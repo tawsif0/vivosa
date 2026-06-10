@@ -36,7 +36,7 @@ exports.getPublicItems = async (req, res, next) => {
     if (!category) {
       return res.status(400).json({ success: false, error: "Category is required" });
     }
-    const items = await SustainableLeather.find({ category, isActive: true }).sort({ createdAt: -1 });
+    const items = await SustainableLeather.find({ category, isActive: true }).sort({ createdAt: 1 });
     res.json({ success: true, items });
   } catch (error) {
     next(error);
@@ -59,7 +59,7 @@ exports.getAllAdminItems = async (req, res, next) => {
   try {
     const { category } = req.query;
     const query = category ? { category } : {};
-    const items = await SustainableLeather.find(query).sort({ createdAt: -1 });
+    const items = await SustainableLeather.find(query).sort({ createdAt: 1 });
     res.json({ success: true, items });
   } catch (error) {
     next(error);

@@ -39,37 +39,6 @@ const getRealTimestamp = async () => {
   return Math.round(Date.now() / 1000);
 };
 
-const normalizeRichTextInput = (value) => {
-  if (Array.isArray(value)) {
-    return value
-      .map((item) => String(item || "").trim())
-      .filter(Boolean)
-      .map((item) => `<p>${item}</p>`)
-      .join("");
-  }
-
-  const raw = String(value || "").trim();
-  if (!raw) return "";
-
-  if (/<[a-z][\s\S]*>/i.test(raw)) {
-    return raw;
-  }
-
-  return raw
-    .split(/\n+/)
-    .map((line) => String(line || "").trim())
-    .filter(Boolean)
-    .map((line) => `<p>${line}</p>`)
-    .join("");
-};
-
-const stripHtml = (value) =>
-  String(value || "")
-    .replace(/<[^>]*>/g, " ")
-    .replace(/&nbsp;/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-
 const streamUpload = async (buffer, folder = "vivosa/men") => {
   const timestamp = await getRealTimestamp();
   return new Promise((resolve, reject) => {
@@ -101,7 +70,7 @@ exports.getPublicItems = async (req, res, next) => {
     if (category) {
       filter.category = category;
     }
-    const items = await MenApparel.find(filter).sort({ createdAt: -1 });
+    const items = await MenApparel.find(filter).sort({ createdAt: 1 });
     res.json({ success: true, items });
   } catch (error) {
     next(error);
@@ -127,7 +96,7 @@ exports.getAllAdminItems = async (req, res, next) => {
     if (category) {
       filter.category = category;
     }
-    const items = await MenApparel.find(filter).sort({ createdAt: -1 });
+    const items = await MenApparel.find(filter).sort({ createdAt: 1 });
     res.json({ success: true, items });
   } catch (error) {
     next(error);
@@ -145,14 +114,13 @@ exports.createItem = async (req, res, next) => {
 
     const title = String(req.body.title || "").trim();
     const category = String(req.body.category || "").trim();
-    const description = normalizeRichTextInput(req.body.description);
     const colorSectionTitle = req.body.colorSectionTitle !== undefined ? String(req.body.colorSectionTitle || "").trim() : "AVAILABLE COLORS";
     const customSectionTitle = req.body.customSectionTitle !== undefined ? String(req.body.customSectionTitle || "").trim() : "OPTIONS & STYLES";
 
-    if (!title || !category || !stripHtml(description)) {
+    if (!title || !category) {
       return res.status(400).json({
         success: false,
-        error: "Title, category, and description are required",
+        error: "Title and category are required",
       });
     }
 
@@ -193,7 +161,6 @@ exports.createItem = async (req, res, next) => {
 
     const item = await MenApparel.create({
       title,
-      description,
       category,
       colorSectionTitle,
       customSectionTitle,
@@ -220,23 +187,18 @@ exports.updateItem = async (req, res, next) => {
 
     const title = req.body.title !== undefined ? String(req.body.title || "").trim() : item.title;
     const category = req.body.category !== undefined ? String(req.body.category || "").trim() : item.category;
-    const description =
-      req.body.description !== undefined
-        ? normalizeRichTextInput(req.body.description)
-        : item.description;
     const colorSectionTitle = req.body.colorSectionTitle !== undefined ? String(req.body.colorSectionTitle || "").trim() : item.colorSectionTitle;
     const customSectionTitle = req.body.customSectionTitle !== undefined ? String(req.body.customSectionTitle || "").trim() : item.customSectionTitle;
 
-    if (!title || !category || !stripHtml(description)) {
+    if (!title || !category) {
       return res.status(400).json({
         success: false,
-        error: "Title, category, and description are required",
+        error: "Title and category are required",
       });
     }
 
     item.title = title;
     item.category = category;
-    item.description = description;
     item.colorSectionTitle = colorSectionTitle;
     item.customSectionTitle = customSectionTitle;
 

@@ -65,7 +65,7 @@ exports.uploadMiddleware = upload.single("image");
 
 exports.getPublicKids = async (req, res, next) => {
   try {
-    const kids = await Kid.find({ isActive: true }).sort({ createdAt: -1 });
+    const kids = await Kid.find({ isActive: true }).sort({ createdAt: 1 });
     res.json({ success: true, kids });
   } catch (error) {
     next(error);
@@ -87,7 +87,7 @@ exports.getPublicKidById = async (req, res, next) => {
 
 exports.getAllKids = async (req, res, next) => {
   try {
-    const kids = await Kid.find({}).sort({ createdAt: -1 });
+    const kids = await Kid.find({}).sort({ createdAt: 1 });
     res.json({ success: true, kids });
   } catch (error) {
     next(error);

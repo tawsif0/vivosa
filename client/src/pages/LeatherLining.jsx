@@ -168,10 +168,10 @@ export default function LeatherLining() {
         <section className="w-full bg-primary py-16">
           <div className="max-w-3xl mx-auto text-center px-margin-mobile">
             <h3 className="font-headline-md text-headline-md text-[#F5F0E8] mb-4">
-              The Complete Lining Collection
+              Available Now
             </h3>
             <p className="font-body-md text-[#F5F0E8]/70 leading-relaxed">
-              Here is a collection of some traditional articles and popular leather colours, showcasing the final appearance from our manufacturing firm. A wide range of colours and finishes for various applications is also available with customization options, so please contact us with your specific requirements.
+              Explore a selection of some popular articles from our trusted manufacturers, each presented in finished form. A number of these articles are held in stock for rapid delivery with flexible MOQs—please get in touch if you have a project that suits any of them.
             </p>
           </div>
         </section>
@@ -199,11 +199,13 @@ export default function LeatherLining() {
                         loading="lazy"
                       />
                     </div>
-                    <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
-                      <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase font-bold">
-                        {product.code}
-                      </h4>
-                    </div>
+                    {(product.code?.trim() || product.name?.trim()) && (
+                      <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
+                        <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase font-bold">
+                          {product.code || product.name || product.title}
+                        </h4>
+                      </div>
+                    )}
                   </Link>
                 ))}
               </div>
@@ -214,11 +216,19 @@ export default function LeatherLining() {
         {/* Closing Text */}
         <section className="max-w-3xl mx-auto text-center py-16 px-margin-mobile">
           <h2 className="font-headline-xl text-headline-xl text-primary mb-6">
-            Designed for Collaboration
+            CRAFTSMANSHIP &amp; RESPONSIBILITY
           </h2>
-          <p className="font-body-md text-body-lg text-on-surface-variant mb-10 leading-relaxed">
-            A wide range of collections is available. Please contact us for your specific project items or to send a sample. We are committed to delivering exceptional, expertly finished products that add lasting beauty to your projects. We welcome customization requests that meet international standards and sustainability requirements.
-          </p>
+          <div className="font-body-md text-body-lg text-on-surface-variant mb-10 leading-relaxed space-y-6">
+            <p>
+              Each article shown above carries its own story of skilled craftsmanship, produced with a commitment to sustainability and responsible manufacturing.
+            </p>
+            <p>
+              We invite you to get in touch to discuss your project requirements, or to send us a sample alongside your specifications. Our team is ready to help guide you towards an exceptional result. We take pride in delivering expertly finished products that bring lasting beauty to every project we're part of.
+            </p>
+            <p>
+              Your vision matters to us. We welcome customisation requests to meet your specific needs, ensuring all solutions align with the relevant standards and regulations.
+            </p>
+          </div>
         </section>
 
         {/* Quality & Sustainability Section */}
@@ -248,7 +258,7 @@ export default function LeatherLining() {
                     "Tanning & retanning methods",
                     "Defect classification",
                     "Drying techniques",
-                    "Refinishing processes",
+                    "Finishing processes",
                     "Technical sheets & certifications",
                     "Manufacturing facility details",
                   ].map((item) => (
