@@ -1,29 +1,12 @@
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const nodemailer = require("nodemailer");
 const User = require("../models/User");
-
-const transporter = nodemailer.createTransport({
-  service: process.env.EMAIL_SERVICE,
-  host: process.env.EMAIL_HOST,
-  port: process.env.EMAIL_PORT,
-  secure: process.env.EMAIL_SECURE === "true",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  tls: {
-    rejectUnauthorized: false,
-  },
-});
+const { sendMail } = require("../utils/mailer");
 
 const sendEmail = async (mailOptions) => {
   try {
-    await transporter.sendMail({
-      from: process.env.EMAIL_FROM,
-      ...mailOptions,
-    });
+    await sendMail(mailOptions);
   } catch (error) {
     console.error("Email sending error:", error);
     throw new Error("Email could not be sent");
@@ -63,17 +46,21 @@ exports.registerUser = async (req, res) => {
 
     await user.save();
 
-    await sendEmail({
-      to: user.email,
-      subject: "Welcome!",
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333;">Welcome ${name}!</h2>
-          <p>Your account has been successfully created.</p>
-          <p>You can now log in and access your dashboard.</p>
-        </div>
-      `,
-    });
+    try {
+      await sendEmail({
+        to: user.email,
+        subject: "Welcome!",
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #333;">Welcome ${name}!</h2>
+            <p>Your account has been successfully created.</p>
+            <p>You can now log in and access your dashboard.</p>
+          </div>
+        `,
+      });
+    } catch (emailError) {
+      console.error("Welcome email failed, but account was created:", emailError);
+    }
 
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",

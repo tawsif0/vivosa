@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { submitContactForm } from "../api/contact";
 
-
 export default function Landing() {
   const [contactForm, setContactForm] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    message: ""
+    message: "",
   });
   const [isSubmittingContact, setIsSubmittingContact] = useState(false);
 
@@ -27,14 +26,14 @@ export default function Landing() {
         message: contactForm.message,
         company: "",
         phone: "",
-        interest: "General Inquiry (Landing)"
+        interest: "General Inquiry (Landing)",
       };
       await submitContactForm(payload);
       setContactForm({
         firstName: "",
         lastName: "",
         email: "",
-        message: ""
+        message: "",
       });
       toast.success("Your message has been sent successfully!");
     } catch (error) {
@@ -58,7 +57,7 @@ export default function Landing() {
     { src: "/slides/L2.png", alt: "Apparel Sourcing Slide 2" },
     { src: "/slides/L3.png", alt: "Apparel Sourcing Slide 3" },
     { src: "/slides/L4.png", alt: "Apparel Sourcing Slide 4" },
-    { src: "/slides/L5.png", alt: "Apparel Sourcing Slide 5" }
+    { src: "/slides/L5.png", alt: "Apparel Sourcing Slide 5" },
   ];
 
   const leatherSlides = [
@@ -69,7 +68,7 @@ export default function Landing() {
     { src: "/slides/s5.png", alt: "Leather Sourcing Slide 5" },
     { src: "/slides/s6.png", alt: "Leather Sourcing Slide 6" },
     { src: "/slides/s7.png", alt: "Leather Sourcing Slide 7" },
-    { src: "/slides/s8.png", alt: "Leather Sourcing Slide 8" }
+    { src: "/slides/s8.png", alt: "Leather Sourcing Slide 8" },
   ];
 
   // Auto-advance sliders independently
@@ -208,8 +207,8 @@ export default function Landing() {
                 Our commitment is to sustainable sourcing with honesty and
                 integrity and providing the best service. We believe that
                 experience, efficiency, professionalism, social responsibility,
-                environmental awareness, and a relentless drive for innovation are
-                the keys to creating authentic products.
+                environmental awareness, and a relentless drive for innovation
+                are the keys to creating authentic products.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                 <a
@@ -233,7 +232,7 @@ export default function Landing() {
                 {/* Left Image: Apparel (Smiling girls stitching) */}
                 <div className="absolute left-0 bottom-4 w-[62%] aspect-[4/3] rounded-2xl overflow-hidden border-[10px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-10 transition-all duration-500 hover:scale-105 hover:z-30">
                   <img
-                    src="https://vivosa.co.uk/wp-content/uploads/2025/07/indian-women-stitching-cloths-by-machine_835895-11182-300x300.avif"
+                    src="/Landing/dd.png"
                     alt="Apparel manufacturing stitching"
                     className="w-full h-full object-cover"
                   />
@@ -242,7 +241,7 @@ export default function Landing() {
                 {/* Right Image: Leather Cutting */}
                 <div className="absolute right-0 top-4 w-[58%] aspect-[3/4] rounded-2xl overflow-hidden border-[10px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 transition-all duration-500 hover:scale-105 hover:z-30">
                   <img
-                    src="https://vivosa.co.uk/wp-content/uploads/2025/07/close-up-hand-cutting-leather-1024x726.jpg"
+                    src="/Landing/sa.png"
                     alt="Artisan hands cutting leather"
                     className="w-full h-full object-cover"
                   />
@@ -254,7 +253,9 @@ export default function Landing() {
 
         <div
           className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 cursor-pointer group z-20 hidden lg:flex"
-          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
+          onClick={() =>
+            window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+          }
         >
           <span className="font-label-caps text-[10px] tracking-[0.2em] text-white/80 group-hover:text-gold-accent transition-colors duration-300">
             SCROLL DOWN
@@ -294,10 +295,18 @@ export default function Landing() {
                   OUR VISION
                 </h4>
                 <p className="mb-3">
-                  Our vision extends outside our business. We aspire to make a good impact on the globe, from the communities where we obtain our raw materials to how our products help our consumers live livelier.
+                  Our vision extends outside our business. We aspire to make a
+                  good impact on the globe, from the communities where we obtain
+                  our raw materials to how our products help our consumers live
+                  livelier.
                 </p>
                 <p>
-                  Our top priorities are customer satisfaction and their values and working together to build a pleasant and trustable work environment. We are committed to listening to our customers and consistently offering reliable, innovative, and long-lasting quality solutions to guarantee their safety and sustainability.
+                  Our top priorities are customer satisfaction and their values
+                  and working together to build a pleasant and trustable work
+                  environment. We are committed to listening to our customers
+                  and consistently offering reliable, innovative, and
+                  long-lasting quality solutions to guarantee their safety and
+                  sustainability.
                 </p>
               </div>
 
@@ -306,10 +315,14 @@ export default function Landing() {
                   OUR MISSION
                 </h4>
                 <p className="mb-3">
-                  Our mission is to work with our partners to create a brighter future. Engaging with us means we invite our clients to join.
+                  Our mission is to work with our partners to create a brighter
+                  future. Engaging with us means we invite our clients to join.
                 </p>
                 <p>
-                  In our commitment to sustainability, we actively seek social, economic, and environmental sustainability, placing a high priority on the welfare of our employees and the community, prioritizing constant enhancement and proactive growth.
+                  In our commitment to sustainability, we actively seek social,
+                  economic, and environmental sustainability, placing a high
+                  priority on the welfare of our employees and the community,
+                  prioritizing constant enhancement and proactive growth.
                 </p>
               </div>
             </div>
@@ -344,8 +357,6 @@ export default function Landing() {
         </div>
       </section>
 
-
-
       {/* Identity & Philosophy Section */}
       <section className="py-16 md:py-24 bg-surface-container-low border-b border-outline/5">
         <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop">
@@ -358,18 +369,34 @@ export default function Landing() {
                 Stay Lively. Express Yourself.
               </h2>
               <p className="font-display-lg text-2xl md:text-3xl text-leather-tan leading-snug italic font-normal">
-                &quot;Vivosa means stay lively — expressing your individuality and inner self through your choices.&quot;
+                &quot;Vivosa means stay lively — expressing your individuality
+                and inner self through your choices.&quot;
               </p>
             </div>
             <div className="lg:col-span-7 space-y-6 font-body-lg text-on-surface-variant leading-relaxed">
               <p>
-                <strong>Vivosa</strong> is a young, active firm that is deeply involved in both the leather and apparel industries. It was founded by individuals with over 30 years of professional experience, proven technical proficiency, and a constant willingness to take on new challenges and accomplish new goals.
+                <strong>Vivosa</strong> is a young, active firm that is deeply
+                involved in both the leather and apparel industries. It was
+                founded by individuals with over 30 years of professional
+                experience, proven technical proficiency, and a constant
+                willingness to take on new challenges and accomplish new goals.
               </p>
               <p>
-                Our primary objective is sourcing materials ethically from sustainable manufacturers who are ecologically conscious, strictly follow fair business practices, and have been working in the sector for decades. As a result, we have built a strong presence in the UK, Europe, and numerous other global markets.
+                Our primary objective is sourcing materials ethically from
+                sustainable manufacturers who are ecologically conscious,
+                strictly follow fair business practices, and have been working
+                in the sector for decades. As a result, we have built a strong
+                presence in the UK, Europe, and numerous other global markets.
               </p>
               <p>
-                We believe that wearing and using what resonates with you and makes you feel confident is far more important than following trends blindly. Every individual is unique, with their own choices and lifestyle. By combining these individual needs with premium craftsmanship, exceptional pricing, and sustainability, we design products that keep our customers satisfied and lively. This is the core reason behind selecting <strong>Vivosa</strong> as our company name.
+                We believe that wearing and using what resonates with you and
+                makes you feel confident is far more important than following
+                trends blindly. Every individual is unique, with their own
+                choices and lifestyle. By combining these individual needs with
+                premium craftsmanship, exceptional pricing, and sustainability,
+                we design products that keep our customers satisfied and lively.
+                This is the core reason behind selecting <strong>Vivosa</strong>{" "}
+                as our company name.
               </p>
             </div>
           </div>
@@ -377,7 +404,10 @@ export default function Landing() {
       </section>
 
       {/* Why Choose Us - Values */}
-      <section className="py-16 md:py-section-gap max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop" id="why-choose-us">
+      <section
+        className="py-16 md:py-section-gap max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop"
+        id="why-choose-us"
+      >
         <div className="text-center mb-12 md:mb-20 max-w-4xl mx-auto">
           <span className="font-label-caps text-gold-accent tracking-widest block mb-4">
             Core Philosophy
@@ -387,10 +417,20 @@ export default function Landing() {
           </h2>
           <div className="space-y-4 font-body-lg text-on-surface-variant leading-relaxed">
             <p className="font-semibold text-lg text-deep-forest">
-              Customers choose us for our expertise, efficiency, and commitment to building long-term partnerships based on trust and value. We understand that sourcing is more than just finding products — it is about fostering lasting relationships, ensuring quality, and creating value for every stakeholder.
+              Customers choose us for our expertise, efficiency, and commitment
+              to building long-term partnerships based on trust and value. We
+              understand that sourcing is more than just finding products — it
+              is about fostering lasting relationships, ensuring quality, and
+              creating value for every stakeholder.
             </p>
             <p>
-              Because of our years of experience in apparel and leather manufacturing, we have become a trusted partner for global buyers, brands, suppliers, and factories. We work exclusively with carefully selected manufacturers who hold internationally recognized certifications, ensuring that every product meets the highest standards of quality, safety, sustainability, and ethical practices.
+              Because of our years of experience in apparel and leather
+              manufacturing, we have become a trusted partner for global buyers,
+              brands, suppliers, and factories. We work exclusively with
+              carefully selected manufacturers who hold internationally
+              recognized certifications, ensuring that every product meets the
+              highest standards of quality, safety, sustainability, and ethical
+              practices.
             </p>
           </div>
         </div>
@@ -406,7 +446,10 @@ export default function Landing() {
                 Ethical Sourcing
               </h4>
               <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
-                We guarantee that materials are sourced from internationally renowned sustainable producers who care about the community and environment and have been making ethical products for over 50 years.
+                We guarantee that materials are sourced from internationally
+                renowned sustainable producers who care about the community and
+                environment and have been making ethical products for over 50
+                years.
               </p>
             </div>
           </div>
@@ -421,7 +464,9 @@ export default function Landing() {
                 Wide range of products
               </h4>
               <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
-                To satisfy all your sourcing demands, we provide an extensive variety of premium products in both sustainable leather and bespoke clothing manufacturing.
+                To satisfy all your sourcing demands, we provide an extensive
+                variety of premium products in both sustainable leather and
+                bespoke clothing manufacturing.
               </p>
             </div>
           </div>
@@ -436,7 +481,9 @@ export default function Landing() {
                 Customizations
               </h4>
               <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
-                We welcome modifications in your approved order, confirmed by samples, including any cut, style, colour, pattern, packing, or print ideas you wish to bring to life.
+                We welcome modifications in your approved order, confirmed by
+                samples, including any cut, style, colour, pattern, packing, or
+                print ideas you wish to bring to life.
               </p>
             </div>
           </div>
@@ -451,7 +498,9 @@ export default function Landing() {
                 Quality control
               </h4>
               <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
-                Our in-house quality control team conducts rigorous pre-production, inline, and final inspections to ensure both leather and apparel products contain zero defects.
+                Our in-house quality control team conducts rigorous
+                pre-production, inline, and final inspections to ensure both
+                leather and apparel products contain zero defects.
               </p>
             </div>
           </div>
@@ -466,7 +515,9 @@ export default function Landing() {
                 Exceptionals price
               </h4>
               <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
-                We guarantee that our premium products are reasonably priced. We encourage clients to check our quality and pricing with quotes and samples from other vendors.
+                We guarantee that our premium products are reasonably priced. We
+                encourage clients to check our quality and pricing with quotes
+                and samples from other vendors.
               </p>
             </div>
           </div>
@@ -481,7 +532,9 @@ export default function Landing() {
                 Researching and innovation
               </h4>
               <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
-                Our team conducts extensive research to support innovation, offering cutting-edge technologies and deep market insight to drive new products and procedures.
+                Our team conducts extensive research to support innovation,
+                offering cutting-edge technologies and deep market insight to
+                drive new products and procedures.
               </p>
             </div>
           </div>
@@ -496,7 +549,9 @@ export default function Landing() {
                 Customer Satisfaction
               </h4>
               <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
-                Your satisfaction is our top priority. We guarantee a hassle-free and enjoyable experience from the initial order placement to final delivery.
+                Your satisfaction is our top priority. We guarantee a
+                hassle-free and enjoyable experience from the initial order
+                placement to final delivery.
               </p>
             </div>
           </div>
@@ -511,7 +566,9 @@ export default function Landing() {
                 First Delivery
               </h4>
               <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
-                We work directly with trusted global logistics partners to ensure all deliveries happen strictly on schedule, no matter where you are located.
+                We work directly with trusted global logistics partners to
+                ensure all deliveries happen strictly on schedule, no matter
+                where you are located.
               </p>
             </div>
           </div>
@@ -547,10 +604,7 @@ export default function Landing() {
           </span>
           <h2 className="relative font-display-lg text-4xl md:text-6xl lg:text-7xl text-white font-bold leading-tight">
             Two Industries.{" "}
-            <span
-              className="italic font-light"
-              style={{ color: "#cda250" }}
-            >
+            <span className="italic font-light" style={{ color: "#cda250" }}>
               One Vision.
             </span>
           </h2>
@@ -760,13 +814,15 @@ export default function Landing() {
       </section>
 
       {/* Luxury Dual Sourcing Showcase: Apparel & Leather Overview */}
-      <section className="py-24 bg-[#faf8f5] relative overflow-hidden border-b border-outline/5 select-none" id="sourcing-details">
+      <section
+        className="py-24 bg-[#faf8f5] relative overflow-hidden border-b border-outline/5 select-none"
+        id="sourcing-details"
+      >
         {/* Abstract organic elegant design background details */}
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gold-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
         <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-emerald-mint/5 rounded-full blur-[150px] pointer-events-none"></div>
 
         <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop space-y-32">
-
           {/* Row 1: Apparel Sourcing (Image Left, Text Right) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             {/* Left Image Frame with offset luxury gallery border */}
@@ -795,10 +851,18 @@ export default function Landing() {
               </h3>
               <div className="w-16 h-[2px] bg-[#cda250]"></div>
               <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
-                We source premium raw materials from trusted mills and suppliers across Bangladesh and beyond. Our in-house and partner factories are equipped with modern machinery and skilled labour to manage the full production process.
+                We source premium raw materials from trusted mills and suppliers
+                across Bangladesh and beyond. Our in-house and partner factories
+                are equipped with modern machinery and skilled labour to manage
+                the full production process.
               </p>
               <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
-                This process includes design and fabric procurement, cutting, sewing, finishing, quality control, and shipping — all carried out to meet international standards and customer demands. Each stage, from fabric sourcing to cutting, stitching, finishing, and quality control, is conducted under strict supervision to ensure excellence.
+                This process includes design and fabric procurement, cutting,
+                sewing, finishing, quality control, and shipping — all carried
+                out to meet international standards and customer demands. Each
+                stage, from fabric sourcing to cutting, stitching, finishing,
+                and quality control, is conducted under strict supervision to
+                ensure excellence.
               </p>
               <div className="pt-4">
                 <a
@@ -806,7 +870,9 @@ export default function Landing() {
                   className="inline-flex items-center gap-3 px-8 py-4 bg-[#0e7448] text-off-white font-label-caps text-xs font-bold uppercase tracking-wider hover:bg-[#cda250] hover:text-pure-black hover:scale-[1.03] transition-all duration-300 rounded-sm shadow-lg"
                 >
                   Check Apparel
-                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                  <span className="material-symbols-outlined text-sm">
+                    arrow_forward
+                  </span>
                 </a>
               </div>
             </div>
@@ -824,10 +890,17 @@ export default function Landing() {
               </h3>
               <div className="w-16 h-[2px] bg-[#cda250]"></div>
               <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
-                Similarly,” from desalting to finishing, each raw hide goes through multiple stages of production, with every colour of leather carrying its own unique story.
+                Similarly,” from desalting to finishing, each raw hide goes
+                through multiple stages of production, with every colour of
+                leather carrying its own unique story.
               </p>
               <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
-                The process involves technicians, designers, and skilled artisans, all working with dedication to meet the highest quality standards and ensure customer satisfaction. This reflects our manufacturing company’s capabilities and commitment to excellence, ensuring that each piece of leather is the result of outstanding craftsmanship.
+                The process involves technicians, designers, and skilled
+                artisans, all working with dedication to meet the highest
+                quality standards and ensure customer satisfaction. This
+                reflects our manufacturing company’s capabilities and commitment
+                to excellence, ensuring that each piece of leather is the result
+                of outstanding craftsmanship.
               </p>
               <div className="pt-4">
                 <a
@@ -835,7 +908,9 @@ export default function Landing() {
                   className="inline-flex items-center gap-3 px-8 py-4 bg-[#0e7448] text-off-white font-label-caps text-xs font-bold uppercase tracking-wider hover:bg-[#cda250] hover:text-pure-black hover:scale-[1.03] transition-all duration-300 rounded-sm shadow-lg"
                 >
                   Check Leather
-                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                  <span className="material-symbols-outlined text-sm">
+                    arrow_forward
+                  </span>
                 </a>
               </div>
             </div>
@@ -856,7 +931,6 @@ export default function Landing() {
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -870,7 +944,13 @@ export default function Landing() {
             Our Accreditation Speaks For Itself
           </h2>
           <p className="font-body-lg text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
-            We work with selected manufacturers who have achieved internationally recognized certifications, giving you full confidence in our practices. Below are some of the key certifications in apparel and leather manufacturing, relevant to buyers, factories, suppliers, and brands. These certifications confirm compliance with international standards for quality, environmental responsibility, safety, and ethical practices.
+            We work with selected manufacturers who have achieved
+            internationally recognized certifications, giving you full
+            confidence in our practices. Below are some of the key
+            certifications in apparel and leather manufacturing, relevant to
+            buyers, factories, suppliers, and brands. These certifications
+            confirm compliance with international standards for quality,
+            environmental responsibility, safety, and ethical practices.
           </p>
         </div>
 
@@ -887,7 +967,11 @@ export default function Landing() {
             onMouseMove={handleLogoMouseMove}
             onMouseUp={handleLogoMouseUpOrLeave}
             className="flex overflow-x-auto gap-8 px-6 md:px-margin-desktop hide-scrollbar cursor-grab active:cursor-grabbing select-none py-2 w-full"
-            style={{ scrollBehavior: "auto", scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            style={{
+              scrollBehavior: "auto",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }}
           >
             {[...accreditationLogos, ...accreditationLogos].map((logo, idx) => (
               <div
@@ -975,17 +1059,14 @@ export default function Landing() {
               <img
                 className="w-full h-full object-cover"
                 alt="A subtle atelier background texture."
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwFIii4Gd-uHSJLqfabNtXwCdbUGm_ua6-rZDXiak4jlnQ3nw48PB3lvUOzj3Qgz5rBV2CrgNpw1J3LgmRPcP0dRnIR1hxFPddXP2d5j2QSoseYVvulBukCWag4gKRSLeqOvytMoMUIgJz4TvMWgf5aOJW3cs7C-yAR8kJaSsjfd7tkl7GNxJygfwnSck26OGnKJomOVGoZ7GUahLN-HyeRNLIiGfmxtZqxkBZVMUfJ0fAu3CQg89PXfoSSJI9f5elFemfF0O-ayXu"
+                src="/slides/sustainability_bg.jpg"
                 loading="lazy"
               />
             </div>
           </div>
 
           <div className="md:w-1/2 bg-off-white p-6 sm:p-10 lg:p-20 text-on-surface">
-            <form
-              className="space-y-8"
-              onSubmit={handleContactSubmit}
-            >
+            <form className="space-y-8" onSubmit={handleContactSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <div className="relative">
                   <label className="block font-label-caps text-[10px] text-deep-forest mb-2">
