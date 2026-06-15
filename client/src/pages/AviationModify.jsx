@@ -11,9 +11,6 @@ import { stripRichText } from "../utils/richText";
 const emptyForm = {
   code: "",
   name: "",
-  type: "",
-  thickness: "",
-  rawhide: "",
   rawMaterial: "",
   processing: "",
   productDetails: "",
@@ -63,9 +60,6 @@ const AviationModify = () => {
     setForm({
       code: item.code || "",
       name: item.name || "",
-      type: item.type || "",
-      thickness: item.thickness || "",
-      rawhide: item.rawhide || "",
       rawMaterial: item.rawMaterial || "",
       processing: item.processing || "",
       productDetails: item.productDetails || "",
@@ -100,9 +94,6 @@ const AviationModify = () => {
       payload.append("title", titleVal);
       payload.append("code", form.code.trim());
       payload.append("name", form.name.trim());
-      payload.append("type", form.type.trim());
-      payload.append("thickness", form.thickness.trim());
-      payload.append("rawhide", form.rawhide.trim());
       payload.append("rawMaterial", form.rawMaterial.trim());
       payload.append("processing", form.processing.trim());
       payload.append("productDetails", form.productDetails);
@@ -219,69 +210,28 @@ const AviationModify = () => {
                 </label>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-3">
-                <label className="block">
-                  <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Type
-                  </span>
-                  <input
-                    type="text"
-                    name="type"
-                    value={form.type}
-                    onChange={handleFormChange}
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
-                  />
-                </label>
-
-                <label className="block">
-                  <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Thickness
-                  </span>
-                  <input
-                    type="text"
-                    name="thickness"
-                    value={form.thickness}
-                    onChange={handleFormChange}
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
-                  />
-                </label>
-
-                <label className="block">
-                  <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Rawhide Origin
-                  </span>
-                  <input
-                    type="text"
-                    name="rawhide"
-                    value={form.rawhide}
-                    onChange={handleFormChange}
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
-                  />
-                </label>
-              </div>
+              <RichTextBox
+                label="Description"
+                value={form.desc}
+                onChange={(value) => setForm((previous) => ({ ...previous, desc: value }))}
+              />
 
               <RichTextBox
-                label="1. Raw Material"
+                label="Raw Material"
                 value={form.rawMaterial}
                 onChange={(value) => setForm((previous) => ({ ...previous, rawMaterial: value }))}
               />
 
               <RichTextBox
-                label="2. Processing"
+                label="Processing"
                 value={form.processing}
                 onChange={(value) => setForm((previous) => ({ ...previous, processing: value }))}
               />
 
               <RichTextBox
-                label="3. Product Details"
+                label="Final Product Characteristics"
                 value={form.productDetails}
                 onChange={(value) => setForm((previous) => ({ ...previous, productDetails: value }))}
-              />
-
-              <RichTextBox
-                label="Product Card Description"
-                value={form.desc}
-                onChange={(value) => setForm((previous) => ({ ...previous, desc: value }))}
               />
             </div>
 
@@ -329,9 +279,6 @@ const AviationModify = () => {
                   <th className="p-4">Image</th>
                   <th className="p-4">Code</th>
                   <th className="p-4">Name</th>
-                  <th className="p-4">Type</th>
-                  <th className="p-4">Thickness</th>
-                  <th className="p-4">Origin</th>
                   <th className="p-4 text-right">Actions</th>
                 </tr>
               </thead>
@@ -350,9 +297,6 @@ const AviationModify = () => {
                       </td>
                       <td className="p-4 font-semibold text-slate-900">{item.code}</td>
                       <td className="p-4">{item.name}</td>
-                      <td className="p-4">{item.type}</td>
-                      <td className="p-4 text-xs font-mono text-slate-500">{item.thickness}</td>
-                      <td className="p-4 text-xs font-mono text-slate-500">{item.rawhide}</td>
                       <td className="p-4 text-right">
                         <div className="inline-flex gap-2">
                           <button
@@ -373,8 +317,8 @@ const AviationModify = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="7" className="p-8 text-center text-slate-400">
-                      No items found. Run the seed script or create one.
+                    <td colSpan="4" className="p-8 text-center text-slate-400">
+                      No items found.
                     </td>
                   </tr>
                 )}

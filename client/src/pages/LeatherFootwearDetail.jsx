@@ -22,6 +22,12 @@ export default function LeatherFootwearDetail() {
     loadProduct();
   }, [productId]);
 
+  useEffect(() => {
+    if (product) {
+      document.title = `${product.name ? product.name : (product.code || "Sustainable Leather")} | Vivosa`;
+    }
+  }, [product]);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white text-primary">
@@ -41,10 +47,8 @@ export default function LeatherFootwearDetail() {
     );
   }
 
-  // Extract the article name from the title (e.g. "F016CMVNO, Arctic" -> "Arctic")
-  const articleName = product.title.includes(",")
-    ? product.title.split(",")[1].trim()
-    : product.title;
+  // Extract the article name
+  const articleName = product.name ? product.name : (product.code || product.title || "Untitled");
 
   // Format the article name with spaces between letters for the header (e.g. "A R C T I C")
   const spacedName = articleName.toUpperCase().split("").join(" ");
@@ -97,24 +101,62 @@ export default function LeatherFootwearDetail() {
             </div>
 
             {/* Right Column: Detailed Product Specs with luxurious padding */}
+            {/* Right Column: Detailed Product Specs with luxurious padding */}
             <div className="py-16 px-6 sm:px-12 lg:px-20 xl:px-24 flex flex-col justify-center space-y-10 bg-white">
 
               <div className="space-y-2 border-b border-neutral-100 pb-6 max-w-xl">
                 <h2 className="font-display text-2xl md:text-3xl font-light tracking-wide text-neutral-800 uppercase">
-                  {product.name || product.title}
+                  {product.code || product.title || product.name}
                 </h2>
-                {product.code && (
+                {product.subtitle && (
                   <p className="font-label-caps text-xs tracking-widest text-neutral-500 uppercase">
-                    {product.code}
+                    {product.subtitle}
                   </p>
+                )}
+                {(product.thickness || product.rawhide) && (
+                  <div className="grid grid-cols-2 gap-4 mt-4">
+                    {product.thickness && (
+                      <div className="space-y-1">
+                        <span className="font-label-caps text-[10px] tracking-widest text-[#8e8e8e] uppercase font-bold block">
+                          Thickness
+                        </span>
+                        <p className="font-body text-[15px] text-neutral-800 font-medium">
+                          {product.thickness}
+                        </p>
+                      </div>
+                    )}
+                    {product.rawhide && (
+                      <div className="space-y-1">
+                        <span className="font-label-caps text-[10px] tracking-widest text-[#8e8e8e] uppercase font-bold block">
+                          Rawhide Origin
+                        </span>
+                        <p className="font-body text-[15px] text-neutral-800 font-medium">
+                          {product.rawhide}
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 )}
               </div>
 
-              {/* 1. RAW MATERIAL */}
+              {/* 1. PRODUCT DESCRIPTION */}
+              {product.desc && (
+                <div className="space-y-3 max-w-xl">
+                  <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
+                    Product Description
+                  </h3>
+                  <div
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
+                    dangerouslySetInnerHTML={{ __html: product.desc }}
+                  />
+                </div>
+              )}
+
+              {/* 2. RAW MATERIAL */}
               {product.rawMaterial && (
                 <div className="space-y-3 max-w-xl">
                   <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
-                    {sectionIndex++}. RAW MATERIAL
+                    Raw Material
                   </h3>
                   <div
                     className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
@@ -123,11 +165,11 @@ export default function LeatherFootwearDetail() {
                 </div>
               )}
 
-              {/* 2. PROCESSING */}
+              {/* 3. PROCESSING */}
               {product.processing && (
                 <div className="space-y-3 max-w-xl">
                   <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
-                    {sectionIndex++}. PROCESSING
+                    Processing
                   </h3>
                   <div
                     className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
@@ -136,29 +178,20 @@ export default function LeatherFootwearDetail() {
                 </div>
               )}
 
-              {/* 3. PRODUCT */}
+              {/* 4. FINAL PRODUCT CHARACTERISTICS */}
               {product.productDetails && (
                 <div className="space-y-3 max-w-xl">
                   <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
-                    {sectionIndex++}. PRODUCT
+                    Final Product Characteristics
                   </h3>
-                  <div className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light space-y-4">
-                    {(product.thickness || product.rawhide) && (
-                      <p>
-                        <span className="font-medium text-neutral-800">{articleName}</span> is a premium footwear leather article
-                        {product.thickness && <> with a customized thickness of <span className="font-medium text-neutral-800">{product.thickness}</span></>}
-                        {product.rawhide && <> crafted carefully using fine <span className="font-medium text-neutral-800">{product.rawhide}</span> hides</>}
-                        .
-                      </p>
-                    )}
-                    <div
-                      className="rich-content"
-                      dangerouslySetInnerHTML={{ __html: product.productDetails }}
-                    />
-                  </div>
+                  <div
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
+                    dangerouslySetInnerHTML={{ __html: product.productDetails }}
+                  />
                 </div>
               )}
-              <div className={hasSpecs ? "pt-6 border-t border-neutral-100" : ""}>
+
+              <div className="pt-6 border-t border-neutral-100">
                 <Link
                   className="text-xs font-sans text-neutral-400 hover:text-black tracking-[0.2em] uppercase transition-colors underline underline-offset-4"
                   to="/leather-footwear"

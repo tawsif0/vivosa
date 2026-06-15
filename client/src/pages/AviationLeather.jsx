@@ -262,10 +262,10 @@ export default function AviationLeather() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
-                  {(swatch.code?.trim() || swatch.name?.trim()) && (
+                  {(swatch.code?.trim() || swatch.title?.trim() || swatch.name?.trim()) && (
                     <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
                       <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase">
-                        {swatch.code || swatch.name || swatch.title}
+                        {swatch.code || swatch.title || swatch.name}
                       </h4>
                     </div>
                   )}

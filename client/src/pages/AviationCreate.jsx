@@ -10,9 +10,6 @@ import { stripRichText } from "../utils/richText";
 const emptyForm = {
   code: "",
   name: "",
-  type: "",
-  thickness: "",
-  rawhide: "",
   rawMaterial: "",
   processing: "",
   productDetails: "",
@@ -57,9 +54,6 @@ const AviationCreate = () => {
       payload.append("title", titleVal);
       payload.append("code", form.code.trim());
       payload.append("name", form.name.trim());
-      payload.append("type", form.type.trim());
-      payload.append("thickness", form.thickness.trim());
-      payload.append("rawhide", form.rawhide.trim());
       payload.append("rawMaterial", form.rawMaterial.trim());
       payload.append("processing", form.processing.trim());
       payload.append("productDetails", form.productDetails);
@@ -87,7 +81,7 @@ const AviationCreate = () => {
         </p>
         <h2 className="mt-2 text-2xl font-bold text-slate-900 font-display">Create Aviation Item</h2>
         <p className="mt-1 text-sm text-slate-600">
-          Add an admin-controlled leather article with code, name, type, thickness, origin, and description.
+          Add an admin-controlled leather article with code, name, and rich text descriptions.
         </p>
       </div>
 
@@ -130,78 +124,32 @@ const AviationCreate = () => {
             </label>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3">
-            <label className="block">
-              <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                Type
-              </span>
-              <input
-                type="text"
-                name="type"
-                value={form.type}
-                onChange={handleChange}
-                placeholder="e.g. Lightweight Aniline"
-                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-slate-900"
-              />
-            </label>
-
-            <label className="block">
-              <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                Thickness
-              </span>
-              <input
-                type="text"
-                name="thickness"
-                value={form.thickness}
-                onChange={handleChange}
-                placeholder="e.g. 0.8 – 1.0 mm"
-                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-slate-900"
-              />
-            </label>
-
-            <label className="block">
-              <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                Rawhide Origin
-              </span>
-              <input
-                type="text"
-                name="rawhide"
-                value={form.rawhide}
-                onChange={handleChange}
-                placeholder="e.g. Europe"
-                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-slate-900"
-              />
-            </label>
-          </div>
+          <RichTextBox
+            label="Description"
+            value={form.desc}
+            onChange={(value) => setForm((previous) => ({ ...previous, desc: value }))}
+            placeholder="Add description details of this aviation leather..."
+          />
 
           <RichTextBox
-            label="1. Raw Material"
+            label="Raw Material"
             value={form.rawMaterial}
             onChange={(value) => setForm((previous) => ({ ...previous, rawMaterial: value }))}
             placeholder="e.g. Selected European bull hides."
           />
 
           <RichTextBox
-            label="2. Processing"
+            label="Processing"
             value={form.processing}
             onChange={(value) => setForm((previous) => ({ ...previous, processing: value }))}
             placeholder="e.g. Flame retardant treated and lightweight finished in Italy."
           />
 
           <RichTextBox
-            label="3. Product Details"
+            label="Final Product Characteristics"
             value={form.productDetails}
             onChange={(value) => setForm((previous) => ({ ...previous, productDetails: value }))}
-            placeholder="Detailed description of flame resistance, lightweight features..."
-            helper="Use editor tools to format."
-          />
-
-          <RichTextBox
-            label="Product Card Description"
-            value={form.desc}
-            onChange={(value) => setForm((previous) => ({ ...previous, desc: value }))}
-            placeholder="Add description details of this aviation leather..."
-            helper="Use the editor toolbar to format details."
+            placeholder="Detailed description of final product characteristics..."
           />
         </div>
 

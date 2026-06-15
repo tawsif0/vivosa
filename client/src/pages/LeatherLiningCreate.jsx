@@ -8,12 +8,8 @@ import RichTextBox from "../components/Kids/RichTextBox";
 import { stripRichText } from "../utils/richText";
 
 const emptyForm = {
-  title: "",
-  colorName: "",
-  fullName: "",
-  subtitle: "",
-  thickness: "",
-  rawhide: "",
+  code: "",
+  name: "",
   rawMaterial: "",
   processing: "",
   productDetails: "",
@@ -54,13 +50,10 @@ const LeatherLiningCreate = () => {
     try {
       const payload = new FormData();
       payload.append("category", "leather-lining");
-      const titleVal = form.title.trim() || "Untitled Leather";
+      const titleVal = [form.code.trim(), form.name.trim()].filter(Boolean).join(" ") || "Untitled Leather";
       payload.append("title", titleVal);
-      payload.append("colorName", form.colorName.trim());
-      payload.append("fullName", form.fullName.trim());
-      payload.append("subtitle", form.subtitle.trim());
-      payload.append("thickness", form.thickness.trim());
-      payload.append("rawhide", form.rawhide.trim());
+      payload.append("code", form.code.trim());
+      payload.append("name", form.name.trim());
       payload.append("rawMaterial", form.rawMaterial.trim());
       payload.append("processing", form.processing.trim());
       payload.append("productDetails", form.productDetails);
@@ -88,7 +81,7 @@ const LeatherLiningCreate = () => {
         </p>
         <h2 className="mt-2 text-2xl font-bold text-slate-900">Create Leather Lining Item</h2>
         <p className="mt-1 text-sm text-slate-600">
-          Add an admin-controlled leather article for lining.
+          Add an admin-controlled leather article with code, name, and rich text descriptions.
         </p>
       </div>
 
@@ -99,125 +92,65 @@ const LeatherLiningCreate = () => {
         animate={{ opacity: 1, y: 0 }}
       >
         <div className="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div className="grid gap-4 sm:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2">
             <label className="block">
               <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
                 <FiType className="h-4 w-4" />
-                Short Title
+                Code / Article Number
               </span>
               <input
                 type="text"
-                name="title"
-                value={form.title}
+                name="code"
+                value={form.code}
                 onChange={handleChange}
-                placeholder="e.g. F0CRP, Ice White"
+                placeholder="e.g. F0CRP"
                 className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
               />
             </label>
 
             <label className="block">
               <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                Color Name
+                <FiType className="h-4 w-4" />
+                Name
               </span>
               <input
                 type="text"
-                name="colorName"
-                value={form.colorName}
+                name="name"
+                value={form.name}
                 onChange={handleChange}
                 placeholder="e.g. Ice White"
-                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
-              />
-            </label>
-
-            <label className="block">
-              <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                Full Name
-              </span>
-              <input
-                type="text"
-                name="fullName"
-                value={form.fullName}
-                onChange={handleChange}
-                placeholder="e.g. F0CRP, Ice White — Semi-Aniline / Tumbled Full Grain"
-                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
-              />
-            </label>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-3">
-            <label className="block">
-              <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                Subtitle
-              </span>
-              <input
-                type="text"
-                name="subtitle"
-                value={form.subtitle}
-                onChange={handleChange}
-                placeholder="LEATHER SUITABLE FOR PREMIUM LINING PRODUCTION"
-                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
-              />
-            </label>
-
-            <label className="block">
-              <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                Thickness
-              </span>
-              <input
-                type="text"
-                name="thickness"
-                value={form.thickness}
-                onChange={handleChange}
-                placeholder="e.g. 0.8 – 0.9 mm"
-                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
-              />
-            </label>
-
-            <label className="block">
-              <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                Rawhide Origin
-              </span>
-              <input
-                type="text"
-                name="rawhide"
-                value={form.rawhide}
-                onChange={handleChange}
-                placeholder="e.g. European"
                 className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
               />
             </label>
           </div>
 
           <RichTextBox
-            label="1. Raw Material"
+            label="Description"
+            value={form.desc}
+            onChange={(value) => setForm((previous) => ({ ...previous, desc: value }))}
+            placeholder="A short description for grid display..."
+          />
+
+          <RichTextBox
+            label="Raw Material"
             value={form.rawMaterial}
             onChange={(value) => setForm((previous) => ({ ...previous, rawMaterial: value }))}
             placeholder="e.g. We use premium bovine skins of select European origin..."
           />
 
           <RichTextBox
-            label="2. Processing"
+            label="Processing"
             value={form.processing}
             onChange={(value) => setForm((previous) => ({ ...previous, processing: value }))}
             placeholder="e.g. Fine chrome retanning and tumbling technique..."
           />
 
           <RichTextBox
-            label="3. Product Details"
+            label="Final Product Characteristics"
             value={form.productDetails}
             onChange={(value) => setForm((previous) => ({ ...previous, productDetails: value }))}
-            placeholder="Detailed description of lining features..."
-            helper="Use editor tools to format."
+            placeholder="Detailed description of product features..."
           />
-
-          <RichTextBox
-            label="Product Card Description (Short)"
-            value={form.desc}
-            onChange={(value) => setForm((previous) => ({ ...previous, desc: value }))}
-            placeholder="A short summary description visible in grids..."
-            helper="Keep this concise."
-          />
-
         </div>
 
         <div className="space-y-6">

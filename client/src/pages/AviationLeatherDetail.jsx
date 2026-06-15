@@ -22,6 +22,12 @@ export default function AviationLeatherDetail() {
     loadProduct();
   }, [productId]);
 
+  useEffect(() => {
+    if (product) {
+      document.title = `${product.name ? product.name : (product.code || "Sustainable Leather")} | Vivosa`;
+    }
+  }, [product]);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white text-primary">
@@ -41,7 +47,7 @@ export default function AviationLeatherDetail() {
     );
   }
 
-  const articleName = product.name || product.title;
+  const articleName = product.name ? product.name : (product.code || product.title || "Untitled");
   const spacedName = articleName.toUpperCase().split("").join(" ");
 
   let sectionIndex = 1;
@@ -96,11 +102,11 @@ export default function AviationLeatherDetail() {
 
               <div className="space-y-2 border-b border-neutral-100 pb-6 max-w-xl">
                 <h2 className="font-display text-2xl md:text-3xl font-light tracking-wide text-neutral-800 uppercase">
-                  {product.name || product.title}
+                  {product.code || product.title || product.name}
                 </h2>
-                {product.code && (
+                {product.subtitle && (
                   <p className="font-label-caps text-xs tracking-widest text-neutral-500 uppercase">
-                    {product.code}
+                    {product.subtitle}
                   </p>
                 )}
                 {(product.rawhide || product.thickness) && (
@@ -129,53 +135,55 @@ export default function AviationLeatherDetail() {
                 )}
               </div>
 
-              {/* Specifications Accordion/Grid */}
-              {hasSpecs && (
-                <div className="space-y-8 max-w-xl">
-                  {product.rawMaterial && (
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-3">
-                        <span className="font-display text-lg text-[#d4af37]/80">0{sectionIndex++}</span>
-                        <h3 className="font-label-caps text-xs tracking-widest text-[#1c1917] uppercase font-bold">
-                          Raw Material
-                        </h3>
-                      </div>
-                      <div
-                        className="font-body text-sm text-neutral-600 leading-relaxed pl-8 rich-content"
-                        dangerouslySetInnerHTML={{ __html: product.rawMaterial }}
-                      />
-                    </div>
-                  )}
+              {/* 1. PRODUCT DESCRIPTION */}
+              {product.desc && (
+                <div className="space-y-3 max-w-xl">
+                  <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
+                    Product Description
+                  </h3>
+                  <div
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
+                    dangerouslySetInnerHTML={{ __html: product.desc }}
+                  />
+                </div>
+              )}
 
-                  {product.processing && (
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-3">
-                        <span className="font-display text-lg text-[#d4af37]/80">0{sectionIndex++}</span>
-                        <h3 className="font-label-caps text-xs tracking-widest text-[#1c1917] uppercase font-bold">
-                          Processing
-                        </h3>
-                      </div>
-                      <div
-                        className="font-body text-sm text-neutral-600 leading-relaxed pl-8 rich-content"
-                        dangerouslySetInnerHTML={{ __html: product.processing }}
-                      />
-                    </div>
-                  )}
+              {/* 2. RAW MATERIAL */}
+              {product.rawMaterial && (
+                <div className="space-y-3 max-w-xl">
+                  <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
+                    Raw Material
+                  </h3>
+                  <div
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
+                    dangerouslySetInnerHTML={{ __html: product.rawMaterial }}
+                  />
+                </div>
+              )}
 
-                  {product.productDetails && (
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-3">
-                        <span className="font-display text-lg text-[#d4af37]/80">0{sectionIndex++}</span>
-                        <h3 className="font-label-caps text-xs tracking-widest text-[#1c1917] uppercase font-bold">
-                          Product Details
-                        </h3>
-                      </div>
-                      <div 
-                        className="font-body text-sm text-neutral-600 leading-relaxed pl-8 rich-content"
-                        dangerouslySetInnerHTML={{ __html: product.productDetails }}
-                      />
-                    </div>
-                  )}
+              {/* 3. PROCESSING */}
+              {product.processing && (
+                <div className="space-y-3 max-w-xl">
+                  <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
+                    Processing
+                  </h3>
+                  <div
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
+                    dangerouslySetInnerHTML={{ __html: product.processing }}
+                  />
+                </div>
+              )}
+
+              {/* 4. FINAL PRODUCT CHARACTERISTICS */}
+              {product.productDetails && (
+                <div className="space-y-3 max-w-xl">
+                  <h3 className="font-display text-[13px] md:text-sm font-bold tracking-[0.2em] text-neutral-800 uppercase">
+                    Final Product Characteristics
+                  </h3>
+                  <div
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
+                    dangerouslySetInnerHTML={{ __html: product.productDetails }}
+                  />
                 </div>
               )}
 
@@ -198,21 +206,6 @@ export default function AviationLeatherDetail() {
             </div>
           </div>
         </section>
-
-        {/* Detailed Description / Context (Visual Text) */}
-        {product.desc && (
-          <section className="bg-neutral-50 py-16 px-6 sm:px-12 lg:px-24 border-b border-neutral-100">
-            <div className="max-w-3xl mx-auto space-y-6 text-center">
-              <span className="font-label-caps text-[10px] tracking-widest text-[#a8a29e] uppercase font-bold block">
-                Article Description
-              </span>
-              <div 
-                className="font-body text-base md:text-lg text-neutral-600 leading-relaxed italic rich-content"
-              dangerouslySetInnerHTML={{ __html: product.desc }}
-              />
-            </div>
-          </section>
-        )}
 
         <DetailsExtraSections privacyId="privacy-aviation-detail" />
       </main>

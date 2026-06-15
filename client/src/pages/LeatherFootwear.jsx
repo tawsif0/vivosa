@@ -432,10 +432,10 @@ export default function LeatherFootwear() {
                       loading="lazy"
                     />
                   </div>
-                  {(sample.code?.trim() || sample.name?.trim()) && (
+                  {(sample.code?.trim() || sample.title?.trim() || sample.name?.trim()) && (
                     <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
                       <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase">
-                        {sample.code || sample.name || sample.title}
+                        {sample.code || sample.title || sample.name}
                       </h4>
                     </div>
                   )}

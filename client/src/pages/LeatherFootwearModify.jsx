@@ -9,11 +9,8 @@ import { deleteSustainableLeather, fetchAdminSustainableLeathers, updateSustaina
 import { stripRichText } from "../utils/richText";
 
 const emptyForm = {
-  title: "",
-  fullName: "",
-  subtitle: "",
-  thickness: "",
-  rawhide: "",
+  code: "",
+  name: "",
   rawMaterial: "",
   processing: "",
   productDetails: "",
@@ -61,11 +58,8 @@ const LeatherFootwearModify = () => {
   const handleEditClick = (item) => {
     setEditingItem(item);
     setForm({
-      title: item.title || "",
-      fullName: item.fullName || "",
-      subtitle: item.subtitle || "",
-      thickness: item.thickness || "",
-      rawhide: item.rawhide || "",
+      code: item.code || item.title || "",
+      name: item.name || item.fullName || "",
       rawMaterial: item.rawMaterial || "",
       processing: item.processing || "",
       productDetails: item.productDetails || "",
@@ -96,12 +90,10 @@ const LeatherFootwearModify = () => {
 
     try {
       const payload = new FormData();
-      const titleVal = form.title.trim() || "Untitled Leather";
+      const titleVal = [form.code.trim(), form.name.trim()].filter(Boolean).join(" ") || "Untitled Leather";
       payload.append("title", titleVal);
-      payload.append("fullName", form.fullName.trim());
-      payload.append("subtitle", form.subtitle.trim());
-      payload.append("thickness", form.thickness.trim());
-      payload.append("rawhide", form.rawhide.trim());
+      payload.append("code", form.code.trim());
+      payload.append("name", form.name.trim());
       payload.append("rawMaterial", form.rawMaterial.trim());
       payload.append("processing", form.processing.trim());
       payload.append("productDetails", form.productDetails);
@@ -192,12 +184,12 @@ const LeatherFootwearModify = () => {
                 <label className="block">
                   <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
                     <FiType className="h-4 w-4" />
-                    Short Title
+                    Code / Article Number
                   </span>
                   <input
                     type="text"
-                    name="title"
-                    value={form.title}
+                    name="code"
+                    value={form.code}
                     onChange={handleFormChange}
                     className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
                   />
@@ -206,53 +198,12 @@ const LeatherFootwearModify = () => {
                 <label className="block">
                   <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
                     <FiType className="h-4 w-4" />
-                    Full Name
+                    Name
                   </span>
                   <input
                     type="text"
-                    name="fullName"
-                    value={form.fullName}
-                    onChange={handleFormChange}
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
-                  />
-                </label>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-3">
-                <label className="block">
-                  <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Subtitle
-                  </span>
-                  <input
-                    type="text"
-                    name="subtitle"
-                    value={form.subtitle}
-                    onChange={handleFormChange}
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
-                  />
-                </label>
-
-                <label className="block">
-                  <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Thickness
-                  </span>
-                  <input
-                    type="text"
-                    name="thickness"
-                    value={form.thickness}
-                    onChange={handleFormChange}
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
-                  />
-                </label>
-
-                <label className="block">
-                  <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Rawhide Origin
-                  </span>
-                  <input
-                    type="text"
-                    name="rawhide"
-                    value={form.rawhide}
+                    name="name"
+                    value={form.name}
                     onChange={handleFormChange}
                     className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none"
                   />
@@ -260,29 +211,28 @@ const LeatherFootwearModify = () => {
               </div>
 
               <RichTextBox
-                label="1. Raw Material"
+                label="Description"
+                value={form.desc}
+                onChange={(value) => setForm((previous) => ({ ...previous, desc: value }))}
+              />
+
+              <RichTextBox
+                label="Raw Material"
                 value={form.rawMaterial}
                 onChange={(value) => setForm((previous) => ({ ...previous, rawMaterial: value }))}
               />
 
               <RichTextBox
-                label="2. Processing"
+                label="Processing"
                 value={form.processing}
                 onChange={(value) => setForm((previous) => ({ ...previous, processing: value }))}
               />
 
               <RichTextBox
-                label="3. Product Details"
+                label="Final Product Characteristics"
                 value={form.productDetails}
                 onChange={(value) => setForm((previous) => ({ ...previous, productDetails: value }))}
               />
-
-              <RichTextBox
-                label="Product Card Description"
-                value={form.desc}
-                onChange={(value) => setForm((previous) => ({ ...previous, desc: value }))}
-              />
-
             </div>
 
             <div className="space-y-6">
@@ -327,10 +277,8 @@ const LeatherFootwearModify = () => {
               <thead>
                 <tr className="border-b border-slate-100 bg-slate-50/50 text-xs font-semibold uppercase tracking-wider text-slate-400">
                   <th className="p-4">Image</th>
-                  <th className="p-4">Short Title</th>
-                  <th className="p-4">Full Name</th>
-                  <th className="p-4">Thickness</th>
-                  <th className="p-4">Origin</th>
+                  <th className="p-4">Code</th>
+                  <th className="p-4">Name</th>
                   <th className="p-4 text-right">Actions</th>
                 </tr>
               </thead>
@@ -347,10 +295,8 @@ const LeatherFootwearModify = () => {
                           )}
                         </div>
                       </td>
-                      <td className="p-4 font-semibold text-slate-900">{item.title}</td>
-                      <td className="p-4 text-xs">{item.fullName}</td>
-                      <td className="p-4 text-xs font-mono text-slate-500">{item.thickness}</td>
-                      <td className="p-4 text-xs font-mono text-slate-500">{item.rawhide}</td>
+                      <td className="p-4 font-semibold text-slate-900">{item.code || item.title}</td>
+                      <td className="p-4">{item.name || item.fullName}</td>
                       <td className="p-4 text-right">
                         <div className="inline-flex gap-2">
                           <button
@@ -371,8 +317,8 @@ const LeatherFootwearModify = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="6" className="p-8 text-center text-slate-400">
-                      No items found. Run the seed script or create one.
+                    <td colSpan="4" className="p-8 text-center text-slate-400">
+                      No items found.
                     </td>
                   </tr>
                 )}
