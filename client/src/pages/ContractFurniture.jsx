@@ -110,19 +110,9 @@ export default function ContractFurniture() {
           {/* Left: Collage (60%) */}
           <div className="w-full md:w-3/5 bg-surface-container-low relative flex items-center justify-center p-8 md:p-20 overflow-hidden min-h-[500px]">
             <div className="relative w-full h-full max-w-4xl aspect-[4/3] flex items-center justify-center">
-              {/* Image 1: Sofa */}
-              <div 
-                className="absolute w-3/5 aspect-square -rotate-3 -translate-x-16 -translate-y-16 z-10 bg-white p-3 shadow-2xl hover:scale-105 hover:-translate-y-20 transition-all duration-700 ease-out cursor-pointer"
-              >
-                <img
-                  alt="Luxury leather sofa"
-                  className="w-full h-full object-cover"
-                  src="/images/contract-furniture/1_623811114_1247549493964799_1691272630713202817_n.jpg"
-                />
-              </div>
               {/* Image 2: Chair */}
               <div 
-                className="absolute w-1/2 aspect-[3/4] rotate-2 translate-x-20 translate-y-12 z-20 bg-white p-3 shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-700 ease-out cursor-pointer"
+                className="absolute w-1/2 aspect-[3/4] rotate-2 translate-x-12 translate-y-12 z-20 bg-white p-3 shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-700 ease-out cursor-pointer"
               >
                 <img
                   alt="Designer leather chair"

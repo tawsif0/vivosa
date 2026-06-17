@@ -138,7 +138,7 @@ const Sidebar = ({
           },
           {
             tab: "men-joggers",
-            label: "Joggers",
+            label: "Sweatshirts",
             icon: FiFolder,
             children: [
               { tab: "men-joggers-create", label: "Create", icon: FiPlus },

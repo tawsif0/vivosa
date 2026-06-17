@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaFacebook, FaYoutube, FaXTwitter, FaLinkedin, FaInstagram } from "react-icons/fa6";
 
 export default function Footer() {
+  const [isMenOpen, setIsMenOpen] = useState(false);
+  const [isWomenOpen, setIsWomenOpen] = useState(false);
   const handleScrollToTop = (e) => {
     if (e) e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -148,15 +150,87 @@ export default function Footer() {
                   Info
                 </a>
               </li>
-              <li>
-                <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/mensware" onClick={(e) => { e.preventDefault(); window.location.href = "/mensware"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-                  Mensware
-                </a>
+              
+              {/* Men's Collapsible Dropdown */}
+              <li className="relative">
+                <button
+                  type="button"
+                  onClick={() => setIsMenOpen(!isMenOpen)}
+                  className="w-full flex items-center justify-between font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300 py-1"
+                >
+                  <span>Men's</span>
+                  <span className="material-symbols-outlined text-[16px] transition-transform duration-300">
+                    {isMenOpen ? "expand_less" : "expand_more"}
+                  </span>
+                </button>
+                {isMenOpen && (
+                  <ul className="pl-4 mt-2 space-y-2 border-l border-gold-accent/20">
+                    {[
+                      { label: "Sweaters", href: "/mens/sweaters" },
+                      { label: "Jackets & Coats", href: "/mens/jackets-and-coats" },
+                      { label: "Pants", href: "/mens/pants" },
+                      { label: "Sweatshirts", href: "/mens/joggers" },
+                      { label: "Polo Shirt", href: "/mens/polo-shirt" },
+                      { label: "Shirts", href: "/mens/shirts" },
+                      { label: "T-shirts", href: "/mens/t-shirts" },
+                    ].map((item) => (
+                      <li key={item.href}>
+                        <a
+                          className="block text-xs text-surface-variant/55 hover:text-gold-accent transition-colors"
+                          href={item.href}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = item.href;
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }}
+                        >
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
-              <li>
-                <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/womenswear" onClick={(e) => { e.preventDefault(); window.location.href = "/womenswear"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-                  Womenswear
-                </a>
+
+              {/* Women's Collapsible Dropdown */}
+              <li className="relative">
+                <button
+                  type="button"
+                  onClick={() => setIsWomenOpen(!isWomenOpen)}
+                  className="w-full flex items-center justify-between font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300 py-1"
+                >
+                  <span>Women's</span>
+                  <span className="material-symbols-outlined text-[16px] transition-transform duration-300">
+                    {isWomenOpen ? "expand_less" : "expand_more"}
+                  </span>
+                </button>
+                {isWomenOpen && (
+                  <ul className="pl-4 mt-2 space-y-2 border-l border-gold-accent/20">
+                    {[
+                      { label: "Sweaters", href: "/womens/sweaters" },
+                      { label: "Jackets & Coats", href: "/womens/jackets-and-coats" },
+                      { label: "Pants", href: "/womens/pants" },
+                      { label: "Polo Shirts", href: "/womens/polo-shirts" },
+                      { label: "Shirts", href: "/womens/shirts" },
+                      { label: "T-shirts", href: "/womens/t-shirts" },
+                      { label: "Swim & Lingerie", href: "/womens/swim-lingerie" },
+                    ].map((item) => (
+                      <li key={item.href}>
+                        <a
+                          className="block text-xs text-surface-variant/55 hover:text-gold-accent transition-colors"
+                          href={item.href}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = item.href;
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }}
+                        >
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             </ul>
           </div>

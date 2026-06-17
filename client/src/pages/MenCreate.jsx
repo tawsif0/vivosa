@@ -29,7 +29,7 @@ const categoryNames = {
   sweater: "Sweater",
   "jackets-coats": "Jackets & Coats",
   pants: "Pants",
-  joggers: "Joggers",
+  joggers: "Sweatshirts",
   "polo-shirt": "Polo Shirt",
   shirts: "Shirts",
   "t-shirts": "T-shirts",

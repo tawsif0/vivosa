@@ -186,7 +186,7 @@ export default function Landing() {
             alt="Vivosa Leather Sourcing Factory Worker with Green Leather"
             src="/hero-bg.jpg"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-deep-forest/95 via-deep-forest/75 to-[#002115]/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#004b35]/95 via-[#004b35]/85 to-[#004b35]/70"></div>
         </div>
 
         <div className="relative z-10 max-w-container-max mx-auto w-full text-off-white px-4 sm:px-6 lg:px-margin-desktop">
@@ -629,7 +629,7 @@ export default function Landing() {
               key={`apparel-bg-${apparelSlide}`}
               src={apparelSlides[apparelSlide].src}
               alt=""
-              className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-35 scale-110 pointer-events-none"
+              className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-20 scale-110 pointer-events-none"
             />
 
             {/* Foreground crisp native 300x300 resolution image */}
@@ -642,7 +642,7 @@ export default function Landing() {
             />
 
             {/* Rich gradient overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#020705]/95 via-[#020705]/40 to-transparent pointer-events-none z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#020705]/95 via-[#020705]/50 to-transparent pointer-events-none z-10" />
 
             {/* Gold vertical divider on right edge (desktop) */}
             <div
@@ -670,7 +670,7 @@ export default function Landing() {
 
             {/* Bottom content */}
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
-              <h3 className="font-display-lg text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-widest uppercase leading-none mb-3">
+              <h3 className="font-display-lg text-4xl md:text-5xl lg:text-6xl font-bold tracking-widest uppercase leading-none mb-3" style={{ color: "#cda250" }}>
                 APPAREL
               </h3>
 
@@ -732,7 +732,7 @@ export default function Landing() {
               key={`leather-bg-${leatherSlide}`}
               src={leatherSlides[leatherSlide].src}
               alt=""
-              className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-35 scale-110 pointer-events-none"
+              className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-20 scale-110 pointer-events-none"
             />
 
             {/* Foreground crisp native 300x300 resolution image */}
@@ -745,7 +745,7 @@ export default function Landing() {
             />
 
             {/* Rich gradient overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#020705]/95 via-[#020705]/40 to-transparent pointer-events-none z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#020705]/95 via-[#020705]/50 to-transparent pointer-events-none z-10" />
 
             {/* Category badge */}
             <div className="absolute top-8 left-8 z-10">
@@ -763,7 +763,7 @@ export default function Landing() {
 
             {/* Bottom content */}
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
-              <h3 className="font-display-lg text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-widest uppercase leading-none mb-3">
+              <h3 className="font-display-lg text-4xl md:text-5xl lg:text-6xl font-bold tracking-widest uppercase leading-none mb-3" style={{ color: "#cda250" }}>
                 LEATHER
               </h3>
 
@@ -1013,7 +1013,7 @@ export default function Landing() {
                   </span>
                   <div>
                     <span className="font-label-caps block mb-1">
-                      Our Studio
+                      Address
                     </span>
                     <p className="font-body-md opacity-80">
                       19 Northampton Rd, Wellingborough,
@@ -1031,9 +1031,12 @@ export default function Landing() {
                     <span className="font-label-caps block mb-1">
                       Inquiries
                     </span>
-                    <p className="font-body-md opacity-80">
+                    <a
+                      href="mailto:enquiries@vivosa.co.uk"
+                      className="font-body-md opacity-80 hover:text-gold-accent transition-colors block"
+                    >
                       enquiries@vivosa.co.uk
-                    </p>
+                    </a>
                   </div>
                 </div>
 
@@ -1045,11 +1048,12 @@ export default function Landing() {
                     <span className="font-label-caps block mb-1">
                       Direct Lines
                     </span>
-                    <p className="font-body-md opacity-80">
+                    <a
+                      href="tel:02074126809"
+                      className="font-body-md opacity-80 hover:text-gold-accent transition-colors block"
+                    >
                       02-074-126-809
-                      <br />
-                      +44 7912 843155
-                    </p>
+                    </a>
                   </div>
                 </div>
               </div>

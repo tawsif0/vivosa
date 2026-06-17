@@ -77,10 +77,10 @@ export default function Contact() {
       {/* Contact Section */}
       <section className="bg-surface-container-low px-4 md:px-margin-desktop py-16 md:py-section-gap">
         <div className="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-          {/* Left: Global Offices */}
+          {/* Left: Contact Details */}
           <div className="lg:col-span-5 pr-0 md:pr-12 mb-16 lg:mb-0">
             <h2 className="font-headline-xl text-4xl md:text-headline-xl text-primary mb-12 leading-tight">
-              Our Global Presence
+              Contact Details
             </h2>
             <div className="space-y-10">
               {/* UK Office */}
@@ -89,7 +89,7 @@ export default function Contact() {
                   UNITED KINGDOM
                 </span>
                 <h3 className="font-headline-md text-2xl md:text-headline-md text-primary mb-4">
-                  UK Headquarters
+                  Address
                 </h3>
                 <p className="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
                   19 Northampton Rd, Wellingborough,
@@ -99,79 +99,17 @@ export default function Contact() {
                 <div className="font-body-md text-body-md text-primary flex flex-col gap-2">
                   <a
                     className={contactLinkClass}
-                    href="tel:+440123456789"
-                    aria-label="Call the UK headquarters"
+                    href="tel:02074126809"
+                    aria-label="Call the UK address"
                   >
-                    +44 (0) 123 456 789
+                    02-074-126-809
                   </a>
                   <a
                     className={contactLinkClass}
-                    href="mailto:london@vivosa.com"
-                    aria-label="Email the UK headquarters"
+                    href="mailto:enquiries@vivosa.co.uk"
+                    aria-label="Email the UK address"
                   >
-                    london@vivosa.com
-                  </a>
-                </div>
-              </div>
-
-              {/* Italy Office */}
-              <div className="border-t border-on-tertiary-container/30 pt-8">
-                <span className="font-label-caps text-[10px] tracking-widest text-on-surface-variant mb-4 block">
-                  ITALY
-                </span>
-                <h3 className="font-headline-md text-2xl md:text-headline-md text-primary mb-4">
-                  European Atelier
-                </h3>
-                <p className="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
-                  Via Montenapoleone, 8,
-                  <br />
-                  20121 Milano MI, Italy.
-                </p>
-                <div className="font-body-md text-body-md text-primary flex flex-col gap-2">
-                  <a
-                    className={contactLinkClass}
-                    href="tel:+39021234567"
-                    aria-label="Call the Italy office"
-                  >
-                    +39 02 123 4567
-                  </a>
-                  <a
-                    className={contactLinkClass}
-                    href="mailto:milano@vivosa.com"
-                    aria-label="Email the Italy office"
-                  >
-                    milano@vivosa.com
-                  </a>
-                </div>
-              </div>
-
-              {/* Bangladesh Office */}
-              <div className="border-t border-on-tertiary-container/30 pt-8 pb-4">
-                <span className="font-label-caps text-[10px] tracking-widest text-on-surface-variant mb-4 block">
-                  BANGLADESH
-                </span>
-                <h3 className="font-headline-md text-2xl md:text-headline-md text-primary mb-4">
-                  Manufacturing Hub
-                </h3>
-                <p className="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
-                  House 42, Road 17, Block E,
-                  <br />
-                  Banani, Dhaka 1213, Bangladesh.
-                </p>
-                <div className="font-body-md text-body-md text-primary flex flex-col gap-2">
-                  <a
-                    className={contactLinkClass}
-                    href="tel:+88029876543"
-                    aria-label="Call the Bangladesh office"
-                  >
-                    +880 2 987 6543
-                  </a>
-                  <a
-                    className={contactLinkClass}
-                    href="mailto:production@vivosa.com"
-                    aria-label="Email the Bangladesh office"
-                  >
-                    production@vivosa.com
+                    enquiries@vivosa.co.uk
                   </a>
                 </div>
               </div>

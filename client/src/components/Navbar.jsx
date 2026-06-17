@@ -8,8 +8,8 @@ function DesktopDropdown({ label, items, isOpen, isActive, onToggle, onClose }) 
         type="button"
         className={
           isOpen || isActive
-            ? "inline-flex items-center gap-1 md:gap-1.5 font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent border-b border-deep-forest dark:border-gold-accent pb-1 transition-colors duration-300 no-hover-scale"
-            : "inline-flex items-center gap-1 md:gap-1.5 font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300 no-hover-scale"
+            ? "inline-flex items-center gap-1 md:gap-1.5 font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-gold-accent border-b border-gold-accent pb-1 transition-colors duration-300 no-hover-scale"
+            : "inline-flex items-center gap-1 md:gap-1.5 font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-white/90 hover:text-gold-accent transition-colors duration-300 no-hover-scale"
         }
         aria-haspopup="menu"
         aria-expanded={isOpen}
@@ -30,7 +30,7 @@ function DesktopDropdown({ label, items, isOpen, isActive, onToggle, onClose }) 
 
       {isOpen ? (
         <div
-          className="absolute left-0 mt-4 min-w-64 rounded-2xl border border-outline/10 bg-surface/95 backdrop-blur-md shadow-xl overflow-hidden"
+          className="absolute left-0 mt-4 min-w-64 rounded-2xl border border-white/10 bg-[#003222]/95 backdrop-blur-md shadow-xl overflow-hidden"
           role="menu"
         >
           {items.map((item) => {
@@ -40,8 +40,8 @@ function DesktopDropdown({ label, items, isOpen, isActive, onToggle, onClose }) 
                 key={`${label}-${item.label}`}
                 className={
                   isItemActive
-                    ? "block px-5 py-3 font-body-md text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent bg-surface-container-low transition-colors duration-300"
-                    : "block px-5 py-3 font-body-md text-body-md tracking-wide uppercase text-on-surface-variant hover:text-leather-tan hover:bg-surface-container-low transition-colors duration-300"
+                    ? "block px-5 py-3 font-body-md text-body-md tracking-wide uppercase text-gold-accent bg-white/5 transition-colors duration-300"
+                    : "block px-5 py-3 font-body-md text-body-md tracking-wide uppercase text-white/80 hover:text-gold-accent hover:bg-white/5 transition-colors duration-300"
                 }
                 href={item.href}
                 role="menuitem"
@@ -66,9 +66,9 @@ function MobileAccordion({ label, items, isOpen, isActive, onItemClick }) {
       <button
         type="button"
         className={
-          isOpen || isActive
-            ? "w-full inline-flex items-center justify-between rounded-xl border border-deep-forest/20 dark:border-gold-accent/20 bg-deep-forest/5 dark:bg-gold-accent/5 px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-gold-accent no-hover-scale"
-            : "w-full inline-flex items-center justify-between rounded-xl border border-outline/10 bg-transparent px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-off-white hover:text-leather-tan dark:hover:text-gold-accent hover:bg-deep-forest/5 dark:hover:bg-gold-accent/5 no-hover-scale"
+          isOpen
+            ? "w-full inline-flex items-center justify-between rounded-xl border border-white/20 bg-white/5 px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-gold-accent no-hover-scale"
+            : "w-full inline-flex items-center justify-between rounded-xl border border-white/10 bg-transparent px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-white/90 hover:text-gold-accent hover:bg-white/5 no-hover-scale"
         }
         aria-expanded={isOpen}
         onClick={onItemClick}
@@ -80,7 +80,7 @@ function MobileAccordion({ label, items, isOpen, isActive, onItemClick }) {
       </button>
 
       {isOpen ? (
-        <div className="pl-4 flex flex-col gap-1.5 border-l border-outline/10 ml-4 mt-1">
+        <div className="pl-4 flex flex-col gap-1.5 border-l border-white/10 ml-4 mt-1">
           {items.map((item) => {
             const isItemActive = window.location.pathname === item.href;
             return (
@@ -88,8 +88,8 @@ function MobileAccordion({ label, items, isOpen, isActive, onItemClick }) {
                 key={`m-${label}-${item.label}`}
                 className={
                   isItemActive
-                    ? "rounded-xl px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-deep-forest dark:text-gold-accent bg-deep-forest/5 dark:bg-gold-accent/5 transition"
-                    : "rounded-xl px-4 py-2.5 text-xs font-semibold tracking-wider uppercase text-deep-forest/80 dark:text-off-white/80 hover:text-leather-tan dark:hover:text-gold-accent hover:bg-deep-forest/5 dark:hover:bg-gold-accent/5 transition"
+                    ? "rounded-xl px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gold-accent bg-white/5 transition"
+                    : "rounded-xl px-4 py-2.5 text-xs font-semibold tracking-wider uppercase text-white/80 hover:text-gold-accent hover:bg-white/5 transition"
                 }
                 href={item.href}
                 onClick={onItemClick}
@@ -104,10 +104,255 @@ function MobileAccordion({ label, items, isOpen, isActive, onItemClick }) {
   );
 }
 
+function DesktopApparelDropdown({ isOpen, isActive, onToggle, onClose, mensItems, womensItems }) {
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        className={
+          isOpen || isActive
+            ? "inline-flex items-center gap-1 md:gap-1.5 font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-gold-accent border-b border-gold-accent pb-1 transition-colors duration-300 no-hover-scale"
+            : "inline-flex items-center gap-1 md:gap-1.5 font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-white/90 hover:text-gold-accent transition-colors duration-300 no-hover-scale"
+        }
+        aria-haspopup="menu"
+        aria-expanded={isOpen}
+        onClick={onToggle}
+        onBlur={(event) => {
+          if (
+            !event.currentTarget.parentElement?.contains(event.relatedTarget)
+          ) {
+            onClose();
+          }
+        }}
+      >
+        Apparel
+        <span className="material-symbols-outlined text-[13px] lg:text-[16px] xl:text-[18px]">
+          {isOpen ? "expand_less" : "expand_more"}
+        </span>
+      </button>
+
+      {isOpen ? (
+        <div
+          className="absolute left-1/2 -translate-x-1/2 mt-4 w-[600px] rounded-2xl border border-white/10 bg-[#003222]/95 backdrop-blur-md shadow-xl overflow-hidden p-6 grid grid-cols-3 gap-6"
+          role="menu"
+          onMouseDown={(e) => e.preventDefault()}
+        >
+          {/* Men's Column */}
+          <div>
+            <h6 className="font-semibold text-xs text-gold-accent tracking-wider uppercase mb-3 border-b border-white/10 pb-1">
+              Men's
+            </h6>
+            <div className="flex flex-col gap-1.5">
+              {mensItems.map((item) => {
+                const isItemActive = window.location.pathname === item.href;
+                return (
+                  <a
+                    key={`apparel-men-${item.label}`}
+                    href={item.href}
+                    className={`text-xs uppercase tracking-wide transition-colors py-0.5 ${
+                      isItemActive
+                        ? "text-gold-accent font-semibold"
+                        : "text-white/80 hover:text-gold-accent"
+                    }`}
+                    onClick={() => {
+                      onClose();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Women's Column */}
+          <div>
+            <h6 className="font-semibold text-xs text-gold-accent tracking-wider uppercase mb-3 border-b border-white/10 pb-1">
+              Women's
+            </h6>
+            <div className="flex flex-col gap-1.5">
+              {womensItems.map((item) => {
+                const isItemActive = window.location.pathname === item.href;
+                return (
+                  <a
+                    key={`apparel-women-${item.label}`}
+                    href={item.href}
+                    className={`text-xs uppercase tracking-wide transition-colors py-0.5 ${
+                      isItemActive
+                        ? "text-gold-accent font-semibold"
+                        : "text-white/80 hover:text-gold-accent"
+                    }`}
+                    onClick={() => {
+                      onClose();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Kids Column */}
+          <div>
+            <h6 className="font-semibold text-xs text-gold-accent tracking-wider uppercase mb-3 border-b border-white/10 pb-1">
+              Kids
+            </h6>
+            <div className="flex flex-col gap-2">
+              <a
+                href="/kids"
+                className={`text-xs uppercase tracking-wide font-bold transition-colors py-0.5 ${
+                  window.location.pathname === "/kids"
+                    ? "text-gold-accent"
+                    : "text-white/80 hover:text-gold-accent"
+                }`}
+                onClick={() => {
+                  onClose();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
+                Kids Collection
+              </a>
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function MobileApparelAccordion({ isOpen, isActive, onItemClick, mensItems, womensItems }) {
+  const [isMenOpen, setIsMenOpen] = useState(false);
+  const [isWomenOpen, setIsWomenOpen] = useState(false);
+
+  const isMenActive = mensItems.some(item => window.location.pathname === item.href);
+  const isWomenActive = womensItems.some(item => window.location.pathname === item.href);
+  const isKidsActive = window.location.pathname === "/kids";
+
+  return (
+    <div className="flex flex-col gap-2">
+      <button
+        type="button"
+        className={
+          isOpen
+            ? "w-full inline-flex items-center justify-between rounded-xl border border-white/20 bg-white/5 px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-gold-accent no-hover-scale"
+            : "w-full inline-flex items-center justify-between rounded-xl border border-white/10 bg-transparent px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-white/90 hover:text-gold-accent hover:bg-white/5 no-hover-scale"
+        }
+        aria-expanded={isOpen}
+        onClick={onItemClick}
+      >
+        Apparel
+        <span className="material-symbols-outlined text-[18px]">
+          {isOpen ? "expand_less" : "expand_more"}
+        </span>
+      </button>
+
+      {isOpen ? (
+        <div className="pl-4 flex flex-col gap-3 border-l border-outline/10 ml-4 mt-1">
+          {/* Men's Header/List */}
+          <div className="flex flex-col gap-1">
+            <button
+              type="button"
+              onClick={() => setIsMenOpen(!isMenOpen)}
+              className={`w-full text-left text-xs font-semibold uppercase tracking-wider flex justify-between items-center pr-2 py-1 ${
+                isMenActive
+                  ? "text-gold-accent"
+                  : "text-white/80 hover:text-gold-accent"
+              }`}
+            >
+              <span>Men's</span>
+              <span className="material-symbols-outlined text-[14px]">
+                {isMenOpen ? "expand_less" : "expand_more"}
+              </span>
+            </button>
+            {isMenOpen && (
+              <div className="pl-3 flex flex-col gap-1.5 border-l border-white/10 ml-2">
+                {mensItems.map((item) => {
+                  const isItemActive = window.location.pathname === item.href;
+                  return (
+                    <a
+                      key={`m-app-men-${item.label}`}
+                      className={`text-[11px] uppercase tracking-wider transition-colors ${
+                        isItemActive
+                          ? "text-gold-accent font-semibold"
+                          : "text-white/70 hover:text-gold-accent"
+                      }`}
+                      href={item.href}
+                      onClick={onItemClick}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Women's Header/List */}
+          <div className="flex flex-col gap-1">
+            <button
+              type="button"
+              onClick={() => setIsWomenOpen(!isWomenOpen)}
+              className={`w-full text-left text-xs font-semibold uppercase tracking-wider flex justify-between items-center pr-2 py-1 ${
+                isWomenActive
+                  ? "text-gold-accent"
+                  : "text-white/80 hover:text-gold-accent"
+              }`}
+            >
+              <span>Women's</span>
+              <span className="material-symbols-outlined text-[14px]">
+                {isWomenOpen ? "expand_less" : "expand_more"}
+              </span>
+            </button>
+            {isWomenOpen && (
+              <div className="pl-3 flex flex-col gap-1.5 border-l border-white/10 ml-2">
+                {womensItems.map((item) => {
+                  const isItemActive = window.location.pathname === item.href;
+                  return (
+                    <a
+                      key={`m-app-women-${item.label}`}
+                      className={`text-[11px] uppercase tracking-wider transition-colors ${
+                        isItemActive
+                          ? "text-gold-accent font-semibold"
+                          : "text-white/70 hover:text-gold-accent"
+                      }`}
+                      href={item.href}
+                      onClick={onItemClick}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Kids Link */}
+          <div className="py-1">
+            <a
+              className={`text-xs font-semibold uppercase tracking-wider transition-colors ${
+                isKidsActive
+                  ? "text-gold-accent"
+                  : "text-white/80 hover:text-gold-accent"
+              }`}
+              href="/kids"
+              onClick={onItemClick}
+            >
+              Kids Collection
+            </a>
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [desktopOpenDropdown, setDesktopOpenDropdown] = useState(null); // "leather" | "mens" | "womens" | null
-  const [mobileOpenSection, setMobileOpenSection] = useState(null); // "leather" | "mens" | "womens" | null
+  const [desktopOpenDropdown, setDesktopOpenDropdown] = useState(null); // "leather" | "apparel" | null
+  const [mobileOpenSection, setMobileOpenSection] = useState(null); // "leather" | "apparel" | null
   const location = useLocation();
 
   const data = useMemo(
@@ -129,7 +374,7 @@ export default function Navbar() {
           { label: "Sweaters", href: "/mens/sweaters" },
           { label: "Jackets & Coats", href: "/mens/jackets-and-coats" },
           { label: "Pants", href: "/mens/pants" },
-          { label: "Joggers", href: "/mens/joggers" },
+          { label: "Sweatshirts", href: "/mens/joggers" },
           { label: "Polo Shirt", href: "/mens/polo-shirt" },
           { label: "Shirts", href: "/mens/shirts" },
           { label: "T-shirts", href: "/mens/t-shirts" },
@@ -238,43 +483,22 @@ export default function Navbar() {
             onClose={() => setDesktopOpenDropdown(null)}
           />
 
-          <DesktopDropdown
-            label={data.mens.label}
-            items={data.mens.items}
-            isOpen={desktopOpenDropdown === "mens"}
-            isActive={data.mens.items.some(item => location.pathname === item.href)}
-            onToggle={() =>
-              setDesktopOpenDropdown((value) =>
-                value === "mens" ? null : "mens",
-              )
-            }
-            onClose={() => setDesktopOpenDropdown(null)}
-          />
-
-          <DesktopDropdown
-            label={data.womens.label}
-            items={data.womens.items}
-            isOpen={desktopOpenDropdown === "womens"}
-            isActive={data.womens.items.some(item => location.pathname === item.href)}
-            onToggle={() =>
-              setDesktopOpenDropdown((value) =>
-                value === "womens" ? null : "womens",
-              )
-            }
-            onClose={() => setDesktopOpenDropdown(null)}
-          />
-
-          <Link
-            className={
+          <DesktopApparelDropdown
+            isOpen={desktopOpenDropdown === "apparel"}
+            isActive={
+              data.mens.items.some(item => location.pathname === item.href) ||
+              data.womens.items.some(item => location.pathname === item.href) ||
               location.pathname === "/kids"
-                ? "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent border-b border-deep-forest dark:border-gold-accent pb-1 transition-colors duration-300"
-                : "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300"
             }
-            to="/kids"
-            onClick={handleNavClick}
-          >
-            Kids
-          </Link>
+            onToggle={() =>
+              setDesktopOpenDropdown((value) =>
+                value === "apparel" ? null : "apparel",
+              )
+            }
+            onClose={() => setDesktopOpenDropdown(null)}
+            mensItems={data.mens.items}
+            womensItems={data.womens.items}
+          />
         </div>
 
         <div className="flex items-center gap-3">
@@ -343,41 +567,21 @@ export default function Navbar() {
                 }
               />
 
-              <MobileAccordion
-                label={data.mens.label}
-                items={data.mens.items}
-                isOpen={mobileOpenSection === "mens"}
-                isActive={data.mens.items.some(item => location.pathname === item.href)}
-                onItemClick={() =>
-                  setMobileOpenSection((value) =>
-                    value === "mens" ? null : "mens",
-                  )
-                }
-              />
-
-              <MobileAccordion
-                label={data.womens.label}
-                items={data.womens.items}
-                isOpen={mobileOpenSection === "womens"}
-                isActive={data.womens.items.some(item => location.pathname === item.href)}
-                onItemClick={() =>
-                  setMobileOpenSection((value) =>
-                    value === "womens" ? null : "womens",
-                  )
-                }
-              />
-
-              <Link
-                className={
+              <MobileApparelAccordion
+                isOpen={mobileOpenSection === "apparel"}
+                isActive={
+                  data.mens.items.some(item => location.pathname === item.href) ||
+                  data.womens.items.some(item => location.pathname === item.href) ||
                   location.pathname === "/kids"
-                    ? "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-gold-accent bg-deep-forest/5 dark:bg-gold-accent/5 border border-deep-forest/20 dark:border-gold-accent/20 transition-all duration-300 no-hover-scale"
-                    : "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-off-white hover:text-leather-tan dark:hover:text-gold-accent hover:bg-deep-forest/5 dark:hover:bg-gold-accent/5 border border-transparent transition-all duration-300 no-hover-scale"
                 }
-                to="/kids"
-                onClick={handleNavClick}
-              >
-                Kids
-              </Link>
+                onItemClick={() =>
+                  setMobileOpenSection((value) =>
+                    value === "apparel" ? null : "apparel",
+                  )
+                }
+                mensItems={data.mens.items}
+                womensItems={data.womens.items}
+              />
 
               <Link
                 className={
@@ -391,13 +595,6 @@ export default function Navbar() {
                 Contact
               </Link>
 
-              <a
-                className="mt-2 inline-flex justify-center rounded-xl px-6 py-3 bg-deep-forest text-off-white font-body-md text-sm font-semibold uppercase hover:bg-leather-tan transition-all duration-300 no-hover-scale"
-                href="/contact"
-                onClick={handleNavClick}
-              >
-                Contact Us
-              </a>
             </div>
           </div>
         </div>

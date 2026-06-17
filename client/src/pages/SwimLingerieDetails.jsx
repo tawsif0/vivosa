@@ -193,7 +193,12 @@ export default function SwimLingerieDetails() {
               </div>
               <div>
                 <h3 className="font-bold tracking-[0.2em] uppercase text-neutral-400 mb-1 font-sans">PHONE</h3>
-                <p className="text-neutral-900 font-sans tracking-wide leading-relaxed font-light">+44 (0) 123 456 789</p>
+                <a 
+                  href="tel:02074126809" 
+                  className="text-neutral-900 hover:text-gold-accent transition-colors font-sans tracking-wide leading-relaxed font-light block"
+                >
+                  02-074-126-809
+                </a>
               </div>
             </div>
 
@@ -220,7 +225,12 @@ export default function SwimLingerieDetails() {
               </div>
               <div>
                 <h3 className="font-bold tracking-[0.2em] uppercase text-neutral-400 mb-1 font-sans">EMAIL</h3>
-                <p className="text-neutral-900 font-sans tracking-wide leading-relaxed font-light">london@vivosa.com</p>
+                <a 
+                  href="mailto:enquiries@vivosa.co.uk" 
+                  className="text-neutral-900 hover:text-gold-accent transition-colors font-sans tracking-wide leading-relaxed font-light block"
+                >
+                  enquiries@vivosa.co.uk
+                </a>
               </div>
             </div>
           </div>

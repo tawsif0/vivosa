@@ -114,6 +114,7 @@ exports.createItem = async (req, res, next) => {
 
     const title = String(req.body.title || "").trim();
     const category = String(req.body.category || "").trim();
+    const description = req.body.description !== undefined ? req.body.description : "";
     const colorSectionTitle = req.body.colorSectionTitle !== undefined ? String(req.body.colorSectionTitle || "").trim() : "AVAILABLE COLORS";
     const customSectionTitle = req.body.customSectionTitle !== undefined ? String(req.body.customSectionTitle || "").trim() : "OPTIONS & STYLES";
 
@@ -162,6 +163,7 @@ exports.createItem = async (req, res, next) => {
     const item = await MenApparel.create({
       title,
       category,
+      description,
       colorSectionTitle,
       customSectionTitle,
       image: {
@@ -187,6 +189,7 @@ exports.updateItem = async (req, res, next) => {
 
     const title = req.body.title !== undefined ? String(req.body.title || "").trim() : item.title;
     const category = req.body.category !== undefined ? String(req.body.category || "").trim() : item.category;
+    const description = req.body.description !== undefined ? req.body.description : item.description;
     const colorSectionTitle = req.body.colorSectionTitle !== undefined ? String(req.body.colorSectionTitle || "").trim() : item.colorSectionTitle;
     const customSectionTitle = req.body.customSectionTitle !== undefined ? String(req.body.customSectionTitle || "").trim() : item.customSectionTitle;
 
@@ -199,6 +202,7 @@ exports.updateItem = async (req, res, next) => {
 
     item.title = title;
     item.category = category;
+    item.description = description;
     item.colorSectionTitle = colorSectionTitle;
     item.customSectionTitle = customSectionTitle;
 

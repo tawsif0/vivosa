@@ -36,7 +36,7 @@ export default function About() {
           <div className="absolute inset-0 z-0">
             <img
               alt="Leather craftsmanship at Vivosa Sourcing Hub"
-              className="w-full h-full object-cover brightness-50"
+              className="w-full h-full object-cover brightness-[0.25]"
               src="/slides/about_hero.avif"
             />
           </div>
