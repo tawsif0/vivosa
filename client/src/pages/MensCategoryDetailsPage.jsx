@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchPublicMenApparelById } from "../api/menApparel";
 import DetailsExtraSections from "../components/DetailsExtraSections";
-import { toRichTextHtml } from "../utils/richText";
+import { toRichTextHtml, stripRichText } from "../utils/richText";
 
 const categoryLabels = {
   joggers: "Joggers",

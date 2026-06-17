@@ -8,8 +8,8 @@ function DesktopDropdown({ label, items, isOpen, isActive, onToggle, onClose }) 
         type="button"
         className={
           isOpen || isActive
-            ? "inline-flex items-center gap-2 font-body-md text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent border-b border-deep-forest dark:border-gold-accent pb-1 transition-colors duration-300"
-            : "inline-flex items-center gap-2 font-body-md text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300"
+            ? "inline-flex items-center gap-1 md:gap-1.5 font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent border-b border-deep-forest dark:border-gold-accent pb-1 transition-colors duration-300 no-hover-scale"
+            : "inline-flex items-center gap-1 md:gap-1.5 font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300 no-hover-scale"
         }
         aria-haspopup="menu"
         aria-expanded={isOpen}
@@ -23,7 +23,7 @@ function DesktopDropdown({ label, items, isOpen, isActive, onToggle, onClose }) 
         }}
       >
         {label}
-        <span className="material-symbols-outlined text-[18px]">
+        <span className="material-symbols-outlined text-[13px] lg:text-[16px] xl:text-[18px]">
           {isOpen ? "expand_less" : "expand_more"}
         </span>
       </button>
@@ -60,18 +60,18 @@ function DesktopDropdown({ label, items, isOpen, isActive, onToggle, onClose }) 
   );
 }
 
-function MobileAccordion({ label, items, isOpen, isActive, onToggle, onItemClick }) {
+function MobileAccordion({ label, items, isOpen, isActive, onItemClick }) {
   return (
     <div className="flex flex-col gap-2">
       <button
         type="button"
         className={
           isOpen || isActive
-            ? "w-full inline-flex items-center justify-between rounded-xl bg-deep-forest px-4 py-3 font-label-caps text-[12px] uppercase tracking-widest text-gold-accent"
-            : "w-full inline-flex items-center justify-between rounded-xl bg-deep-forest px-4 py-3 font-label-caps text-[12px] uppercase tracking-widest text-off-white"
+            ? "w-full inline-flex items-center justify-between rounded-xl border border-deep-forest/20 dark:border-gold-accent/20 bg-deep-forest/5 dark:bg-gold-accent/5 px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-gold-accent no-hover-scale"
+            : "w-full inline-flex items-center justify-between rounded-xl border border-outline/10 bg-transparent px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-off-white hover:text-leather-tan dark:hover:text-gold-accent hover:bg-deep-forest/5 dark:hover:bg-gold-accent/5 no-hover-scale"
         }
         aria-expanded={isOpen}
-        onClick={onToggle}
+        onClick={onItemClick}
       >
         {label}
         <span className="material-symbols-outlined text-[18px]">
@@ -80,7 +80,7 @@ function MobileAccordion({ label, items, isOpen, isActive, onToggle, onItemClick
       </button>
 
       {isOpen ? (
-        <div className="pl-2 flex flex-col gap-2">
+        <div className="pl-4 flex flex-col gap-1.5 border-l border-outline/10 ml-4 mt-1">
           {items.map((item) => {
             const isItemActive = window.location.pathname === item.href;
             return (
@@ -88,8 +88,8 @@ function MobileAccordion({ label, items, isOpen, isActive, onToggle, onItemClick
                 key={`m-${label}-${item.label}`}
                 className={
                   isItemActive
-                    ? "rounded-xl px-3 py-2 text-sm font-semibold tracking-wider uppercase text-deep-forest bg-surface-container-low transition"
-                    : "rounded-xl px-3 py-2 text-sm font-semibold tracking-wider uppercase text-on-surface hover:bg-surface-container-low transition"
+                    ? "rounded-xl px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-deep-forest dark:text-gold-accent bg-deep-forest/5 dark:bg-gold-accent/5 transition"
+                    : "rounded-xl px-4 py-2.5 text-xs font-semibold tracking-wider uppercase text-deep-forest/80 dark:text-off-white/80 hover:text-leather-tan dark:hover:text-gold-accent hover:bg-deep-forest/5 dark:hover:bg-gold-accent/5 transition"
                 }
                 href={item.href}
                 onClick={onItemClick}
@@ -175,9 +175,22 @@ export default function Navbar() {
         }
       }}
     >
+      {/* Alert Banner for Construction/Technical Issues */}
+      <div
+        className="w-full bg-[#D32F2F] text-white py-2 px-4 text-center text-[11px] xs:text-xs md:text-sm font-medium tracking-wide flex items-center justify-center gap-2 border-b border-red-700/20 select-text cursor-default transition-all duration-300"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <span className="material-symbols-outlined text-[14px] xs:text-[16px] md:text-[18px] animate-pulse select-none text-white/90">
+          warning
+        </span>
+        <span className="max-w-[1200px] leading-relaxed font-sans font-semibold">
+          Our website is under construction due to technical issues. We apologize for any inconvenience and are working to resolve the issue as soon as possible.
+        </span>
+      </div>
+
       <div
         id="nav-container"
-        className="w-full flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4 max-w-container-max mx-auto"
+        className="w-full flex items-center justify-between px-3 md:px-4 lg:px-8 py-3 md:py-4 max-w-container-max mx-auto"
       >
         <Link
           className="flex items-center gap-4"
@@ -185,15 +198,15 @@ export default function Navbar() {
           aria-label="Home"
           onClick={handleNavClick}
         >
-          <img alt="Logo" className="h-12 sm:h-14 w-auto" src="/vite.png" />
+          <img alt="Logo" className="h-8 md:h-10 lg:h-12 xl:h-14 w-auto transition-all duration-300" src="/vite.png" />
         </Link>
 
-        <div className="hidden md:flex gap-8 items-center">
+        <div className="hidden md:flex md:gap-3 lg:gap-5 xl:gap-8 items-center">
           <Link
             className={
               location.pathname === "/"
-                ? "font-body-md text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent border-b border-deep-forest dark:border-gold-accent pb-1 transition-colors duration-300"
-                : "font-body-md text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300"
+                ? "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent border-b border-deep-forest dark:border-gold-accent pb-1 transition-colors duration-300"
+                : "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300"
             }
             to="/"
             onClick={handleNavClick}
@@ -203,8 +216,8 @@ export default function Navbar() {
           <Link
             className={
               location.pathname === "/about"
-                ? "font-body-md text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent border-b border-deep-forest dark:border-gold-accent pb-1 transition-colors duration-300"
-                : "font-body-md text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300"
+                ? "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent border-b border-deep-forest dark:border-gold-accent pb-1 transition-colors duration-300"
+                : "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300"
             }
             to="/about"
             onClick={handleNavClick}
@@ -254,8 +267,8 @@ export default function Navbar() {
           <Link
             className={
               location.pathname === "/kids"
-                ? "font-body-md text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent border-b border-deep-forest dark:border-gold-accent pb-1 transition-colors duration-300"
-                : "font-body-md text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300"
+                ? "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent border-b border-deep-forest dark:border-gold-accent pb-1 transition-colors duration-300"
+                : "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300"
             }
             to="/kids"
             onClick={handleNavClick}
@@ -266,7 +279,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <a
-            className="hidden sm:inline-flex px-6 py-2 bg-deep-forest text-off-white font-label-caps uppercase hover:bg-leather-tan transition-all duration-300 scale-95 hover:scale-100"
+            className="hidden md:inline-flex px-4 py-2 xl:px-6 xl:py-2.5 bg-deep-forest text-off-white font-body-md text-[11px] lg:text-sm xl:text-body-md uppercase hover:bg-leather-tan transition-all duration-300 scale-95 hover:scale-100"
             href="/contact"
             onClick={handleNavClick}
           >
@@ -275,7 +288,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center rounded-xl border border-outline/20 bg-surface/70 px-3 py-2 text-deep-forest dark:text-gold-accent hover:bg-surface/90 transition"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-xl text-deep-forest dark:text-gold-accent hover:bg-deep-forest/10 dark:hover:bg-gold-accent/10 transition-colors duration-300 no-hover-scale"
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
             onClick={() => {
@@ -283,7 +296,7 @@ export default function Navbar() {
               setDesktopOpenDropdown(null);
             }}
           >
-            <span className="material-symbols-outlined text-[22px]">
+            <span className="material-symbols-outlined text-[24px]">
               {isMobileMenuOpen ? "close" : "menu"}
             </span>
           </button>
@@ -296,14 +309,22 @@ export default function Navbar() {
           <div className="rounded-2xl border border-outline/10 bg-surface/95 dark:bg-primary/95 p-4 shadow-sm">
             <div className="flex flex-col gap-3">
               <Link
-                className="font-body-md text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300 py-2"
+                className={
+                  location.pathname === "/"
+                    ? "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-gold-accent bg-deep-forest/5 dark:bg-gold-accent/5 border border-deep-forest/20 dark:border-gold-accent/20 transition-all duration-300 no-hover-scale"
+                    : "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-off-white hover:text-leather-tan dark:hover:text-gold-accent hover:bg-deep-forest/5 dark:hover:bg-gold-accent/5 border border-transparent transition-all duration-300 no-hover-scale"
+                }
                 to="/"
                 onClick={handleNavClick}
               >
                 Home
               </Link>
               <Link
-                className="font-body-md text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300 py-2"
+                className={
+                  location.pathname === "/about"
+                    ? "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-gold-accent bg-deep-forest/5 dark:bg-gold-accent/5 border border-deep-forest/20 dark:border-gold-accent/20 transition-all duration-300 no-hover-scale"
+                    : "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-off-white hover:text-leather-tan dark:hover:text-gold-accent hover:bg-deep-forest/5 dark:hover:bg-gold-accent/5 border border-transparent transition-all duration-300 no-hover-scale"
+                }
                 to="/about"
                 onClick={handleNavClick}
               >
@@ -315,12 +336,11 @@ export default function Navbar() {
                 items={data.leather.items}
                 isOpen={mobileOpenSection === "leather"}
                 isActive={data.leather.items.some(item => location.pathname === item.href)}
-                onToggle={() =>
+                onItemClick={() =>
                   setMobileOpenSection((value) =>
                     value === "leather" ? null : "leather",
                   )
                 }
-                onItemClick={handleNavClick}
               />
 
               <MobileAccordion
@@ -328,12 +348,11 @@ export default function Navbar() {
                 items={data.mens.items}
                 isOpen={mobileOpenSection === "mens"}
                 isActive={data.mens.items.some(item => location.pathname === item.href)}
-                onToggle={() =>
+                onItemClick={() =>
                   setMobileOpenSection((value) =>
                     value === "mens" ? null : "mens",
                   )
                 }
-                onItemClick={handleNavClick}
               />
 
               <MobileAccordion
@@ -341,32 +360,39 @@ export default function Navbar() {
                 items={data.womens.items}
                 isOpen={mobileOpenSection === "womens"}
                 isActive={data.womens.items.some(item => location.pathname === item.href)}
-                onToggle={() =>
+                onItemClick={() =>
                   setMobileOpenSection((value) =>
                     value === "womens" ? null : "womens",
                   )
                 }
-                onItemClick={handleNavClick}
               />
 
               <Link
-                className="font-body-md text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300 py-2"
+                className={
+                  location.pathname === "/kids"
+                    ? "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-gold-accent bg-deep-forest/5 dark:bg-gold-accent/5 border border-deep-forest/20 dark:border-gold-accent/20 transition-all duration-300 no-hover-scale"
+                    : "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-off-white hover:text-leather-tan dark:hover:text-gold-accent hover:bg-deep-forest/5 dark:hover:bg-gold-accent/5 border border-transparent transition-all duration-300 no-hover-scale"
+                }
                 to="/kids"
                 onClick={handleNavClick}
               >
                 Kids
               </Link>
 
-              <a
-                className="font-body-md text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300 py-2"
-                href="/contact"
+              <Link
+                className={
+                  location.pathname === "/contact"
+                    ? "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-gold-accent bg-deep-forest/5 dark:bg-gold-accent/5 border border-deep-forest/20 dark:border-gold-accent/20 transition-all duration-300 no-hover-scale"
+                    : "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-off-white hover:text-leather-tan dark:hover:text-gold-accent hover:bg-deep-forest/5 dark:hover:bg-gold-accent/5 border border-transparent transition-all duration-300 no-hover-scale"
+                }
+                to="/contact"
                 onClick={handleNavClick}
               >
                 Contact
-              </a>
+              </Link>
 
               <a
-                className="mt-2 inline-flex justify-center px-6 py-3 bg-deep-forest text-off-white font-label-caps uppercase hover:bg-leather-tan transition-all duration-300"
+                className="mt-2 inline-flex justify-center rounded-xl px-6 py-3 bg-deep-forest text-off-white font-body-md text-sm font-semibold uppercase hover:bg-leather-tan transition-all duration-300 no-hover-scale"
                 href="/contact"
                 onClick={handleNavClick}
               >

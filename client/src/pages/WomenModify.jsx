@@ -5,9 +5,12 @@ import { FiEdit2, FiImage, FiRefreshCw, FiTrash2, FiType, FiPlus, FiX } from "re
 import ConfirmModal from "../components/ConfirmModal";
 import ImageUploadBox from "../components/Kids/ImageUploadBox";
 import { deleteWomenApparel, fetchAdminWomenApparel, updateWomenApparel } from "../api/womenApparel";
+import RichTextBox from "../components/Kids/RichTextBox";
+import { stripRichText } from "../utils/richText";
 
 const emptyForm = {
   title: "",
+  description: "",
 };
 
 const PRESET_COLORS = [
@@ -111,6 +114,7 @@ const WomenModify = ({ category }) => {
     setEditingItem(item);
     setForm({
       title: item.title,
+      description: item.description || "",
     });
     setImageFile(null);
     setPreview(item.image?.url || "");
@@ -174,8 +178,8 @@ const WomenModify = ({ category }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!form.title.trim()) {
-      toast.error("Title is required");
+    if (!form.title.trim() || !stripRichText(form.description)) {
+      toast.error("Title and materials composition are required");
       return;
     }
 
@@ -185,6 +189,7 @@ const WomenModify = ({ category }) => {
     try {
       const payload = new FormData();
       payload.append("title", form.title.trim());
+      payload.append("description", form.description);
       payload.append("category", category);
       payload.append("colorSectionTitle", colorSectionTitle.trim());
       payload.append("customSectionTitle", customSectionTitle.trim());
@@ -282,7 +287,7 @@ const WomenModify = ({ category }) => {
             </button>
           </div>
 
-          <form onSubmit={handleSubmit} className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+          <form onSubmit={handleSubmit} className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-6">
               <label className="block">
                 <span className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
@@ -298,6 +303,13 @@ const WomenModify = ({ category }) => {
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-slate-900"
                 />
               </label>
+
+              <RichTextBox
+                label="Materials & Composition"
+                value={form.description}
+                onChange={(value) => setForm((previous) => ({ ...previous, description: value }))}
+                placeholder="Add materials, lining, and care instructions..."
+              />
 
               {/* Variants Panel */}
               <div className="border-t border-slate-100 pt-6">
@@ -359,22 +371,20 @@ const WomenModify = ({ category }) => {
                     <button
                       type="button"
                       onClick={() => setVariantType("color")}
-                      className={`flex-1 rounded-xl py-2 text-xs font-semibold uppercase tracking-wider transition ${
-                        variantType === "color"
+                      className={`flex-1 rounded-xl py-2 text-xs font-semibold uppercase tracking-wider transition ${variantType === "color"
                           ? "bg-slate-900 text-white shadow-sm"
                           : "bg-white text-slate-600 border border-slate-200"
-                      }`}
+                        }`}
                     >
                       Color Variant
                     </button>
                     <button
                       type="button"
                       onClick={() => setVariantType("custom")}
-                      className={`flex-1 rounded-xl py-2 text-xs font-semibold uppercase tracking-wider transition ${
-                        variantType === "custom"
+                      className={`flex-1 rounded-xl py-2 text-xs font-semibold uppercase tracking-wider transition ${variantType === "custom"
                           ? "bg-slate-900 text-white shadow-sm"
                           : "bg-white text-slate-600 border border-slate-200"
-                      }`}
+                        }`}
                     >
                       Custom Variant
                     </button>
@@ -420,9 +430,8 @@ const WomenModify = ({ category }) => {
                                 setVariantValue(c.value);
                                 setVariantLabel(c.name);
                               }}
-                              className={`h-7 w-7 rounded-full border-2 transition ${
-                                variantValue === c.value ? "border-slate-900 scale-110" : "border-slate-200"
-                              }`}
+                              className={`h-7 w-7 rounded-full border-2 transition ${variantValue === c.value ? "border-slate-900 scale-110" : "border-slate-200"
+                                }`}
                               style={{ backgroundColor: c.value }}
                               title={c.name}
                             />
@@ -550,7 +559,7 @@ const WomenModify = ({ category }) => {
           </form>
         </div>
       ) : (
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm overflow-hidden">
+        <div className="rounded-2xl border border-slate-200 bg-white p-4 md:p-6 shadow-sm overflow-hidden">
           {loading ? (
             <div className="py-20 text-center">
               <div className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-slate-900 border-t-transparent" />
@@ -561,33 +570,105 @@ const WomenModify = ({ category }) => {
               <p className="text-sm text-slate-400 font-semibold">No items found in this category.</p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="border-b border-slate-100 text-xs font-bold uppercase tracking-wider text-slate-400">
-                    <th className="pb-4 pr-4">Image</th>
-                    <th className="pb-4">Title</th>
-                    <th className="pb-4">Variants</th>
-                    <th className="pb-4 text-right">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-50 text-sm">
-                  {items.map((item) => (
-                    <tr key={item._id} className="group hover:bg-slate-50/40 transition-colors">
-                      <td className="py-3 pr-4">
-                        <img
-                          src={item.image?.url}
-                          alt={item.title}
-                          className="h-14 w-14 rounded-xl object-contain bg-slate-50 border border-slate-100"
-                        />
-                      </td>
-                      <td className="py-3 font-semibold text-slate-950 pr-4">
-                        <div className="max-w-[200px] sm:max-w-xs md:max-w-md lg:max-w-lg truncate">
-                          {item.title}
-                        </div>
-                      </td>
-                      <td className="py-3 pr-4">
-                        <div className="flex flex-wrap gap-1.5 max-w-[260px]">
+            <div>
+              {/* Desktop Table View */}
+              <div className="hidden md:block overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="border-b border-slate-100 text-xs font-bold uppercase tracking-wider text-slate-400">
+                      <th className="pb-4 pr-4">Image</th>
+                      <th className="pb-4">Title</th>
+                      <th className="pb-4">Variants</th>
+                      <th className="pb-4 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-50 text-sm">
+                    {items.map((item) => (
+                      <tr key={item._id} className="group hover:bg-slate-50/40 transition-colors">
+                        <td className="py-3 pr-4">
+                          <img
+                            src={item.image?.url}
+                            alt={stripRichText(item.title)}
+                            className="h-14 w-14 rounded-xl object-contain bg-slate-50 border border-slate-100"
+                          />
+                        </td>
+                        <td className="py-3 font-semibold text-slate-950 pr-4">
+                          <div className="max-w-[200px] sm:max-w-xs md:max-w-md lg:max-w-lg truncate">
+                            {stripRichText(item.title)}
+                          </div>
+                        </td>
+                        <td className="py-3 pr-4">
+                          <div className="flex flex-wrap gap-1.5 max-w-[260px]">
+                            {(item.variants || []).map((v, idx) => {
+                              if (v.type === "color") {
+                                return (
+                                  <span
+                                    key={idx}
+                                    className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full border border-slate-100 bg-white text-[10px] text-slate-600 font-medium"
+                                  >
+                                    <span
+                                      className="h-2 w-2 rounded-full border border-black/10 shrink-0"
+                                      style={{ backgroundColor: v.value }}
+                                    />
+                                    {v.label}
+                                  </span>
+                                );
+                              } else {
+                                return (
+                                  <img
+                                    key={idx}
+                                    src={v.image?.url}
+                                    alt="variant preview"
+                                    className="h-6 w-6 rounded border border-slate-200 bg-white shrink-0 object-contain"
+                                    title={v.label}
+                                  />
+                                );
+                              }
+                            })}
+                            {(item.variants || []).length === 0 && (
+                              <span className="text-xs text-slate-400 font-normal">None</span>
+                            )}
+                          </div>
+                        </td>
+                        <td className="py-3 text-right">
+                          <div className="flex justify-end gap-2">
+                            <button
+                              onClick={() => handleEditClick(item)}
+                              className="rounded-xl border border-slate-200 bg-white p-2 text-slate-700 hover:bg-slate-50 transition shadow-sm"
+                              title="Edit Product"
+                            >
+                              <FiEdit2 className="h-4 w-4" />
+                            </button>
+                            <button
+                              onClick={() => handleDeleteTrigger(item)}
+                              className="rounded-xl border border-slate-200 bg-white p-2 text-red-600 hover:bg-red-50 hover:border-red-100 transition shadow-sm"
+                              title="Delete Product"
+                            >
+                              <FiTrash2 className="h-4 w-4" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Mobile Card Grid View */}
+              <div className="grid gap-4 md:hidden">
+                {items.map((item) => (
+                  <div key={item._id} className="rounded-xl border border-slate-100 bg-slate-50/30 p-4 flex flex-col gap-3">
+                    <div className="flex gap-3">
+                      <div className="h-16 w-16 rounded-xl bg-white overflow-hidden border border-slate-100 shrink-0">
+                        {item.image?.url ? (
+                          <img src={item.image.url} alt={stripRichText(item.title)} className="h-full w-full object-contain" />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center text-xs text-slate-400">No Image</div>
+                        )}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="font-semibold text-slate-950 truncate text-sm">{stripRichText(item.title) || "Untitled"}</p>
+                        <div className="flex flex-wrap gap-1.5 mt-1">
                           {(item.variants || []).map((v, idx) => {
                             if (v.type === "color") {
                               return (
@@ -614,33 +695,26 @@ const WomenModify = ({ category }) => {
                               );
                             }
                           })}
-                          {(item.variants || []).length === 0 && (
-                            <span className="text-xs text-slate-400 font-normal">None</span>
-                          )}
                         </div>
-                      </td>
-                      <td className="py-3 text-right">
-                        <div className="flex justify-end gap-2">
-                          <button
-                            onClick={() => handleEditClick(item)}
-                            className="rounded-xl border border-slate-200 bg-white p-2 text-slate-700 hover:bg-slate-50 transition shadow-sm"
-                            title="Edit Product"
-                          >
-                            <FiEdit2 className="h-4 w-4" />
-                          </button>
-                          <button
-                            onClick={() => handleDeleteTrigger(item)}
-                            className="rounded-xl border border-slate-200 bg-white p-2 text-red-600 hover:bg-red-50 hover:border-red-100 transition shadow-sm"
-                            title="Delete Product"
-                          >
-                            <FiTrash2 className="h-4 w-4" />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                      </div>
+                    </div>
+                    <div className="flex justify-end gap-2 border-t border-slate-100/60 pt-2.5">
+                      <button
+                        onClick={() => handleEditClick(item)}
+                        className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-slate-700 hover:bg-slate-50 transition shadow-sm text-xs flex items-center gap-1 font-semibold"
+                      >
+                        <FiEdit2 className="h-3.5 w-3.5" /> Edit
+                      </button>
+                      <button
+                        onClick={() => handleDeleteTrigger(item)}
+                        className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-red-600 hover:bg-red-50 hover:border-red-100 transition shadow-sm text-xs flex items-center gap-1 font-semibold"
+                      >
+                        <FiTrash2 className="h-3.5 w-3.5" /> Delete
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

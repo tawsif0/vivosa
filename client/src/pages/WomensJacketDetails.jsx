@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchPublicWomenApparelById } from "../api/womenApparel";
 import DetailsExtraSections from "../components/DetailsExtraSections";
-import { toRichTextHtml } from "../utils/richText";
+import { toRichTextHtml, stripRichText } from "../utils/richText";
 
 function ColorSwatches({ variants }) {
   const colorVariants = variants.filter((v) => v.type === "color");

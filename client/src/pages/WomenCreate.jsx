@@ -4,9 +4,12 @@ import toast from "react-hot-toast";
 import { FiPlus, FiType, FiTrash2, FiImage, FiX } from "react-icons/fi";
 import { createWomenApparel } from "../api/womenApparel";
 import ImageUploadBox from "../components/Kids/ImageUploadBox";
+import RichTextBox from "../components/Kids/RichTextBox";
+import { stripRichText } from "../utils/richText";
 
 const emptyForm = {
   title: "",
+  description: "",
 };
 
 const PRESET_COLORS = [
@@ -125,8 +128,8 @@ const WomenCreate = ({ category }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!form.title.trim() || !imageFile) {
-      toast.error("Title and main image are required");
+    if (!form.title.trim() || !stripRichText(form.description) || !imageFile) {
+      toast.error("Title, materials composition, and main image are required");
       return;
     }
 
@@ -136,6 +139,7 @@ const WomenCreate = ({ category }) => {
     try {
       const payload = new FormData();
       payload.append("title", form.title.trim());
+      payload.append("description", form.description);
       payload.append("category", category);
       payload.append("image", imageFile);
       payload.append("colorSectionTitle", colorSectionTitle.trim());
@@ -184,7 +188,7 @@ const WomenCreate = ({ category }) => {
 
       <motion.form
         onSubmit={handleSubmit}
-        className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]"
+        className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]"
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
       >
@@ -199,10 +203,17 @@ const WomenCreate = ({ category }) => {
               name="title"
               value={form.title}
               onChange={handleChange}
-          placeholder={titlePlaceholder}
+              placeholder={titlePlaceholder}
               className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-slate-900"
             />
           </label>
+
+          <RichTextBox
+            label="Materials & Composition"
+            value={form.description}
+            onChange={(value) => setForm((previous) => ({ ...previous, description: value }))}
+            placeholder="Add materials, lining, and care instructions..."
+          />
 
 
           {/* Variants Management */}
@@ -264,22 +275,20 @@ const WomenCreate = ({ category }) => {
                 <button
                   type="button"
                   onClick={() => setVariantType("color")}
-                  className={`flex-1 rounded-xl py-2 text-xs font-semibold uppercase tracking-wider transition ${
-                    variantType === "color"
+                  className={`flex-1 rounded-xl py-2 text-xs font-semibold uppercase tracking-wider transition ${variantType === "color"
                       ? "bg-slate-900 text-white shadow-sm"
                       : "bg-white text-slate-600 border border-slate-200"
-                  }`}
+                    }`}
                 >
                   Color Variant
                 </button>
                 <button
                   type="button"
                   onClick={() => setVariantType("custom")}
-                  className={`flex-1 rounded-xl py-2 text-xs font-semibold uppercase tracking-wider transition ${
-                    variantType === "custom"
+                  className={`flex-1 rounded-xl py-2 text-xs font-semibold uppercase tracking-wider transition ${variantType === "custom"
                       ? "bg-slate-900 text-white shadow-sm"
                       : "bg-white text-slate-600 border border-slate-200"
-                  }`}
+                    }`}
                 >
                   Custom Variant
                 </button>
@@ -326,9 +335,8 @@ const WomenCreate = ({ category }) => {
                             setVariantValue(c.value);
                             setVariantLabel(c.name);
                           }}
-                          className={`h-7 w-7 rounded-full border-2 transition ${
-                            variantValue === c.value ? "border-slate-900 scale-110" : "border-slate-200"
-                          }`}
+                          className={`h-7 w-7 rounded-full border-2 transition ${variantValue === c.value ? "border-slate-900 scale-110" : "border-slate-200"
+                            }`}
                           style={{ backgroundColor: c.value }}
                           title={c.name}
                         />
