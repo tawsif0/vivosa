@@ -182,11 +182,11 @@ export default function Landing() {
       <header className="relative min-h-[100svh] flex items-center overflow-hidden pt-28 pb-16 lg:py-32 bg-gradient-to-br from-deep-forest to-[#002115]">
         <div className="absolute inset-0 z-0">
           <img
-            className="w-full h-full object-cover object-[50%_center] brightness-[0.22] contrast-[1.05]"
+            className="absolute inset-0 w-full h-full object-cover object-[50%_center] brightness-[0.22] contrast-[1.05] z-0"
             alt="Vivosa Leather Sourcing Factory Worker with Green Leather"
             src="/hero-bg.jpg"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#004b35]/95 via-[#004b35]/85 to-[#004b35]/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#004b35]/95 via-[#004b35]/85 to-[#004b35]/70 z-10"></div>
         </div>
 
         <div className="relative z-10 max-w-container-max mx-auto w-full text-off-white px-4 sm:px-6 lg:px-margin-desktop">

@@ -409,7 +409,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-md dark:bg-primary/80 shadow-sm border-b border-outline/10 cursor-pointer"
+      className="fixed top-0 left-0 w-full z-50 bg-[#004b35]/95 backdrop-blur-md shadow-sm border-b border-white/10 cursor-pointer"
       onClick={(e) => {
         if (
           e.target === e.currentTarget ||
@@ -450,8 +450,8 @@ export default function Navbar() {
           <Link
             className={
               location.pathname === "/"
-                ? "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent border-b border-deep-forest dark:border-gold-accent pb-1 transition-colors duration-300"
-                : "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300"
+                ? "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-gold-accent border-b border-gold-accent pb-1 transition-colors duration-300"
+                : "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-white/90 hover:text-gold-accent transition-colors duration-300"
             }
             to="/"
             onClick={handleNavClick}
@@ -461,8 +461,8 @@ export default function Navbar() {
           <Link
             className={
               location.pathname === "/about"
-                ? "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-deep-forest dark:text-gold-accent border-b border-deep-forest dark:border-gold-accent pb-1 transition-colors duration-300"
-                : "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-on-surface-variant dark:text-surface-variant hover:text-leather-tan dark:hover:text-gold-accent transition-colors duration-300"
+                ? "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-gold-accent border-b border-gold-accent pb-1 transition-colors duration-300"
+                : "font-body-md text-[11px] lg:text-sm xl:text-body-md tracking-wide uppercase text-white/90 hover:text-gold-accent transition-colors duration-300"
             }
             to="/about"
             onClick={handleNavClick}
@@ -503,7 +503,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <a
-            className="hidden md:inline-flex px-4 py-2 xl:px-6 xl:py-2.5 bg-deep-forest text-off-white font-body-md text-[11px] lg:text-sm xl:text-body-md uppercase hover:bg-leather-tan transition-all duration-300 scale-95 hover:scale-100"
+            className="hidden md:inline-flex px-4 py-2 xl:px-6 xl:py-2.5 bg-deep-forest text-off-white font-body-md text-[11px] lg:text-sm xl:text-body-md uppercase border border-white/10 hover:border-gold-accent hover:bg-leather-tan transition-all duration-300 scale-95 hover:scale-100"
             href="/contact"
             onClick={handleNavClick}
           >
@@ -512,7 +512,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-xl text-deep-forest dark:text-gold-accent hover:bg-deep-forest/10 dark:hover:bg-gold-accent/10 transition-colors duration-300 no-hover-scale"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-xl text-white hover:text-gold-accent hover:bg-white/10 transition-colors duration-300 no-hover-scale"
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
             onClick={() => {
@@ -527,16 +527,15 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <div className={isMobileMenuOpen ? "md:hidden" : "hidden"}>
         <div className="px-4 sm:px-6 lg:px-8 pb-4 max-w-container-max mx-auto">
-          <div className="rounded-2xl border border-outline/10 bg-surface/95 dark:bg-primary/95 p-4 shadow-sm">
+          <div className="rounded-2xl border border-white/10 bg-[#004b35]/95 backdrop-blur-md p-4 shadow-sm">
             <div className="flex flex-col gap-3">
               <Link
                 className={
                   location.pathname === "/"
-                    ? "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-gold-accent bg-deep-forest/5 dark:bg-gold-accent/5 border border-deep-forest/20 dark:border-gold-accent/20 transition-all duration-300 no-hover-scale"
-                    : "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-off-white hover:text-leather-tan dark:hover:text-gold-accent hover:bg-deep-forest/5 dark:hover:bg-gold-accent/5 border border-transparent transition-all duration-300 no-hover-scale"
+                    ? "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-gold-accent bg-white/5 border border-gold-accent/20 transition-all duration-300 no-hover-scale"
+                    : "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-white/90 hover:text-gold-accent hover:bg-white/5 border border-transparent transition-all duration-300 no-hover-scale"
                 }
                 to="/"
                 onClick={handleNavClick}
@@ -546,8 +545,8 @@ export default function Navbar() {
               <Link
                 className={
                   location.pathname === "/about"
-                    ? "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-gold-accent bg-deep-forest/5 dark:bg-gold-accent/5 border border-deep-forest/20 dark:border-gold-accent/20 transition-all duration-300 no-hover-scale"
-                    : "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-off-white hover:text-leather-tan dark:hover:text-gold-accent hover:bg-deep-forest/5 dark:hover:bg-gold-accent/5 border border-transparent transition-all duration-300 no-hover-scale"
+                    ? "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-gold-accent bg-white/5 border border-gold-accent/20 transition-all duration-300 no-hover-scale"
+                    : "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-white/90 hover:text-gold-accent hover:bg-white/5 border border-transparent transition-all duration-300 no-hover-scale"
                 }
                 to="/about"
                 onClick={handleNavClick}
@@ -586,8 +585,8 @@ export default function Navbar() {
               <Link
                 className={
                   location.pathname === "/contact"
-                    ? "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-gold-accent bg-deep-forest/5 dark:bg-gold-accent/5 border border-deep-forest/20 dark:border-gold-accent/20 transition-all duration-300 no-hover-scale"
-                    : "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-deep-forest dark:text-off-white hover:text-leather-tan dark:hover:text-gold-accent hover:bg-deep-forest/5 dark:hover:bg-gold-accent/5 border border-transparent transition-all duration-300 no-hover-scale"
+                    ? "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-gold-accent bg-white/5 border border-gold-accent/20 transition-all duration-300 no-hover-scale"
+                    : "rounded-xl px-4 py-3 font-body-md text-sm font-semibold uppercase tracking-wider text-white/90 hover:text-gold-accent hover:bg-white/5 border border-transparent transition-all duration-300 no-hover-scale"
                 }
                 to="/contact"
                 onClick={handleNavClick}
