@@ -1011,15 +1011,29 @@ export default function Landing() {
                   <span className="material-symbols-outlined text-gold-accent">
                     location_on
                   </span>
-                  <div>
-                    <span className="font-label-caps block mb-1">
-                      Address
-                    </span>
-                    <p className="font-body-md opacity-80">
-                      19 Northampton Rd, Wellingborough,
-                      <br />
-                      NN8 3HG, UK
-                    </p>
+                  <div className="space-y-4">
+                    <div>
+                      <span className="font-label-caps block mb-1">
+                        United Kingdom Office
+                      </span>
+                      <p className="font-body-md opacity-80">
+                        19 Northampton Rd, Wellingborough,
+                        <br />
+                        NN8 3HG, UK
+                      </p>
+                    </div>
+                    <div>
+                      <span className="font-label-caps block mb-1">
+                        Bangladesh Office
+                      </span>
+                      <p className="font-body-md opacity-80">
+                        849/3, Arabian Tower, 8th Floor,
+                        <br />
+                        Begum Rokeya Sarani, Shewrapara,
+                        <br />
+                        Mirpur, Dhaka-1216, Bangladesh
+                      </p>
+                    </div>
                   </div>
                 </div>
 
@@ -1029,7 +1043,7 @@ export default function Landing() {
                   </span>
                   <div>
                     <span className="font-label-caps block mb-1">
-                      Inquiries
+                      Enquiries
                     </span>
                     <a
                       href="mailto:enquiries@vivosa.co.uk"
@@ -1053,6 +1067,25 @@ export default function Landing() {
                       className="font-body-md opacity-80 hover:text-gold-accent transition-colors block"
                     >
                       02-074-126-809
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 items-start">
+                  <span className="material-symbols-outlined text-gold-accent">
+                    chat
+                  </span>
+                  <div>
+                    <span className="font-label-caps block mb-1">
+                      WhatsApp
+                    </span>
+                    <a
+                      href="https://wa.me/8801720030407"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-body-md opacity-80 hover:text-gold-accent transition-colors block"
+                    >
+                      +880 1720-030407
                     </a>
                   </div>
                 </div>
