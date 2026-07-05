@@ -23,7 +23,6 @@ export default function AviationLeather() {
   return (
     <div className="bg-[#F5F0E8] text-on-surface selection:bg-matte-gold selection:text-white overflow-x-hidden min-h-screen">
       <main className="pt-20 md:pt-[88px] space-y-20 md:space-y-28">
-        
         {/* Section 1: Hero / Cover (av1 & av2 side by side) */}
         <section className="relative w-full h-[600px] md:h-[800px] overflow-hidden">
           <div className="absolute inset-0 z-0 grid grid-cols-2 gap-1 bg-[#1A1A1A]">
@@ -42,15 +41,14 @@ export default function AviationLeather() {
           </div>
           {/* Dark Overlay with centered writings */}
           <div className="absolute inset-0 z-10 bg-black/40 flex flex-col items-center justify-center p-6 text-center">
-            <span className="font-label-caps text-xs md:text-sm text-matte-gold tracking-[0.3em] mb-4 uppercase font-bold">
-              VIVOSA AVIATION LEATHER
-            </span>
             <h1 className="font-display text-3xl md:text-6xl text-white uppercase tracking-[0.1em] font-bold mb-6">
               Aviation Leather Solutions
             </h1>
             <div className="w-20 h-[2px] bg-matte-gold mb-6"></div>
             <p className="font-body text-sm md:text-lg text-white/95 max-w-2xl leading-relaxed">
-              The global aviation industry continues to grow and innovate, with increasing emphasis on comfort, design, performance, and sustainability.
+              The global aviation industry continues to grow and innovate, with
+              increasing emphasis on comfort, design, performance, and
+              sustainability.
             </p>
           </div>
           {/* Scroll Down Indicator */}
@@ -70,37 +68,41 @@ export default function AviationLeather() {
           <div className="grid grid-cols-3 gap-3 md:gap-6 mb-12">
             <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-lg border border-neutral-200 bg-white">
               <img
-                src="/slides/aviation-pdf-pages/av3.png"
+                src="/slides/aviation-pdf-pages/chair1.jpeg"
                 alt="Every Journey Matters Part 1"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
             <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-lg border border-neutral-200 bg-white">
               <img
-                src="/slides/aviation-pdf-pages/av4.png"
+                src="/slides/aviation-pdf-pages/chair2.jpeg"
                 alt="Every Journey Matters Part 2"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
             <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-lg border border-neutral-200 bg-white">
               <img
-                src="/slides/aviation-pdf-pages/av5.png"
+                src="/slides/aviation-pdf-pages/chair3.jpeg"
                 alt="Every Journey Matters Part 3"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
-          
+
           {/* Writings below */}
           <div className="max-w-4xl mx-auto space-y-6">
             <h2 className="font-display text-2xl md:text-3xl text-matte-gold tracking-wide uppercase font-bold text-center">
               Every Journey Matters
             </h2>
-            <p className="font-body text-lg md:text-xl text-neutral-900 font-semibold leading-relaxed max-w-4xl mx-auto" style={{ textAlign: "justify" }}>
-              Whether in a private jet, business class cabin, or economy seating, comfort and quality shape the travel experience. Where comfort meets elegance, durability complements performance, design inspires distinction, and craftsmanship defines every detail
+            <p className="font-body text-lg md:text-xl text-neutral-900 font-semibold leading-relaxed max-w-4xl mx-auto text-justify">
+              Whether in a private jet, business class cabin, or economy
+              seating, comfort and quality shape the travel experience. Where
+              comfort meets elegance, durability complements performance, design
+              inspires distinction, and craftsmanship defines every detail
             </p>
             <p className="font-body text-base md:text-lg text-emerald-800 font-bold max-w-3xl mx-auto text-center">
-              Our manufacturing partners create premium leather solutions that bring sophistication and lasting quality to aviation interiors.
+              Our manufacturing partners create premium leather solutions that
+              bring sophistication and lasting quality to aviation interiors.
             </p>
           </div>
         </section>
@@ -131,14 +133,24 @@ export default function AviationLeather() {
 
           {/* Writings below the image */}
           <div className="max-w-4xl mx-auto space-y-6 text-left px-6 md:px-12 lg:px-24">
-            <p className="font-body-lg text-lg md:text-xl text-[#d97706] font-semibold leading-relaxed">
-              The global aviation industry continues to grow and innovate, with increasing emphasis on comfort, design, performance, and sustainability.
+            <p className="font-body-lg text-lg md:text-xl text-[#d97706] font-semibold leading-relaxed text-justify">
+              The global aviation industry continues to grow and innovate, with
+              increasing emphasis on comfort, design, performance, and
+              sustainability.
             </p>
-            <p className="font-body-md text-neutral-800 leading-relaxed font-semibold">
-              Our sustainable manufacturing partners have successfully adapted to evolving technologies and industry demands while maintaining a strong commitment to quality and environmental responsibility.
+            <p className="font-body-md text-neutral-800 leading-relaxed font-semibold text-justify">
+              Our sustainable manufacturing partners have successfully adapted
+              to evolving technologies and industry demands while maintaining a
+              strong commitment to quality and environmental responsibility.
             </p>
-            <p className="font-body-md text-neutral-600 leading-relaxed">
-              VIVOSA works with some of the world’s most respected tanneries, each with over 50 years of expertise, to offer certified premium aviation leather in a wide selection of textures, colours, and finishes. These finest leathers help create refined aircraft interiors that combine elegance, durability, and exceptional craftsmanship for commercial airlines, business jets, private aircraft, and helicopter interiors.
+            <p className="font-body-md text-neutral-600 leading-relaxed text-justify">
+              VIVOSA works with some of the world’s most respected tanneries,
+              each with over 50 years of expertise, to offer certified premium
+              aviation leather in a wide selection of textures, colours, and
+              finishes. These finest leathers help create refined aircraft
+              interiors that combine elegance, durability, and exceptional
+              craftsmanship for commercial airlines, business jets, private
+              aircraft, and helicopter interiors.
             </p>
           </div>
         </section>
@@ -153,8 +165,12 @@ export default function AviationLeather() {
               <h2 className="font-display text-2xl md:text-4xl text-primary uppercase tracking-wide font-bold">
                 Premium Leathers for Aviation Interiors
               </h2>
-              <p className="font-body-md text-neutral-600 leading-relaxed">
-                Our mission is to ensure complete satisfaction for both you and your clients. Choose from a carefully selected range of authentic premium leathers, crafted from European rawhide and each meeting the rigorous technical and safety standards demanded by modern aviation interiors:
+              <p className="font-body-md text-neutral-600 leading-relaxed text-justify">
+                Our mission is to ensure complete satisfaction for both you and
+                your clients. Choose from a carefully selected range of
+                authentic premium leathers, crafted from European rawhide and
+                each meeting the rigorous technical and safety standards
+                demanded by modern aviation interiors:
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                 {[
@@ -165,11 +181,13 @@ export default function AviationLeather() {
                   "Nappa Leather",
                   "Embossed Leather",
                   "Chrome-Free & Metal-Free Leather",
-                  "And many more — tailored to meet your specific requirements."
+                  "And many more — tailored to meet your specific requirements.",
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <span className="w-1.5 h-1.5 bg-matte-gold shrink-0 mt-2"></span>
-                    <span className="font-body-md text-neutral-800 font-semibold">{item}</span>
+                    <span className="font-body-md text-neutral-800 font-semibold">
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -196,7 +214,8 @@ export default function AviationLeather() {
               The Leather applications
             </h2>
             <p className="font-body-md text-neutral-600 leading-relaxed max-w-2xl mx-auto">
-              Our aviation-grade leather solutions are suitable for a wide range of aircraft interior applications, including:
+              Our aviation-grade leather solutions are suitable for a wide range
+              of aircraft interior applications, including:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-8 text-left max-w-4xl mx-auto">
               {[
@@ -209,14 +228,16 @@ export default function AviationLeather() {
                 "Sidewalls",
                 "Cockpit seating",
                 "Lounge areas",
-                "Other decorative interior elements as required"
+                "Other decorative interior elements as required",
               ].map((item, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="flex items-center gap-3 p-4 bg-white/70 rounded-lg border border-neutral-350 shadow-sm hover:shadow-md transition-all duration-300"
                 >
                   <span className="w-2 h-2 rounded-full bg-matte-gold shrink-0"></span>
-                  <span className="font-body-md text-neutral-850 font-semibold">{item}</span>
+                  <span className="font-body-md text-neutral-850 font-semibold">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>
@@ -234,11 +255,17 @@ export default function AviationLeather() {
                 Explore Interior Leather Excellence
               </h2>
             </div>
-            <p className="font-body-md text-[#1c1917] leading-relaxed font-semibold">
-              Our manufacturing partners produce each piece of hide through sustainable processes, carefully crafted with aviation requirements in mind. The materials are designed to comply with aviation regulations and standards, offering lightweight performance, flame resistance, durability, lasting beauty, hygiene, and easy maintenance.
+            <p className="font-body-md text-[#1c1917] leading-relaxed font-semibold text-justify">
+              Our manufacturing partners produce each piece of hide through
+              sustainable processes, carefully crafted with aviation
+              requirements in mind. The materials are designed to comply with
+              aviation regulations and standards, offering lightweight
+              performance, flame resistance, durability, lasting beauty,
+              hygiene, and easy maintenance.
             </p>
-            <p className="font-body-md text-neutral-500 leading-relaxed">
-              Explore a selection of our premium leather finishes below, with many more options available to suit your project requirements.
+            <p className="font-body-md text-neutral-500 leading-relaxed text-justify">
+              Explore a selection of our premium leather finishes below, with
+              many more options available to suit your project requirements.
             </p>
           </div>
 
@@ -256,13 +283,15 @@ export default function AviationLeather() {
                   className="flex flex-col group cursor-pointer border border-neutral-200 overflow-hidden bg-white hover:shadow-md transition-all duration-300 text-center rounded-lg"
                 >
                   <div className="aspect-[4/3] w-full overflow-hidden bg-white">
-                    <img 
-                      src={swatch.image?.url} 
+                    <img
+                      src={swatch.image?.url}
                       alt={swatch.name || swatch.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
-                  {(swatch.code?.trim() || swatch.title?.trim() || swatch.name?.trim()) && (
+                  {(swatch.code?.trim() ||
+                    swatch.title?.trim() ||
+                    swatch.name?.trim()) && (
                     <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
                       <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase">
                         {swatch.code || swatch.title || swatch.name}
@@ -310,24 +339,40 @@ export default function AviationLeather() {
             <h2 className="font-display text-2xl md:text-4xl text-primary uppercase tracking-wide font-bold">
               Craftsmanship, Collaboration &amp; Responsibility
             </h2>
-            <div className="space-y-4 text-neutral-600 leading-relaxed text-sm md:text-base">
+            <div className="space-y-4 text-neutral-600 leading-relaxed text-sm md:text-base text-justify">
               <p>
-                The aviation industry demands more than performance — it demands precision, integrity, and materials that meet the highest standards without compromise.
+                The aviation industry demands more than performance — it demands
+                precision, integrity, and materials that meet the highest
+                standards without compromise.
               </p>
               <p>
-                Every article in our aviation collection carries its own story of skilled craftsmanship, where aesthetic excellence and sustainable manufacturing are not an afterthought, but a foundation. Produced through close collaboration with our trusted Italian manufacturing partners, each piece reflects the expertise, rigour, and responsible innovation that modern aviation interiors require.
+                Every article in our aviation collection carries its own story
+                of skilled craftsmanship, where aesthetic excellence and
+                sustainable manufacturing are not an afterthought, but a
+                foundation. Produced through close collaboration with our
+                trusted Italian manufacturing partners, each piece reflects the
+                expertise, rigour, and responsible innovation that modern
+                aviation interiors require.
               </p>
               <p>
-                We work alongside airlines, designers, and specifiers to deliver an extensive range of collections — offering a wide palette of colours, finishes, and customisation options engineered to meet the most demanding specifications.
+                We work alongside airlines, designers, and specifiers to deliver
+                an extensive range of collections — offering a wide palette of
+                colours, finishes, and customisation options engineered to meet
+                the most demanding specifications.
               </p>
               <p>
-                Collaboration is at the heart of what we do — and we love working with airlines, designers, and specifiers who share our commitment to excellence. To explore how our aviation collection can be specified for your next interior project, we welcome the opportunity to connect.
+                Collaboration is at the heart of what we do — and we love
+                working with airlines, designers, and specifiers who share our
+                commitment to excellence. To explore how our aviation collection
+                can be specified for your next interior project, we welcome the
+                opportunity to connect.
               </p>
             </div>
-            
+
             <div className="border-t border-matte-gold/20 pt-8 mt-6">
               <h4 className="font-label-caps text-matte-gold text-xs tracking-widest uppercase mb-4 font-bold">
-                Our aviation leather is developed with the sector's critical requirements at its core:
+                Our aviation leather is developed with the sector's critical
+                requirements at its core:
               </h4>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
                 {[
@@ -337,7 +382,7 @@ export default function AviationLeather() {
                   "Easy-clean & stain-resistant — designed for efficient cabin maintenance",
                   "UV & chemical resistant — retaining appearance throughout extended service",
                   "Soft-touch comfort — delivering the tactile quality passengers expect",
-                  "Sustainably & traceably sourced — aligned with airline environmental commitments"
+                  "Sustainably & traceably sourced — aligned with airline environmental commitments",
                 ].map((req, idx) => (
                   <li key={idx} className="flex gap-3 items-start">
                     <span className="w-1.5 h-1.5 bg-matte-gold shrink-0 mt-2"></span>
@@ -368,8 +413,18 @@ export default function AviationLeather() {
               <h2 className="font-display text-2xl md:text-4xl text-primary uppercase tracking-wide font-bold">
                 Design &amp; Customisation
               </h2>
-              <p className="font-body-md text-neutral-600 leading-relaxed">
-                Our aviation leather collection combines refined aesthetics with exceptional versatility, offering a rich variety of colours, textures, and finishes to suit every cabin vision. Working closely with airlines, OEMs, designers, and specifiers, we support bespoke development programmes tailored to individual project requirements — ensuring each article is engineered to deliver long-lasting beauty, comfort, and visual consistency throughout its service life. Optional anti-soiling protection is available for light and pastel shades, and our trusted manufacturing partners are on hand to support the most demanding customisation specifications.
+              <p className="font-body-md text-neutral-600 leading-relaxed text-justify">
+                Our aviation leather collection combines refined aesthetics with
+                exceptional versatility, offering a rich variety of colours,
+                textures, and finishes to suit every cabin vision. Working
+                closely with airlines, OEMs, designers, and specifiers, we
+                support bespoke development programmes tailored to individual
+                project requirements — ensuring each article is engineered to
+                deliver long-lasting beauty, comfort, and visual consistency
+                throughout its service life. Optional anti-soiling protection is
+                available for light and pastel shades, and our trusted
+                manufacturing partners are on hand to support the most demanding
+                customisation specifications.
               </p>
             </div>
           </div>
@@ -385,8 +440,20 @@ export default function AviationLeather() {
               <h2 className="font-display text-2xl md:text-4xl text-primary uppercase tracking-wide font-bold">
                 Features
               </h2>
-              <p className="font-body-md text-neutral-600 leading-relaxed">
-                Designed for the rigours of high-traffic cabin environments, our aviation leathers deliver outstanding technical performance across every application. Each article offers exceptional abrasion resistance, colour fastness, and resistance to soiling, cleaning agents, and daily wear — significantly reducing maintenance requirements while preserving their natural appearance and soft-touch feel. Specialised performance finishes include anti-stain, easy-clean, fire-retardant, UV-resistant, and high-durability treatments, all engineered to meet relevant aviation standards and certifications. Sanitized® technology can also be specified, helping to eliminate up to 99% of bacteria and viruses to support enhanced hygiene, passenger comfort, and long-term cabin protection.
+              <p className="font-body-md text-neutral-600 leading-relaxed text-justify">
+                Designed for the rigours of high-traffic cabin environments, our
+                aviation leathers deliver outstanding technical performance
+                across every application. Each article offers exceptional
+                abrasion resistance, colour fastness, and resistance to soiling,
+                cleaning agents, and daily wear — significantly reducing
+                maintenance requirements while preserving their natural
+                appearance and soft-touch feel. Specialised performance finishes
+                include anti-stain, easy-clean, fire-retardant, UV-resistant,
+                and high-durability treatments, all engineered to meet relevant
+                aviation standards and certifications. Sanitized® technology can
+                also be specified, helping to eliminate up to 99% of bacteria
+                and viruses to support enhanced hygiene, passenger comfort, and
+                long-term cabin protection.
               </p>
             </div>
             <div className="flex items-center justify-center w-full">
@@ -420,12 +487,32 @@ export default function AviationLeather() {
               <h2 className="font-display text-2xl md:text-4xl text-primary uppercase tracking-wide font-bold">
                 Care &amp; Sustainability
               </h2>
-              <div className="font-body-md text-neutral-600 leading-relaxed space-y-6">
+              <div className="font-body-md text-neutral-600 leading-relaxed space-y-6 text-justify">
                 <p>
-                  Our portfolio includes a growing range of sustainable leather solutions — chrome-free, metal-free, and responsibly manufactured articles that meet the environmental expectations of modern aviation. Our trusted Italian manufacturing partners are committed to environmentally responsible production, employing advanced tanning technologies, reduced-impact chemical processes, and rigorous quality management systems. Production is supported by internationally recognised certifications, including Leather Working Group (LWG) accreditation, reflecting our unwavering commitment to sustainability, traceability, regulatory compliance, and continuous innovation for the next generation of aviation interiors.
+                  Our portfolio includes a growing range of sustainable leather
+                  solutions — chrome-free, metal-free, and responsibly
+                  manufactured articles that meet the environmental expectations
+                  of modern aviation. Our trusted Italian manufacturing partners
+                  are committed to environmentally responsible production,
+                  employing advanced tanning technologies, reduced-impact
+                  chemical processes, and rigorous quality management systems.
+                  Production is supported by internationally recognised
+                  certifications, including Leather Working Group (LWG)
+                  accreditation, reflecting our unwavering commitment to
+                  sustainability, traceability, regulatory compliance, and
+                  continuous innovation for the next generation of aviation
+                  interiors.
                 </p>
                 <p>
-                  At VIVOSA, we carefully select manufacturers whose leather begins as a by-product of the European beef industry. Rather than going to waste, these raw hides are transformed into a premium, sustainable material. Co-products from the process are then supplied to other industries, including technical manufacturing and food production, where they serve as valuable raw materials. This circular approach keeps waste out of landfill and ensures that every part of the hide is put to good use.
+                  At VIVOSA, we carefully select manufacturers whose leather
+                  begins as a by-product of the European beef industry. Rather
+                  than going to waste, these raw hides are transformed into a
+                  premium, sustainable material. Co-products from the process
+                  are then supplied to other industries, including technical
+                  manufacturing and food production, where they serve as
+                  valuable raw materials. This circular approach keeps waste out
+                  of landfill and ensures that every part of the hide is put to
+                  good use.
                 </p>
               </div>
             </div>
@@ -444,12 +531,22 @@ export default function AviationLeather() {
                 QUALITY &amp; RESPONSIBILITY IN LEATHER SUPPLY
               </h2>
               <div className="w-16 h-[2px] bg-matte-gold mb-6"></div>
-              <p className="font-body-md text-neutral-700 leading-relaxed">
-                We work with leading sustainable tanneries to supply high-quality leather directly to our customers, without involving any third parties. Our QC team carefully inspects each hide to ensure it meets strict quality and sustainability standards. Around 90% of our manufacturing partners are based in Europe, and 85% of our rawhide is sourced from Europe. Our partners are highly experienced in producing premium automotive leather, and we maintain rigorous oversight throughout the production process. This guarantees that every hide delivers the highest levels of quality, durability, and excellence.
+              <p className="font-body-md text-neutral-700 leading-relaxed text-justify">
+                We work with leading sustainable tanneries to supply
+                high-quality leather directly to our customers, without
+                involving any third parties. Our QC team carefully inspects each
+                hide to ensure it meets strict quality and sustainability
+                standards. Around 90% of our manufacturing partners are based in
+                Europe, and 85% of our rawhide is sourced from Europe. Our
+                partners are highly experienced in producing premium automotive
+                leather, and we maintain rigorous oversight throughout the
+                production process. This guarantees that every hide delivers the
+                highest levels of quality, durability, and excellence.
               </p>
               <div className="pt-6 space-y-4 border-t border-neutral-200/20">
-                <p className="font-body-md text-neutral-600 font-semibold">
-                  If you would like to learn more about our leathers or processes, including:
+                <p className="font-body-md text-neutral-600 font-semibold text-justify">
+                  If you would like to learn more about our leathers or
+                  processes, including:
                 </p>
                 <ul className="space-y-2 pl-4">
                   {[
@@ -459,14 +556,17 @@ export default function AviationLeather() {
                     "Drying techniques",
                     "finishing processes",
                     "Technical sheets and certifications",
-                    "Tannery and Manufacturing facility details, and more"
+                    "Tannery and Manufacturing facility details, and more",
                   ].map((bullet, idx) => (
-                    <li key={idx} className="list-disc text-neutral-700 font-body-sm">
+                    <li
+                      key={idx}
+                      className="list-disc text-neutral-700 font-body-sm"
+                    >
                       {bullet}
                     </li>
                   ))}
                 </ul>
-                <p className="font-body-md text-neutral-600 italic pt-4">
+                <p className="font-body-md text-neutral-600 italic pt-4 text-justify">
                   Please get in touch with us, and we will respond promptly.
                 </p>
               </div>
@@ -482,7 +582,6 @@ export default function AviationLeather() {
             </div>
           </div>
         </section>
-
       </main>
     </div>
   );

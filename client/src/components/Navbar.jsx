@@ -1,7 +1,14 @@
 import React, { useMemo, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-function DesktopDropdown({ label, items, isOpen, isActive, onToggle, onClose }) {
+function DesktopDropdown({
+  label,
+  items,
+  isOpen,
+  isActive,
+  onToggle,
+  onClose,
+}) {
   return (
     <div className="relative">
       <button
@@ -104,7 +111,14 @@ function MobileAccordion({ label, items, isOpen, isActive, onItemClick }) {
   );
 }
 
-function DesktopApparelDropdown({ isOpen, isActive, onToggle, onClose, mensItems, womensItems }) {
+function DesktopApparelDropdown({
+  isOpen,
+  isActive,
+  onToggle,
+  onClose,
+  mensItems,
+  womensItems,
+}) {
   return (
     <div className="relative">
       <button
@@ -223,12 +237,22 @@ function DesktopApparelDropdown({ isOpen, isActive, onToggle, onClose, mensItems
   );
 }
 
-function MobileApparelAccordion({ isOpen, isActive, onItemClick, mensItems, womensItems }) {
+function MobileApparelAccordion({
+  isOpen,
+  isActive,
+  onItemClick,
+  mensItems,
+  womensItems,
+}) {
   const [isMenOpen, setIsMenOpen] = useState(false);
   const [isWomenOpen, setIsWomenOpen] = useState(false);
 
-  const isMenActive = mensItems.some(item => window.location.pathname === item.href);
-  const isWomenActive = womensItems.some(item => window.location.pathname === item.href);
+  const isMenActive = mensItems.some(
+    (item) => window.location.pathname === item.href,
+  );
+  const isWomenActive = womensItems.some(
+    (item) => window.location.pathname === item.href,
+  );
   const isKidsActive = window.location.pathname === "/kids";
 
   return (
@@ -353,6 +377,9 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [desktopOpenDropdown, setDesktopOpenDropdown] = useState(null); // "leather" | "apparel" | null
   const [mobileOpenSection, setMobileOpenSection] = useState(null); // "leather" | "apparel" | null
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
   const location = useLocation();
 
   const data = useMemo(
@@ -396,6 +423,32 @@ export default function Navbar() {
     [],
   );
 
+  const searchItems = useMemo(
+    () => [
+      { label: "Home", href: "/" },
+      { label: "About Us", href: "/about" },
+      { label: "Contact Us", href: "/contact" },
+      ...data.leather.items,
+      ...data.mens.items,
+      ...data.womens.items,
+      { label: "Kids Collection", href: "/kids" },
+    ],
+    [data],
+  );
+
+  const filteredSearchResults = useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) return [];
+
+    return searchItems
+      .filter(
+        (item) =>
+          item.label.toLowerCase().includes(term) ||
+          item.href.toLowerCase().includes(term),
+      )
+      .slice(0, 6);
+  }, [searchItems, searchTerm]);
+
   const closeAll = () => {
     setIsMobileMenuOpen(false);
     setDesktopOpenDropdown(null);
@@ -429,7 +482,9 @@ export default function Navbar() {
           warning
         </span>
         <span className="max-w-[1200px] leading-relaxed font-sans font-semibold">
-          Our website is under construction due to technical issues. We apologize for any inconvenience and are working to resolve the issue as soon as possible.
+          Our website is under construction due to technical issues. We
+          apologize for any inconvenience and are working to resolve the issue
+          as soon as possible.
         </span>
       </div>
 
@@ -443,7 +498,11 @@ export default function Navbar() {
           aria-label="Home"
           onClick={handleNavClick}
         >
-          <img alt="Logo" className="h-8 md:h-10 lg:h-12 xl:h-14 w-auto transition-all duration-300" src="/vite.png" />
+          <img
+            alt="Logo"
+            className="h-8 md:h-10 lg:h-12 xl:h-14 w-auto transition-all duration-300"
+            src="/vite.png"
+          />
         </Link>
 
         <div className="hidden md:flex md:gap-3 lg:gap-5 xl:gap-8 items-center">
@@ -474,7 +533,9 @@ export default function Navbar() {
             label={data.leather.label}
             items={data.leather.items}
             isOpen={desktopOpenDropdown === "leather"}
-            isActive={data.leather.items.some(item => location.pathname === item.href)}
+            isActive={data.leather.items.some(
+              (item) => location.pathname === item.href,
+            )}
             onToggle={() =>
               setDesktopOpenDropdown((value) =>
                 value === "leather" ? null : "leather",
@@ -486,8 +547,10 @@ export default function Navbar() {
           <DesktopApparelDropdown
             isOpen={desktopOpenDropdown === "apparel"}
             isActive={
-              data.mens.items.some(item => location.pathname === item.href) ||
-              data.womens.items.some(item => location.pathname === item.href) ||
+              data.mens.items.some((item) => location.pathname === item.href) ||
+              data.womens.items.some(
+                (item) => location.pathname === item.href,
+              ) ||
               location.pathname === "/kids"
             }
             onToggle={() =>
@@ -502,6 +565,75 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
+          <div className="relative">
+            <button
+              type="button"
+              className={
+                isSearchOpen
+                  ? "inline-flex items-center justify-center p-2 rounded-full text-gold-accent bg-white/10 transition-colors duration-300 no-hover-scale"
+                  : "inline-flex items-center justify-center p-2 rounded-full text-white hover:text-gold-accent hover:bg-white/10 transition-colors duration-300 no-hover-scale"
+              }
+              aria-label="Search"
+              aria-expanded={isSearchOpen}
+              onClick={(event) => {
+                event.stopPropagation();
+                setDesktopOpenDropdown(null);
+                setIsSearchOpen((value) => {
+                  if (value) setSearchTerm("");
+                  return !value;
+                });
+              }}
+            >
+              <span className="material-symbols-outlined text-[22px] xl:text-[24px]">
+                {isSearchOpen ? "close" : "search"}
+              </span>
+            </button>
+
+            {isSearchOpen && (
+              <div
+                className="absolute right-0 top-full mt-3 w-[min(320px,calc(100vw-5rem))] xl:w-[400px] rounded-2xl border border-white/10 bg-[#003222]/95 backdrop-blur-md shadow-xl p-3 z-30"
+                onClick={(event) => event.stopPropagation()}
+              >
+                <input
+                  type="text"
+                  value={searchTerm}
+                  autoFocus
+                  placeholder="Search apparel, leather, contact..."
+                  className="w-full rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs text-white placeholder:text-white/50 focus:border-gold-accent focus:outline-none focus:ring-2 focus:ring-gold-accent/20 transition"
+                  onChange={(event) => setSearchTerm(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" && filteredSearchResults[0]) {
+                      navigate(filteredSearchResults[0].href);
+                      setSearchTerm("");
+                      setIsSearchOpen(false);
+                    } else if (event.key === "Escape") {
+                      setIsSearchOpen(false);
+                      setSearchTerm("");
+                    }
+                  }}
+                />
+                {filteredSearchResults.length > 0 && (
+                  <div className="mt-2 rounded-2xl border border-white/10 bg-[#002816] shadow-xl overflow-hidden">
+                    {filteredSearchResults.map((result) => (
+                      <button
+                        key={result.href}
+                        type="button"
+                        className="w-full text-left px-4 py-3 text-xs uppercase tracking-wide text-white/90 hover:bg-white/5 hover:text-gold-accent transition"
+                        onClick={() => {
+                          navigate(result.href);
+                          setSearchTerm("");
+                          setIsSearchOpen(false);
+                        }}
+                      >
+                        {result.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
           <a
             className="hidden md:inline-flex px-4 py-2 xl:px-6 xl:py-2.5 bg-deep-forest text-off-white font-body-md text-[11px] lg:text-sm xl:text-body-md uppercase border border-white/10 hover:border-gold-accent hover:bg-leather-tan transition-all duration-300 scale-95 hover:scale-100"
             href="/contact"
@@ -531,6 +663,41 @@ export default function Navbar() {
         <div className="px-4 sm:px-6 lg:px-8 pb-4 max-w-container-max mx-auto">
           <div className="rounded-2xl border border-white/10 bg-[#004b35]/95 backdrop-blur-md p-4 shadow-sm">
             <div className="flex flex-col gap-3">
+              <div className="rounded-2xl border border-white/10 bg-[#003222]/95 p-3 mb-3">
+                <input
+                  type="text"
+                  value={searchTerm}
+                  placeholder="Search pages, apparel, leather..."
+                  className="w-full rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white placeholder:text-white/50 focus:border-gold-accent focus:outline-none focus:ring-2 focus:ring-gold-accent/20 transition"
+                  onChange={(event) => setSearchTerm(event.target.value)}
+                  onClick={(event) => event.stopPropagation()}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" && filteredSearchResults[0]) {
+                      navigate(filteredSearchResults[0].href);
+                      setSearchTerm("");
+                      setIsMobileMenuOpen(false);
+                    }
+                  }}
+                />
+                {filteredSearchResults.length > 0 && (
+                  <div className="mt-2 rounded-2xl border border-white/10 bg-[#002816] text-left overflow-hidden">
+                    {filteredSearchResults.map((result) => (
+                      <button
+                        key={result.href}
+                        type="button"
+                        className="w-full px-4 py-3 text-xs uppercase tracking-wide text-white/90 hover:bg-white/5 hover:text-gold-accent transition"
+                        onClick={() => {
+                          navigate(result.href);
+                          setSearchTerm("");
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        {result.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
               <Link
                 className={
                   location.pathname === "/"
@@ -558,7 +725,9 @@ export default function Navbar() {
                 label={data.leather.label}
                 items={data.leather.items}
                 isOpen={mobileOpenSection === "leather"}
-                isActive={data.leather.items.some(item => location.pathname === item.href)}
+                isActive={data.leather.items.some(
+                  (item) => location.pathname === item.href,
+                )}
                 onItemClick={() =>
                   setMobileOpenSection((value) =>
                     value === "leather" ? null : "leather",
@@ -569,8 +738,12 @@ export default function Navbar() {
               <MobileApparelAccordion
                 isOpen={mobileOpenSection === "apparel"}
                 isActive={
-                  data.mens.items.some(item => location.pathname === item.href) ||
-                  data.womens.items.some(item => location.pathname === item.href) ||
+                  data.mens.items.some(
+                    (item) => location.pathname === item.href,
+                  ) ||
+                  data.womens.items.some(
+                    (item) => location.pathname === item.href,
+                  ) ||
                   location.pathname === "/kids"
                 }
                 onItemClick={() =>
@@ -593,7 +766,6 @@ export default function Navbar() {
               >
                 Contact
               </Link>
-
             </div>
           </div>
         </div>

@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { FaFacebook, FaYoutube, FaXTwitter, FaLinkedin, FaInstagram } from "react-icons/fa6";
+import {
+  FaFacebook,
+  FaYoutube,
+  FaXTwitter,
+  FaLinkedin,
+  FaInstagram,
+} from "react-icons/fa6";
 
 export default function Footer() {
   const [isMenOpen, setIsMenOpen] = useState(false);
@@ -20,7 +26,7 @@ export default function Footer() {
             loading="lazy"
             onClick={handleScrollToTop}
           />
-          <p className="font-body-md text-surface-variant/70 leading-relaxed mb-8">
+          <p className="font-body-md text-surface-variant/70 leading-relaxed mb-8 text-justify">
             At Vivosa, we bridge the gap between high-fashion aesthetics and
             planetary consciousness, ensuring that beauty never comes at an
             ethical cost.
@@ -76,13 +82,19 @@ export default function Footer() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-16">
           <div>
-            <h6 className="font-label-caps text-gold-accent mb-6 tracking-widest">Quick Links</h6>
+            <h6 className="font-label-caps text-gold-accent mb-6 tracking-widest">
+              Quick Links
+            </h6>
             <ul className="space-y-4">
               <li>
                 <a
                   className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300"
                   href="/"
-                  onClick={(e) => { e.preventDefault(); window.location.href = "/"; window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/";
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                 >
                   Home
                 </a>
@@ -91,7 +103,11 @@ export default function Footer() {
                 <a
                   className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300"
                   href="/about"
-                  onClick={(e) => { e.preventDefault(); window.location.href = "/about"; window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/about";
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                 >
                   About Us
                 </a>
@@ -100,7 +116,11 @@ export default function Footer() {
                 <a
                   className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300"
                   href="/contact"
-                  onClick={(e) => { e.preventDefault(); window.location.href = "/contact"; window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/contact";
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                 >
                   Contact Us
                 </a>
@@ -108,49 +128,109 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h6 className="font-label-caps text-gold-accent mb-6 tracking-widest">Sustainable Leather</h6>
+            <h6 className="font-label-caps text-gold-accent mb-6 tracking-widest">
+              Sustainable Leather
+            </h6>
             <ul className="space-y-4">
               <li>
-                <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/contract-furniture" onClick={(e) => { e.preventDefault(); window.location.href = "/contract-furniture"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+                <a
+                  className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300"
+                  href="/contract-furniture"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/contract-furniture";
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                >
                   Contract &amp; Furniture
                 </a>
               </li>
               <li>
-                <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/leather-footwear" onClick={(e) => { e.preventDefault(); window.location.href = "/leather-footwear"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+                <a
+                  className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300"
+                  href="/leather-footwear"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/leather-footwear";
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                >
                   Footware
                 </a>
               </li>
               <li>
-                <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/leather-goods" onClick={(e) => { e.preventDefault(); window.location.href = "/leather-goods"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+                <a
+                  className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300"
+                  href="/leather-goods"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/leather-goods";
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                >
                   Leather Goods
                 </a>
               </li>
               <li>
-                <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/leather-lining" onClick={(e) => { e.preventDefault(); window.location.href = "/leather-lining"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+                <a
+                  className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300"
+                  href="/leather-lining"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/leather-lining";
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                >
                   Lining
                 </a>
               </li>
               <li>
-                <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/automotive" onClick={(e) => { e.preventDefault(); window.location.href = "/automotive"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+                <a
+                  className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300"
+                  href="/automotive"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/automotive";
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                >
                   Automotive
                 </a>
               </li>
               <li>
-                <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/aviation-leather" onClick={(e) => { e.preventDefault(); window.location.href = "/aviation-leather"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+                <a
+                  className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300"
+                  href="/aviation-leather"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/aviation-leather";
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                >
                   Aviation
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h6 className="font-label-caps text-gold-accent mb-6 tracking-widest">Apparel</h6>
+            <h6 className="font-label-caps text-gold-accent mb-6 tracking-widest">
+              Apparel
+            </h6>
             <ul className="space-y-4">
               <li>
-                <a className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300" href="/apparel" onClick={(e) => { e.preventDefault(); window.location.href = "/apparel"; window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+                <a
+                  className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300"
+                  href="/apparel"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/apparel";
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                >
                   Info
                 </a>
               </li>
-              
+
               {/* Men's Collapsible Dropdown */}
               <li className="relative">
                 <button
@@ -167,7 +247,10 @@ export default function Footer() {
                   <ul className="pl-4 mt-2 space-y-2 border-l border-gold-accent/20">
                     {[
                       { label: "Sweaters", href: "/mens/sweaters" },
-                      { label: "Jackets & Coats", href: "/mens/jackets-and-coats" },
+                      {
+                        label: "Jackets & Coats",
+                        href: "/mens/jackets-and-coats",
+                      },
                       { label: "Pants", href: "/mens/pants" },
                       { label: "Sweatshirts", href: "/mens/joggers" },
                       { label: "Polo Shirt", href: "/mens/polo-shirt" },
@@ -208,12 +291,18 @@ export default function Footer() {
                   <ul className="pl-4 mt-2 space-y-2 border-l border-gold-accent/20">
                     {[
                       { label: "Sweaters", href: "/womens/sweaters" },
-                      { label: "Jackets & Coats", href: "/womens/jackets-and-coats" },
+                      {
+                        label: "Jackets & Coats",
+                        href: "/womens/jackets-and-coats",
+                      },
                       { label: "Pants", href: "/womens/pants" },
                       { label: "Polo Shirts", href: "/womens/polo-shirts" },
                       { label: "Shirts", href: "/womens/shirts" },
                       { label: "T-shirts", href: "/womens/t-shirts" },
-                      { label: "Swim & Lingerie", href: "/womens/swim-lingerie" },
+                      {
+                        label: "Swim & Lingerie",
+                        href: "/womens/swim-lingerie",
+                      },
                     ].map((item) => (
                       <li key={item.href}>
                         <a

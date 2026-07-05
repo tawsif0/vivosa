@@ -24,14 +24,16 @@ export default function AviationLeatherDetail() {
 
   useEffect(() => {
     if (product) {
-      document.title = `${product.name ? product.name : (product.code || "Sustainable Leather")} | Vivosa`;
+      document.title = `${product.name ? product.name : product.code || "Sustainable Leather"} | Vivosa`;
     }
   }, [product]);
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white text-primary">
-        <div className="animate-pulse tracking-widest font-label-caps text-sm">LOADING DETAILS...</div>
+        <div className="animate-pulse tracking-widest font-label-caps text-sm">
+          LOADING DETAILS...
+        </div>
       </div>
     );
   }
@@ -39,19 +41,30 @@ export default function AviationLeatherDetail() {
   if (!product) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white text-primary space-y-4">
-        <h2 className="font-display text-2xl tracking-wider">PRODUCT NOT FOUND</h2>
-        <Link to="/aviation-leather" className="text-accent-gold font-semibold uppercase text-xs tracking-widest border-b border-accent-gold/40 pb-1">
+        <h2 className="font-display text-2xl tracking-wider">
+          PRODUCT NOT FOUND
+        </h2>
+        <Link
+          to="/aviation-leather"
+          className="text-accent-gold font-semibold uppercase text-xs tracking-widest border-b border-accent-gold/40 pb-1"
+        >
           Back to Collection
         </Link>
       </div>
     );
   }
 
-  const articleName = product.name ? product.name : (product.code || product.title || "Untitled");
+  const articleName = product.name
+    ? product.name
+    : product.code || product.title || "Untitled";
   const spacedName = articleName.toUpperCase().split("").join(" ");
 
   let sectionIndex = 1;
-  const hasSpecs = !!(product.rawMaterial || product.processing || product.productDetails);
+  const hasSpecs = !!(
+    product.rawMaterial ||
+    product.processing ||
+    product.productDetails
+  );
 
   return (
     <div className="bg-white text-primary font-body min-h-screen selection:bg-accent-gold/30">
@@ -71,15 +84,23 @@ export default function AviationLeatherDetail() {
 
             {/* Right Column: Breadcrumbs */}
             <div className="font-label-caps text-[10px] md:text-[11px] tracking-[0.2em] text-[#8e8e8e] uppercase mt-6 md:mt-0 flex flex-wrap items-center gap-1.5 font-medium">
-              <Link to="/" className="hover:text-white hover:font-bold transition-colors duration-300">
+              <Link
+                to="/"
+                className="hover:text-white hover:font-bold transition-colors duration-300"
+              >
                 HOME
               </Link>
               <span className="text-[#555555] select-none">/</span>
-              <Link to="/aviation-leather" className="hover:text-white hover:font-bold transition-colors duration-300">
+              <Link
+                to="/aviation-leather"
+                className="hover:text-white hover:font-bold transition-colors duration-300"
+              >
                 AVIATION
               </Link>
               <span className="text-[#555555] select-none">/</span>
-              <span className="text-white font-semibold">{articleName.toUpperCase()}</span>
+              <span className="text-white font-semibold">
+                {articleName.toUpperCase()}
+              </span>
             </div>
           </div>
         </section>
@@ -87,7 +108,6 @@ export default function AviationLeatherDetail() {
         {/* Product Specification Section: Full-bleed 50/50 Catalog Layout */}
         <section className="bg-white border-b border-neutral-100">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch gap-0">
-
             {/* Left Column: Full-width, full-height image */}
             <div className="w-full h-[350px] sm:h-[450px] lg:h-auto min-h-[450px] overflow-hidden bg-neutral-100">
               <img
@@ -99,7 +119,6 @@ export default function AviationLeatherDetail() {
 
             {/* Right Column: Detailed Product Specs */}
             <div className="py-16 px-6 sm:px-12 lg:px-20 xl:px-24 flex flex-col justify-center space-y-10 bg-white">
-
               <div className="space-y-2 border-b border-neutral-100 pb-6 max-w-xl">
                 <h2 className="font-display text-2xl md:text-3xl font-light tracking-wide text-neutral-800 uppercase">
                   {product.code || product.title || product.name}
@@ -142,7 +161,7 @@ export default function AviationLeatherDetail() {
                     Product Description
                   </h3>
                   <div
-                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4 text-justify"
                     dangerouslySetInnerHTML={{ __html: product.desc }}
                   />
                 </div>
@@ -155,7 +174,7 @@ export default function AviationLeatherDetail() {
                     Raw Material
                   </h3>
                   <div
-                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4 text-justify"
                     dangerouslySetInnerHTML={{ __html: product.rawMaterial }}
                   />
                 </div>
@@ -168,7 +187,7 @@ export default function AviationLeatherDetail() {
                     Processing
                   </h3>
                   <div
-                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4 text-justify"
                     dangerouslySetInnerHTML={{ __html: product.processing }}
                   />
                 </div>
@@ -181,7 +200,7 @@ export default function AviationLeatherDetail() {
                     Final Product Characteristics
                   </h3>
                   <div
-                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4 text-justify"
                     dangerouslySetInnerHTML={{ __html: product.productDetails }}
                   />
                 </div>
@@ -202,7 +221,6 @@ export default function AviationLeatherDetail() {
                   RETURN TO COLLECTION
                 </Link>
               </div>
-
             </div>
           </div>
         </section>

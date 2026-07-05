@@ -1,7 +1,11 @@
 @import "tailwindcss";
 
 :where(.material-symbols-outlined) {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
 }
 
 .text-shadow-sm {
@@ -64,10 +68,10 @@
   --color-background: #faf9f7;
 
   /* Marine Leather Page */
-  --color-marine-navy: #1B4B6B;
-  --color-matte-gold: #8B6914;
+  --color-marine-navy: #1b4b6b;
+  --color-matte-gold: #8b6914;
   --color-light-gold: #dfc06f;
-  --color-sea-foam: #E8EFF5;
+  --color-sea-foam: #e8eff5;
 
   --radius: 0.125rem;
   --radius-lg: 0.25rem;
@@ -295,8 +299,8 @@ button.cart-button,
   overflow: visible;
 }
 
-button.cart-button>span,
-[role="button"].cart-button>span {
+button.cart-button > span,
+[role="button"].cart-button > span {
   overflow: visible;
 }
 
@@ -309,18 +313,29 @@ button.cart-button>span,
   display: grid;
   align-items: stretch;
   gap: var(--section-card-gap, 12px);
-  grid-template-columns: repeat(auto-fit,
-      minmax(var(--section-card-min-width, 220px), 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--section-card-min-width, 220px), 1fr)
+  );
 }
 
 @media (min-width: 1024px) {
   .section-grid[data-fixed-columns="true"] {
-    --section-card-columns-effective: var(--section-card-columns,
-        4);
-    --section-card-fixed-width: max(var(--section-card-min-width, 220px),
-        calc((100% - (var(--section-card-columns, 4) - 1) * var(--section-card-gap, 12px)) / var(--section-card-columns, 4)));
-    grid-template-columns: repeat(var(--section-card-columns-effective),
-        minmax(0, var(--section-card-fixed-width)));
+    --section-card-columns-effective: var(--section-card-columns, 4);
+    --section-card-fixed-width: max(
+      var(--section-card-min-width, 220px),
+      calc(
+        (
+            100% - (var(--section-card-columns, 4) - 1) *
+              var(--section-card-gap, 12px)
+          ) /
+          var(--section-card-columns, 4)
+      )
+    );
+    grid-template-columns: repeat(
+      var(--section-card-columns-effective),
+      minmax(0, var(--section-card-fixed-width))
+    );
     justify-content: var(--section-card-justify, start);
   }
 }
@@ -348,16 +363,20 @@ button.cart-button>span,
 
 .marquee-mask {
   overflow: hidden;
-  mask-image: linear-gradient(90deg,
-      transparent 0%,
-      black 8%,
-      black 92%,
-      transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg,
-      transparent 0%,
-      black 8%,
-      black 92%,
-      transparent 100%);
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
 }
 
 .marquee-track {
@@ -386,7 +405,9 @@ button.cart-button>span,
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .marquee-link {
@@ -464,12 +485,17 @@ button.cart-button>span,
 
 /* Premium Card and Image transitions */
 .hover-lift {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .hover-lift:hover {
   transform: translateY(-8px) scale(1.01) !important;
-  box-shadow: 0 30px 60px -15px rgba(0, 75, 53, 0.2), 0 0 25px -5px rgba(214, 175, 55, 0.15) !important;
+  box-shadow:
+    0 30px 60px -15px rgba(0, 75, 53, 0.2),
+    0 0 25px -5px rgba(214, 175, 55, 0.15) !important;
 }
 
 .hover-lift-gold:hover {
@@ -480,7 +506,7 @@ button.cart-button>span,
   border-color: rgba(226, 252, 238, 0.5) !important;
 }
 
-[role="button"].cart-button>span {
+[role="button"].cart-button > span {
   overflow: visible;
 }
 
@@ -493,18 +519,29 @@ button.cart-button>span,
   display: grid;
   align-items: stretch;
   gap: var(--section-card-gap, 12px);
-  grid-template-columns: repeat(auto-fit,
-      minmax(var(--section-card-min-width, 220px), 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--section-card-min-width, 220px), 1fr)
+  );
 }
 
 @media (min-width: 1024px) {
   .section-grid[data-fixed-columns="true"] {
-    --section-card-columns-effective: var(--section-card-columns,
-        4);
-    --section-card-fixed-width: max(var(--section-card-min-width, 220px),
-        calc((100% - (var(--section-card-columns, 4) - 1) * var(--section-card-gap, 12px)) / var(--section-card-columns, 4)));
-    grid-template-columns: repeat(var(--section-card-columns-effective),
-        minmax(0, var(--section-card-fixed-width)));
+    --section-card-columns-effective: var(--section-card-columns, 4);
+    --section-card-fixed-width: max(
+      var(--section-card-min-width, 220px),
+      calc(
+        (
+            100% - (var(--section-card-columns, 4) - 1) *
+              var(--section-card-gap, 12px)
+          ) /
+          var(--section-card-columns, 4)
+      )
+    );
+    grid-template-columns: repeat(
+      var(--section-card-columns-effective),
+      minmax(0, var(--section-card-fixed-width))
+    );
     justify-content: var(--section-card-justify, start);
   }
 }
@@ -532,16 +569,20 @@ button.cart-button>span,
 
 .marquee-mask {
   overflow: hidden;
-  mask-image: linear-gradient(90deg,
-      transparent 0%,
-      black 8%,
-      black 92%,
-      transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg,
-      transparent 0%,
-      black 8%,
-      black 92%,
-      transparent 100%);
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
 }
 
 .marquee-track {
@@ -570,7 +611,9 @@ button.cart-button>span,
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .marquee-link {
@@ -648,12 +691,17 @@ button.cart-button>span,
 
 /* Premium Card and Image transitions */
 .hover-lift {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .hover-lift:hover {
   transform: translateY(-8px) scale(1.01) !important;
-  box-shadow: 0 30px 60px -15px rgba(0, 75, 53, 0.2), 0 0 25px -5px rgba(214, 175, 55, 0.15) !important;
+  box-shadow:
+    0 30px 60px -15px rgba(0, 75, 53, 0.2),
+    0 0 25px -5px rgba(214, 175, 55, 0.15) !important;
 }
 
 .hover-lift-gold:hover {
@@ -674,7 +722,10 @@ button.cart-button>span,
 
 /* Mensware Page Specific Styles */
 .woven-texture {
-  background-image: radial-gradient(var(--color-primary-container) 0.5px, transparent 0.5px);
+  background-image: radial-gradient(
+    var(--color-primary-container) 0.5px,
+    transparent 0.5px
+  );
   background-size: 10px 10px;
 }
 
@@ -683,7 +734,10 @@ button.cart-button>span,
 }
 
 .product-card-hover {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .product-card-hover:hover {
@@ -710,7 +764,7 @@ button.cart-button>span,
 }
 
 .terracotta-badge {
-  background-color: #C4956A;
+  background-color: #c4956a;
   color: white;
 }
 
@@ -723,7 +777,9 @@ button.cart-button>span,
 }
 
 .warm-shadow-hover {
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .warm-shadow-hover:hover {
@@ -809,6 +865,8 @@ select:focus-visible {
 
 .rich-content p {
   margin-bottom: 0.75rem !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
 }
 
 .rich-content h1 {

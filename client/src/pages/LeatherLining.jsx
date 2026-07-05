@@ -41,7 +41,10 @@ export default function LeatherLining() {
                 LEATHER FOR LINING
               </h1>
               <p className="font-body-md text-body-lg text-on-surface-variant max-w-lg leading-relaxed">
-                Our trusted manufacturer meticulously develops lining leather that is exceptionally soft and highly breathable, with advanced moisture-wicking properties that help prevent blisters for superior comfort.
+                Our trusted manufacturer meticulously develops lining leather
+                that is exceptionally soft and highly breathable, with advanced
+                moisture-wicking properties that help prevent blisters for
+                superior comfort.
               </p>
             </div>
             <div className="relative w-full aspect-square md:aspect-video flex items-center justify-center">
@@ -50,7 +53,8 @@ export default function LeatherLining() {
                 <img
                   className="w-full h-full object-contain"
                   alt="Premium leather lining pattern diagram"
-                  src="/images/lining_hero.png" />
+                  src="/images/lining_hero.png"
+                />
               </div>
               {/* Callouts */}
               <div className="absolute top-[20%] right-[10%] flex items-center gap-2">
@@ -104,21 +108,25 @@ export default function LeatherLining() {
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
               {slides.map((_, index) => (
                 <button
-                   key={index}
-                   onClick={() => setCurrentSlide(index)}
-                   className={`w-2 h-2 rounded-full transition-all ${
-                     index === currentSlide
-                       ? "bg-primary w-6"
-                       : "bg-primary/50 hover:bg-primary/80"
-                   }`}
-                   aria-label={`Go to slide ${index + 1}`}
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentSlide
+                      ? "bg-primary w-6"
+                      : "bg-primary/50 hover:bg-primary/80"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
           </div>
           <div className="space-y-8">
-            <p className="font-body-md text-body-lg text-on-surface-variant leading-relaxed">
-              At VIVOSA, we deliver premium Italian- crafted leather made from carefully selected European hides. Engineered for exceptional comfort, flexibility, and long-lasting durability, our lining leathers elevate every product—from fine footwear and handbags to garments, small leather goods, and automotive interiors.
+            <p className="font-body-md text-body-lg text-on-surface-variant leading-relaxed text-justify">
+              At VIVOSA, we deliver premium Italian- crafted leather made from
+              carefully selected European hides. Engineered for exceptional
+              comfort, flexibility, and long-lasting durability, our lining
+              leathers elevate every product—from fine footwear and handbags to
+              garments, small leather goods, and automotive interiors.
             </p>
             <div>
               <h3 className="font-label-caps text-label-caps text-primary mb-6 tracking-widest uppercase">
@@ -132,7 +140,7 @@ export default function LeatherLining() {
                   "suitable for both luxury and everyday use",
                   "Chrome-free and Eco-friendly Options –",
                   "tanned responsibly in Italy using certified,",
-                  "sustainable methods"
+                  "sustainable methods",
                 ].map((quality, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <span
@@ -148,17 +156,25 @@ export default function LeatherLining() {
                 ))}
               </ul>
             </div>
-            
+
             <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed font-bold">
-              Available Finishes: <span className="font-normal">Full grain, split, and pigmented options in a wide range of natural and fashion colours</span>
+              Available Finishes:{" "}
+              <span className="font-normal">
+                Full grain, split, and pigmented options in a wide range of
+                natural and fashion colours
+              </span>
             </p>
 
             <div className="border-l-4 border-matte-gold bg-surface-container pl-6 py-6 pr-8 mt-8">
               <h4 className="font-headline-sm text-headline-sm text-primary mb-4">
                 Sustainability Commitment
               </h4>
-              <p className="font-body-md text-body-md text-primary leading-relaxed">
-                All VIVOSA leathers are produced with a focus on responsibility and transparency. We work exclusively with certified Italian tanneries that comply with REACH, LWG, and ISO standards, ensuring environmentally sound processes and full materialtraceability.
+              <p className="font-body-md text-body-md text-primary leading-relaxed text-justify">
+                All VIVOSA leathers are produced with a focus on responsibility
+                and transparency. We work exclusively with certified Italian
+                tanneries that comply with REACH, LWG, and ISO standards,
+                ensuring environmentally sound processes and full
+                materialtraceability.
               </p>
             </div>
           </div>
@@ -171,7 +187,11 @@ export default function LeatherLining() {
               Available Now
             </h3>
             <p className="font-body-md text-[#F5F0E8]/70 leading-relaxed">
-              Explore a selection of some popular articles from our trusted manufacturers, each presented in finished form. A number of these articles are held in stock for rapid delivery with flexible MOQs—please get in touch if you have a project that suits any of them.
+              Explore a selection of some popular articles from our trusted
+              manufacturers, each presented in finished form. A number of these
+              articles are held in stock for rapid delivery with flexible
+              MOQs—please get in touch if you have a project that suits any of
+              them.
             </p>
           </div>
         </section>
@@ -199,7 +219,9 @@ export default function LeatherLining() {
                         loading="lazy"
                       />
                     </div>
-                    {(product.code?.trim() || product.title?.trim() || product.name?.trim()) && (
+                    {(product.code?.trim() ||
+                      product.title?.trim() ||
+                      product.name?.trim()) && (
                       <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
                         <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase font-bold">
                           {product.code || product.title || product.name}
@@ -220,38 +242,54 @@ export default function LeatherLining() {
           </h2>
           <div className="font-body-md text-body-lg text-on-surface-variant mb-10 leading-relaxed space-y-6">
             <p>
-              Each article shown above carries its own story of skilled craftsmanship, produced with a commitment to sustainability and responsible manufacturing.
+              Each article shown above carries its own story of skilled
+              craftsmanship, produced with a commitment to sustainability and
+              responsible manufacturing.
             </p>
             <p>
-              We invite you to get in touch to discuss your project requirements, or to send us a sample alongside your specifications. Our team is ready to help guide you towards an exceptional result. We take pride in delivering expertly finished products that bring lasting beauty to every project we're part of.
+              We invite you to get in touch to discuss your project
+              requirements, or to send us a sample alongside your
+              specifications. Our team is ready to help guide you towards an
+              exceptional result. We take pride in delivering expertly finished
+              products that bring lasting beauty to every project we're part of.
             </p>
             <p>
-              Your vision matters to us. We welcome customisation requests to meet your specific needs, ensuring all solutions align with the relevant standards and regulations.
+              Your vision matters to us. We welcome customisation requests to
+              meet your specific needs, ensuring all solutions align with the
+              relevant standards and regulations.
             </p>
           </div>
         </section>
 
         {/* Quality & Sustainability Section */}
-        <section className="bg-surface py-section-gap">
+        <section className="bg-surface py-16 md:py-section-gap">
           <div className="bg-primary-container text-on-primary shadow-inner">
-            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-section-gap grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
               <div>
-                <h2 className="font-display-lg text-headline-xl text-on-primary-container mb-8 leading-tight">
+                <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
                   Quality &amp; Sustainability in Leather Supply
                 </h2>
-                <div className="space-y-6 font-body-md text-white/80 leading-loose">
+                <div className="space-y-6 font-body-md text-white/80 leading-loose text-justify">
                   <p>
-                    We work with leading sustainable leather manufacturers to supply high-quality leather directly to our customers, with no third parties or intermediaries involved. Our QC team carefully inspects each hide to ensure it meets strict quality and sustainability standards.
+                    We work with leading sustainable leather manufacturers to
+                    supply high-quality leather directly to our customers, with
+                    no third parties or intermediaries involved. Our QC team
+                    carefully inspects each hide to ensure it meets strict
+                    quality and sustainability standards.
                   </p>
                   <p>
-                    Approximately 90% of our manufacturing partners are based in Europe, and 85% of our rawhide is European. Although most of our partners are located outside the UK, we maintain full oversight to guarantee excellence.
+                    Approximately 90% of our manufacturing partners are based in
+                    Europe, and 85% of our rawhide is European. Although most of
+                    our partners are located outside the UK, we maintain full
+                    oversight to guarantee excellence.
                   </p>
                   <p>
-                    If you would like more information about our leathers or processes, including:
+                    If you would like more information about our leathers or
+                    processes, including:
                   </p>
                 </div>
               </div>
-              <div className="bg-white/5 p-12 border border-on-primary-container/20 shadow-xl space-y-8">
+              <div className="bg-white/5 p-8 md:p-12 border border-on-primary-container/20 shadow-xl space-y-8">
                 <ul className="space-y-4">
                   {[
                     "Types of raw hides & their origin",
@@ -265,7 +303,10 @@ export default function LeatherLining() {
                     <li key={item} className="flex items-start gap-4">
                       <span
                         className="material-symbols-outlined text-light-gold shrink-0 text-[18px] mt-[2px]"
-                        style={{ fontVariationSettings: "'FILL' 1", color: "#dfc06f" }}
+                        style={{
+                          fontVariationSettings: "'FILL' 1",
+                          color: "#dfc06f",
+                        }}
                       >
                         check_circle
                       </span>

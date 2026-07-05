@@ -2,10 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { fetchPublicSustainableLeathers } from "../api/sustainableLeather";
 
-const sliderImages = [
-  "/images/auto_slider_1.png",
-  "/images/auto_slider_2.png"
-];
+const sliderImages = ["/images/auto_slider_1.png", "/images/auto_slider_2.png"];
 
 const AutoSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -45,16 +42,22 @@ const AutoSlider = () => {
           />
         ))}
       </div>
-      
+
       {/* Next/Prev Arrows */}
-      <button 
-        onClick={() => setCurrentIndex((prev) => (prev === 0 ? sliderImages.length - 1 : prev - 1))}
+      <button
+        onClick={() =>
+          setCurrentIndex((prev) =>
+            prev === 0 ? sliderImages.length - 1 : prev - 1,
+          )
+        }
         className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 backdrop-blur-sm"
       >
         &#8592;
       </button>
-      <button 
-        onClick={() => setCurrentIndex((prev) => (prev + 1) % sliderImages.length)}
+      <button
+        onClick={() =>
+          setCurrentIndex((prev) => (prev + 1) % sliderImages.length)
+        }
         className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 backdrop-blur-sm"
       >
         &#8594;
@@ -84,45 +87,59 @@ export default function Automotive() {
   return (
     <div className="bg-background text-on-background font-body-md selection:bg-on-primary-container selection:text-primary">
       <main>
+        <style>{`main p { text-align: justify; text-justify: inter-word; }`}</style>
         {/* Section 1: HERO - Split Layout */}
         <section className="min-h-screen flex flex-col md:flex-row overflow-hidden">
           {/* Left: Text Panel */}
           <div className="relative flex flex-col justify-center bg-primary px-10 md:px-16 lg:px-20 py-24 md:w-1/2 z-10">
             {/* Subtle gold accent line */}
             <div className="w-12 h-[2px] bg-matte-gold mb-8"></div>
-            <span className="font-label-caps text-label-caps text-matte-gold tracking-[0.3em] mb-6 block uppercase">
+            <span className="font-label-caps text-label-caps text-matte-gold tracking-[0.3em] mt-5 block uppercase">
               AUTOMOTIVE LEATHER COLLECTION
             </span>
-            <h1 className="font-display-lg text-display-lg text-on-primary leading-none mb-8 md:text-[64px] lg:text-[80px]">
-              Automotive<br />Leather<br />Collection
+            <h1 className="font-display-lg text-display-md text-on-primary leading-none mb-8 md:text-[64px] lg:text-[80px]">
+              Automotive
+              <br />
+              Leather
+              <br />
+              Collection
             </h1>
             <div className="w-full h-[1px] bg-matte-gold/30 mb-8"></div>
             <div className="flex flex-col gap-5 max-w-xl">
-              <p className="font-body-lg text-body-lg text-on-primary/90 leading-relaxed font-medium">
-                It's not just a leather interior. It's perfection. Crafted with care, finished with a touch of love, and designed for lasting luxury.
+              <p className="font-body-lg text-body-lg text-on-primary/90 leading-relaxed font-medium text-justify">
+                It's not just a leather interior. It's perfection. Crafted with
+                care, finished with a touch of love, and designed for lasting
+                luxury.
               </p>
-              <p className="font-body-md text-body-md text-on-primary/70 leading-relaxed">
-                At VIVOSA, we supply premium automotive leather crafted by Tanneries with over 50 years of expertise. We partner with true industry leaders who create refined, durable, and luxurious leather while placing environmental responsibility at the heart of every process, protecting the planet, conserving resources, ensuring safe working conditions, and respecting the people behind every craft. Sister production uses top-quality European rawhides and premium materials and has achieved leading industry certifications. All production complies with strict European and international regulations, and both quality and environmental management systems are fully certified, including LWG, ensuring responsible and ethical manufacturing.
+              <p className="font-body-md text-body-md text-on-primary/70 leading-relaxed text-justify">
+                <span className="font-bold"> At VIVOSA,</span> we supply premium
+                automotive leather crafted by Tanneries with over 50 years of
+                expertise. We partner with true industry leaders who create
+                refined, durable, and luxurious leather while placing
+                environmental responsibility at the heart of every process,
+                protecting the planet, conserving resources, ensuring safe
+                working conditions, and respecting the people behind every
+                craft. Sister production uses top-quality European rawhides and
+                premium materials and has achieved leading industry
+                certifications.<br></br> All production complies with strict
+                European and international regulations, and both quality and
+                environmental management systems are fully certified, including
+                LWG, ensuring responsible and ethical manufacturing.
               </p>
             </div>
           </div>
 
           {/* Right: Image Panel */}
-          <div className="relative md:w-1/2 min-h-[50vh] md:min-h-screen overflow-hidden">
+          <div className="relative md:w-1/2 min-h-[50vh] md:min-h-screen overflow-hidden flex items-center justify-center bg-[#111111] p-4 md:p-6">
             <img
               alt="Luxury Automotive Leather Interior"
-              className="absolute inset-0 w-full h-full object-cover object-center"
-              src="/images/automotive_hero.png"
+              className="w-[92%] h-[92%] object-contain object-center rounded-[24px] shadow-2xl"
+              src="/images/automotive_hero2.jpeg"
               fetchpriority="high"
             />
             {/* Gradient overlap from left panel */}
             <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-primary to-transparent z-10"></div>
             {/* Bottom label badge */}
-            <div className="absolute bottom-8 right-8 z-20 bg-black/70 backdrop-blur-sm border border-matte-gold/40 px-5 py-3">
-              <span className="font-label-caps text-label-caps text-matte-gold tracking-widest uppercase text-xs">
-                LWG Certified · European Rawhides
-              </span>
-            </div>
           </div>
         </section>
 
@@ -137,10 +154,14 @@ export default function Automotive() {
                 Engineering Luxury Behind the Wheel
               </h2>
               <p className="font-body-lg text-body-lg text-on-primary/90 mb-6 leading-relaxed">
-                Our sustainable partners follow strict quality control standards at every step—from rawhide selection through tanning, including wet-blue, wet-white, and other retanning processes, and finally to finishing.
+                Our sustainable partners follow strict quality control standards
+                at every step—from rawhide selection through tanning, including
+                wet-blue, wet-white, and other retanning processes, and finally
+                to finishing.
               </p>
               <p className="font-body-md text-body-md text-on-primary/70 mb-10 leading-relaxed">
-                The result is consistently durable, high-performance leather, engineered for modern automotive interiors.
+                The result is consistently durable, high-performance leather,
+                engineered for modern automotive interiors.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6 relative">
@@ -169,14 +190,30 @@ export default function Automotive() {
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-gutter items-center">
             <AutoSlider />
             <div className="md:pl-24">
-              <h2 className="font-headline-xl text-headline-xl text-on-background mb-8">
+              <h2 className="font-headline-xl text-headline-md text-on-background mb-8">
                 Our Sustainable Manufacturing Promise
               </h2>
-              <p className="font-body-lg text-body-lg text-on-surface-variant mb-6 leading-relaxed">
-                Our sourcing manufacturer is committed to the community and the environment while developing advanced leather formulations. Every stage of production is precisely controlled using high-performance technology, ensuring consistently high-quality, durable, and luxurious leather.
+              <p className="font-body-lg text-md text-on-surface-variant mb-6 leading-relaxed">
+                Our sourcing manufacturer is committed to the community and the
+                environment while developing advanced leather formulations.
+                Every stage of production is precisely controlled using
+                high-performance technology, ensuring consistently high-quality,
+                durable, and luxurious leather.
               </p>
               <p className="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
-                We work exclusively with sustainable manufacturers, giving you the freedom to customise products without ever compromising on quality. Our eco-friendly partners offer exquisite Aniline, Semi-Aniline, Nubuck, Full-Grain, Corrected-Grain, Tech, and other premium leathers, crafted through diverse tanning, retanning, and finishing techniques. These exceptional automotive leathers offer elegant, customisable designs and rich colour options that inspire and delight. They elevate car interiors so that buying a car feels like bringing home a dream, not simply making a purchase.
+                We work exclusively with sustainable manufacturers, giving you
+                the freedom to customise products without ever compromising on
+                quality.{" "}
+                <span className="font-bold">
+                  Our eco-friendly partners offer exquisite Aniline,
+                  Semi-Aniline, Nubuck, Full-Grain, Corrected-Grain, Tech, and
+                  other premium leathers, crafted through diverse tanning,
+                  retanning, and finishing techniques.
+                </span>
+                These exceptional automotive leathers offer elegant,
+                customisable designs and rich colour options that inspire and
+                delight. They elevate car interiors so that buying a car feels
+                like bringing home a dream, not simply making a purchase.
               </p>
               <div className="flex gap-12">
                 <div>
@@ -227,18 +264,24 @@ export default function Automotive() {
             </div>
             <div className="text-center">
               <p className="font-body-md text-body-md text-on-secondary/50 max-w-3xl mx-auto italic leading-relaxed">
-                Additionally, some of our manufacturers offer dedicated cutting and stitching facilities, where you can cut and stitch leather exactly to your design specifications.
+                Additionally, some of our manufacturers offer dedicated cutting
+                and stitching facilities, where you can cut and stitch leather
+                exactly to your design specifications.
               </p>
             </div>
           </div>
         </section>
 
         {/* Section 5: BELIEF */}
-        <section className="bg-secondary-container py-section-gap px-margin-desktop">
+        <section className="bg-white py-section-gap px-margin-desktop">
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter">
             <div className="flex items-center">
               <blockquote className="font-headline-xl text-headline-xl italic text-on-background leading-tight pr-12">
-                "Our sister company has been combining history, uniqueness, and durable leather for 50 years. With lively designs that you can fully customize in shape, colours, and style, we continue to create sustainably and ethically, building a better world in the automotive sector."
+                "Our sister company has been combining history, uniqueness, and
+                durable leather for 50 years. With lively designs that you can
+                fully customize in shape, colours, and style, we continue to
+                create sustainably and ethically, building a better world in the
+                automotive sector."
               </blockquote>
             </div>
             <div className="bg-primary text-on-primary p-12 flex flex-col justify-center">
@@ -246,7 +289,11 @@ export default function Automotive() {
                 OUR PHILOSOPHY
               </h3>
               <p className="font-body-lg text-body-lg text-white mb-8 leading-relaxed">
-                We believe that creating styles which reflect your clients’ lifestyles and aspirations not only helps you achieve your goals, but also opens a world of possibilities, confidence, and lasting satisfaction. At Vivosa, it is our commitment to guide you In selecting the right leather for the right project.
+                We believe that creating styles which reflect your clients’
+                lifestyles and aspirations not only helps you achieve your
+                goals, but also opens a world of possibilities, confidence, and
+                lasting satisfaction. At Vivosa, it is our commitment to guide
+                you In selecting the right leather for the right project.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-center gap-4">
@@ -280,22 +327,36 @@ export default function Automotive() {
                 Heritage &amp; Quality
               </span>
               <h2 className="font-display text-[24px] md:text-[32px] text-primary uppercase tracking-wide leading-tight">
-                "Behind every piece of leather lies a story of heritage, craftsmanship, care, and responsibility."
+                "Behind every piece of leather lies a story of heritage,
+                craftsmanship, care, and responsibility."
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-16 items-start">
               <div className="space-y-6 text-on-surface-variant leading-relaxed">
                 <p className="font-body-lg text-body-lg text-neutral-700">
-                  <strong>We believe quality control</strong> means checking and monitoring products or services to ensure they consistently meet the required standards, whether anyone is watching or not. At VIVOSA, our team takes full responsibility for ensuring these standards are met accurately.
+                  <strong>We believe quality control</strong> means checking and
+                  monitoring products or services to ensure they consistently
+                  meet the required standards, whether anyone is watching or
+                  not. At VIVOSA, our team takes full responsibility for
+                  ensuring these standards are met accurately.
                 </p>
                 <p className="font-body-md text-body-md text-neutral-600">
-                  <strong>As the global environment</strong> is rapidly changing, we must consider this when developing innovations. We collaborate with some of the most renowned manufacturers worldwide, many of whom are European and highly skilled in producing leather for the automotive sector.
+                  <strong>As the global environment</strong> is rapidly
+                  changing, we must consider this when developing innovations.
+                  We collaborate with some of the most renowned manufacturers
+                  worldwide, many of whom are European and highly skilled in
+                  producing leather for the automotive sector.
                 </p>
                 <p className="font-body-md text-body-md text-neutral-600">
-                  <strong>We look forward to</strong> collaborating with you on your next project, as we value meaningful partnerships and enjoy working together to ensure your goals are successfully achieved. Through ethical sourcing, we provide superior finished leather for a wide variety of automotive interior applications, including:
+                  <strong>We look forward to</strong> collaborating with you on
+                  your next project, as we value meaningful partnerships and
+                  enjoy working together to ensure your goals are successfully
+                  achieved. Through ethical sourcing, we provide superior
+                  finished leather for a wide variety of automotive interior
+                  applications, including:
                 </p>
               </div>
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   "Seats, Armrests, and Headrests (full or partial coverage)",
                   "Steering Wheels",
@@ -304,10 +365,13 @@ export default function Automotive() {
                   "Door Panels and Armrests",
                   "Centre Consoles and Storage Areas",
                   "Headliners and Pillars",
-                  "Other decorative accents tailored to your specific needs"
+                  "Other decorative accents tailored to your specific needs",
                 ].map((item, idx) => (
-                  <div key={idx} className="py-4 border-b border-outline-variant/30 hover:border-b-2 hover:border-matte-gold transition-all duration-500 cursor-pointer">
-                    <span className="font-body-md text-body-md font-semibold text-primary">
+                  <div
+                    key={idx}
+                    className="rounded-xl border border-outline-variant/40 bg-white p-4 shadow-sm transition-all duration-500 hover:border-matte-gold hover:shadow-md"
+                  >
+                    <span className="font-body-md text-body-md font-semibold text-primary leading-relaxed">
                       {item}
                     </span>
                   </div>
@@ -317,8 +381,10 @@ export default function Automotive() {
           </div>
         </section>
         {/* Section 7: SAMPLE GRID */}
-        <section className="bg-secondary-container py-section-gap px-margin-desktop">
-          <div className="max-w-container-max mx-auto">            <div className="flex flex-col gap-6 mb-16">
+        <section className="bg-white py-section-gap px-margin-desktop">
+          <div className="max-w-container-max mx-auto">
+            {" "}
+            <div className="flex flex-col gap-6 mb-16">
               <div className="flex justify-between items-end">
                 <div>
                   <span className="font-label-caps text-label-caps text-outline block mb-4 tracking-widest uppercase">
@@ -329,21 +395,29 @@ export default function Automotive() {
                   </h2>
                 </div>
                 <div className="hidden md:block">
-                  <Link to="/contact?interest=sample_book" className="inline-block font-label-caps text-label-caps px-10 py-4 bg-primary text-on-primary hover:bg-on-background transition-colors duration-300 tracking-widest">
+                  <Link
+                    to="/contact?interest=sample_book"
+                    className="inline-block font-label-caps text-label-caps px-10 py-4 bg-primary text-on-primary hover:bg-on-background transition-colors duration-300 tracking-widest"
+                  >
                     REQUEST SAMPLE BOOK
                   </Link>
                 </div>
               </div>
               <div className="max-w-4xl text-neutral-600 space-y-4">
                 <p className="font-body text-base md:text-lg leading-relaxed">
-                  Every automotive interior project is different — each one unique, with its own history and story of creation. Here, explores a collection of popular articles from our trusted manufacturers, each presented in its finished form.
+                  Every automotive interior project is different — each one
+                  unique, with its own history and story of creation. Here,
+                  explores a collection of popular articles from our trusted
+                  manufacturers, each presented in its finished form.
                 </p>
                 <p className="font-body text-sm md:text-base leading-relaxed text-neutral-500">
-                  A number of these articles are held in stock, flexible minimum order quantities (MOQs) are available. Please get in touch if you have a pre-production project coming up to trial your project.
+                  A number of these articles are held in stock, flexible minimum
+                  order quantities (MOQs) are available. Please get in touch if
+                  you have a pre-production project coming up to trial your
+                  project.
                 </p>
               </div>
             </div>
-
             {loading ? (
               <div className="text-center font-label-caps text-sm tracking-widest text-primary">
                 LOADING HIDES COLLECTION...
@@ -364,7 +438,9 @@ export default function Automotive() {
                           src={sample.image?.url}
                         />
                       </div>
-                      {(sample.code?.trim() || sample.title?.trim() || sample.name?.trim()) && (
+                      {(sample.code?.trim() ||
+                        sample.title?.trim() ||
+                        sample.name?.trim()) && (
                         <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
                           <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase">
                             {sample.code || sample.title || sample.name}
@@ -374,15 +450,13 @@ export default function Automotive() {
                     </Link>
                   ))}
                 </div>
-                <div className="mt-16 text-center max-w-4xl mx-auto border-t border-matte-gold/20 pt-10">
-                  <p className="font-body text-base md:text-lg text-neutral-600 leading-relaxed">
-                    As mentioned earlier, we offer a wide range of collections with customization options and features such as anti-spot, fire-resistant, chrome-free, metal-free, and more. Clients are welcome to customize any product to meet their specific needs, provided it complies with all applicable laws and regulations. Please contact us for any articles or features you are interested in.
-                  </p>
-                </div>
               </>
             )}
             <div className="mt-12 text-center md:hidden">
-              <Link to="/contact?interest=sample_book" className="inline-block text-center font-label-caps text-label-caps w-full py-4 bg-primary text-on-primary tracking-widest uppercase">
+              <Link
+                to="/contact?interest=sample_book"
+                className="inline-block text-center font-label-caps text-label-caps w-full py-4 bg-primary text-on-primary tracking-widest uppercase"
+              >
                 REQUEST SAMPLE BOOK
               </Link>
             </div>
@@ -393,15 +467,23 @@ export default function Automotive() {
         <section className="bg-primary py-24 px-margin-desktop text-on-primary">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h2 className="font-display text-[32px] md:text-[44px] text-white leading-tight uppercase tracking-wide">
-              Craftsmanship, Collaboration & Responsibility
+              Craftsmanship & Collaboration
             </h2>
             <div className="w-16 h-[1px] bg-matte-gold mx-auto"></div>
             <div className="space-y-6 text-on-primary/95 text-base md:text-lg leading-relaxed font-light">
               <p>
-                Each article shown above carries its own story of skilled craftsmanship — where aesthetic excellence and sustainable manufacturing are never a compromise, but a standard. Produced with an unwavering commitment to responsible innovation, every piece reflects the precision and expertise our manufacturing partners bring to the modern automotive interior. 
+                Each article shown above carries its own story of skilled
+                craftsmanship — where aesthetic excellence and sustainable
+                manufacturing are never a compromise, but a standard. Produced
+                with an unwavering commitment to responsible innovation, every
+                piece reflects the precision and expertise our manufacturing
+                partners bring to the modern automotive interior.
               </p>
               <p>
-                Through close collaboration with our trusted partners, we offer an extensive range of collections to suit every vision — with a wide palette of colours, finishes, and customisation options designed to meet the most demanding specifications.
+                Through close collaboration with our trusted partners, we offer
+                an extensive range of collections to suit every vision — with a
+                wide palette of colours, finishes, and customisation options
+                designed to meet the most demanding specifications.
               </p>
             </div>
             <div className="pt-6">
@@ -455,96 +537,94 @@ export default function Automotive() {
             {/* Content Text Block */}
             <div className="max-w-4xl mx-auto space-y-8 text-neutral-600 leading-relaxed font-body text-base md:text-lg">
               <p>
-                There is a rich variety of option including from vegetable tanning, chrome-free, and metal-free processes, alongside specialised technical finishes including anti-stain, easy-clean, fire-retardant, and other advanced performance treatments. Optional Sanitized® technology, available upon request, eliminates up to 99% of bacteria and viruses, delivering enhanced hygiene and long-lasting protection for premium interior environments.
+                There is a rich variety of option including from vegetable
+                tanning, chrome-free, and metal-free processes, alongside
+                specialised technical finishes including anti-stain, easy-clean,
+                fire-retardant, and other advanced performance treatments.
+                Optional Sanitized® technology, available upon request,
+                eliminates up to 99% of bacteria and viruses, delivering
+                enhanced hygiene and long-lasting protection for premium
+                interior environments.
               </p>
               <p>
-                We don't just supply leather — we deliver a complete material solution, backed by expertise, certified compliance, and a genuine commitment to pushing automotive interiors forward. We welcome bespoke customisation requests, ensuring every solution aligns with the relevant industry standards and regulations. Whatever your brief, our team is ready to turn your specifications into something exceptional.
+                We don't just supply leather — we deliver a complete material
+                solution, backed by expertise, certified compliance, and a
+                genuine commitment to pushing automotive interiors forward. We
+                welcome bespoke customisation requests, ensuring every solution
+                aligns with the relevant industry standards and regulations.
+                Whatever your brief, our team is ready to turn your
+                specifications into something exceptional.
               </p>
               <p className="border-l-4 border-matte-gold pl-6 py-2 italic text-neutral-500 bg-[#FBFBFA]">
-                Our manufacturing partners are fully committed to environmentally responsible leather production — through conscious tanning processes, reduced chemical impact, and certified compliance — developing safer, more sustainable leather solutions for the modern automotive interior.
+                Our manufacturing partners are fully committed to
+                environmentally responsible leather production — through
+                conscious tanning processes, reduced chemical impact, and
+                certified compliance — developing safer, more sustainable
+                leather solutions for the modern automotive interior.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Section 9: QUALITY */}
-        <section className="bg-surface py-section-gap px-margin-desktop">
-          <div className="max-w-container-max mx-auto">
-            <div className="bg-white p-12 md:p-20 shadow-sm border border-outline-variant/10">
-              <h2 className="font-headline-xl text-headline-xl text-primary mb-12">
-                Quality &amp; Sustainability in Leather Supply
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                <div>
-                  <p className="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">
-                    VIVOSA is committed to the highest standards of leather
-                    production, ensuring that luxury never comes at the cost of
-                    the environment or future generations.
+        {/* Quality & Sustainability Section */}
+        <section className="bg-surface py-16 md:py-section-gap">
+          <div className="bg-primary-container text-on-primary shadow-inner">
+            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-section-gap grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+              <div>
+                <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
+                  Quality &amp; Sustainability in Leather Supply
+                </h2>
+                <div className="space-y-6 font-body-md text-white/80 leading-loose">
+                  <p>
+                    We work with leading sustainable leather manufacturers to
+                    supply high-quality leather directly to our customers, with
+                    no third parties or intermediaries involved. Our QC team
+                    carefully inspects each hide to ensure it meets strict
+                    quality and sustainability standards.
                   </p>
-                  <div className="space-y-6">
-                    <div className="flex gap-4">
-                      <div className="w-4 h-4 bg-primary-container mt-1 shrink-0"></div>
-                      <div>
-                        <h4 className="font-body-lg font-bold text-primary">
-                          LWG Gold Rated
-                        </h4>
-                        <p className="font-body-md text-on-surface-variant leading-relaxed">
-                          Our primary manufacturing partners hold the highest
-                          environmental certification in the industry.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex gap-4">
-                      <div className="w-4 h-4 bg-primary-container mt-1 shrink-0"></div>
-                      <div>
-                        <h4 className="font-body-lg font-bold text-primary">
-                          ISO 9001 &amp; 14001
-                        </h4>
-                        <p className="font-body-md text-on-surface-variant leading-relaxed">
-                          Rigorous quality and environmental management systems in
-                          place across all facilities.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  <p>
+                    Approximately 90% of our manufacturing partners are based in
+                    Europe, and 85% of our rawhide is European. Although most of
+                    our partners are located outside the UK, we maintain full
+                    oversight to guarantee excellence.
+                  </p>
+                  <p>
+                    If you would like more information about our leathers or
+                    processes, including:
+                  </p>
                 </div>
-                <div className="space-y-6">
-                  <div className="flex gap-4">
-                    <div className="w-4 h-4 bg-primary-container mt-1 shrink-0"></div>
-                    <div>
-                      <h4 className="font-body-lg font-bold text-primary">
-                        Ethical Sourcing
-                      </h4>
-                      <p className="font-body-md text-on-surface-variant leading-relaxed">
-                        Full traceability back to the source, ensuring animal
-                        welfare and fair labor practices.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="w-4 h-4 bg-primary-container mt-1 shrink-0"></div>
-                    <div>
-                      <h4 className="font-body-lg font-bold text-primary">
-                        REACH Compliant
-                      </h4>
-                      <p className="font-body-md text-on-surface-variant leading-relaxed">
-                        Complete adherence to chemical safety standards, protecting
-                        both workers and end-users.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="w-4 h-4 bg-primary-container mt-1 shrink-0"></div>
-                    <div>
-                      <h4 className="font-body-lg font-bold text-primary">
-                        Zero Waste Initiative
-                      </h4>
-                      <p className="font-body-md text-on-surface-variant leading-relaxed">
-                        Repurposing leather offcuts into high-grade secondary
-                        components and materials.
-                      </p>
-                    </div>
-                  </div>
+              </div>
+              <div className="bg-white/5 p-8 md:p-12 border border-on-primary-container/20 shadow-xl space-y-8">
+                <ul className="space-y-4">
+                  {[
+                    "Types of raw hides & their origin",
+                    "Tanning & retanning methods",
+                    "Defect classification",
+                    "Drying techniques",
+                    "Finishing processes",
+                    "Technical sheets & certifications",
+                    "Manufacturing facility details",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-4">
+                      <span
+                        className="material-symbols-outlined text-light-gold shrink-0 text-[18px] mt-[2px]"
+                        style={{
+                          fontVariationSettings: "'FILL' 1",
+                          color: "#dfc06f",
+                        }}
+                      >
+                        check_circle
+                      </span>
+                      <span className="font-label-caps text-label-caps tracking-wider text-white uppercase text-[12px] leading-normal">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="pt-4 border-t border-white/10">
+                  <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
+                    … please get in touch with us, and we will respond promptly.
+                  </p>
                 </div>
               </div>
             </div>

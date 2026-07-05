@@ -30,7 +30,8 @@ export default function ContractFurniture() {
 
   const checkScroll = () => {
     if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
       setCanScrollLeft(scrollLeft > 5);
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 5);
     }
@@ -111,9 +112,7 @@ export default function ContractFurniture() {
           <div className="w-full md:w-3/5 bg-surface-container-low relative flex items-center justify-center p-8 md:p-20 overflow-hidden min-h-[500px]">
             <div className="relative w-full h-full max-w-4xl aspect-[4/3] flex items-center justify-center">
               {/* Image 2: Chair */}
-              <div 
-                className="absolute w-1/2 aspect-[3/4] rotate-2 translate-x-12 translate-y-12 z-20 bg-white p-3 shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-700 ease-out cursor-pointer"
-              >
+              <div className="absolute w-1/2 aspect-[3/4] rotate-2 translate-x-12 translate-y-12 z-20 bg-white p-3 shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-700 ease-out cursor-pointer">
                 <img
                   alt="Designer leather chair"
                   className="w-full h-full object-cover"
@@ -121,9 +120,7 @@ export default function ContractFurniture() {
                 />
               </div>
               {/* Image 3: Detail */}
-              <div 
-                className="absolute w-2/5 aspect-square -rotate-6 translate-x-[-45%] translate-y-[35%] z-30 bg-white p-3 shadow-2xl hover:scale-105 hover:-translate-y-[15%] transition-all duration-700 ease-out cursor-pointer"
-              >
+              <div className="absolute w-2/5 aspect-square -rotate-6 translate-x-[-45%] translate-y-[35%] z-30 bg-white p-3 shadow-2xl hover:scale-105 hover:-translate-y-[15%] transition-all duration-700 ease-out cursor-pointer">
                 <img
                   alt="Leather material detail"
                   className="w-full h-full object-cover"
@@ -134,9 +131,6 @@ export default function ContractFurniture() {
           </div>
           {/* Right: Panel (40%) */}
           <div className="w-full md:w-2/5 bg-primary p-margin-mobile md:p-margin-desktop flex flex-col justify-center items-start text-on-primary shadow-2xl">
-            <span className="font-label-caps text-label-caps text-matte-gold mb-6 block tracking-[0.3em] uppercase">
-              Sustainable Leather
-            </span>
             <h1 className="font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-8 leading-[1.1] text-white">
               Contact &amp; Furniture Leather
             </h1>
@@ -218,7 +212,7 @@ export default function ContractFurniture() {
                 </div>
               ))}
             </div>
-            
+
             {/* Custom styling for hide-scrollbar */}
             <style jsx>{`
               .hide-scrollbar::-webkit-scrollbar {
@@ -234,19 +228,46 @@ export default function ContractFurniture() {
 
         {/* Intro Section */}
         <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-          <div className="max-w-4xl mx-auto text-center mb-24">
-            <p className="font-headline-md text-headline-md mb-16 text-primary italic leading-relaxed">
-              We ethically source premium leathers from sustainable manufacturers who have over 50 years of expertise, delivering highquality, responsibly produced leathers for all types of furniture”
+          <div className="max-w-4xl mx-auto text-center mb-14">
+            <p className="font-headline-md font-bold text-headline-md mb-6 text-primary italic leading-relaxed">
+              We ethically source premium leathers from sustainable
+              manufacturers who have over 50 years of expertise, delivering
+              highquality, responsibly produced leathers for all types of
+              furniture”
             </p>
             <div className="bg-primary text-on-primary p-12 text-left border-l-4 border-light-gold relative shadow-xl">
-              <p className="font-body-lg text-body-lg leading-relaxed text-white/80 mb-6">
-                Every piece reflects our dedication to sustainability, durability, and timeless elegance, offering endless grace and designs that suit your personal preferences in leather furniture.
+              <p className="font-body-lg font-bold text-body-lg leading-relaxed text-slate-900 mb-6 bg-amber-200/90 p-4 rounded-xl shadow-sm">
+                Every piece reflects our dedication to sustainability,
+                durability, and timeless elegance, offering endless grace and
+                designs that suit your personal preferences in leather
+                furniture.
               </p>
+
               <p className="font-body-lg text-body-lg leading-relaxed text-white/80 mb-6">
-                Through ethical sourcing, we offer a wide variety of durable, elegant colors and finishes suitable for diverse applications—where consistency and beauty come together to create long-lasting products. By collaborating closely with our sister manufacturers, global designers, researchers, and technicians, we craft an extensive range of exquisite leathers—including Anilines, Semi-Anilines, Smooth, Nubuck, soft full- grain, Corrected-grain, and many others—each offering a unique style perfectly suited to a diverse range of furnishings and applications.
+                Through ethical sourcing, we offer a wide variety of durable,
+                elegant colors and finishes suitable for diverse
+                applications—where consistency and beauty come together to
+                create long-lasting products. By collaborating closely with our
+                sister manufacturers, global designers, researchers, and
+                technicians,{" "}
+                <span className="bg-amber-200 text-slate-900 font-semibold px-1.5 py-0.5 rounded box-decoration-clone">
+                  we craft an extensive range of exquisite leathers—including
+                  Anilines, Semi-Anilines, Smooth, Nubuck, soft full- grain,
+                  Corrected-grain, and many others
+                </span>
+                —each offering a unique style perfectly suited to a diverse
+                range of furnishings and applications.
               </p>
+
               <p className="font-body-lg text-body-lg leading-relaxed text-white/80">
-                We supply high-quality leathers that can be used to craft luxury contract projects and premium indoor, outdoor, and home furnishings, delivering lasting beauty, comfort, and timeless appeal that make environments and furniture truly unique. Upon request, our sister manufacturers can also produce leathers with advanced features such as anti-stain, fire-retardant, and other innovative technological finishes. Please get in touch with us to learn more.
+                We supply high-quality leathers that can be used to craft luxury
+                contract projects and premium indoor, outdoor, and home
+                furnishings, delivering lasting beauty, comfort, and timeless
+                appeal that make environments and furniture truly unique. Upon
+                request, our sister manufacturers can also produce leathers with
+                advanced features such as anti-stain, fire-retardant, and other
+                innovative technological finishes. Please get in touch with us
+                to learn more.
               </p>
             </div>
           </div>
@@ -262,28 +283,78 @@ export default function ContractFurniture() {
               </h3>
               <div className="w-16 h-[2px] bg-matte-gold mx-auto mb-6"></div>
               <p className="font-body-lg text-secondary/80 text-lg leading-relaxed">
-                Our finest hides are ideal for making all types of furnishings — from homes and hotels to restaurants, offices, hospitals, cinemas, and more.
+                Our finest hides are ideal for making all types of furnishings —
+                from homes and hotels to restaurants, offices, hospitals,
+                cinemas, and more.
               </p>
             </div>
 
             {/* Premium Interactive Applications Grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
               {[
-                { icon: "chair", label: "Sofas", desc: "Luxury lounges & family living" },
-                { icon: "event_seat", label: "Armchairs", desc: "Statement accent seating" },
-                { icon: "table_restaurant", label: "Dining chairs", desc: "Fine dining & hospitality" },
-                { icon: "local_bar", label: "Bar and pub stools", desc: "High-traffic commercial setups" },
-                { icon: "weekend", label: "Cushions", desc: "Plush ornamental details" },
-                { icon: "desk", label: "Tables and desks", desc: "Sophisticated executive workspaces" },
-                { icon: "chair_alt", label: "Benches", desc: "Premium lobby & corridor seating" },
-                { icon: "architecture", label: "Interior linings", desc: "Wall panels & custom detailing" },
-                { icon: "medical_services", label: "Hospital & clinical chairs", desc: "Hygiene-compliant high endurance" },
-                { icon: "shopping_bag", label: "Accessories & decor", desc: "Luxury leather desk sets & elements" },
-                { icon: "star", label: "Inserts and details", desc: "Exquisite hand-finished trims" },
-                { icon: "more_horiz", label: "Other applications", desc: "Tailored to bespoke specifications" },
+                {
+                  icon: "chair",
+                  label: "Sofas",
+                  desc: "Luxury lounges & family living",
+                },
+                {
+                  icon: "event_seat",
+                  label: "Armchairs",
+                  desc: "Statement accent seating",
+                },
+                {
+                  icon: "table_restaurant",
+                  label: "Dining chairs",
+                  desc: "Fine dining & hospitality",
+                },
+                {
+                  icon: "local_bar",
+                  label: "Bar and pub stools",
+                  desc: "High-traffic commercial setups",
+                },
+                {
+                  icon: "weekend",
+                  label: "Cushions",
+                  desc: "Plush ornamental details",
+                },
+                {
+                  icon: "desk",
+                  label: "Tables and desks",
+                  desc: "Sophisticated executive workspaces",
+                },
+                {
+                  icon: "chair_alt",
+                  label: "Benches",
+                  desc: "Premium lobby & corridor seating",
+                },
+                {
+                  icon: "architecture",
+                  label: "Interior linings",
+                  desc: "Wall panels & custom detailing",
+                },
+                {
+                  icon: "medical_services",
+                  label: "Hospital & clinical chairs",
+                  desc: "Hygiene-compliant high endurance",
+                },
+                {
+                  icon: "shopping_bag",
+                  label: "Accessories & decor",
+                  desc: "Luxury leather desk sets & elements",
+                },
+                {
+                  icon: "star",
+                  label: "Inserts and details",
+                  desc: "Exquisite hand-finished trims",
+                },
+                {
+                  icon: "more_horiz",
+                  label: "Other applications",
+                  desc: "Tailored to bespoke specifications",
+                },
               ].map((app) => (
-                <div 
-                  key={app.label} 
+                <div
+                  key={app.label}
                   className="bg-white/40 backdrop-blur-sm border border-primary/5 hover:border-matte-gold/30 hover:bg-white hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-out p-6 md:p-8 rounded-2xl flex flex-col items-center text-center group cursor-pointer"
                 >
                   {/* Circular Icon Container */}
@@ -292,12 +363,12 @@ export default function ContractFurniture() {
                       {app.icon}
                     </span>
                   </div>
-                  
+
                   {/* Label */}
                   <h4 className="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold text-sm mb-2 group-hover:text-matte-gold transition-colors duration-300">
                     {app.label}
                   </h4>
-                  
+
                   {/* Description text */}
                   <p className="text-[11px] font-body-sm text-secondary/60 leading-relaxed max-w-[180px]">
                     {app.desc}
@@ -320,11 +391,15 @@ export default function ContractFurniture() {
                   Traditional &amp; Popular Leather Articles
                 </h2>
                 <p className="font-body-lg text-secondary/80 max-w-4xl">
-                  Explore a selection of some popular articles from our trusted manufacturers, each presented in finished form. A number of these articles are held in stock for rapid delivery with low MOQs—please get in touch if you have a project that suits any of them.
+                  Explore a selection of some popular articles from our trusted
+                  manufacturers, each presented in finished form. A number of
+                  these articles are held in stock for rapid delivery with low
+                  MOQs—please get in touch if you have a project that suits any
+                  of them.
                 </p>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {swatches.map((swatch) => (
                 <Link
@@ -333,13 +408,15 @@ export default function ContractFurniture() {
                   className="flex flex-col group cursor-pointer border border-neutral-200 overflow-hidden bg-white hover:shadow-md transition-all duration-300 text-center"
                 >
                   <div className="aspect-[4/3] w-full overflow-hidden bg-white">
-                    <img 
-                      src={swatch.image?.url} 
+                    <img
+                      src={swatch.image?.url}
                       alt={swatch.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
-                  {(swatch.code?.trim() || swatch.title?.trim() || swatch.name?.trim()) && (
+                  {(swatch.code?.trim() ||
+                    swatch.title?.trim() ||
+                    swatch.name?.trim()) && (
                     <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
                       <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase font-bold">
                         {swatch.code || swatch.title || swatch.name}
@@ -349,71 +426,101 @@ export default function ContractFurniture() {
                 </Link>
               ))}
             </div>
-            
+
             <div className="mt-16 bg-surface-container-low p-8 border-l-4 border-matte-gold text-left space-y-6">
               <h4 className="font-headline-sm text-headline-sm text-primary font-bold">
                 Craftsmanship &amp; Responsibility
               </h4>
               <p className="font-body-md text-primary/80 leading-relaxed">
-                Each article shown above carries its own story of skilled craftsmanship, produced with a commitment to sustainability and responsible manufacturing.
+                Each article shown above carries its own story of skilled
+                craftsmanship, produced with a commitment to sustainability and
+                responsible manufacturing.
               </p>
               <p className="font-body-md text-primary/80 leading-relaxed">
-                Through close collaboration with our trusted partners, we are able to offer an extensive range of collections to suit every vision. Choose from a wide palette of colours and finishes, with options including vegetable tanning and a variety of dyed finishes.
+                Through close collaboration with our trusted partners, we are
+                able to offer an extensive range of collections to suit every
+                vision. Choose from a wide palette of colours and finishes, with
+                options including vegetable tanning and a variety of dyed
+                finishes.
               </p>
               <p className="font-body-md text-primary/80 leading-relaxed">
-                We invite you to get in touch to discuss your project requirements, or to send us a sample alongside your specifications. Our team is ready to help guide you towards an exceptional result. We take pride in delivering expertly finished products that bring lasting beauty to every project we're part of.
+                We invite you to get in touch to discuss your project
+                requirements, or to send us a sample alongside your
+                specifications. Our team is ready to help guide you towards an
+                exceptional result. We take pride in delivering expertly
+                finished products that bring lasting beauty to every project
+                we're part of.
               </p>
               <p className="font-body-md text-primary/80 leading-relaxed">
-                Your vision matters to us. We welcome customisation requests to meet your specific needs, ensuring all solutions align with the relevant standards and regulations.
+                Your vision matters to us. We welcome customisation requests to
+                meet your specific needs, ensuring all solutions align with the
+                relevant standards and regulations.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Quality Section */}
-        <section className="bg-primary py-section-gap overflow-hidden shadow-2xl">
-          <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid md:grid-cols-2 gap-24 items-center">
-            <div className="text-on-primary">
-              <span className="font-label-caps text-label-caps text-light-gold mb-6 block tracking-[0.3em] uppercase">
-                Quality & Sustainability
-              </span>
-              <h2 className="font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-10 leading-[1.1] text-white">
-                Quality & Sustainability in Leather Supply
-              </h2>
-              <p className="font-body-lg text-body-lg text-white/70 mb-8 leading-relaxed">
-                We work with leading sustainable leather manufacturers to supply high-quality leather directly to our customers, with no third parties or intermediaries involved. Our QC team carefully inspects each hide to ensure it meets strict quality and sustainability standards. Approximately 90% of our manufacturing partners are based in Europe, and 85% of our raw hide is European. While most of our partners are located outside the UK, we maintain full oversight to guarantee excellence. If you would like more information about our leathers or processes, including:
-              </p>
-            </div>
-            {/* Hard-coded checklist */}
-            <div className="space-y-4">
-              {[
-                "Types of raw hides & their origin",
-                "Tanning & retanning methods",
-                "Defect classification",
-                "Drying techniques",
-                "Finishing processes",
-                "Technical sheets & certifications",
-                "Manufacturing facility details",
-                "And much more",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-start gap-4 p-4 border-l border-white/10 group cursor-pointer"
-                >
-                  <span
-                    className="material-symbols-outlined text-light-gold text-[18px] select-none mt-[2px] flex-shrink-0"
-                    style={{ fontVariationSettings: "'FILL' 1", color: "#dfc06f" }}
-                  >
-                    check_circle
-                  </span>
-                  <span className="font-label-caps text-[13px] text-white tracking-widest uppercase leading-normal">
-                    {item}
-                  </span>
+        {/* Quality & Sustainability Section */}
+        <section className="bg-surface py-16 md:py-section-gap">
+          <div className="bg-primary-container text-on-primary shadow-inner">
+            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-section-gap grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+              <div>
+                <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
+                  Quality &amp; Sustainability in Leather Supply
+                </h2>
+                <div className="space-y-6 font-body-md text-white/80 leading-loose text-justify">
+                  <p>
+                    We work with leading sustainable leather manufacturers to
+                    supply high-quality leather directly to our customers, with
+                    no third parties or intermediaries involved. Our QC team
+                    carefully inspects each hide to ensure it meets strict
+                    quality and sustainability standards.
+                  </p>
+                  <p>
+                    Approximately 90% of our manufacturing partners are based in
+                    Europe, and 85% of our rawhide is European. Although most of
+                    our partners are located outside the UK, we maintain full
+                    oversight to guarantee excellence.
+                  </p>
+                  <p>
+                    If you would like more information about our leathers or
+                    processes, including:
+                  </p>
                 </div>
-              ))}
-              <p className="font-body-lg text-body-lg text-white/70 mt-8 leading-relaxed italic">
-                … please get in touch with us, and we will respond promptly.
-              </p>
+              </div>
+              <div className="bg-white/5 p-8 md:p-12 border border-on-primary-container/20 shadow-xl space-y-8">
+                <ul className="space-y-4">
+                  {[
+                    "Types of raw hides & their origin",
+                    "Tanning & retanning methods",
+                    "Defect classification",
+                    "Drying techniques",
+                    "Finishing processes",
+                    "Technical sheets & certifications",
+                    "Manufacturing facility details",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-4">
+                      <span
+                        className="material-symbols-outlined text-light-gold shrink-0 text-[18px] mt-[2px]"
+                        style={{
+                          fontVariationSettings: "'FILL' 1",
+                          color: "#dfc06f",
+                        }}
+                      >
+                        check_circle
+                      </span>
+                      <span className="font-label-caps text-label-caps tracking-wider text-white uppercase text-[12px] leading-normal">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="pt-4 border-t border-white/10">
+                  <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
+                    … please get in touch with us, and we will respond promptly.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>

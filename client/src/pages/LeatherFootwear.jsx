@@ -30,26 +30,26 @@ export default function LeatherFootwear() {
       top: "/slides/8.png",
       bottom: "/slides/6.png",
       altTop: "Premium footwear leather rolls",
-      altBottom: "Elegant handcrafted leather Oxford shoe"
+      altBottom: "Elegant handcrafted leather Oxford shoe",
     },
     {
       top: "/slides/5.png",
       bottom: "/slides/7.png",
       altTop: "Artisan leather tanning material",
-      altBottom: "Luxury designer red stiletto"
+      altBottom: "Luxury designer red stiletto",
     },
     {
       top: "/slides/6.png",
       bottom: "/slides/8.png",
       altTop: "Close-up of premium footwear leather",
-      altBottom: "Bespoke classic brown leather loafers"
+      altBottom: "Bespoke classic brown leather loafers",
     },
     {
       top: "/slides/7.png",
       bottom: "/slides/5.png",
       altTop: "High-grade leather sheet",
-      altBottom: "Sophisticated modern leather footwear design"
-    }
+      altBottom: "Sophisticated modern leather footwear design",
+    },
   ];
   const [activeSlide, setActiveSlide] = useState(0);
   const dragStartX = useRef(null);
@@ -67,7 +67,9 @@ export default function LeatherFootwear() {
     if (deltaX < -threshold) {
       setActiveSlide((prev) => (prev + 1) % heroSlides.length);
     } else if (deltaX > threshold) {
-      setActiveSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+      setActiveSlide(
+        (prev) => (prev - 1 + heroSlides.length) % heroSlides.length,
+      );
     }
     isHeroDragging.current = false;
     dragStartX.current = null;
@@ -82,7 +84,8 @@ export default function LeatherFootwear() {
 
   const checkScroll = () => {
     if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
       setCanScrollLeft(scrollLeft > 5);
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 5);
     }
@@ -187,7 +190,9 @@ export default function LeatherFootwear() {
                   <div
                     key={index}
                     className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                      isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                      isActive
+                        ? "opacity-100 z-10"
+                        : "opacity-0 z-0 pointer-events-none"
                     }`}
                   >
                     {/* Leather Rolls (Top) */}
@@ -212,7 +217,7 @@ export default function LeatherFootwear() {
                 );
               })}
             </div>
-            
+
             {/* Elegant Luxury Slider Page Indicators */}
             <div className="absolute bottom-6 flex gap-3 z-30">
               {heroSlides.map((_, index) => (
@@ -224,8 +229,8 @@ export default function LeatherFootwear() {
                   }}
                   onMouseDown={(e) => e.stopPropagation()}
                   className={`w-2 h-2 rounded-full transition-all duration-500 cursor-pointer ${
-                    index === activeSlide 
-                      ? "bg-accent-gold w-8" 
+                    index === activeSlide
+                      ? "bg-accent-gold w-8"
                       : "bg-accent-gold/30 hover:bg-accent-gold/60"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
@@ -243,8 +248,11 @@ export default function LeatherFootwear() {
               <br />
               for Footwear
             </h1>
-            <p className="font-body text-body-lg text-on-primary/80 max-w-lg mb-12 leading-relaxed">
-              We work alongside those who meticulously monitor every detail—from A to Z—to deliver premium quality with integrity. Our sustainable sourcing practices protect both people and the planet, keeping our customers safe, healthy, and vibrant.
+            <p className="font-body text-body-lg text-on-primary/80 max-w-lg mb-12 leading-relaxed text-justify text-justify">
+              We work alongside those who meticulously monitor every detail from
+              A to Z to deliver premium quality with integrity. Our sustainable
+              sourcing practices protect both people and the planet, keeping our
+              customers safe, healthy, and vibrant.
             </p>
             <a className="inline-flex items-center group w-fit" href="/contact">
               <span className="bg-accent-gold text-primary font-label-caps text-label-caps px-10 py-4 group-hover:bg-on-primary transition-all duration-500">
@@ -335,11 +343,11 @@ export default function LeatherFootwear() {
           <div className="max-w-5xl mx-auto mt-24 px-6 relative">
             {/* Decorative glowing background shape */}
             <div className="absolute inset-0 bg-gradient-to-r from-accent-gold/5 via-transparent to-transparent blur-3xl -z-10 rounded-3xl" />
-            
+
             <div className="relative bg-white/40 backdrop-blur-md border border-accent-gold/20 rounded-2xl p-8 md:p-16 shadow-[0_20px_50px_rgba(212,175,55,0.03)] overflow-hidden">
               {/* Left Thick Accent Gold Ribbon Bar with Glow */}
               <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-accent-gold shadow-[0_0_12px_rgba(212,175,55,0.3)]" />
-              
+
               {/* Large Luxury Stylized Quote Mark */}
               <span className="absolute -top-6 left-6 text-[180px] font-serif text-accent-gold/10 select-none pointer-events-none leading-none">
                 “
@@ -355,23 +363,48 @@ export default function LeatherFootwear() {
                 </div>
 
                 <blockquote className="font-display text-headline-md md:text-[28px] md:leading-relaxed italic text-primary font-light">
-                  "Where fashion never stops, <span className="text-accent-gold font-semibold not-italic relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-accent-gold/40">timeless elegance</span> and <span className="text-accent-gold font-semibold not-italic relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-accent-gold/40">endless innovation</span> are brought to you by a <span className="text-accent-gold font-semibold not-italic relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-accent-gold/40">sustainable source</span> that has been providing premium leather for upscale footwear that is long-lasting, waterproof, breathable, and resilient for <span className="text-accent-gold font-semibold not-italic relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-accent-gold/40">over 50 years</span>."
+                  "Where fashion never stops,{" "}
+                  <span className="text-accent-gold font-semibold not-italic relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-accent-gold/40">
+                    timeless elegance
+                  </span>{" "}
+                  and{" "}
+                  <span className="text-accent-gold font-semibold not-italic relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-accent-gold/40">
+                    endless innovation
+                  </span>{" "}
+                  are brought to you by a{" "}
+                  <span className="text-accent-gold font-semibold not-italic relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-accent-gold/40">
+                    sustainable source
+                  </span>{" "}
+                  that has been providing premium leather for upscale footwear
+                  that is long-lasting, waterproof, breathable, and resilient
+                  for{" "}
+                  <span className="text-accent-gold font-semibold not-italic relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-accent-gold/40">
+                    over 50 years
+                  </span>
+                  ."
                 </blockquote>
 
                 {/* Decorative signature / author line at the bottom */}
                 <div className="mt-8 flex items-center justify-between flex-wrap gap-4 border-t border-accent-gold/10 pt-6">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-accent-gold/10 flex items-center justify-center border border-accent-gold/25">
-                      <span className="material-symbols-outlined text-accent-gold text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>
+                      <span
+                        className="material-symbols-outlined text-accent-gold text-lg"
+                        style={{ fontVariationSettings: "'FILL' 1" }}
+                      >
                         verified_user
                       </span>
                     </div>
                     <div>
-                      <p className="text-xs font-label-caps tracking-widest text-primary font-bold uppercase">Vivosa Certified Supply</p>
-                      <p className="text-[11px] text-secondary font-medium uppercase">Gold-Rated Tanneries</p>
+                      <p className="text-xs font-label-caps tracking-widest text-primary font-bold uppercase">
+                        Vivosa Certified Supply
+                      </p>
+                      <p className="text-[11px] text-secondary font-medium uppercase">
+                        Gold-Rated Tanneries
+                      </p>
                     </div>
                   </div>
-                  
+
                   <span className="font-serif text-accent-gold/20 text-8xl leading-none select-none pointer-events-none absolute -bottom-10 right-6">
                     ”
                   </span>
@@ -394,13 +427,17 @@ export default function LeatherFootwear() {
               <span className="font-label-caps text-label-caps text-accent-gold tracking-[0.2em] mb-4 block uppercase text-xs font-bold">
                 Premium Collection
               </span>
-              
+
               <h3 className="font-display text-headline-lg md:text-headline-xl text-primary leading-tight max-w-4xl mx-auto mb-6">
                 Available Now
               </h3>
-              
+
               <p className="font-body text-body-lg text-secondary max-w-3xl mx-auto leading-relaxed">
-                Explore a selection of some popular articles from our trusted manufacturers, each presented in finished form. A number of these articles are held in stock for rapid delivery with low MOQs— Please get in touch with us to find the articles and colours best suited to your project.
+                Explore a selection of some popular articles from our trusted
+                manufacturers, each presented in finished form. A number of
+                these articles are held in stock for rapid delivery with low
+                MOQs— Please get in touch with us to find the articles and
+                colours best suited to your project.
               </p>
             </div>
           </div>
@@ -432,7 +469,9 @@ export default function LeatherFootwear() {
                       loading="lazy"
                     />
                   </div>
-                  {(sample.code?.trim() || sample.title?.trim() || sample.name?.trim()) && (
+                  {(sample.code?.trim() ||
+                    sample.title?.trim() ||
+                    sample.name?.trim()) && (
                     <div className="py-4 px-3 bg-[#fbfbfa] border-t border-neutral-100 flex items-center justify-center min-h-[56px]">
                       <h4 className="font-label-caps text-xs md:text-sm font-semibold tracking-widest text-[#1c1917] uppercase">
                         {sample.code || sample.title || sample.name}
@@ -453,29 +492,53 @@ export default function LeatherFootwear() {
               <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-accent-gold/30"></div>
 
               <div className="flex items-center gap-3 mb-6">
-                <span className="material-symbols-outlined text-accent-gold text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>
+                <span
+                  className="material-symbols-outlined text-accent-gold text-4xl md:text-5xl"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
                   workspace_premium
                 </span>
-                <span className="font-label-caps text-label-caps text-accent-gold tracking-widest text-xs font-bold">
+                <span className="font-label-caps text-label-caps text-accent-gold tracking-[0.25em] text-sm md:text-base font-bold uppercase">
                   CRAFTSMANSHIP &amp; RESPONSIBILITY
                 </span>
               </div>
 
               <div className="font-body text-body-lg text-secondary leading-relaxed space-y-6">
                 <p>
-                  Each article shown above carries its own story of skilled craftsmanship, produced with a commitment to sustainability and responsible manufacturing.
+                  Each article shown above carries its own story of skilled
+                  craftsmanship, produced with a commitment to sustainability
+                  and responsible manufacturing.
                 </p>
                 <p>
-                  Through close collaboration with our trusted partners, we craft an extensive range of exquisite leathers to suit every vision — <strong>pure aniline, semi-aniline, full grain, fine grain, Nappa, Nubuck, and many more.</strong>
+                  Through close collaboration with our trusted partners, we
+                  craft an extensive range of exquisite leathers to suit every
+                  vision —{" "}
+                  <strong>
+                    pure aniline, semi-aniline, full grain, fine grain, Nappa,
+                    Nubuck, and many more.
+                  </strong>
                 </p>
-                <p>
-                  Each leather is designed with comfort, breathability, and timeless appeal, with optional treatments available on request, including anti-stain, fire-retardant, moisture-wicking, and other innovative technological finishes. Choose from a wide palette of colours and finishes, with options including vegetable tanning and a variety of dyed finishes.
+                <p clsassName="text-justify">
+                  Each leather is designed with comfort, breathability, and
+                  timeless appeal, with optional treatments available on
+                  request, including anti-stain, fire-retardant,
+                  moisture-wicking, and other innovative technological finishes.
+                  Choose from a wide palette of colours and finishes, with
+                  options including vegetable tanning and a variety of dyed
+                  finishes.
                 </p>
-                <p>
-                  We invite you to get in touch to discuss your project requirements, or to send us a sample alongside your specifications. Our team is ready to help guide you towards an exceptional result. We take pride in delivering expertly finished products that bring lasting beauty to every project we're part of.
+                <p className="text-justify">
+                  We invite you to get in touch to discuss your project
+                  requirements, or to send us a sample alongside your
+                  specifications. Our team is ready to help guide you towards an
+                  exceptional result. We take pride in delivering expertly
+                  finished products that bring lasting beauty to every project
+                  we're part of.
                 </p>
-                <p>
-                  Your vision matters to us. We welcome customisation requests to meet your specific needs, ensuring all solutions align with the relevant standards and regulations.
+                <p className="text-justify">
+                  Your vision matters to us. We welcome customisation requests
+                  to meet your specific needs, ensuring all solutions align with
+                  the relevant standards and regulations.
                 </p>
               </div>
             </div>
@@ -483,24 +546,35 @@ export default function LeatherFootwear() {
         </section>
 
         {/* Quality & Sustainability Section */}
-        <section className="bg-primary text-on-primary py-section-gap overflow-hidden relative shadow-2xl">
-          <div className="max-w-container-max mx-auto px-6 md:px-margin-desktop relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
-              <div className="md:col-span-6 text-on-primary">
-                <span className="font-label-caps text-label-caps text-accent-gold tracking-[0.25em] mb-4 block uppercase font-bold text-xs">
-                  Ethical Sourcing
-                </span>
-                <h2 className="font-display text-[36px] md:text-display-lg mb-8 text-white leading-tight">
-                  Quality and Sustainability
-                  <br />
-                  in Leather Supply
+        <section className="bg-surface py-16 md:py-section-gap">
+          <div className="bg-primary-container text-on-primary shadow-inner">
+            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-section-gap grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+              <div>
+                <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
+                  Quality &amp; Sustainability in Leather Supply
                 </h2>
-                
-                <p className="font-body text-[15px] md:text-body-md text-white/80 leading-relaxed mb-8">
-                  We work with leading sustainable leather manufacturers to supply high-quality leather directly to our customers, with no third parties or intermediaries involved. Our QC team carefully inspects each hide to ensure it meets strict quality and sustainability standards. Approximately 90% of our manufacturing partners are based in Europe, and 85% of our rawhide is European. Although most of our partners are located outside the UK, we maintain full oversight to guarantee excellence. If you would like more information about our leathers or processes, including:
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div className="space-y-6 font-body-md text-white/80 leading-loose text-justify">
+                  <p>
+                    We work with leading sustainable leather manufacturers to
+                    supply high-quality leather directly to our customers, with
+                    no third parties or intermediaries involved. Our QC team
+                    carefully inspects each hide to ensure it meets strict
+                    quality and sustainability standards.
+                  </p>
+                  <p>
+                    Approximately 90% of our manufacturing partners are based in
+                    Europe, and 85% of our rawhide is European. Although most of
+                    our partners are located outside the UK, we maintain full
+                    oversight to guarantee excellence.
+                  </p>
+                  <p>
+                    If you would like more information about our leathers or
+                    processes, including:
+                  </p>
+                </div>
+              </div>
+              <div className="bg-white/5 p-8 md:p-12 border border-on-primary-container/20 shadow-xl space-y-8">
+                <ul className="space-y-4">
                   {[
                     "Types of raw hides & their origin",
                     "Tanning & retanning methods",
@@ -509,51 +583,31 @@ export default function LeatherFootwear() {
                     "Finishing processes",
                     "Technical sheets & certifications",
                     "Manufacturing facility details",
-                    "And much more"
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start group">
-                      <div className="w-5 h-5 rounded-md border border-accent-gold/40 flex items-center justify-center bg-accent-gold/10 mt-0.5 group-hover:border-accent-gold transition-colors duration-300 flex-shrink-0">
-                        <span className="material-symbols-outlined text-accent-gold text-[12px] font-bold">check</span>
-                      </div>
-                      <span className="font-body text-[14px] text-white/90 ml-3 group-hover:text-accent-gold transition-colors duration-300">
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-4">
+                      <span
+                        className="material-symbols-outlined text-light-gold shrink-0 text-[18px] mt-[2px]"
+                        style={{
+                          fontVariationSettings: "'FILL' 1",
+                          color: "#dfc06f",
+                        }}
+                      >
+                        check_circle
+                      </span>
+                      <span className="font-label-caps text-label-caps tracking-wider text-white uppercase text-[12px] leading-normal">
                         {item}
                       </span>
-                    </div>
+                    </li>
                   ))}
-                </div>
-
-                <div className="border-t border-white/10 pt-6 mt-6">
-                  <p className="font-body text-body-lg text-accent-gold font-semibold leading-relaxed flex items-center gap-2">
-                    <span className="animate-pulse w-2 h-2 rounded-full bg-accent-gold"></span>
+                </ul>
+                <div className="pt-4 border-t border-white/10">
+                  <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
                     … please get in touch with us, and we will respond promptly.
                   </p>
                 </div>
               </div>
-              
-              <div className="md:col-span-5 md:col-start-8">
-                <div className="relative aspect-[3/4] border-accent-gold/30 border p-4 shadow-2xl bg-white/5 backdrop-blur-sm">
-                  {/* Luxury Corner borders */}
-                  <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-accent-gold"></div>
-                  <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-accent-gold"></div>
-                  <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-accent-gold"></div>
-                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-accent-gold"></div>
-                  <img
-                    className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-700"
-                    alt="Premium footwear leather rolls ready for manufacture"
-                    src="/slides/8.png"
-                  />
-                </div>
-              </div>
             </div>
           </div>
-          {/* Subtle Leather Texture Background Overlay */}
-          <div
-            className="absolute inset-0 opacity-10 pointer-events-none z-0"
-            style={{
-              backgroundImage:
-                "url('https://lh3.googleusercontent.com/aida-public/AB6AXuD0p0sFMo58yTGaQeHcti79CpBXVcv58PgofvWhAjkM-9ZPkcWi1kz9Q07Y7XiIOXJtXnGd1bvEHSVopBSWRdtpb40rANAaVj2YEysHZeos0sne7XGRU3KN-kcUs-4c4HGoZSnYZ8v_gyxd67koIy2T51eEdzuPVU6LF4Lt0zt5SzUQGQl4bxGVKR1QVPq1TKNGzlzWOeNlFTHIsYHSDxdeXEqtSwEb2n33H2EWv_eVafktJG7o8tyVFBQkM5VL5oX201krihUav1s')",
-            }}
-          ></div>
         </section>
       </main>
     </div>

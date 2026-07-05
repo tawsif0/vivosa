@@ -190,20 +190,20 @@ export default function Landing() {
         </div>
 
         <div className="relative z-10 max-w-container-max mx-auto w-full text-off-white px-4 sm:px-6 lg:px-margin-desktop">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-center">
             {/* Left Column: Text Content */}
             <div className="lg:col-span-6 max-w-2xl">
-              <span className="font-label-caps text-gold-accent tracking-[0.3em] uppercase block mb-6">
+              <span className="font-label-caps text-gold-accent tracking-[0.3em] uppercase block mb-6 mt-4">
                 Redefining Craftsmanship
               </span>
-              <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg mb-8">
+              <h1 className="text-lg text-display-lg-mobile md:text-display-lg mb-8">
                 Welcome to Vivosa.
               </h1>
-              <p className="font-body-lg text-body-lg mb-6 text-surface-variant/90 leading-relaxed">
+              <p className="font-body-lg text-body-lg mb-6 text-surface-variant/90 leading-relaxed text-justify">
                 We are delighted to hear your ideas and designs, and we love
                 working together ethically bring your dream project to life.
               </p>
-              <p className="font-body-lg text-body-lg mb-10 text-surface-variant/90 leading-relaxed">
+              <p className="font-body-lg text-body-lg mb-10 text-surface-variant/90 leading-relaxed text-justify">
                 Our commitment is to sustainable sourcing with honesty and
                 integrity and providing the best service. We believe that
                 experience, efficiency, professionalism, social responsibility,
@@ -271,7 +271,7 @@ export default function Landing() {
         className="py-16 md:py-section-gap max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop"
         id="about"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-center">
           <div className="relative group">
             <div className="absolute -top-6 -left-6 sm:-top-10 sm:-left-10 w-28 h-28 sm:w-40 sm:h-40 bg-emerald-mint -z-10 transition-transform duration-500 group-hover:scale-110"></div>
             <div className="overflow-hidden shadow-2xl">
@@ -294,13 +294,13 @@ export default function Landing() {
                 <h4 className="font-label-caps text-sm text-gold-accent uppercase tracking-wider mb-2 font-semibold">
                   OUR VISION
                 </h4>
-                <p className="mb-3">
+                <p className="mb-3 text-justify">
                   Our vision extends outside our business. We aspire to make a
                   good impact on the globe, from the communities where we obtain
                   our raw materials to how our products help our consumers live
                   livelier.
                 </p>
-                <p>
+                <p className="text-justify">
                   Our top priorities are customer satisfaction and their values
                   and working together to build a pleasant and trustable work
                   environment. We are committed to listening to our customers
@@ -314,11 +314,11 @@ export default function Landing() {
                 <h4 className="font-label-caps text-sm text-gold-accent uppercase tracking-wider mb-2 font-semibold">
                   OUR MISSION
                 </h4>
-                <p className="mb-3">
+                <p className="mb-3 text-justify">
                   Our mission is to work with our partners to create a brighter
                   future. Engaging with us means we invite our clients to join.
                 </p>
-                <p>
+                <p className="text-justify">
                   In our commitment to sustainability, we actively seek social,
                   economic, and environmental sustainability, placing a high
                   priority on the welfare of our employees and the community,
@@ -360,7 +360,7 @@ export default function Landing() {
       {/* Identity & Philosophy Section */}
       <section className="py-16 md:py-24 bg-surface-container-low border-b border-outline/5">
         <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-5">
               <span className="font-label-caps text-gold-accent tracking-widest block mb-4">
                 Our Identity
@@ -374,21 +374,21 @@ export default function Landing() {
               </p>
             </div>
             <div className="lg:col-span-7 space-y-6 font-body-lg text-on-surface-variant leading-relaxed">
-              <p>
+              <p className="text-justify">
                 <strong>Vivosa</strong> is a young, active firm that is deeply
                 involved in both the leather and apparel industries. It was
                 founded by individuals with over 30 years of professional
                 experience, proven technical proficiency, and a constant
                 willingness to take on new challenges and accomplish new goals.
               </p>
-              <p>
+              <p className="text-justify">
                 Our primary objective is sourcing materials ethically from
                 sustainable manufacturers who are ecologically conscious,
                 strictly follow fair business practices, and have been working
                 in the sector for decades. As a result, we have built a strong
                 presence in the UK, Europe, and numerous other global markets.
               </p>
-              <p>
+              <p className="text-justify">
                 We believe that wearing and using what resonates with you and
                 makes you feel confident is far more important than following
                 trends blindly. Every individual is unique, with their own
@@ -416,14 +416,14 @@ export default function Landing() {
             WHY CHOOSE US
           </h2>
           <div className="space-y-4 font-body-lg text-on-surface-variant leading-relaxed">
-            <p className="font-semibold text-lg text-deep-forest">
+            <p className="font-semibold text-lg text-deep-forest text-justify">
               Customers choose us for our expertise, efficiency, and commitment
               to building long-term partnerships based on trust and value. We
               understand that sourcing is more than just finding products — it
               is about fostering lasting relationships, ensuring quality, and
               creating value for every stakeholder.
             </p>
-            <p>
+            <p className="text-justify">
               Because of our years of experience in apparel and leather
               manufacturing, we have become a trusted partner for global buyers,
               brands, suppliers, and factories. We work exclusively with
@@ -437,7 +437,7 @@ export default function Landing() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Card 1: Ethical Sourcing */}
-          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+          <div className="p-6 md:p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
             <div>
               <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
                 eco
@@ -455,7 +455,7 @@ export default function Landing() {
           </div>
 
           {/* Card 2: Wide Range */}
-          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+          <div className="p-6 md:p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
             <div>
               <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
                 category
@@ -472,7 +472,7 @@ export default function Landing() {
           </div>
 
           {/* Card 3: Customizations */}
-          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+          <div className="p-6 md:p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
             <div>
               <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
                 tune
@@ -489,7 +489,7 @@ export default function Landing() {
           </div>
 
           {/* Card 4: Quality Control */}
-          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+          <div className="p-6 md:p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
             <div>
               <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
                 verified
@@ -506,7 +506,7 @@ export default function Landing() {
           </div>
 
           {/* Card 5: Exceptional Price */}
-          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+          <div className="p-6 md:p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
             <div>
               <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
                 payments
@@ -523,7 +523,7 @@ export default function Landing() {
           </div>
 
           {/* Card 6: Research & Innovation */}
-          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+          <div className="p-6 md:p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
             <div>
               <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
                 psychology
@@ -540,7 +540,7 @@ export default function Landing() {
           </div>
 
           {/* Card 7: Customer Satisfaction */}
-          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+          <div className="p-6 md:p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
             <div>
               <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
                 sentiment_very_satisfied
@@ -557,7 +557,7 @@ export default function Landing() {
           </div>
 
           {/* Card 8: Fast Delivery */}
-          <div className="p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
+          <div className="p-6 md:p-8 border border-outline/10 hover-lift hover-lift-gold bg-surface transition-colors duration-500 flex flex-col justify-between">
             <div>
               <span className="material-symbols-outlined text-4xl text-gold-accent mb-6">
                 local_shipping
@@ -590,7 +590,7 @@ export default function Landing() {
         `}</style>
 
         {/* ── Section Header ── */}
-        <div className="relative z-10 bg-[#0c1a14] text-center pt-20 pb-14 px-4">
+        <div className="relative z-10 bg-[#0c1a14] text-center pt-14 pb-10 md:pt-20 md:pb-14 px-4">
           <div
             className="absolute inset-0 opacity-[0.04] pointer-events-none"
             style={{
@@ -670,7 +670,10 @@ export default function Landing() {
 
             {/* Bottom content */}
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
-              <h3 className="font-display-lg text-4xl md:text-5xl lg:text-6xl font-bold tracking-widest uppercase leading-none mb-3" style={{ color: "#cda250" }}>
+              <h3
+                className="font-display-lg text-4xl md:text-5xl lg:text-6xl font-bold tracking-widest uppercase leading-none mb-3"
+                style={{ color: "#cda250" }}
+              >
                 APPAREL
               </h3>
 
@@ -763,7 +766,10 @@ export default function Landing() {
 
             {/* Bottom content */}
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
-              <h3 className="font-display-lg text-4xl md:text-5xl lg:text-6xl font-bold tracking-widest uppercase leading-none mb-3" style={{ color: "#cda250" }}>
+              <h3
+                className="font-display-lg text-4xl md:text-5xl lg:text-6xl font-bold tracking-widest uppercase leading-none mb-3"
+                style={{ color: "#cda250" }}
+              >
                 LEATHER
               </h3>
 
@@ -815,16 +821,16 @@ export default function Landing() {
 
       {/* Luxury Dual Sourcing Showcase: Apparel & Leather Overview */}
       <section
-        className="py-24 bg-[#faf8f5] relative overflow-hidden border-b border-outline/5 select-none"
+        className="py-16 md:py-24 bg-[#faf8f5] relative overflow-hidden border-b border-outline/5 select-none"
         id="sourcing-details"
       >
         {/* Abstract organic elegant design background details */}
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gold-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
         <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-emerald-mint/5 rounded-full blur-[150px] pointer-events-none"></div>
 
-        <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop space-y-32">
+        <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop space-y-16 md:space-y-24 lg:space-y-32">
           {/* Row 1: Apparel Sourcing (Image Left, Text Right) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center">
             {/* Left Image Frame with offset luxury gallery border */}
             <div className="lg:col-span-6 relative group">
               <div className="absolute -bottom-4 -right-4 w-full h-full border border-[#0e7448]/30 rounded-lg pointer-events-none -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
@@ -850,13 +856,13 @@ export default function Landing() {
                 Apparel manufacturing
               </h3>
               <div className="w-16 h-[2px] bg-[#cda250]"></div>
-              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
+              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base text-justify">
                 We source premium raw materials from trusted mills and suppliers
                 across Bangladesh and beyond. Our in-house and partner factories
                 are equipped with modern machinery and skilled labour to manage
                 the full production process.
               </p>
-              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
+              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base text-justify">
                 This process includes design and fabric procurement, cutting,
                 sewing, finishing, quality control, and shipping — all carried
                 out to meet international standards and customer demands. Each
@@ -879,7 +885,7 @@ export default function Landing() {
           </div>
 
           {/* Row 2: Leather Sourcing (Text Left, Image Right - Alternating for premium editorial layout) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center">
             {/* Left Text Block */}
             <div className="lg:col-span-6 space-y-6 order-2 lg:order-1">
               <span className="font-label-caps text-[#cda250] tracking-widest uppercase block text-xs">
@@ -889,12 +895,12 @@ export default function Landing() {
                 Leather
               </h3>
               <div className="w-16 h-[2px] bg-[#cda250]"></div>
-              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
+              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base text-justify">
                 Similarly,” from desalting to finishing, each raw hide goes
                 through multiple stages of production, with every colour of
                 leather carrying its own unique story.
               </p>
-              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
+              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base text-justify">
                 The process involves technicians, designers, and skilled
                 artisans, all working with dedication to meet the highest
                 quality standards and ensure customer satisfaction. This
@@ -935,7 +941,7 @@ export default function Landing() {
       </section>
 
       {/* Accreditations (Logos) */}
-      <section className="py-20 bg-surface-container-low border-y border-outline/5 overflow-hidden select-none">
+      <section className="py-16 md:py-20 bg-surface-container-low border-y border-outline/5 overflow-hidden select-none">
         <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop mb-12 text-center">
           <span className="font-label-caps text-gold-accent tracking-widest uppercase block mb-4">
             Certifications
@@ -1076,9 +1082,7 @@ export default function Landing() {
                     chat
                   </span>
                   <div>
-                    <span className="font-label-caps block mb-1">
-                      WhatsApp
-                    </span>
+                    <span className="font-label-caps block mb-1">WhatsApp</span>
                     <a
                       href="https://wa.me/8801720030407"
                       target="_blank"
