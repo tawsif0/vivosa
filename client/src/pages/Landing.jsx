@@ -52,6 +52,15 @@ export default function Landing() {
   const [apparelSlide, setApparelSlide] = useState(0);
   const [leatherSlide, setLeatherSlide] = useState(0);
 
+  // Scroll position for hero image parallax animation
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const apparelSlides = [
     { src: "/slides/L1.png", alt: "Apparel Sourcing Slide 1" },
     { src: "/slides/L2.png", alt: "Apparel Sourcing Slide 2" },
@@ -179,7 +188,7 @@ export default function Landing() {
       className="bg-surface text-on-surface selection:bg-gold-accent selection:text-pure-black"
     >
       {/* Hero Section */}
-      <header className="relative min-h-[100svh] flex items-center overflow-hidden pt-28 pb-16 lg:py-32 bg-gradient-to-br from-deep-forest to-[#002115]">
+      <header className="relative min-h-[100svh] flex items-center overflow-hidden pt-28 pb-16 lg:py-24 bg-gradient-to-br from-deep-forest to-[#002115]">
         <div className="absolute inset-0 z-0">
           <img
             className="absolute inset-0 w-full h-full object-cover object-[50%_center] brightness-[0.22] contrast-[1.05] z-0"
@@ -193,7 +202,7 @@ export default function Landing() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-center">
             {/* Left Column: Text Content */}
             <div className="lg:col-span-6 max-w-2xl">
-              <span className="font-label-caps text-gold-accent tracking-[0.3em] uppercase block mb-6 mt-4">
+              <span className="font-label-caps text-gold-accent tracking-[0.3em] uppercase block mb-6 mt-6">
                 Redefining Craftsmanship
               </span>
               <h1 className="text-lg text-display-lg-mobile md:text-display-lg mb-8">
@@ -230,20 +239,30 @@ export default function Landing() {
             <div className="lg:col-span-6 relative flex justify-center items-center mt-12 lg:mt-0">
               <div className="relative w-full max-w-[500px] h-[350px] sm:h-[450px] md:h-[480px]">
                 {/* Left Image: Apparel (Smiling girls stitching) */}
-                <div className="absolute left-0 bottom-4 w-[62%] aspect-[4/3] rounded-2xl overflow-hidden border-[10px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-10 transition-all duration-500 hover:scale-105 hover:z-30">
+                <div
+                  className="group absolute left-0 bottom-4 w-[62%] aspect-[4/3] rounded-2xl overflow-hidden border-[10px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-10 will-change-transform hover:z-30"
+                  style={{
+                    transform: `translateY(${Math.min(scrollY * 0.08, 60)}px)`,
+                  }}
+                >
                   <img
                     src="/Landing/dd.png"
                     alt="Apparel manufacturing stitching"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
 
                 {/* Right Image: Leather Cutting */}
-                <div className="absolute right-0 top-4 w-[58%] aspect-[3/4] rounded-2xl overflow-hidden border-[10px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 transition-all duration-500 hover:scale-105 hover:z-30">
+                <div
+                  className="group absolute right-0 top-4 w-[58%] aspect-[3/4] rounded-2xl overflow-hidden border-[10px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 will-change-transform hover:z-30"
+                  style={{
+                    transform: `translateY(-${Math.min(scrollY * 0.08, 60)}px)`,
+                  }}
+                >
                   <img
                     src="/Landing/sa.png"
                     alt="Artisan hands cutting leather"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
               </div>
@@ -268,7 +287,7 @@ export default function Landing() {
 
       {/* Excellence Section (Vision & Mission Statement) */}
       <section
-        className="py-16 md:py-section-gap max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop"
+        className="py-16 md:py-20 lg:py-24 max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop"
         id="about"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-center">
@@ -405,7 +424,7 @@ export default function Landing() {
 
       {/* Why Choose Us - Values */}
       <section
-        className="py-16 md:py-section-gap max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop"
+        className="py-16 md:py-20 lg:py-24 max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop"
         id="why-choose-us"
       >
         <div className="text-center mb-12 md:mb-20 max-w-4xl mx-auto">
@@ -445,7 +464,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Ethical Sourcing
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
                 We guarantee that materials are sourced from internationally
                 renowned sustainable producers who care about the community and
                 environment and have been making ethical products for over 50
@@ -463,7 +482,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Wide range of products
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
                 To satisfy all your sourcing demands, we provide an extensive
                 variety of premium products in both sustainable leather and
                 bespoke clothing manufacturing.
@@ -480,7 +499,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Customizations
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
                 We welcome modifications in your approved order, confirmed by
                 samples, including any cut, style, colour, pattern, packing, or
                 print ideas you wish to bring to life.
@@ -497,7 +516,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Quality control
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
                 Our in-house quality control team conducts rigorous
                 pre-production, inline, and final inspections to ensure both
                 leather and apparel products contain zero defects.
@@ -514,7 +533,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Exceptionals price
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
                 We guarantee that our premium products are reasonably priced. We
                 encourage clients to check our quality and pricing with quotes
                 and samples from other vendors.
@@ -531,7 +550,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Researching and innovation
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
                 Our team conducts extensive research to support innovation,
                 offering cutting-edge technologies and deep market insight to
                 drive new products and procedures.
@@ -548,7 +567,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Customer Satisfaction
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
                 Your satisfaction is our top priority. We guarantee a
                 hassle-free and enjoyable experience from the initial order
                 placement to final delivery.
@@ -565,7 +584,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 First Delivery
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
                 We work directly with trusted global logistics partners to
                 ensure all deliveries happen strictly on schedule, no matter
                 where you are located.
@@ -828,7 +847,7 @@ export default function Landing() {
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gold-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
         <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-emerald-mint/5 rounded-full blur-[150px] pointer-events-none"></div>
 
-        <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop space-y-16 md:space-y-24 lg:space-y-32">
+        <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop space-y-16 md:space-y-20 lg:space-y-24">
           {/* Row 1: Apparel Sourcing (Image Left, Text Right) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center">
             {/* Left Image Frame with offset luxury gallery border */}
@@ -998,7 +1017,7 @@ export default function Landing() {
 
       {/* Contact Section */}
       <section
-        className="py-16 md:py-section-gap max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop"
+        className="py-16 md:py-20 lg:py-24 max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop"
         id="contact"
       >
         <div className="bg-deep-forest text-off-white overflow-hidden shadow-2xl flex flex-col md:flex-row">
@@ -1012,83 +1031,80 @@ export default function Landing() {
                 reach out to our global logistics team.
               </p>
 
-              <div className="space-y-6 sm:space-y-8">
-                <div className="flex gap-6 items-start">
-                  <span className="material-symbols-outlined text-gold-accent">
-                    location_on
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
+                {/* United Kingdom Office */}
+                <div className="border-t border-gold-accent/30 pt-6">
+                  <span className="font-label-caps text-[10px] tracking-widest text-gold-accent block mb-4">
+                    UNITED KINGDOM
                   </span>
-                  <div className="space-y-4">
-                    <div>
-                      <span className="font-label-caps block mb-1">
-                        United Kingdom Office
-                      </span>
-                      <p className="font-body-md opacity-80">
-                        19 Northampton Rd, Wellingborough,
-                        <br />
-                        NN8 3HG, UK
-                      </p>
-                    </div>
-                    <div>
-                      <span className="font-label-caps block mb-1">
-                        Bangladesh Office
-                      </span>
-                      <p className="font-body-md opacity-80">
-                        849/3, Arabian Tower, 8th Floor,
-                        <br />
-                        Begum Rokeya Sarani, Shewrapara,
-                        <br />
-                        Mirpur, Dhaka-1216, Bangladesh
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex gap-6 items-start">
-                  <span className="material-symbols-outlined text-gold-accent">
-                    mail
-                  </span>
-                  <div>
-                    <span className="font-label-caps block mb-1">
-                      Enquiries
-                    </span>
+                  <p className="font-body-md opacity-80 mb-5 leading-relaxed">
+                    19 Northampton Rd, Wellingborough,
+                    <br />
+                    NN8 3HG, UK
+                  </p>
+                  <div className="flex flex-col gap-2">
                     <a
                       href="mailto:enquiries@vivosa.co.uk"
                       className="font-body-md opacity-80 hover:text-gold-accent transition-colors block"
                     >
                       enquiries@vivosa.co.uk
                     </a>
-                  </div>
-                </div>
-
-                <div className="flex gap-6 items-start">
-                  <span className="material-symbols-outlined text-gold-accent">
-                    phone_iphone
-                  </span>
-                  <div>
-                    <span className="font-label-caps block mb-1">
-                      Direct Lines
-                    </span>
                     <a
                       href="tel:02074126809"
-                      className="font-body-md opacity-80 hover:text-gold-accent transition-colors block"
+                      className="font-body-md opacity-80 hover:text-gold-accent transition-colors inline-flex items-center gap-2"
                     >
+                      <span className="material-symbols-outlined text-[20px] shrink-0">
+                        call
+                      </span>
                       02-074-126-809
+                    </a>
+
+                    <a
+                      href="https://wa.me/447912843155"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-body-md opacity-80 hover:text-gold-accent transition-colors inline-flex items-center gap-2"
+                    >
+                      <svg
+                        className="w-5 h-5 shrink-0"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                      </svg>
+                      +44 7912 843155
                     </a>
                   </div>
                 </div>
 
-                <div className="flex gap-6 items-start">
-                  <span className="material-symbols-outlined text-gold-accent">
-                    chat
+                {/* Bangladesh Office */}
+                <div className="border-t border-gold-accent/30 pt-6">
+                  <span className="font-label-caps text-[10px] tracking-widest text-gold-accent block mb-4">
+                    BANGLADESH
                   </span>
-                  <div>
-                    <span className="font-label-caps block mb-1">WhatsApp</span>
+                  <p className="font-body-md opacity-80 mb-5 leading-relaxed">
+                    849/3, Arabian Tower, 8th Floor,
+                    <br />
+                    Begum Rokeya Sarani, Shewrapara,
+                    <br />
+                    Mirpur, Dhaka-1216, Bangladesh
+                  </p>
+                  <div className="flex flex-col gap-2">
                     <a
                       href="https://wa.me/8801720030407"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-body-md opacity-80 hover:text-gold-accent transition-colors block"
+                      className="font-body-md opacity-80 hover:text-gold-accent transition-colors inline-flex items-center gap-2"
                     >
+                      <svg
+                        className="w-5 h-5 shrink-0"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                      </svg>
                       +880 1720-030407
                     </a>
                   </div>

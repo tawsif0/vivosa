@@ -1,12 +1,62 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { fetchPublicSustainableLeathers } from "../api/sustainableLeather";
+
+// Premium parallax: the element starts slightly above its resting position and
+// glides gently downward as it scrolls through the viewport. Driven by a rAF
+// loop with eased interpolation and mutated directly on the DOM for fluid,
+// high-performance scrolling that never affects the surrounding layout.
+function useParallax() {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const TRAVEL = 320; // total vertical drift in px (complete top → bottom sweep)
+    const EASE = 0.35; // higher = faster catch-up to scroll
+    let target = 0;
+    let current = 0;
+    let rafId;
+    let running = true;
+
+    const measure = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const p = (vh - rect.top) / (vh + rect.height);
+      const clamped = Math.min(Math.max(p, 0), 1);
+      target = (clamped - 0.5) * TRAVEL;
+    };
+
+    const tick = () => {
+      if (!running) return;
+      current += (target - current) * EASE;
+      el.style.transform = `translate3d(0, ${current.toFixed(2)}px, 0)`;
+      rafId = requestAnimationFrame(tick);
+    };
+
+    measure();
+    current = target;
+    tick();
+    window.addEventListener("scroll", measure, { passive: true });
+    window.addEventListener("resize", measure);
+    return () => {
+      running = false;
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", measure);
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
+
+  return ref;
+}
 
 export default function LeatherLining() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = ["/images/lining_slider_1.png", "/images/lining_slider_2.png"];
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const sliderRef = useParallax();
 
   useEffect(() => {
     const loadData = async () => {
@@ -92,8 +142,11 @@ export default function LeatherLining() {
         </section>
 
         {/* About Section */}
-        <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
-          <div className="relative overflow-hidden aspect-square group">
+        <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20 lg:py-24 grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+          <div
+            ref={sliderRef}
+            className="relative overflow-hidden aspect-square group will-change-transform"
+          >
             {slides.map((src, index) => (
               <img
                 key={src}
@@ -197,7 +250,7 @@ export default function LeatherLining() {
         </section>
 
         {/* Leather Grid */}
-        <section className="bg-surface-container-low py-section-gap px-margin-mobile md:px-margin-desktop">
+        <section className="bg-surface-container-low py-16 md:py-20 lg:py-24 px-margin-mobile md:px-margin-desktop">
           <div className="max-w-container-max mx-auto">
             {loading ? (
               <div className="text-center font-label-caps text-sm tracking-widest text-primary">
@@ -262,9 +315,9 @@ export default function LeatherLining() {
         </section>
 
         {/* Quality & Sustainability Section */}
-        <section className="bg-surface py-16 md:py-section-gap">
+        <section className="bg-surface py-16 md:py-20 lg:py-24">
           <div className="bg-primary-container text-on-primary shadow-inner">
-            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-section-gap grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20 lg:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
               <div>
                 <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
                   Quality &amp; Sustainability in Leather Supply
@@ -318,7 +371,7 @@ export default function LeatherLining() {
                 </ul>
                 <div className="pt-4 border-t border-white/10">
                   <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
-                    … please get in touch with us, and we will respond promptly.
+                    … Please get in touch with us, and we will respond promptly.
                   </p>
                 </div>
               </div>

@@ -88,63 +88,20 @@ export default function Automotive() {
     <div className="bg-background text-on-background font-body-md selection:bg-on-primary-container selection:text-primary">
       <main>
         <style>{`main p { text-align: justify; text-justify: inter-word; }`}</style>
-        {/* Section 1: HERO - Split Layout */}
-        <section className="min-h-screen flex flex-col md:flex-row overflow-hidden">
-          {/* Left: Text Panel */}
-          <div className="relative flex flex-col justify-center bg-primary px-10 md:px-16 lg:px-20 py-24 md:w-1/2 z-10">
-            {/* Subtle gold accent line */}
-            <div className="w-12 h-[2px] bg-matte-gold mb-8"></div>
-            <span className="font-label-caps text-label-caps text-matte-gold tracking-[0.3em] mt-5 block uppercase">
-              AUTOMOTIVE LEATHER COLLECTION
-            </span>
-            <h1 className="font-display-lg text-display-md text-on-primary leading-none mb-8 md:text-[64px] lg:text-[80px]">
-              Automotive
-              <br />
-              Leather
-              <br />
-              Collection
-            </h1>
-            <div className="w-full h-[1px] bg-matte-gold/30 mb-8"></div>
-            <div className="flex flex-col gap-5 max-w-xl">
-              <p className="font-body-lg text-body-lg text-on-primary/90 leading-relaxed font-medium text-justify">
-                It's not just a leather interior. It's perfection. Crafted with
-                care, finished with a touch of love, and designed for lasting
-                luxury.
-              </p>
-              <p className="font-body-md text-body-md text-on-primary/70 leading-relaxed text-justify">
-                <span className="font-bold"> At VIVOSA,</span> we supply premium
-                automotive leather crafted by Tanneries with over 50 years of
-                expertise. We partner with true industry leaders who create
-                refined, durable, and luxurious leather while placing
-                environmental responsibility at the heart of every process,
-                protecting the planet, conserving resources, ensuring safe
-                working conditions, and respecting the people behind every
-                craft. Sister production uses top-quality European rawhides and
-                premium materials and has achieved leading industry
-                certifications.<br></br> All production complies with strict
-                European and international regulations, and both quality and
-                environmental management systems are fully certified, including
-                LWG, ensuring responsible and ethical manufacturing.
-              </p>
-            </div>
-          </div>
-
-          {/* Right: Image Panel */}
-          <div className="relative md:w-1/2 min-h-[50vh] md:min-h-screen overflow-hidden flex items-center justify-center bg-[#111111] p-4 md:p-6">
-            <img
-              alt="Luxury Automotive Leather Interior"
-              className="w-[92%] h-[92%] object-contain object-center rounded-[24px] shadow-2xl"
-              src="/images/automotive_hero2.jpeg"
-              fetchpriority="high"
-            />
-            {/* Gradient overlap from left panel */}
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-primary to-transparent z-10"></div>
-            {/* Bottom label badge */}
-          </div>
+        {/* Section 1: HERO - Full-width Image */}
+        <section className="relative w-full h-[60vh] md:h-screen overflow-hidden">
+          <img
+            alt="Luxury Automotive Leather Interior"
+            className="absolute inset-0 w-full h-full object-cover object-bottom"
+            src="/images/automotive_hero2.jpeg"
+            fetchpriority="high"
+          />
         </section>
 
+        {/* Section 1B: HERO TEXT - Below the image */}
+
         {/* Section 2: INTRO 1 */}
-        <section className="bg-primary-container py-section-gap px-margin-desktop">
+        <section className="bg-primary-container py-16 md:py-20 lg:py-24 px-margin-desktop">
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-gutter items-center">
             <div className="pr-12 text-on-primary">
               <span className="font-label-caps text-label-caps text-on-primary-container tracking-widest block mb-4 uppercase">
@@ -169,15 +126,7 @@ export default function Automotive() {
                 <img
                   alt="Rawhide Selection at Tannery"
                   className="w-full aspect-[4/3] object-cover"
-                  src="/images/auto_rawhide.png"
-                  loading="lazy"
-                />
-              </div>
-              <div className="border-[0.5px] border-matte-gold p-2 ml-12 -mt-20 z-10 shadow-2xl bg-primary-container">
-                <img
-                  alt="Leather Tanning Drum Process"
-                  className="w-full aspect-square object-cover"
-                  src="/images/auto_tanning_drum.png"
+                  src="/images/luxury_wheel.jpeg"
                   loading="lazy"
                 />
               </div>
@@ -186,7 +135,7 @@ export default function Automotive() {
         </section>
 
         {/* Section 3: INTRO 2 */}
-        <section className="bg-surface py-section-gap px-margin-desktop">
+        <section className="bg-surface py-16 md:py-20 lg:py-24 px-margin-desktop">
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-gutter items-center">
             <AutoSlider />
             <div className="md:pl-24">
@@ -273,10 +222,10 @@ export default function Automotive() {
         </section>
 
         {/* Section 5: BELIEF */}
-        <section className="bg-white py-section-gap px-margin-desktop">
+        <section className="bg-white py-16 md:py-20 lg:py-24 px-margin-desktop">
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter">
             <div className="flex items-center">
-              <blockquote className="font-headline-xl text-headline-xl italic text-on-background leading-tight pr-12">
+              <blockquote className="font-headline-xl text-justify text-[22px] md:text-[26px] lg:text-[28px] italic text-on-background leading-snug pr-12">
                 "Our sister company has been combining history, uniqueness, and
                 durable leather for 50 years. With lively designs that you can
                 fully customize in shape, colours, and style, we continue to
@@ -320,7 +269,7 @@ export default function Automotive() {
         </section>
 
         {/* Section 6: APPLICATIONS */}
-        <section className="bg-surface py-section-gap px-margin-desktop">
+        <section className="bg-surface py-16 md:py-20 lg:py-24 px-margin-desktop">
           <div className="max-w-container-max mx-auto">
             <div className="text-center mb-16 max-w-4xl mx-auto space-y-4">
               <span className="font-label-caps text-label-caps text-matte-gold tracking-[0.2em] uppercase text-xs">
@@ -381,7 +330,7 @@ export default function Automotive() {
           </div>
         </section>
         {/* Section 7: SAMPLE GRID */}
-        <section className="bg-white py-section-gap px-margin-desktop">
+        <section className="bg-white py-16 md:py-20 lg:py-24 px-margin-desktop">
           <div className="max-w-container-max mx-auto">
             {" "}
             <div className="flex flex-col gap-6 mb-16">
@@ -567,9 +516,9 @@ export default function Automotive() {
         </section>
 
         {/* Quality & Sustainability Section */}
-        <section className="bg-surface py-16 md:py-section-gap">
+        <section className="bg-surface py-16 md:py-20 lg:py-24">
           <div className="bg-primary-container text-on-primary shadow-inner">
-            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-section-gap grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20 lg:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
               <div>
                 <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
                   Quality &amp; Sustainability in Leather Supply
@@ -623,7 +572,7 @@ export default function Automotive() {
                 </ul>
                 <div className="pt-4 border-t border-white/10">
                   <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
-                    … please get in touch with us, and we will respond promptly.
+                    … Please get in touch with us, and we will respond promptly.
                   </p>
                 </div>
               </div>

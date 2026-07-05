@@ -1,4 +1,74 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+
+// Premium parallax: the image starts slightly above its resting position and
+// glides gently downward as it scrolls through the viewport. Driven by a rAF
+// loop with eased interpolation, and mutated directly on the DOM so there are
+// no per-frame re-renders and scrolling stays fluid.
+function ParallaxImage({ src, alt, aspect }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const EASE = 0.1; // lower = smoother, more gradual catch-up
+    let target = 0;
+    let current = 0;
+    let rafId;
+    let running = true;
+
+    const measure = () => {
+      // the grid row is the parent-of-parent; its height matches the taller
+      // text column, so the image can sweep the full height of that text div
+      const grid = el.parentElement?.parentElement;
+      if (!grid) return;
+
+      // disable the sweep on mobile (single-column stack) to avoid overlap
+      if (window.innerWidth < 768) {
+        target = 0;
+        return;
+      }
+
+      const rect = grid.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // 0 as the row enters from the bottom → 1 as it leaves the top
+      const p = (vh - rect.top) / (vh + rect.height);
+      const clamped = Math.min(Math.max(p, 0), 1);
+      // travel = how much taller the text column is than the image
+      const travel = Math.max(0, grid.offsetHeight - el.offsetHeight);
+      // aligned with the text top at entry (0) → text bottom at exit (travel)
+      target = clamped * travel;
+    };
+
+    const tick = () => {
+      if (!running) return;
+      current += (target - current) * EASE; // smooth easing toward target
+      el.style.transform = `translate3d(0, ${current.toFixed(2)}px, 0)`;
+      rafId = requestAnimationFrame(tick);
+    };
+
+    measure();
+    current = target; // avoid an initial jump on mount
+    tick();
+    window.addEventListener("scroll", measure, { passive: true });
+    window.addEventListener("resize", measure);
+    return () => {
+      running = false;
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", measure);
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`shadow-md border border-outline-variant/10 ${aspect} w-full max-w-[360px] lg:max-w-[400px] mx-auto will-change-transform`}
+    >
+      <img src={src} alt={alt} className="w-full h-full object-cover" />
+    </div>
+  );
+}
 
 export default function About() {
   useEffect(() => {
@@ -57,18 +127,18 @@ export default function About() {
         </section>
 
         {/* WHO WE ARE */}
-        <section className="py-16 md:py-section-gap px-6 md:px-margin-desktop bg-background border-b border-outline-variant/10 overflow-hidden">
+        <section className="py-16 md:py-20 lg:py-24 px-6 md:px-margin-desktop bg-background border-b border-outline-variant/10 overflow-hidden">
           <div className="max-w-container-max mx-auto">
             <h2 className="font-display text-headline-xl-mobile md:text-headline-xl text-primary editorial-underline mb-8 md:mb-14">
               Who We Are
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-0 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-6 items-stretch">
               {/* LEFT — airy editorial narrative */}
-              <div className="relative lg:pr-16 lg:border-r border-outline-variant/20 flex flex-col justify-center">
+              <div className="relative lg:pr-8 lg:border-r border-outline-variant/20 flex flex-col justify-start">
                 <span className="inline-block font-label-caps text-label-caps tracking-[0.25em] uppercase text-[#c39090] mb-6">
                   Our Story
                 </span>
-                <div className="space-y-6 font-body text-body-lg text-secondary leading-relaxed">
+                <div className="space-y-7 font-body text-[17px] md:text-[19px] text-secondary leading-loose">
                   <p className="text-justify">
                     <span className="float-left font-display text-primary text-[68px] leading-[54px] pr-3 pt-1">
                       V
@@ -106,8 +176,8 @@ export default function About() {
               </div>
 
               {/* RIGHT — bold accent panel featuring the "lively" story */}
-              <div className="relative lg:pl-16">
-                <div className="relative h-full bg-primary text-on-primary rounded-3xl p-8 md:p-12 shadow-xl overflow-hidden">
+              <div className="relative lg:pl-8">
+                <div className="relative h-full flex flex-col bg-primary text-on-primary rounded-3xl p-8 md:p-12 shadow-xl overflow-hidden">
                   {/* decorative accent glow */}
                   <div className="pointer-events-none absolute -top-16 -right-16 w-56 h-56 rounded-full bg-[#c39090]/20 blur-2xl"></div>
                   <div className="pointer-events-none absolute -bottom-20 -left-10 w-48 h-48 rounded-full bg-white/5 blur-2xl"></div>
@@ -146,6 +216,37 @@ export default function About() {
                       inspired the name Vivosa.
                     </p>
                   </div>
+
+                  {/* Footer highlights — fills the panel and adds a premium finish */}
+                  <div className="mt-auto pt-8">
+                    <div className="w-full h-[1px] bg-white/15 mb-6"></div>
+                    <div className="grid grid-cols-3 gap-4 text-center">
+                      <div>
+                        <span className="block font-display text-2xl md:text-3xl text-[#e0b8b8] mb-1">
+                          30+
+                        </span>
+                        <span className="font-label-caps text-[10px] tracking-widest uppercase text-white/60">
+                          Years Expertise
+                        </span>
+                      </div>
+                      <div>
+                        <span className="block font-display text-2xl md:text-3xl text-[#e0b8b8] mb-1">
+                          2
+                        </span>
+                        <span className="font-label-caps text-[10px] tracking-widest uppercase text-white/60">
+                          Industries
+                        </span>
+                      </div>
+                      <div>
+                        <span className="block font-display text-2xl md:text-3xl text-[#e0b8b8] mb-1">
+                          100%
+                        </span>
+                        <span className="font-label-caps text-[10px] tracking-widest uppercase text-white/60">
+                          Ethical Sourcing
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -175,17 +276,15 @@ export default function About() {
         </section>
 
         {/* LEATHER SECTION */}
-        <section className="py-16 md:py-section-gap px-6 md:px-margin-desktop bg-background">
+        <section className="py-16 md:py-20 lg:py-24 px-6 md:px-margin-desktop bg-background">
           <div className="max-w-container-max mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
               <div className="md:col-span-5 mb-12 md:mb-0">
-                <div className="overflow-hidden aspect-[3/4] shadow-md border border-outline-variant/10">
-                  <img
-                    className="w-full h-full object-cover"
-                    alt="Tannery equipment line"
-                    src="/slides/about_leather_1.webp"
-                  />
-                </div>
+                <ParallaxImage
+                  src="/slides/about_leather_1.webp"
+                  alt="Tannery equipment line"
+                  aspect="aspect-[3/4]"
+                />
               </div>
               <div className="md:col-span-7 space-y-6 md:pl-12 font-body text-body-lg text-secondary leading-relaxed">
                 <h2 className="font-display text-headline-xl-mobile md:text-headline-xl text-primary editorial-underline mb-8 text-justify">
@@ -277,9 +376,9 @@ export default function About() {
         </section>
 
         {/* APPAREL SECTION */}
-        <section className="py-16 md:py-section-gap px-6 md:px-margin-desktop bg-background">
+        <section className="py-16 md:py-20 lg:py-24 px-6 md:px-margin-desktop bg-background">
           <div className="max-w-container-max mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
               <div className="md:col-span-7 space-y-6 md:pr-12 order-2 md:order-1 font-body text-body-lg text-secondary leading-relaxed">
                 <h2 className="font-display text-headline-xl-mobile md:text-headline-xl text-primary editorial-underline mb-8">
                   Apparel
@@ -322,13 +421,11 @@ export default function About() {
                 </p>
               </div>
               <div className="md:col-span-5 order-1 md:order-2 mb-12 md:mb-0">
-                <div className="overflow-hidden aspect-[4/5] shadow-md border border-outline-variant/10">
-                  <img
-                    className="w-full h-full object-cover"
-                    alt="Sewing workers stitching apparel"
-                    src="/slides/about_apparel_1.webp"
-                  />
-                </div>
+                <ParallaxImage
+                  src="/slides/about_apparel_1.webp"
+                  alt="Sewing workers stitching apparel"
+                  aspect="aspect-[4/5]"
+                />
               </div>
             </div>
           </div>
@@ -433,7 +530,7 @@ export default function About() {
         </section>
 
         {/* HOW WE WORK */}
-        <section className="py-16 md:py-section-gap px-6 md:px-margin-desktop bg-background">
+        <section className="py-16 md:py-20 lg:py-24 px-6 md:px-margin-desktop bg-background">
           <div className="max-w-container-max mx-auto">
             <h2 className="font-display text-headline-xl-mobile md:text-headline-xl text-primary editorial-underline mb-12 text-center">
               How We Work
@@ -462,7 +559,7 @@ export default function About() {
         </section>
 
         {/* SUSTAINABILITY */}
-        <section className="py-16 md:py-section-gap px-6 md:px-margin-desktop bg-primary text-on-primary">
+        <section className="py-16 md:py-20 lg:py-24 px-6 md:px-margin-desktop bg-primary text-on-primary">
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
             <div className="md:col-span-8 space-y-8">
               <h2 className="font-display text-[32px] sm:text-[48px] md:text-[64px] leading-tight text-white mb-8">

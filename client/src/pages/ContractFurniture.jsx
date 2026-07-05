@@ -227,7 +227,7 @@ export default function ContractFurniture() {
         </section>
 
         {/* Intro Section */}
-        <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <section className="py-16 md:py-20 lg:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
           <div className="max-w-4xl mx-auto text-center mb-14">
             <p className="font-headline-md font-bold text-headline-md mb-6 text-primary italic leading-relaxed">
               We ethically source premium leathers from sustainable
@@ -236,7 +236,7 @@ export default function ContractFurniture() {
               furniture”
             </p>
             <div className="bg-primary text-on-primary p-12 text-left border-l-4 border-light-gold relative shadow-xl">
-              <p className="font-body-lg font-bold text-body-lg leading-relaxed text-slate-900 mb-6 bg-amber-200/90 p-4 rounded-xl shadow-sm">
+              <p className="font-body-lg font-semibold text-body-lg leading-relaxed text-light-gold mb-8 bg-light-gold/10 border border-light-gold/25 p-5 rounded-xl">
                 Every piece reflects our dedication to sustainability,
                 durability, and timeless elegance, offering endless grace and
                 designs that suit your personal preferences in leather
@@ -250,13 +250,13 @@ export default function ContractFurniture() {
                 create long-lasting products. By collaborating closely with our
                 sister manufacturers, global designers, researchers, and
                 technicians,{" "}
-                <span className="bg-amber-200 text-slate-900 font-semibold px-1.5 py-0.5 rounded box-decoration-clone">
-                  we craft an extensive range of exquisite leathers—including
+                <span className="text-light-gold font-semibold border-b border-light-gold/40 box-decoration-clone">
+                  we craft an extensive range of exquisite leathers including
                   Anilines, Semi-Anilines, Smooth, Nubuck, soft full- grain,
                   Corrected-grain, and many others
                 </span>
-                —each offering a unique style perfectly suited to a diverse
-                range of furnishings and applications.
+                each offering a unique style perfectly suited to a diverse range
+                of furnishings and applications.
               </p>
 
               <p className="font-body-lg text-body-lg leading-relaxed text-white/80">
@@ -380,7 +380,7 @@ export default function ContractFurniture() {
         </section>
 
         {/* Leather Grid */}
-        <section className="py-section-gap bg-white px-margin-mobile md:px-margin-desktop shadow-inner">
+        <section className="py-16 md:py-20 lg:py-24 bg-white px-margin-mobile md:px-margin-desktop shadow-inner">
           <div className="max-w-container-max mx-auto">
             <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div>
@@ -461,9 +461,9 @@ export default function ContractFurniture() {
         </section>
 
         {/* Quality & Sustainability Section */}
-        <section className="bg-surface py-16 md:py-section-gap">
+        <section className="bg-surface py-16 md:py-20 lg:py-24">
           <div className="bg-primary-container text-on-primary shadow-inner">
-            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-section-gap grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20 lg:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
               <div>
                 <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
                   Quality &amp; Sustainability in Leather Supply
@@ -517,7 +517,7 @@ export default function ContractFurniture() {
                 </ul>
                 <div className="pt-4 border-t border-white/10">
                   <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
-                    … please get in touch with us, and we will respond promptly.
+                    … Please get in touch with us, and we will respond promptly.
                   </p>
                 </div>
               </div>

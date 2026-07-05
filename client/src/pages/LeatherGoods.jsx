@@ -38,26 +38,26 @@ export default function LeatherGoods() {
     <div className="bg-background text-on-surface selection:bg-primary-fixed selection:text-primary overflow-x-hidden">
       <main className="pt-20 md:pt-[88px]">
         {/* HERO SECTION */}
-        <section className="relative w-full min-h-[520px] md:min-h-[640px] lg:min-h-[75vh] overflow-hidden">
-          <div className="absolute inset-0">
-            <img
-              alt="Luxury Leather Goods"
-              className="h-full w-full object-cover"
-              src="/slides/leather_goods_hero.png"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#24140b]/90 via-[#24140b]/70 to-[#24140b]/25" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(223,192,111,0.18),_transparent_35%)]" />
-          </div>
+        <section className="relative w-full min-h-[480px] md:min-h-[600px] lg:min-h-[70vh] overflow-hidden">
+          <img
+            alt="Luxury Leather Goods"
+            className="absolute inset-0 h-full w-full object-cover"
+            src="/slides/leather_goods_hero.png"
+          />
+          {/* Simple bottom-up gradient for clean legibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1c0f07]/95 via-[#1c0f07]/55 to-[#1c0f07]/10" />
 
-          <div className="relative z-10 mx-auto flex min-h-[520px] w-full max-w-7xl flex-col justify-end px-6 py-10 sm:px-8 md:min-h-[640px] md:flex-row md:items-center md:justify-between md:px-12 md:py-16 lg:px-16 xl:px-20">
-            <div className="max-w-2xl text-white md:w-[58%]">
-              <span className="mb-5 inline-flex items-center rounded-full border border-[#dfc06f]/40 bg-white/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#f4e3b5] backdrop-blur-sm">
+          <div className="relative z-10 mx-auto flex min-h-[480px] w-full max-w-7xl flex-col justify-end px-6 py-12 sm:px-8 md:min-h-[600px] md:px-12 md:py-20 lg:px-16 xl:px-20">
+            <div className="max-w-2xl text-white">
+              {/* Gold accent line */}
+              <div className="mb-6 h-[2px] w-14 bg-[#dfc06f]" />
+              <span className="mb-4 block text-[11px] font-semibold uppercase tracking-[0.3em] text-[#dfc06f]">
                 Premium Leather Goods
               </span>
-              <h1 className="mb-6 font-display text-[40px] leading-none text-white sm:text-[54px] lg:text-[72px] xl:text-[84px]">
+              <h1 className="mb-6 font-display text-[42px] leading-none text-white sm:text-[56px] lg:text-[76px]">
                 Leather Goods
               </h1>
-              <p className="max-w-xl text-base leading-relaxed text-white/80 sm:text-lg text-justify">
+              <p className="max-w-xl text-base leading-relaxed text-white/85 sm:text-lg text-justify">
                 Our environmentally conscious manufacturer sources eco-friendly
                 products without compromising quality for several decades and
                 proudly serves customers worldwide. We create distinctive
@@ -65,37 +65,12 @@ export default function LeatherGoods() {
                 durability, style, and luxury, shaped by sustainable sourcing
                 and refined craftsmanship.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3"></div>
-            </div>
-
-            <div className="mt-8 flex justify-center md:mt-0 md:w-[42%] md:justify-end">
-              <div className="w-full max-w-[370px] rounded-[24px] border border-white/20 bg-white/10 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.25)] backdrop-blur-md">
-                <div className="rounded-[20px] border border-[#dfc06f]/30 bg-[#f8efe3]/95 p-6 text-[#2f2217]">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#8b6914]">
-                    Craftsmanship & Responsibility
-                  </p>
-                  <p className="mt-4 text-sm leading-relaxed text-[#4c3b2c] sm:text-[15px]">
-                    Every article is produced with a strong commitment to
-                    sustainable manufacturing, ethical sourcing, and timeless
-                    design.
-                  </p>
-                  <div className="mt-5 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#6b4423]">
-                    <span
-                      className="material-symbols-outlined text-xl text-[#8b6914]"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      workspace_premium
-                    </span>
-                    LWG Certified Materials
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
 
         {/* INTRO SECTION */}
-        <section className="bg-surface py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <section className="bg-surface py-16 md:py-20 lg:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
             <div className="pr-0 md:pr-16">
               <p className="font-body-lg text-body-lg text-on-surface leading-relaxed italic mb-6 text-justify">
@@ -187,7 +162,7 @@ export default function LeatherGoods() {
         </section>
 
         {/* LEATHER GOODS GRID */}
-        <section className="bg-surface-container-low py-section-gap px-margin-mobile md:px-margin-desktop">
+        <section className="bg-surface-container-low py-16 md:py-20 lg:py-24 px-margin-mobile md:px-margin-desktop">
           <div className="max-w-container-max mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
               {leatherGoodsProducts.map((product) => (
@@ -295,9 +270,9 @@ export default function LeatherGoods() {
         </section>
 
         {/* CLOSING & SUSTAINABILITY */}
-        <section className="bg-surface py-16 md:py-section-gap">
+        <section className="bg-surface py-16 md:py-20 lg:py-24">
           <div className="bg-primary-container text-on-primary shadow-inner">
-            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-section-gap grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20 lg:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
               <div>
                 <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
                   Quality &amp; Sustainability in Leather Supply
@@ -352,7 +327,7 @@ export default function LeatherGoods() {
 
                 <div className="pt-4 border-t border-white/10">
                   <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
-                    … please get in touch with us, and we will respond promptly.
+                    … Please get in touch with us, and we will respond promptly.
                   </p>
                 </div>
               </div>

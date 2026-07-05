@@ -263,7 +263,7 @@ export default function LeatherFootwear() {
         </section>
 
         {/* Footwear Showcase Strip */}
-        <section className="py-section-gap overflow-hidden bg-surface-container-lowest relative select-none">
+        <section className="py-16 md:py-20 lg:py-24 overflow-hidden bg-surface-container-lowest relative select-none">
           {/* Slider Header */}
           <div className="mb-12 max-w-container-max mx-auto px-6 md:px-margin-desktop text-center md:text-left">
             <span className="font-label-caps text-label-caps text-accent-gold tracking-[0.2em] mb-2 block uppercase">
@@ -546,9 +546,9 @@ export default function LeatherFootwear() {
         </section>
 
         {/* Quality & Sustainability Section */}
-        <section className="bg-surface py-16 md:py-section-gap">
+        <section className="bg-surface py-16 md:py-20 lg:py-24">
           <div className="bg-primary-container text-on-primary shadow-inner">
-            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-section-gap grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20 lg:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
               <div>
                 <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
                   Quality &amp; Sustainability in Leather Supply
@@ -602,7 +602,7 @@ export default function LeatherFootwear() {
                 </ul>
                 <div className="pt-4 border-t border-white/10">
                   <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
-                    … please get in touch with us, and we will respond promptly.
+                    … Please get in touch with us, and we will respond promptly.
                   </p>
                 </div>
               </div>

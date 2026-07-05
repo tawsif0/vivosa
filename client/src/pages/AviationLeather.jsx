@@ -1,6 +1,74 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { fetchPublicSustainableLeathers } from "../api/sustainableLeather";
+
+// Premium parallax: the element starts slightly above its resting position and
+// glides gently downward as it scrolls through the viewport. Driven by a rAF
+// loop with eased interpolation and mutated directly on the DOM for fluid,
+// high-performance scrolling that never affects the surrounding layout.
+function useParallax() {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const TRAVEL = 70; // downward drift in px (subtle, avoids overlapping below)
+    const EASE = 0.1; // lower = smoother, more gradual catch-up
+    let target = 0;
+    let current = 0;
+    let rafId;
+    let running = true;
+
+    const measure = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const p = (vh - rect.top) / (vh + rect.height);
+      const clamped = Math.min(Math.max(p, 0), 1);
+      // aligned at entry (0), then drifts continuously downward
+      // — visible the whole way through, and never rises above the text
+      target = clamped * TRAVEL;
+    };
+
+    const tick = () => {
+      if (!running) return;
+      current += (target - current) * EASE;
+      el.style.transform = `translate3d(0, ${current.toFixed(2)}px, 0)`;
+      rafId = requestAnimationFrame(tick);
+    };
+
+    measure();
+    current = target;
+    tick();
+    window.addEventListener("scroll", measure, { passive: true });
+    window.addEventListener("resize", measure);
+    return () => {
+      running = false;
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", measure);
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
+
+  return ref;
+}
+
+// Split-layout aviation image card with the scroll parallax applied
+function ParallaxImage({ src, alt }) {
+  const ref = useParallax();
+  return (
+    <div
+      ref={ref}
+      className="w-full max-w-[450px] aspect-[4/3] rounded-xl overflow-hidden shadow-xl border border-[#2A2B2D] bg-gradient-to-b from-[#2A2C2E] to-[#121315] flex items-center justify-center p-4 will-change-transform"
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-700"
+      />
+    </div>
+  );
+}
 
 export default function AviationLeather() {
   const [products, setProducts] = useState([]);
@@ -68,21 +136,21 @@ export default function AviationLeather() {
           <div className="grid grid-cols-3 gap-3 md:gap-6 mb-12">
             <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-lg border border-neutral-200 bg-white">
               <img
-                src="/slides/aviation-pdf-pages/chair1.jpeg"
+                src="/slides/aviation-pdf-pages/av3.png"
                 alt="Every Journey Matters Part 1"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
             <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-lg border border-neutral-200 bg-white">
               <img
-                src="/slides/aviation-pdf-pages/chair2.jpeg"
+                src="/slides/aviation-pdf-pages/av4.png"
                 alt="Every Journey Matters Part 2"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
             <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-lg border border-neutral-200 bg-white">
               <img
-                src="/slides/aviation-pdf-pages/chair3.jpeg"
+                src="/slides/aviation-pdf-pages/av5.png"
                 alt="Every Journey Matters Part 3"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -193,13 +261,10 @@ export default function AviationLeather() {
               </ul>
             </div>
             <div className="flex items-center justify-center w-full">
-              <div className="w-full max-w-[450px] aspect-[4/3] rounded-xl overflow-hidden shadow-xl border border-[#2A2B2D] bg-gradient-to-b from-[#2A2C2E] to-[#121315] flex items-center justify-center p-4">
-                <img
-                  src="/slides/aviation-pdf-pages/av8.png"
-                  alt="Premium Leathers for Aviation Interiors"
-                  className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-700"
-                />
-              </div>
+              <ParallaxImage
+                src="/slides/aviation-pdf-pages/chair1.jpeg"
+                alt="Premium Leathers for Aviation Interiors"
+              />
             </div>
           </div>
         </section>
@@ -337,7 +402,7 @@ export default function AviationLeather() {
               07 / Philosophy &amp; Responsibility
             </span>
             <h2 className="font-display text-2xl md:text-4xl text-primary uppercase tracking-wide font-bold">
-              Craftsmanship, Collaboration &amp; Responsibility
+              Craftsmanship &amp; Collaboration
             </h2>
             <div className="space-y-4 text-neutral-600 leading-relaxed text-sm md:text-base text-justify">
               <p>
@@ -398,13 +463,10 @@ export default function AviationLeather() {
         <section className="w-full mx-auto px-6 md:px-12 lg:px-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="flex items-center justify-center w-full order-last lg:order-first">
-              <div className="w-full max-w-[450px] aspect-[4/3] rounded-xl overflow-hidden shadow-xl border border-[#2A2B2D] bg-gradient-to-b from-[#2A2C2E] to-[#121315] flex items-center justify-center p-4">
-                <img
-                  src="/slides/aviation-pdf-pages/av12.png"
-                  alt="Design & Customisation"
-                  className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-700"
-                />
-              </div>
+              <ParallaxImage
+                src="/slides/aviation-pdf-pages/av12.png"
+                alt="Design & Customisation"
+              />
             </div>
             <div className="space-y-6">
               <span className="inline-block text-matte-gold font-label-caps tracking-[0.2em] uppercase text-xs font-semibold">
@@ -438,7 +500,7 @@ export default function AviationLeather() {
                 09 / Technical
               </span>
               <h2 className="font-display text-2xl md:text-4xl text-primary uppercase tracking-wide font-bold">
-                Features
+                Performance Characteristics
               </h2>
               <p className="font-body-md text-neutral-600 leading-relaxed text-justify">
                 Designed for the rigours of high-traffic cabin environments, our
@@ -450,20 +512,17 @@ export default function AviationLeather() {
                 appearance and soft-touch feel. Specialised performance finishes
                 include anti-stain, easy-clean, fire-retardant, UV-resistant,
                 and high-durability treatments, all engineered to meet relevant
-                aviation standards and certifications. Sanitized® technology can
-                also be specified, helping to eliminate up to 99% of bacteria
-                and viruses to support enhanced hygiene, passenger comfort, and
-                long-term cabin protection.
+                aviation standards and certifications. Sanitized®️ technology is
+                available on request for clients requiring enhanced hygiene
+                performance, helping eliminate up to 99% of bacteria and viruses
+                to support passenger comfort and long-term cabin protection.
               </p>
             </div>
             <div className="flex items-center justify-center w-full">
-              <div className="w-full max-w-[450px] aspect-[4/3] rounded-xl overflow-hidden shadow-xl border border-[#2A2B2D] bg-gradient-to-b from-[#2A2C2E] to-[#121315] flex items-center justify-center p-4">
-                <img
-                  src="/slides/aviation-pdf-pages/av15.png"
-                  alt="Features"
-                  className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-700"
-                />
-              </div>
+              <ParallaxImage
+                src="/slides/aviation-pdf-pages/new1.jpeg"
+                alt="Features"
+              />
             </div>
           </div>
         </section>
@@ -472,13 +531,19 @@ export default function AviationLeather() {
         <section className="w-full mx-auto px-6 md:px-12 lg:px-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="flex items-center justify-center w-full order-last lg:order-first">
-              <div className="w-full max-w-[450px] aspect-[4/3] rounded-xl overflow-hidden shadow-xl border border-[#2A2B2D] bg-gradient-to-b from-[#2A2C2E] to-[#121315] flex items-center justify-center p-4">
-                <img
-                  src="/slides/aviation-pdf-pages/av14.png"
-                  alt="Care & Sustainability"
-                  className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-700"
-                />
-              </div>
+              <blockquote className="relative w-full max-w-[450px] rounded-xl border border-matte-gold/30 bg-gradient-to-br from-[#FBF6EC] to-[#F0E6CE] p-10 md:p-12 shadow-lg">
+                <span
+                  className="material-symbols-outlined text-matte-gold text-5xl leading-none mb-4 block"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  format_quote
+                </span>
+                <p className="font-display text-xl md:text-2xl lg:text-[28px] italic text-primary leading-snug">
+                  “The finest journeys are defined not only by where they take
+                  you, but by how they make you feel along the way.”
+                </p>
+                <div className="w-16 h-[2px] bg-matte-gold mt-8"></div>
+              </blockquote>
             </div>
             <div className="space-y-6">
               <span className="inline-block text-matte-gold font-label-caps tracking-[0.2em] uppercase text-xs font-semibold">
@@ -492,16 +557,21 @@ export default function AviationLeather() {
                   Our portfolio includes a growing range of sustainable leather
                   solutions — chrome-free, metal-free, and responsibly
                   manufactured articles that meet the environmental expectations
-                  of modern aviation. Our trusted Italian manufacturing partners
-                  are committed to environmentally responsible production,
-                  employing advanced tanning technologies, reduced-impact
-                  chemical processes, and rigorous quality management systems.
-                  Production is supported by internationally recognised
-                  certifications, including Leather Working Group (LWG)
-                  accreditation, reflecting our unwavering commitment to
-                  sustainability, traceability, regulatory compliance, and
-                  continuous innovation for the next generation of aviation
-                  interiors.
+                  of modern aviation. Our Italian manufacturing partners use
+                  advanced tanning technologies, reduced-impact chemical
+                  processes, and rigorous quality systems, supported by
+                  internationally recognised certifications including Leather
+                  Working Group (LWG) accreditation, ensuring full traceability,
+                  regulatory compliance, and continuous innovation for aviation
+                  interiors. At VIVOSA, we carefully select manufacturers whose
+                  leather begins as a by-product of the European beef industry —
+                  raw hides that would otherwise go to waste are transformed
+                  into a premium, sustainable material. Co-products from the
+                  tanning process are then supplied to other industries,
+                  including technical manufacturing and food production, where
+                  they serve as valuable raw materials. This circular approach
+                  keeps waste out of landfill and ensures every part of the hide
+                  is put to good use.
                 </p>
                 <p>
                   At VIVOSA, we carefully select manufacturers whose leather
@@ -572,13 +642,10 @@ export default function AviationLeather() {
               </div>
             </div>
             <div className="flex items-center justify-center w-full">
-              <div className="w-full max-w-[450px] aspect-[4/3] rounded-xl overflow-hidden shadow-xl border border-[#2A2B2D] bg-gradient-to-b from-[#2A2C2E] to-[#121315] flex items-center justify-center p-4">
-                <img
-                  src="/slides/aviation-pdf-pages/av13.png"
-                  alt="Quality Supply"
-                  className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-700"
-                />
-              </div>
+              <ParallaxImage
+                src="/slides/aviation-pdf-pages/av13.png"
+                alt="Quality Supply"
+              />
             </div>
           </div>
         </section>
