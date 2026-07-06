@@ -118,9 +118,9 @@ export default function AviationLeatherDetail() {
 
         {/* Product Specification Section: Full-bleed 50/50 Catalog Layout */}
         <section className="bg-white border-b border-neutral-100">
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch gap-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-start gap-0">
             {/* Left Column: Full-width, full-height image */}
-            <div className="w-full bg-[#f5f5f5] min-h-[420px] lg:min-h-[700px] overflow-hidden flex items-start justify-center p-8 md:p-12">
+            <div className="w-full bg-[#f5f5f5] min-h-[420px] overflow-hidden flex items-start justify-center p-8 md:p-12 lg:sticky lg:top-24 lg:self-start lg:h-[calc(100vh-7rem)]">
               <img
                 className="max-h-[560px] lg:max-h-[620px] w-full h-auto object-contain"
                 alt={product.name}
