@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { fetchPublicMenApparel } from "../api/menApparel";
 
 const categoryLabels = {
-  joggers: "Joggers",
+  joggers: "Sweatshirts",
   "polo-shirt": "Polo Shirt",
   shirts: "Shirts",
   "t-shirts": "T-shirts",

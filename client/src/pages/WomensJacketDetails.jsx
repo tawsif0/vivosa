@@ -86,7 +86,7 @@ export default function WomensJacketDetails() {
       <div className="pt-32 px-4 md:px-margin-desktop max-w-container-max mx-auto min-h-screen">
         <p className="text-on-surface-variant font-sans">Product not found.</p>
         <Link className="text-leather-tan underline mt-4 inline-block font-sans" to="/womens/jackets-and-coats">
-          Back to Women&apos;s Jackets
+          <span className="inline-flex items-center gap-1.5"><span className="material-symbols-outlined text-[16px]">arrow_back</span> Back to Women&apos;s Jackets</span>
         </Link>
       </div>
     );
@@ -171,7 +171,7 @@ export default function WomensJacketDetails() {
                   className="text-xs font-sans text-neutral-400 hover:text-black tracking-[0.2em] uppercase transition-colors underline underline-offset-4"
                   to="/womens/jackets-and-coats"
                 >
-                  Back to Women&apos;s Jackets
+                  <span className="inline-flex items-center gap-1.5"><span className="material-symbols-outlined text-[16px]">arrow_back</span> Back to Women&apos;s Jackets</span>
                 </Link>
               </div>
             </div>

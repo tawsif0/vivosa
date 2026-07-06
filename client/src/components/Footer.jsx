@@ -321,6 +321,21 @@ export default function Footer() {
                   </ul>
                 )}
               </li>
+
+              {/* Kids */}
+              <li>
+                <a
+                  className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300"
+                  href="/kids"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/kids";
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                >
+                  Kids
+                </a>
+              </li>
             </ul>
           </div>
         </div>

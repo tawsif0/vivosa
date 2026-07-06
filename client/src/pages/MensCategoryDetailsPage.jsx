@@ -5,7 +5,7 @@ import DetailsExtraSections from "../components/DetailsExtraSections";
 import { toRichTextHtml, stripRichText } from "../utils/richText";
 
 const categoryLabels = {
-  joggers: "Joggers",
+  joggers: "Sweatshirts",
   "polo-shirt": "Polo Shirt",
   shirts: "Shirts",
   "t-shirts": "T-shirts",
@@ -103,7 +103,7 @@ export default function MensCategoryDetailsPage({ category }) {
       <div className="pt-32 px-4 md:px-margin-desktop max-w-container-max mx-auto min-h-screen">
         <p className="text-on-surface-variant font-sans">Product not found.</p>
         <Link className="text-leather-tan underline mt-4 inline-block font-sans" to={backLink}>
-          Back to {categoryTitle}
+          <span className="inline-flex items-center gap-1.5"><span className="material-symbols-outlined text-[16px]">arrow_back</span> Back to {categoryTitle}</span>
         </Link>
       </div>
     );
@@ -188,7 +188,7 @@ export default function MensCategoryDetailsPage({ category }) {
                   className="text-xs font-sans text-neutral-400 hover:text-black tracking-[0.2em] uppercase transition-colors underline underline-offset-4"
                   to={backLink}
                 >
-                  Back to {categoryTitle}
+                  <span className="inline-flex items-center gap-1.5"><span className="material-symbols-outlined text-[16px]">arrow_back</span> Back to {categoryTitle}</span>
                 </Link>
               </div>
             </div>

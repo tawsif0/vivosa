@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { fetchPublicSustainableLeather } from "../api/sustainableLeather";
 import DetailsExtraSections from "../components/DetailsExtraSections";
 
 export default function AviationLeatherDetail() {
   const { productId } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -48,7 +49,7 @@ export default function AviationLeatherDetail() {
           to="/aviation-leather"
           className="text-accent-gold font-semibold uppercase text-xs tracking-widest border-b border-accent-gold/40 pb-1"
         >
-          Back to Collection
+          <span className="inline-flex items-center gap-1.5"><span className="material-symbols-outlined text-[16px]">arrow_back</span> Back to Collection</span>
         </Link>
       </div>
     );
@@ -71,6 +72,16 @@ export default function AviationLeatherDetail() {
       <main className="pt-20 md:pt-[88px]">
         {/* Dark Header Banner */}
         <section className="bg-[#222222] text-white py-14 px-6 md:px-12 lg:px-24 border-b border-neutral-800 relative">
+          <div className="max-w-7xl mx-auto mb-8 relative z-10">
+            <button
+              type="button"
+              onClick={() => navigate(-1)}
+              className="inline-flex items-center gap-2 text-[#8e8e8e] hover:text-white transition-colors duration-300 font-label-caps text-[11px] tracking-[0.2em] uppercase font-medium"
+            >
+              <span className="material-symbols-outlined text-[18px]">arrow_back</span>
+              Back
+            </button>
+          </div>
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center relative z-10">
             {/* Left Column: Title and Subtitle */}
             <div className="space-y-3">
@@ -109,9 +120,9 @@ export default function AviationLeatherDetail() {
         <section className="bg-white border-b border-neutral-100">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch gap-0">
             {/* Left Column: Full-width, full-height image */}
-            <div className="w-full h-[350px] sm:h-[450px] lg:h-auto min-h-[450px] overflow-hidden bg-neutral-100">
+            <div className="w-full bg-[#f5f5f5] min-h-[420px] lg:min-h-[700px] overflow-hidden flex items-start justify-center p-8 md:p-12">
               <img
-                className="w-full h-full object-cover"
+                className="max-h-[560px] lg:max-h-[620px] w-full h-auto object-contain"
                 alt={product.name}
                 src={product.image?.url}
               />

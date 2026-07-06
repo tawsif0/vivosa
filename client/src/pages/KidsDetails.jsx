@@ -37,7 +37,7 @@ export default function KidsDetails() {
       <div className="pt-32 px-4 md:px-margin-desktop max-w-container-max mx-auto min-h-screen">
         <p className="text-on-surface-variant font-sans">Product not found.</p>
         <Link className="text-leather-tan underline mt-4 inline-block font-sans" to="/kids">
-          Back to Kids
+          <span className="inline-flex items-center gap-1.5"><span className="material-symbols-outlined text-[16px]">arrow_back</span> Back to Kids</span>
         </Link>
       </div>
     );
@@ -119,7 +119,7 @@ export default function KidsDetails() {
                 className="text-sm md:text-base font-sans text-neutral-400 hover:text-black tracking-[0.2em] uppercase transition-colors underline underline-offset-4"
                 to="/kids"
               >
-                Back to Kids Collection
+                <span className="inline-flex items-center gap-1.5"><span className="material-symbols-outlined text-[16px]">arrow_back</span> Back to Kids Collection</span>
               </Link>
             </div>
           </div>
