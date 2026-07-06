@@ -817,8 +817,6 @@ select:focus-visible {
 
 .rich-content p {
   margin-bottom: 0.75rem !important;
-  text-align: justify !important;
-  text-justify: inter-word !important;
 }
 
 .rich-content h1 {

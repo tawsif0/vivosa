@@ -253,7 +253,7 @@ export default function ContractFurniture() {
                 <span className="text-light-gold font-semibold border-b border-light-gold/40 box-decoration-clone">
                   we craft an extensive range of exquisite leathers including
                   Anilines, Semi-Anilines, Smooth, Nubuck, soft full- grain,
-                  Corrected-grain, and many others
+                  Corrected-grain, and many others{" "}
                 </span>
                 each offering a unique style perfectly suited to a diverse range
                 of furnishings and applications.
@@ -468,7 +468,7 @@ export default function ContractFurniture() {
                 <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
                   Quality &amp; Sustainability in Leather Supply
                 </h2>
-                <div className="space-y-6 font-body-md text-white/80 leading-loose text-justify">
+                <div className="space-y-6 font-body-md text-white/80 leading-loose">
                   <p>
                     We work with leading sustainable leather manufacturers to
                     supply high-quality leather directly to our customers, with

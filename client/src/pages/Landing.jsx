@@ -208,11 +208,11 @@ export default function Landing() {
               <h1 className="text-lg text-display-lg-mobile md:text-display-lg mb-8">
                 Welcome to Vivosa.
               </h1>
-              <p className="font-body-lg text-body-lg mb-6 text-surface-variant/90 leading-relaxed text-justify">
+              <p className="font-body-lg text-body-lg mb-6 text-surface-variant/90 leading-relaxed">
                 We are delighted to hear your ideas and designs, and we love
                 working together ethically bring your dream project to life.
               </p>
-              <p className="font-body-lg text-body-lg mb-10 text-surface-variant/90 leading-relaxed text-justify">
+              <p className="font-body-lg text-body-lg mb-10 text-surface-variant/90 leading-relaxed">
                 Our commitment is to sustainable sourcing with honesty and
                 integrity and providing the best service. We believe that
                 experience, efficiency, professionalism, social responsibility,
@@ -319,13 +319,13 @@ export default function Landing() {
                 <h4 className="font-label-caps text-sm text-gold-accent uppercase tracking-wider mb-2 font-semibold">
                   OUR VISION
                 </h4>
-                <p className="mb-3 text-justify">
+                <p className="mb-3">
                   Our vision extends outside our business. We aspire to make a
                   good impact on the globe, from the communities where we obtain
                   our raw materials to how our products help our consumers live
                   livelier.
                 </p>
-                <p className="text-justify">
+                <p>
                   Our top priorities are customer satisfaction and their values
                   and working together to build a pleasant and trustable work
                   environment. We are committed to listening to our customers
@@ -339,11 +339,11 @@ export default function Landing() {
                 <h4 className="font-label-caps text-sm text-gold-accent uppercase tracking-wider mb-2 font-semibold">
                   OUR MISSION
                 </h4>
-                <p className="mb-3 text-justify">
+                <p className="mb-3">
                   Our mission is to work with our partners to create a brighter
                   future. Engaging with us means we invite our clients to join.
                 </p>
-                <p className="text-justify">
+                <p>
                   In our commitment to sustainability, we actively seek social,
                   economic, and environmental sustainability, placing a high
                   priority on the welfare of our employees and the community,
@@ -399,21 +399,21 @@ export default function Landing() {
               </p>
             </div>
             <div className="lg:col-span-7 space-y-6 font-body-lg text-on-surface-variant leading-relaxed">
-              <p className="text-justify">
+              <p>
                 <strong>Vivosa</strong> is a young, active firm that is deeply
                 involved in both the leather and apparel industries. It was
                 founded by individuals with over 30 years of professional
                 experience, proven technical proficiency, and a constant
                 willingness to take on new challenges and accomplish new goals.
               </p>
-              <p className="text-justify">
+              <p>
                 Our primary objective is sourcing materials ethically from
                 sustainable manufacturers who are ecologically conscious,
                 strictly follow fair business practices, and have been working
                 in the sector for decades. As a result, we have built a strong
                 presence in the UK, Europe, and numerous other global markets.
               </p>
-              <p className="text-justify">
+              <p>
                 We believe that wearing and using what resonates with you and
                 makes you feel confident is far more important than following
                 trends blindly. Every individual is unique, with their own
@@ -441,14 +441,14 @@ export default function Landing() {
             WHY CHOOSE US
           </h2>
           <div className="space-y-4 font-body-lg text-on-surface-variant leading-relaxed">
-            <p className="font-semibold text-lg text-deep-forest text-justify">
+            <p className="font-semibold text-lg text-deep-forest">
               Customers choose us for our expertise, efficiency, and commitment
               to building long-term partnerships based on trust and value. We
               understand that sourcing is more than just finding products — it
               is about fostering lasting relationships, ensuring quality, and
               creating value for every stakeholder.
             </p>
-            <p className="text-justify">
+            <p>
               Because of our years of experience in apparel and leather
               manufacturing, we have become a trusted partner for global buyers,
               brands, suppliers, and factories. We work exclusively with
@@ -470,7 +470,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Ethical Sourcing
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
                 We guarantee that materials are sourced from internationally
                 renowned sustainable producers who care about the community and
                 environment and have been making ethical products for over 50
@@ -488,7 +488,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Wide range of products
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
                 To satisfy all your sourcing demands, we provide an extensive
                 variety of premium products in both sustainable leather and
                 bespoke clothing manufacturing.
@@ -505,7 +505,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Customizations
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
                 We welcome modifications in your approved order, confirmed by
                 samples, including any cut, style, colour, pattern, packing, or
                 print ideas you wish to bring to life.
@@ -522,7 +522,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Quality control
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
                 Our in-house quality control team conducts rigorous
                 pre-production, inline, and final inspections to ensure both
                 leather and apparel products contain zero defects.
@@ -539,7 +539,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Exceptionals price
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
                 We guarantee that our premium products are reasonably priced. We
                 encourage clients to check our quality and pricing with quotes
                 and samples from other vendors.
@@ -556,7 +556,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Researching and innovation
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
                 Our team conducts extensive research to support innovation,
                 offering cutting-edge technologies and deep market insight to
                 drive new products and procedures.
@@ -573,7 +573,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 Customer Satisfaction
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
                 Your satisfaction is our top priority. We guarantee a
                 hassle-free and enjoyable experience from the initial order
                 placement to final delivery.
@@ -590,7 +590,7 @@ export default function Landing() {
               <h4 className="font-headline-md text-deep-forest mb-4 text-xl">
                 First Delivery
               </h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs text-justify">
+              <p className="font-body-md text-on-surface-variant leading-relaxed text-xs">
                 We work directly with trusted global logistics partners to
                 ensure all deliveries happen strictly on schedule, no matter
                 where you are located.
@@ -881,13 +881,13 @@ export default function Landing() {
                 Apparel manufacturing
               </h3>
               <div className="w-16 h-[2px] bg-[#cda250]"></div>
-              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base text-justify">
+              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
                 We source premium raw materials from trusted mills and suppliers
                 across Bangladesh and beyond. Our in-house and partner factories
                 are equipped with modern machinery and skilled labour to manage
                 the full production process.
               </p>
-              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base text-justify">
+              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
                 This process includes design and fabric procurement, cutting,
                 sewing, finishing, quality control, and shipping — all carried
                 out to meet international standards and customer demands. Each
@@ -920,12 +920,12 @@ export default function Landing() {
                 Leather
               </h3>
               <div className="w-16 h-[2px] bg-[#cda250]"></div>
-              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base text-justify">
+              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
                 Similarly,” from desalting to finishing, each raw hide goes
                 through multiple stages of production, with every colour of
                 leather carrying its own unique story.
               </p>
-              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base text-justify">
+              <p className="font-body-lg text-on-surface-variant leading-relaxed text-sm md:text-base">
                 The process involves technicians, designers, and skilled
                 artisans, all working with dedication to meet the highest
                 quality standards and ensure customer satisfaction. This

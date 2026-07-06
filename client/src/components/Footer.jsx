@@ -26,7 +26,7 @@ export default function Footer() {
             loading="lazy"
             onClick={handleScrollToTop}
           />
-          <p className="font-body-md text-surface-variant/70 leading-relaxed mb-8 text-justify">
+          <p className="font-body-md text-surface-variant/70 leading-relaxed mb-8">
             At Vivosa, we bridge the gap between high-fashion aesthetics and
             planetary consciousness, ensuring that beauty never comes at an
             ethical cost. From sustainable leather to responsibly sourced
@@ -219,20 +219,6 @@ export default function Footer() {
               Apparel
             </h6>
             <ul className="space-y-4">
-              <li>
-                <a
-                  className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300"
-                  href="/apparel"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = "/apparel";
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                >
-                  Info
-                </a>
-              </li>
-
               {/* Men's Collapsible Dropdown */}
               <li className="relative">
                 <button
@@ -336,6 +322,21 @@ export default function Footer() {
                   }}
                 >
                   Kids
+                </a>
+              </li>
+
+              {/* Info */}
+              <li>
+                <a
+                  className="font-body-md text-surface-variant/70 hover:text-gold-accent transition-all duration-300"
+                  href="/apparel"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "/apparel";
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                >
+                  Info
                 </a>
               </li>
             </ul>

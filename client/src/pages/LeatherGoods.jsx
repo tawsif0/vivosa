@@ -57,7 +57,7 @@ export default function LeatherGoods() {
               <h1 className="mb-6 font-display text-[42px] leading-none text-white sm:text-[56px] lg:text-[76px]">
                 Leather Goods
               </h1>
-              <p className="max-w-xl text-base leading-relaxed text-white/85 sm:text-lg text-justify">
+              <p className="max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
                 Our environmentally conscious manufacturer sources eco-friendly
                 products without compromising quality for several decades and
                 proudly serves customers worldwide. We create distinctive
@@ -73,14 +73,14 @@ export default function LeatherGoods() {
         <section className="bg-surface py-16 md:py-20 lg:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
             <div className="pr-0 md:pr-16">
-              <p className="font-body-lg text-body-lg text-on-surface leading-relaxed italic mb-6 text-justify">
+              <p className="font-body-lg text-body-lg text-on-surface leading-relaxed italic mb-6">
                 The fashion industry innovates through millions of different
                 styles with the support of technology, researchers, designers,
                 and models, but true satisfaction comes from what makes you feel
                 happy on an individual level considering colours, design, shape,
                 and sustainability.
               </p>
-              <p className="font-body-md text-body-md text-on-surface-variant leading-loose text-justify">
+              <p className="font-body-md text-body-md text-on-surface-variant leading-loose">
                 Our goal is to work with you to achieve your objectives, helping
                 you select the leather that best suits your project in terms of
                 colour and style. We are committed to supporting you every step
@@ -277,7 +277,7 @@ export default function LeatherGoods() {
                 <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
                   Quality &amp; Sustainability in Leather Supply
                 </h2>
-                <div className="space-y-6 font-body-md text-white/80 leading-loose text-justify">
+                <div className="space-y-6 font-body-md text-white/80 leading-loose">
                   <p>
                     We work with leading sustainable leather manufacturers to
                     supply high-quality leather directly to our customers, with

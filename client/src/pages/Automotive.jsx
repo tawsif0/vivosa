@@ -87,7 +87,6 @@ export default function Automotive() {
   return (
     <div className="bg-background text-on-background font-body-md selection:bg-on-primary-container selection:text-primary">
       <main>
-        <style>{`main p { text-align: justify; text-justify: inter-word; }`}</style>
         {/* Section 1: HERO - Full-width Image */}
         <section className="relative w-full h-[60vh] md:h-screen overflow-hidden">
           <img
@@ -225,7 +224,7 @@ export default function Automotive() {
         <section className="bg-white py-16 md:py-20 lg:py-24 px-margin-desktop">
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter">
             <div className="flex items-center">
-              <blockquote className="font-headline-xl text-justify text-[22px] md:text-[26px] lg:text-[28px] italic text-on-background leading-snug pr-12">
+              <blockquote className="font-headline-xl text-[22px] md:text-[26px] lg:text-[28px] italic text-on-background leading-snug pr-12">
                 "Our sister company has been combining history, uniqueness, and
                 durable leather for 50 years. With lively designs that you can
                 fully customize in shape, colours, and style, we continue to

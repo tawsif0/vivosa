@@ -139,7 +139,7 @@ export default function About() {
                   Our Story
                 </span>
                 <div className="space-y-7 font-body text-[17px] md:text-[19px] text-secondary leading-loose">
-                  <p className="text-justify">
+                  <p>
                     <span className="float-left font-display text-primary text-[68px] leading-[54px] pr-3 pt-1">
                       V
                     </span>
@@ -150,7 +150,7 @@ export default function About() {
                     constant drive to embrace new challenges and achieve
                     meaningful goals.
                   </p>
-                  <p className="text-justify">
+                  <p>
                     Our primary objective is to source materials ethically from
                     our sister companies—experienced, environmentally conscious
                     manufacturers with a long-standing commitment to quality.
@@ -163,7 +163,7 @@ export default function About() {
                     meet the highest standards and contribute to responsible
                     business practices.
                   </p>
-                  <p className="text-justify">
+                  <p>
                     We prioritize customers first, and our dedicated, proactive
                     team takes full responsibility for excellence at every step.
                     From design and production to logistics, we deliver
@@ -191,7 +191,7 @@ export default function About() {
                   </p>
 
                   <div className="space-y-5 font-body text-body-lg text-white/85 leading-relaxed">
-                    <p className="text-justify">
+                    <p>
                       An outfit is not just about expressing a style; it
                       reflects your individuality and inner self through choices
                       that make you feel comfortable and joyful. Wearing what
@@ -199,7 +199,7 @@ export default function About() {
                       meaningful than blindly following trends. Every individual
                       is unique, with different tastes and lifestyles.
                     </p>
-                    <p className="text-justify">
+                    <p>
                       Vivosa is operated by professionals who have more than 30
                       years of working experience in both the leather and
                       clothing industries. Our expert team draws on this
@@ -207,7 +207,7 @@ export default function About() {
                       sustainable products that balance style, functionality,
                       and long-lasting quality.
                     </p>
-                    <p className="text-justify">
+                    <p>
                       By focusing on sustainable manufacturing, durability,
                       quality, and customer satisfaction, we provide the finest
                       leather and authentic clothing at affordable prices—
@@ -259,7 +259,7 @@ export default function About() {
             <h2 className="font-display text-headline-xl-mobile md:text-headline-xl text-primary editorial-underline inline-block mb-8">
               What We Do
             </h2>
-            <p className="font-body text-body-lg text-secondary leading-relaxed max-w-5xl mx-auto text-justify">
+            <p className="font-body text-body-lg text-secondary leading-relaxed max-w-5xl mx-auto">
               We supply a broad range of authentic finished leather for multiple
               applications and all types of premium ready-made garments,
               produced to order, in the UK, Europe, and other markets. Our
@@ -287,16 +287,16 @@ export default function About() {
                 />
               </div>
               <div className="md:col-span-7 space-y-6 md:pl-12 font-body text-body-lg text-secondary leading-relaxed">
-                <h2 className="font-display text-headline-xl-mobile md:text-headline-xl text-primary editorial-underline mb-8 text-justify">
+                <h2 className="font-display text-headline-xl-mobile md:text-headline-xl text-primary editorial-underline mb-8">
                   Leather Craftsmanship
                 </h2>
-                <p className="text-justify">
+                <p>
                   We have over 30 years of working experience in renowned
                   tanneries that have been operating for more than 60 years,
                   specializing in producing high-quality hides for the global
                   leather market.
                 </p>
-                <p className="text-justify">
+                <p>
                   As a responsible supplier, our goal is to provide the best
                   leather possible without burdening it with unnecessary costs.
                   We work with manufacturers who respect the environment, adopt
@@ -309,7 +309,7 @@ export default function About() {
                   production process and high-quality standards. This is premium
                   leather, truly Made in Italy from A to Z, all under one roof.
                 </p>
-                <p className="text-justify">
+                <p>
                   The journey begins with the careful selection of raw hides.
                   Italian leather producers often choose the highest-quality
                   hides, typically from local or European sources, to ensure
@@ -320,7 +320,7 @@ export default function About() {
                   history but also on the dedication to quality and attention to
                   detail ingrained in its artisans.
                 </p>
-                <p className="text-justify">
+                <p>
                   However, we also source from manufacturers outside of Europe,
                   but only in response to specific customer requirements. We
                   inspect each hide for sustainability and quality before
@@ -391,14 +391,14 @@ export default function About() {
                 <p className="font-bold text-primary">
                   MOST OF OUR CLOTHES COME FROM BANGLADESH
                 </p>
-                <p className="text-justify">
+                <p>
                   A country with a rich textile heritage that has been renowned
                   for centuries. The textiles of historic Bengal were famous for
                   their fine cotton and exceptional weaving, a tradition that
                   continues today. This enduring craftsmanship ensures
                   high-quality fabrics for modern apparel.
                 </p>
-                <p className="text-justify">
+                <p>
                   Another reason we source from Bangladesh is that it is a top
                   choice for garment buyers due to its cost competitiveness,
                   superior quality, and skilled workforce. The country has a
@@ -408,7 +408,7 @@ export default function About() {
                   innovation and consistent standards ensures that each product
                   meets international expectations.
                 </p>
-                <p className="text-justify">
+                <p>
                   Most factories in Bangladesh are compliant with international
                   safety and sustainability standards. Additionally, its
                   vertical integration allows for efficient, large-scale
@@ -536,7 +536,7 @@ export default function About() {
               How We Work
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              <p className="font-body text-body-lg text-secondary leading-relaxed text-justify">
+              <p className="font-body text-body-lg text-secondary leading-relaxed">
                 We operate as a supplier to major wholesalers and importers, as
                 well as high-street and online retailers in the UK, Europe, and
                 many other countries worldwide. We act both as direct buyers and
@@ -545,7 +545,7 @@ export default function About() {
                 customers extensive opportunities and the ability to communicate
                 with us directly 24/7.
               </p>
-              <p className="font-body text-body-lg text-secondary leading-relaxed text-justify">
+              <p className="font-body text-body-lg text-secondary leading-relaxed">
                 We typically begin with the client’s sample or tech pack.
                 However, if you need support developing a design or new product,
                 our world-class designers and technical team can create it for
@@ -566,7 +566,7 @@ export default function About() {
                 Sustainability at our core.
               </h2>
               <div className="space-y-6 font-body text-body-lg text-white/90 max-w-2xl leading-relaxed">
-                <p className="text-justify">
+                <p>
                   Our company is committed to sustainable sourcing that
                   prioritizes environmental responsibility, ethical labour, and
                   long-term resource management. We carefully select suppliers
@@ -575,7 +575,7 @@ export default function About() {
                   manufacturers to promote transparency, minimize waste, and
                   encourage the use of renewable materials.
                 </p>
-                <p className="text-justify">
+                <p>
                   We also focus on reducing our environmental footprint through
                   proper wastewater management and eco-conscious operations.
                   Through ongoing research and development, we create

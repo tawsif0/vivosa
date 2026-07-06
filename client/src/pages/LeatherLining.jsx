@@ -174,7 +174,7 @@ export default function LeatherLining() {
             </div>
           </div>
           <div className="space-y-8">
-            <p className="font-body-md text-body-lg text-on-surface-variant leading-relaxed text-justify">
+            <p className="font-body-md text-body-lg text-on-surface-variant leading-relaxed">
               At VIVOSA, we deliver premium Italian- crafted leather made from
               carefully selected European hides. Engineered for exceptional
               comfort, flexibility, and long-lasting durability, our lining
@@ -222,7 +222,7 @@ export default function LeatherLining() {
               <h4 className="font-headline-sm text-headline-sm text-primary mb-4">
                 Sustainability Commitment
               </h4>
-              <p className="font-body-md text-body-md text-primary leading-relaxed text-justify">
+              <p className="font-body-md text-body-md text-primary leading-relaxed">
                 All VIVOSA leathers are produced with a focus on responsibility
                 and transparency. We work exclusively with certified Italian
                 tanneries that comply with REACH, LWG, and ISO standards,
@@ -322,7 +322,7 @@ export default function LeatherLining() {
                 <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
                   Quality &amp; Sustainability in Leather Supply
                 </h2>
-                <div className="space-y-6 font-body-md text-white/80 leading-loose text-justify">
+                <div className="space-y-6 font-body-md text-white/80 leading-loose">
                   <p>
                     We work with leading sustainable leather manufacturers to
                     supply high-quality leather directly to our customers, with

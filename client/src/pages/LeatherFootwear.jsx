@@ -248,7 +248,7 @@ export default function LeatherFootwear() {
               <br />
               for Footwear
             </h1>
-            <p className="font-body text-body-lg text-on-primary/80 max-w-lg mb-12 leading-relaxed text-justify text-justify">
+            <p className="font-body text-body-lg text-on-primary/80 max-w-lg mb-12 leading-relaxed">
               We work alongside those who meticulously monitor every detail from
               A to Z to deliver premium quality with integrity. Our sustainable
               sourcing practices protect both people and the planet, keeping our
@@ -518,7 +518,7 @@ export default function LeatherFootwear() {
                     Nubuck, and many more.
                   </strong>
                 </p>
-                <p clsassName="text-justify">
+                <p>
                   Each leather is designed with comfort, breathability, and
                   timeless appeal, with optional treatments available on
                   request, including anti-stain, fire-retardant,
@@ -527,7 +527,7 @@ export default function LeatherFootwear() {
                   options including vegetable tanning and a variety of dyed
                   finishes.
                 </p>
-                <p className="text-justify">
+                <p>
                   We invite you to get in touch to discuss your project
                   requirements, or to send us a sample alongside your
                   specifications. Our team is ready to help guide you towards an
@@ -535,7 +535,7 @@ export default function LeatherFootwear() {
                   finished products that bring lasting beauty to every project
                   we're part of.
                 </p>
-                <p className="text-justify">
+                <p>
                   Your vision matters to us. We welcome customisation requests
                   to meet your specific needs, ensuring all solutions align with
                   the relevant standards and regulations.
@@ -553,7 +553,7 @@ export default function LeatherFootwear() {
                 <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
                   Quality &amp; Sustainability in Leather Supply
                 </h2>
-                <div className="space-y-6 font-body-md text-white/80 leading-loose text-justify">
+                <div className="space-y-6 font-body-md text-white/80 leading-loose">
                   <p>
                     We work with leading sustainable leather manufacturers to
                     supply high-quality leather directly to our customers, with

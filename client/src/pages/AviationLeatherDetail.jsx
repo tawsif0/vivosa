@@ -172,7 +172,7 @@ export default function AviationLeatherDetail() {
                     Product Description
                   </h3>
                   <div
-                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4 text-justify"
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
                     dangerouslySetInnerHTML={{ __html: product.desc }}
                   />
                 </div>
@@ -185,7 +185,7 @@ export default function AviationLeatherDetail() {
                     Raw Material
                   </h3>
                   <div
-                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4 text-justify"
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
                     dangerouslySetInnerHTML={{ __html: product.rawMaterial }}
                   />
                 </div>
@@ -198,7 +198,7 @@ export default function AviationLeatherDetail() {
                     Processing
                   </h3>
                   <div
-                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4 text-justify"
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
                     dangerouslySetInnerHTML={{ __html: product.processing }}
                   />
                 </div>
@@ -211,7 +211,7 @@ export default function AviationLeatherDetail() {
                     Final Product Characteristics
                   </h3>
                   <div
-                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4 text-justify"
+                    className="font-body text-[14px] md:text-[15px] text-secondary leading-relaxed font-light rich-content space-y-4"
                     dangerouslySetInnerHTML={{ __html: product.productDetails }}
                   />
                 </div>
