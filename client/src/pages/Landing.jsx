@@ -299,9 +299,9 @@ export default function Landing() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-20 items-center">
           <div className="relative group">
             <div className="absolute -top-6 -left-6 sm:-top-10 sm:-left-10 w-28 h-28 sm:w-40 sm:h-40 bg-emerald-mint -z-10 transition-transform duration-500 group-hover:scale-110"></div>
-            <div className="overflow-hidden shadow-2xl">
+            <div className="overflow-hidden shadow-2xl rounded-2xl">
               <img
-                className="w-full aspect-[4/5] object-cover hover-zoom-img"
+                className="w-full aspect-[4/5] object-cover hover-zoom-img rounded-2xl"
                 alt="Leather Sourcing and Craftsmanship"
                 src="/slides/about_hero.avif"
               />
@@ -1026,7 +1026,7 @@ export default function Landing() {
         className="py-16 md:py-20 lg:py-24 max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop"
         id="contact"
       >
-        <div className="bg-deep-forest text-off-white overflow-hidden shadow-2xl flex flex-col md:flex-row">
+        <div className="bg-deep-forest text-off-white overflow-hidden shadow-2xl rounded-2xl flex flex-col md:flex-row">
           <div className="md:w-1/2 p-6 sm:p-10 lg:p-20 relative">
             <div className="relative z-10">
               <h2 className="font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-8">
