@@ -217,9 +217,9 @@ function DesktopApparelDropdown({
             <div className="flex flex-col gap-2">
               <a
                 href="/kids"
-                className={`text-xs uppercase tracking-wide font-bold transition-colors py-0.5 ${
+                className={`text-xs uppercase tracking-wide transition-colors py-0.5 ${
                   window.location.pathname === "/kids"
-                    ? "text-gold-accent"
+                    ? "text-gold-accent font-semibold"
                     : "text-white/80 hover:text-gold-accent"
                 }`}
                 onClick={() => {
@@ -635,10 +635,11 @@ export default function Navbar() {
           </div>
 
           <a
-            className="hidden md:inline-flex px-4 py-2 xl:px-6 xl:py-2.5 bg-deep-forest text-off-white font-body-md text-[11px] lg:text-sm xl:text-body-md uppercase border border-white/10 hover:border-gold-accent hover:bg-leather-tan transition-all duration-300 scale-95 hover:scale-100"
+            className="hidden md:inline-flex items-center gap-2 px-4 py-2 xl:px-6 xl:py-2.5 bg-deep-forest text-off-white font-body-md text-[11px] lg:text-sm xl:text-body-md uppercase border border-white/10 hover:border-gold-accent hover:bg-leather-tan transition-all duration-300 scale-95 hover:scale-100"
             href="/contact"
             onClick={handleNavClick}
           >
+            <span className="material-symbols-outlined text-[18px]">mail</span>
             Contact Us
           </a>
 

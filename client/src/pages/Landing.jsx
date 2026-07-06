@@ -202,7 +202,7 @@ export default function Landing() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-center">
             {/* Left Column: Text Content */}
             <div className="lg:col-span-6 max-w-2xl">
-              <span className="font-label-caps text-gold-accent tracking-[0.3em] uppercase block mb-6 mt-6">
+              <span className="font-label-caps text-gold-accent tracking-[0.3em] uppercase block mb-6 mt-12 lg:mt-20">
                 Redefining Craftsmanship
               </span>
               <h1 className="text-lg text-display-lg-mobile md:text-display-lg mb-8">
@@ -221,15 +221,21 @@ export default function Landing() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                 <a
-                  className="px-8 sm:px-10 py-4 bg-deep-forest border border-deep-forest text-off-white font-label-caps uppercase hover:bg-transparent hover:border-off-white transition-all duration-300 text-center"
+                  className="px-8 sm:px-10 py-4 bg-deep-forest border border-deep-forest text-off-white font-label-caps uppercase hover:bg-transparent hover:border-off-white transition-all duration-300 inline-flex items-center justify-center gap-2 group"
                   href="#about"
                 >
                   View More
+                  <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-1">
+                    arrow_forward
+                  </span>
                 </a>
                 <a
-                  className="px-8 sm:px-10 py-4 border border-off-white text-off-white font-label-caps uppercase hover:bg-off-white hover:text-deep-forest transition-all duration-300 text-center"
+                  className="px-8 sm:px-10 py-4 border border-off-white text-off-white font-label-caps uppercase hover:bg-off-white hover:text-deep-forest transition-all duration-300 inline-flex items-center justify-center gap-2"
                   href="#contact"
                 >
+                  <span className="material-symbols-outlined text-[18px]">
+                    mail
+                  </span>
                   Contact Us
                 </a>
               </div>

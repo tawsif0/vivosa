@@ -29,7 +29,9 @@ export default function Footer() {
           <p className="font-body-md text-surface-variant/70 leading-relaxed mb-8 text-justify">
             At Vivosa, we bridge the gap between high-fashion aesthetics and
             planetary consciousness, ensuring that beauty never comes at an
-            ethical cost.
+            ethical cost. From sustainable leather to responsibly sourced
+            apparel, every product reflects our commitment to craftsmanship,
+            transparency, and a better future.
           </p>
           <div className="flex gap-4">
             <a
