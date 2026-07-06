@@ -15,7 +15,7 @@ const AutoSlider = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[600px] overflow-hidden group">
+    <div className="relative w-full h-[600px] overflow-hidden group rounded-2xl">
       {sliderImages.map((src, index) => (
         <img
           key={index}
