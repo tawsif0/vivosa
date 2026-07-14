@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 import { useSearchParams } from "react-router-dom";
 import { submitContactForm } from "../api/contact";
 
+const WEB3FORMS_ACCESS_KEY = "2c59bc83-be0f-4302-ba0a-bbbb401b349d";
+
 export default function Contact() {
   const [searchParams] = useSearchParams();
   const interestParam = searchParams.get("interest");
@@ -41,7 +43,35 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await submitContactForm(formData);
+      // Primary: send the inquiry to the client's inbox via Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: "New inquiry from Vivosa Contact page",
+          from_name: "Vivosa Website",
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          interest: formData.interest,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+      if (!result.success) {
+        throw new Error(result.message || "Failed to submit inquiry");
+      }
+
+      // Best-effort: also store in the admin dashboard. Ignore failures so
+      // email delivery is never blocked by the backend being unavailable.
+      submitContactForm(formData).catch(() => {});
+
       setFormData({
         name: "",
         company: "",
@@ -52,7 +82,7 @@ export default function Contact() {
       });
       toast.success("Your inquiry has been submitted");
     } catch (error) {
-      toast.error(error.response?.data?.error || "Failed to submit inquiry");
+      toast.error(error.message || "Failed to submit inquiry");
     } finally {
       setIsSubmitting(false);
     }

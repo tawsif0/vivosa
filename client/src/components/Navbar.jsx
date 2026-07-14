@@ -473,20 +473,6 @@ export default function Navbar() {
         }
       }}
     >
-      {/* Alert Banner for Construction/Technical Issues */}
-      <div
-        className="w-full bg-[#D32F2F] text-white py-2 px-4 text-center text-[11px] xs:text-xs md:text-sm font-medium tracking-wide flex items-center justify-center gap-2 border-b border-red-700/20 select-text cursor-default transition-all duration-300"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <span className="material-symbols-outlined text-[14px] xs:text-[16px] md:text-[18px] animate-pulse select-none text-white/90">
-          warning
-        </span>
-        <span className="max-w-[1200px] leading-relaxed font-sans font-semibold">
-          Our website is under construction due to technical issues. We
-          apologize for any inconvenience and are working to resolve the issue
-          as soon as possible.
-        </span>
-      </div>
 
       <div
         id="nav-container"

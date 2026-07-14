@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { submitContactForm } from "../api/contact";
 
+const WEB3FORMS_ACCESS_KEY = "2c59bc83-be0f-4302-ba0a-bbbb401b349d";
+
 export default function Landing() {
   const [contactForm, setContactForm] = useState({
     firstName: "",
@@ -19,16 +21,43 @@ export default function Landing() {
     e.preventDefault();
     if (isSubmittingContact) return;
     setIsSubmittingContact(true);
+
+    const fullName = `${contactForm.firstName} ${contactForm.lastName}`.trim();
+
     try {
-      const payload = {
-        name: `${contactForm.firstName} ${contactForm.lastName}`.trim(),
+      // Primary: send the message to the client's inbox via Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: "New enquiry from Vivosa website",
+          from_name: "Vivosa Website",
+          name: fullName,
+          email: contactForm.email,
+          message: contactForm.message,
+        }),
+      });
+
+      const result = await response.json();
+      if (!result.success) {
+        throw new Error(result.message || "Failed to send message");
+      }
+
+      // Best-effort: also store in the admin dashboard. Ignore failures so
+      // email delivery is never blocked by the backend being unavailable.
+      submitContactForm({
+        name: fullName,
         email: contactForm.email,
         message: contactForm.message,
         company: "",
         phone: "",
         interest: "General Inquiry (Landing)",
-      };
-      await submitContactForm(payload);
+      }).catch(() => {});
+
       setContactForm({
         firstName: "",
         lastName: "",
@@ -37,7 +66,7 @@ export default function Landing() {
       });
       toast.success("Your message has been sent successfully!");
     } catch (error) {
-      toast.error(error.response?.data?.error || "Failed to send message");
+      toast.error(error.message || "Failed to send message");
     } finally {
       setIsSubmittingContact(false);
     }
