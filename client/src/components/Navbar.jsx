@@ -473,6 +473,14 @@ export default function Navbar() {
         }
       }}
     >
+      <div className="w-full bg-[#c53030] px-3 py-2 text-center text-[11px] sm:text-xs font-semibold uppercase tracking-[0.12em] text-white/95">
+        <span className="inline-flex items-center justify-center gap-2">
+          <span className="material-symbols-outlined text-[14px]">warning</span>
+          Our website is under construction due to technical issues. We
+          apologize for any inconvenience and are working to resolve the issue
+          as soon as possible.
+        </span>
+      </div>
 
       <div
         id="nav-container"
