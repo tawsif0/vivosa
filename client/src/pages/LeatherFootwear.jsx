@@ -164,7 +164,7 @@ export default function LeatherFootwear() {
         <section className="flex flex-col md:flex-row min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-88px)] overflow-hidden">
           {/* Left: Imagery Slider */}
           <div
-            className="w-full md:w-[45%] relative bg-secondary-container p-12 md:p-24 flex flex-col items-center justify-center min-h-[500px] cursor-grab active:cursor-grabbing select-none"
+            className="w-full md:w-[45%] relative  p-12 md:p-24 flex flex-col items-center justify-center min-h-[500px] cursor-grab active:cursor-grabbing select-none"
             onMouseDown={(e) => handleHeroDragStart(e.clientX)}
             onMouseUp={(e) => handleHeroDragEnd(e.clientX)}
             onMouseLeave={(e) => {
@@ -240,10 +240,7 @@ export default function LeatherFootwear() {
           </div>
           {/* Right: Content */}
           <div className="w-full md:w-[55%] bg-primary flex flex-col justify-center px-8 md:px-24 py-16 text-on-primary">
-            <span className="font-label-caps text-label-caps text-accent-gold tracking-[0.3em] mb-6">
-              AUTHENTIC LEATHER
-            </span>
-            <h1 className="font-display text-[56px] md:text-display-lg leading-tight mb-8 text-white">
+            <h1 className="font-display text-[36px] md:text-[52px] leading-tight mb-8 text-white">
               Authentic Leather
               <br />
               for Footwear
@@ -270,7 +267,7 @@ export default function LeatherFootwear() {
               Continuous Heritage
             </span>
             <h2 className="font-display text-headline-xl text-primary">
-              Luxury Footwear Showcase
+              Leather meets elegance, showcased on luxury footwear.
             </h2>
           </div>
 
@@ -583,6 +580,7 @@ export default function LeatherFootwear() {
                     "Finishing processes",
                     "Technical sheets & certifications",
                     "Manufacturing facility details",
+                    "And more",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-4">
                       <span
@@ -600,10 +598,19 @@ export default function LeatherFootwear() {
                     </li>
                   ))}
                 </ul>
-                <div className="pt-4 border-t border-white/10">
-                  <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
-                    … Please get in touch with us, and we will respond promptly.
-                  </p>
+                <div className="pt-6 border-t border-white/10">
+                  <div className="flex items-start gap-3">
+                    <span className="material-symbols-outlined text-light-gold shrink-0 mt-0.5" style={{ fontVariationSettings: "'FILL' 1", color: "#dfc06f" }}>
+                      forward_to_inbox
+                    </span>
+                    <p className="font-body-md font-bold text-white/90 leading-relaxed text-[15px]">
+                      Please{" "}
+                      <a href="/contact" className="text-light-gold underline decoration-light-gold/40 hover:decoration-light-gold transition-all duration-300">
+                        get in touch
+                      </a>{" "}
+                      with us, and we will respond promptly.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -462,6 +462,21 @@ export default function ContractFurniture() {
           </div>
         </section>
 
+        {/* Commitment to Sustainability Section */}
+        <section className="bg-surface py-16 md:py-20 lg:py-24 px-margin-mobile md:px-margin-desktop">
+          <div className="max-w-container-max mx-auto">
+            <div className="bg-primary text-on-primary p-10 md:p-16 border-l-4 border-light-gold shadow-xl text-center md:text-left">
+              <p className="font-headline-sm md:font-headline-md text-headline-sm md:text-headline-md font-bold leading-relaxed text-white/90">
+                Our manufacturing partners are fully committed to environmentally
+                responsible leather production — through conscious tanning
+                processes, reduced chemical impact, and certified compliance —
+                developing safer, more sustainable leather solutions for the
+                modern furniture world.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Quality & Sustainability Section */}
         <section className="bg-surface py-16 md:py-20 lg:py-24">
           <div className="bg-primary-container text-on-primary shadow-inner">
@@ -500,6 +515,7 @@ export default function ContractFurniture() {
                     "Finishing processes",
                     "Technical sheets & certifications",
                     "Manufacturing facility details",
+                    "And more",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-4">
                       <span
@@ -517,10 +533,19 @@ export default function ContractFurniture() {
                     </li>
                   ))}
                 </ul>
-                <div className="pt-4 border-t border-white/10">
-                  <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
-                    … Please get in touch with us, and we will respond promptly.
-                  </p>
+                <div className="pt-6 border-t border-white/10">
+                  <div className="flex items-start gap-3">
+                    <span className="material-symbols-outlined text-light-gold shrink-0 mt-0.5" style={{ fontVariationSettings: "'FILL' 1", color: "#dfc06f" }}>
+                      forward_to_inbox
+                    </span>
+                    <p className="font-body-md font-bold text-white/90 leading-relaxed text-[15px]">
+                      Please{" "}
+                      <a href="/contact" className="text-light-gold underline decoration-light-gold/40 hover:decoration-light-gold transition-all duration-300">
+                        get in touch
+                      </a>{" "}
+                      with us, and we will respond promptly.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
