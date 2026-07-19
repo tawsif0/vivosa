@@ -107,30 +107,23 @@ export default function ContractFurniture() {
     <div className="bg-[#F5F0E8] text-on-surface selection:bg-matte-gold selection:text-white">
       <main className="pt-20 md:pt-24">
         {/* Hero Section */}
-        <section className="min-h-[90vh] flex flex-col md:flex-row overflow-hidden">
+        <section className="min-h-[70vh] md:min-h-[90vh] flex flex-col md:flex-row overflow-hidden">
           {/* Left: Collage (60%) */}
-          <div className="w-full md:w-3/5 bg-surface-container-low relative flex items-center justify-center p-8 md:p-20 overflow-hidden min-h-[500px]">
-            <div className="relative w-full h-full max-w-4xl aspect-[4/3] flex items-center justify-center">
+          <div className="w-full md:w-3/5 bg-surface-container-low relative flex items-center justify-center p-6 md:p-20 overflow-hidden min-h-[300px] md:min-h-[500px]">
+            <div className="relative w-full h-full max-w-4xl aspect-[4/3] md:aspect-[4/3] flex items-center justify-center">
               {/* Image 2: Chair */}
-              <div className="absolute w-1/2 aspect-[3/4] rotate-2 translate-x-12 translate-y-12 z-20 bg-white p-3 shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-700 ease-out cursor-pointer">
+              <div className="absolute w-2/3 md:w-2/3 aspect-[4/4] rotate-2 translate-x-6 translate-y-6 md:translate-x-12 md:translate-y-12 z-20 bg-white p-2 md:p-3 shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-700 ease-out cursor-pointer">
                 <img
                   alt="Designer leather chair"
                   className="w-full h-full object-cover"
-                  src="/images/contract-furniture/Gemini"
+                  src="/images/contract-furniture/Gemini_Generated_Image_l0f914l0f914l0f9.png"
                 />
               </div>
               {/* Image 3: Detail */}
-              <div className="absolute w-2/5 aspect-square -rotate-6 translate-x-[-45%] translate-y-[35%] z-30 bg-white p-3 shadow-2xl hover:scale-105 hover:-translate-y-[15%] transition-all duration-700 ease-out cursor-pointer">
-                <img
-                  alt="Leather material detail"
-                  className="w-full h-full object-cover"
-                  src="/images/contract-furniture/40_IMG-20250722-WA0003.jpg"
-                />
-              </div>
             </div>
           </div>
           {/* Right: Panel (40%) */}
-          <div className="w-full md:w-2/5 bg-primary p-margin-mobile md:p-margin-desktop flex flex-col justify-center items-start text-on-primary shadow-2xl">
+          <div className="w-full md:w-2/5 bg-primary px-margin-mobile md:px-margin-desktop py-12 md:py-0 flex flex-col justify-center items-start text-on-primary shadow-2xl">
             <h1 className="font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-8 leading-[1.1] text-white">
               Contact &amp; Furniture Leather
             </h1>
@@ -228,7 +221,7 @@ export default function ContractFurniture() {
         </section>
 
         {/* Intro Section */}
-        <section className="py-16 md:py-20 lg:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <section className="pt-4 pb-16 md:pt-8 md:pb-20 lg:pt-12 lg:pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
           <div className="max-w-4xl mx-auto text-center mb-14">
             <p className="font-headline-md font-bold text-headline-md mb-6 text-primary italic leading-relaxed">
               We ethically source premium leathers from sustainable
@@ -244,6 +237,10 @@ export default function ContractFurniture() {
                 furniture.
               </p>
 
+              <h3 className="font-headline-sm text-headline-sm text-light-gold font-bold mb-4 mt-10 flex items-center gap-3">
+                <span className="w-6 h-[2px] bg-light-gold/60 inline-block"></span>
+                Ethically Sourced. Expertly Crafted.
+              </h3>
               <p className="font-body-lg text-body-lg leading-relaxed text-white/80 mb-6">
                 Through ethical sourcing, we offer a wide variety of durable,
                 elegant colors and finishes suitable for diverse
@@ -260,13 +257,17 @@ export default function ContractFurniture() {
                 of furnishings and applications.
               </p>
 
+              <h3 className="font-headline-sm text-headline-sm text-light-gold font-bold mb-4 mt-10 flex items-center gap-3">
+                <span className="w-6 h-[2px] bg-light-gold/60 inline-block"></span>
+                Crafted for Exceptional Spaces
+              </h3>
               <p className="font-body-lg text-body-lg leading-relaxed text-white/80">
                 We supply high-quality leathers that can be used to craft luxury
                 contract projects and premium indoor, outdoor, and home
                 furnishings, delivering lasting beauty, comfort, and timeless
                 appeal that make environments and furniture truly unique. Upon
                 request, our sister manufacturers can also produce leathers with
-                advanced features such as anti-stain, fire-retardant, and other
+                advanced features such as antistain, fire-retardant, and other
                 innovative technological finishes. Please get in touch with us
                 to learn more.
               </p>
