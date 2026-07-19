@@ -132,45 +132,44 @@ export default function About() {
             <h2 className="font-display text-headline-xl-mobile md:text-headline-xl text-primary editorial-underline mb-8 md:mb-14">
               Who We Are
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-6 items-stretch">
+            <div className="grid grid-cols-1 gap-10 items-stretch">
               {/* LEFT — airy editorial narrative */}
               <div className="relative lg:pr-8 lg:border-r border-outline-variant/20 flex flex-col justify-start">
                 <span className="inline-block font-label-caps text-label-caps tracking-[0.25em] uppercase text-[#c39090] mb-6">
                   Our Story
                 </span>
                 <div className="space-y-7 font-body text-[17px] md:text-[19px] text-secondary leading-loose">
-                  <p>
+                  <p className="text-justify">
                     <span className="float-left font-display text-primary text-[68px] leading-[54px] pr-3 pt-1">
                       V
                     </span>
-                    ivosa is a dynamic company based in the UK with an office,
-                    operating in both the leather and apparel industries. It was
-                    founded by professionals with over 30 years of experience in
-                    each sector, bringing proven technical expertise and a
-                    constant drive to embrace new challenges and achieve
-                    meaningful goals.
+                    ivosa is a dynamic company based in the UK, operating in
+                    both the leather and apparel industries. It was founded by
+                    professionals with over 30 years of experience in each
+                    sector, bringing proven technical expertise and a constant
+                    drive to embrace new challenges and achieve meaningful
+                    goals.
                   </p>
-                  <p>
+                  <p className="text-justify">
                     Our primary objective is to source materials ethically from
                     our sister companies—experienced, environmentally conscious
                     manufacturers with a long-standing commitment to quality.
-                    This approach enables us to strengthen our presence in the
-                    UK, Europe, and other international markets, supported by
+                    This approach allows us to strengthen our presence in the
+                    UK, Europe, and other international markets, backed by
                     sustainable manufacturing partners who have been delivering
                     high-quality products for over 50 years. By prioritizing
                     ethical sourcing, leveraging extensive industry experience,
                     and focusing on sustainability, we provide products that
-                    meet the highest standards and contribute to responsible
-                    business practices.
+                    meet the highest standards and support responsible business
+                    practices.
                   </p>
-                  <p>
-                    We prioritize customers first, and our dedicated, proactive
-                    team takes full responsibility for excellence at every step.
-                    From design and production to logistics, we deliver
-                    high-quality, sustainable products and innovative solutions
-                    at the right price—helping your business grow, maximize
-                    profit margins, and maintain the highest standards of
-                    quality and sustainability.
+                  <p className="text-justify">
+                    We put customers first. Our dedicated, proactive team takes
+                    full ownership at every step—from design and production to
+                    logistics. We deliver high-quality, sustainable products and
+                    innovative solutions at the right price, helping your
+                    business grow, maximize profit margins, and maintain the
+                    highest standards of quality and sustainability.
                   </p>
                 </div>
               </div>
@@ -186,34 +185,49 @@ export default function About() {
                     format_quote
                   </span>
                   <p className="font-display text-[30px] md:text-[36px] leading-tight text-white mb-8">
-                    Vivosa stands for{" "}
-                    <span className="italic text-[#e0b8b8]">“lively.”</span>
+                    Vivosa Stands For{" "}
+                    <span className="italic text-[#e0b8b8]">“Lively.”</span>
                   </p>
 
                   <div className="space-y-5 font-body text-body-lg text-white/85 leading-relaxed">
                     <p>
-                      An outfit is not just about expressing a style; it
-                      reflects your individuality and inner self through choices
-                      that make you feel comfortable and joyful. Wearing what
-                      resonates with you and boosts your confidence is more
-                      meaningful than blindly following trends. Every individual
-                      is unique, with different tastes and lifestyles.
+                      <strong>
+                        An outfit is more than just a way to express your
+                        style—it reflects your individuality and inner self
+                        through the choices that make you feel comfortable,
+                        confident, and joyful. Wearing what truly resonates with
+                        you is far more meaningful than simply following trends.
+                        Every individual is unique, with their own tastes,
+                        preferences, and lifestyle.
+                      </strong>
                     </p>
                     <p>
-                      Vivosa is operated by professionals who have more than 30
-                      years of working experience in both the leather and
-                      clothing industries. Our expert team draws on this
-                      knowledge to design, develop, and deliver authentic,
-                      sustainable products that balance style, functionality,
-                      and long-lasting quality.
+                      Vivosa is operated by professionals with more than 30
+                      years of experience in the leather and apparel industries.
+                      Our expert team draws on this extensive knowledge to
+                      design, develop, and deliver premium, sustainably crafted
+                      products that combine style, functionality, and lasting
+                      quality.
                     </p>
                     <p>
                       By focusing on sustainable manufacturing, durability,
                       quality, and customer satisfaction, we provide the finest
-                      leather and authentic clothing at affordable prices—
+                      leather goods and premium clothing at affordable prices,
                       empowering people to feel confident, expressive, and
-                      “lively” in everything they wear. This philosophy is what
-                      inspired the name Vivosa.
+                      lively in everything they wear. These same values are
+                      reflected in every partnership we build through our
+                      commitment to quality, integrity, and helping our clients’
+                      businesses thrive.
+                    </p>
+                    <p>
+                      <strong>
+                        This philosophy is the heart behind our name, “VIVOSA”—a
+                        name inspired by life that reflects our passion for
+                        innovation, craftsmanship, trusted partnerships, and
+                        sustainable manufacturing. It represents our commitment
+                        to creating timeless products that deliver lasting value
+                        for our clients and the people who wear them.
+                      </strong>
                     </p>
                   </div>
 
@@ -260,17 +274,19 @@ export default function About() {
               What We Do
             </h2>
             <p className="font-body text-body-lg text-secondary leading-relaxed max-w-5xl mx-auto">
-              We supply a broad range of authentic finished leather for multiple
-              applications and all types of premium ready-made garments,
-              produced to order, in the UK, Europe, and other markets. Our
-              products are sourced from carefully selected producers with
-              decades of experience; all fully certified as sustainable
-              manufacturers. We value our clients and are glad to assist them in
-              producing new goods, developing or completing projects as needed,
-              overcoming challenges, and consistently providing the best
-              service. Our commitment is to offer affordable sourcing solutions
-              and expertly calculated product costs to help our clients run
-              their business more efficiently.
+              We supply a broad range of premium finished leather for multiple
+              applications, along with a comprehensive range of made-to-order
+              apparel and accessories for clients across the UK, Europe, and
+              international markets. We work with carefully selected
+              manufacturing partners with decades of industry experience, all
+              certified for sustainable manufacturing. We value every client and
+              are committed to supporting them at every stage of the
+              process—from product development and technical support to design,
+              tech pack preparation, sample development within 10 days, and the
+              successful completion of ongoing projects. Our goal is to provide
+              cost-effective manufacturing and sourcing solutions, accurate
+              product costing, dependable service, and exceptional value to help
+              our clients operate their businesses more efficiently.
             </p>
           </div>
         </section>
@@ -290,7 +306,7 @@ export default function About() {
                 <h2 className="font-display text-headline-xl-mobile md:text-headline-xl text-primary editorial-underline mb-8">
                   Leather Craftsmanship
                 </h2>
-                <p>
+                <p className="font-bold">
                   We have over 30 years of working experience in renowned
                   tanneries that have been operating for more than 60 years,
                   specializing in producing high-quality hides for the global
@@ -383,14 +399,12 @@ export default function About() {
                 <h2 className="font-display text-headline-xl-mobile md:text-headline-xl text-primary editorial-underline mb-8">
                   Apparel
                 </h2>
-                <p>
+                <p className="font-bold">
                   Our commitment is to sourcing products that prioritize human
                   rights, environmental sustainability, and fair business
                   practices.
                 </p>
-                <p className="font-bold text-primary">
-                  MOST OF OUR CLOTHES COME FROM BANGLADESH
-                </p>
+                <p>Most of our clothes come from Bangladesh</p>
                 <p>
                   A country with a rich textile heritage that has been renowned
                   for centuries. The textiles of historic Bengal were famous for
@@ -535,23 +549,25 @@ export default function About() {
             <h2 className="font-display text-headline-xl-mobile md:text-headline-xl text-primary editorial-underline mb-12 text-center">
               How We Work
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              <p className="font-body text-body-lg text-secondary leading-relaxed">
-                We operate as a supplier to major wholesalers and importers, as
-                well as high-street and online retailers in the UK, Europe, and
-                many other countries worldwide. We act both as direct buyers and
-                sellers, and as agents. Importantly, there is no broker or
-                intermediary between us and the manufacturer, giving our
-                customers extensive opportunities and the ability to communicate
-                with us directly 24/7.
+            <div className="space-y-8">
+              <p className="font-body text-body-lg text-secondary leading-relaxed text-justify">
+                We supply major wholesalers, importers, high-street retailers,
+                and online retailers across the UK, Europe, and international
+                markets. We operate as direct buyers, sellers, and suppliers, as
+                well as trusted agents, creating strong connections between our
+                clients and manufacturing partners. With no intermediary
+                involved between us and the manufacturer, our customers benefit
+                from direct communication, greater transparency, competitive
+                opportunities, an efficient sourcing process, and customised
+                manufacturing solutions.
               </p>
-              <p className="font-body text-body-lg text-secondary leading-relaxed">
-                We typically begin with the client’s sample or tech pack.
-                However, if you need support developing a design or new product,
-                our world-class designers and technical team can create it for
-                you, whether it’s leather or apparel. We welcome collaboration
-                on your upcoming projects. Our main objective is to work closely
-                with you to ensure your goals are achieved within your target
+              <p className="font-body text-body-lg text-secondary leading-relaxed text-justify">
+                We typically begin with the client’s sample or technical pack.
+                However, if you require support in developing a new design or
+                product, our world-class designers and technical team can help
+                bring your vision to life, whether for leather or apparel. We
+                welcome collaboration on your upcoming projects and work closely
+                with you to ensure your objectives are met within your target
                 timeline.
               </p>
             </div>

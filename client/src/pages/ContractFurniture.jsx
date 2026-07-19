@@ -116,7 +116,7 @@ export default function ContractFurniture() {
                 <img
                   alt="Designer leather chair"
                   className="w-full h-full object-cover"
-                  src="/images/contract-furniture/38_IMG-20250712-WA0011.jpg"
+                  src="/images/contract-furniture/Gemini"
                 />
               </div>
               {/* Image 3: Detail */}
@@ -135,8 +135,9 @@ export default function ContractFurniture() {
               Contact &amp; Furniture Leather
             </h1>
             <p className="font-body-lg text-body-lg text-white/60 mb-12 max-w-sm leading-relaxed">
-              Crafting the foundations of luxury through precision manufacturing
-              and ecological responsibility.
+              {" "}
+              Our manufacturing partners craft the foundation of luxury through
+              precision craftsmanship and environmental responsibility.
             </p>
             <a
               className="inline-flex items-center gap-4 text-matte-gold hover:text-white hover:gap-8 transition-all duration-500 font-label-caps text-body-md border-b border-matte-gold/30 pb-3 group uppercase tracking-widest"

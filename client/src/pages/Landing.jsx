@@ -234,8 +234,8 @@ export default function Landing() {
               <span className="font-label-caps text-gold-accent tracking-[0.3em] uppercase block mb-6 mt-12 lg:mt-20">
                 Redefining Craftsmanship
               </span>
-              <h1 className="text-lg text-display-lg-mobile md:text-display-lg mb-8">
-                Welcome to Vivosa.
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-tight mb-8 max-w-none md:whitespace-nowrap drop-shadow-[0_12px_20px_rgba(0,0,0,0.25)]">
+                Welcome to <span className="text-gold-accent">Vivosa.</span>
               </h1>
               <p className="font-body-lg text-body-lg mb-6 text-surface-variant/90 leading-relaxed">
                 We are delighted to hear your ideas and designs, and we love
@@ -343,24 +343,29 @@ export default function Landing() {
             <h2 className="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-deep-forest mb-8">
               Our Vision &amp; Mission
             </h2>
-            <div className="space-y-8 font-body-lg text-on-surface-variant leading-relaxed">
+            <div className="space-y-8 font-body-lg text-on-surface-variant leading-relaxed text-left md:text-justify">
               <div>
                 <h4 className="font-label-caps text-sm text-gold-accent uppercase tracking-wider mb-2 font-semibold">
                   OUR VISION
                 </h4>
                 <p className="mb-3">
-                  Our vision extends outside our business. We aspire to make a
-                  good impact on the globe, from the communities where we obtain
-                  our raw materials to how our products help our consumers live
-                  livelier.
+                  Our vision extends beyond business. We aspire to make a
+                  positive impact on the world from the communities where we
+                  source our raw materials to the ways our products help
+                  customers lead more fulfilling lives. We are committed to
+                  building trusted partnerships, prioritizing customer
+                  satisfaction, and fostering a collaborative, ethical, and
+                  trustworthy work environment.
                 </p>
                 <p>
-                  Our top priorities are customer satisfaction and their values
-                  and working together to build a pleasant and trustable work
-                  environment. We are committed to listening to our customers
-                  and consistently offering reliable, innovative, and
-                  long-lasting quality solutions to guarantee their safety and
-                  sustainability.
+                  By listening to our customers and continuously improving, we
+                  deliver reliable, innovative,and highquality materials and
+                  solutions that exceed expectations. Through responsible global
+                  sourcing, innovation, and the highest standards of
+                  sustainability and ethical business practices, we create
+                  lasting value for our clients, empower our employees, support
+                  our manufacturing partners,and contribute positively to the
+                  communities and environments in which we operate.
                 </p>
               </div>
 
@@ -370,13 +375,23 @@ export default function Landing() {
                 </h4>
                 <p className="mb-3">
                   Our mission is to work with our partners to create a brighter
-                  future. Engaging with us means we invite our clients to join.
+                  future for people, communities,and future generations by
+                  fostering a culture of excellence, collaboration, and
+                  integrity.
                 </p>
                 <p>
-                  In our commitment to sustainability, we actively seek social,
-                  economic, and environmental sustainability, placing a high
-                  priority on the welfare of our employees and the community,
-                  prioritizing constant enhancement and proactive growth.
+                  We provide reliable, efficient,and cost-effective global
+                  sourcing and supply chain solutions, connecting businesses
+                  with high-quality products and trusted manufacturing partners.
+                  Through responsive service, transparent communication,and an
+                  unwavering commitment to quality, we help our clients achieve
+                  their business objectives with confidence.
+                </p>
+                <p>
+                  Partnering with us means joining a journey of professional,
+                  personal, and business growth—one that embraces continuous
+                  improvement, practical solutions, and the delivery of products
+                  that create lasting value.
                 </p>
               </div>
             </div>
