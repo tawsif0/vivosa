@@ -42,7 +42,7 @@ export default function LeatherGoods() {
           <img
             alt="Luxury Leather Goods"
             className="absolute inset-0 h-full w-full object-cover"
-            src="/slides/leather_goods_hero.png"
+            src="/images/Gemini_Generated_Image_xq84zcxq84zcxq84.png"
           />
           {/* Simple bottom-up gradient for clean legibility */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#1c0f07]/95 via-[#1c0f07]/55 to-[#1c0f07]/10" />
