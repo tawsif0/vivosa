@@ -51,19 +51,18 @@ export default function LeatherGoods() {
             <div className="max-w-2xl text-white">
               {/* Gold accent line */}
               <div className="mb-6 h-[2px] w-14 bg-[#dfc06f]" />
-              <span className="mb-4 block text-[11px] font-semibold uppercase tracking-[0.3em] text-[#dfc06f]">
-                Premium Leather Goods
-              </span>
-              <h1 className="mb-6 font-display text-[42px] leading-none text-white sm:text-[56px] lg:text-[76px]">
-                Leather Goods
+
+              <h1 className="mb-6 font-display text-[28px] leading-tight text-white sm:text-[34px] lg:text-[52px]">
+                Premium Leather for Leather Goods
               </h1>
               <p className="max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
-                Our environmentally conscious manufacturer sources eco-friendly
-                products without compromising quality for several decades and
-                proudly serves customers worldwide. We create distinctive
-                leather goods and accessories with exceptional beauty,
-                durability, style, and luxury, shaped by sustainable sourcing
-                and refined craftsmanship.
+                Our environmentally conscious manufacturing partners have been
+                producing premium sustainable leather for making high-quality
+                leather goods for decades without compromising on quality. With
+                internationally recognised certifications, including LWG, we
+                proudly supply customers worldwide with distinctive leather that
+                offers exceptional beauty, durability, style, and luxury, shaped
+                by responsible sourcing and refined craftsmanship.
               </p>
             </div>
           </div>
@@ -220,7 +219,7 @@ export default function LeatherGoods() {
           <div className="absolute bottom-0 right-0 w-24 h-24 border-b border-r border-neutral-200/50 pointer-events-none"></div>
 
           <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
-            <span className="font-label-caps text-[10px] md:text-[11px] tracking-[0.25em] text-matte-gold uppercase font-bold block">
+            <span className="font-label-caps text-[12px] md:text-[14px] tracking-[0.25em] text-matte-gold uppercase font-bold block">
               CRAFTSMANSHIP &amp; RESPONSIBILITY
             </span>
 
@@ -269,6 +268,30 @@ export default function LeatherGoods() {
           </div>
         </section>
 
+        {/* Sustainability Section */}
+        <section className="relative bg-surface py-20 px-6 md:px-16 lg:px-24 overflow-hidden">
+          <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+            <span className="font-label-caps text-[12px] md:text-[14px] tracking-[0.25em] text-matte-gold uppercase font-bold block">
+              SUSTAINABILITY WOVEN INTO EVERY CREATION
+            </span>
+            <div className="font-display text-[15px] sm:text-[17px] md:text-[19px] lg:text-[21px] text-neutral-800 leading-[1.8] font-light tracking-wide max-w-3xl mx-auto space-y-6">
+              <p>
+                Our collaborating tanneries are committed to environmentally
+                responsible leather production through conscious tanning
+                processes, reduced chemical impact, and certified compliance. The
+                result is high-quality, sustainable leather for bags, belts,
+                accessories, and other leather goods, offering exceptional
+                durability, rich texture, and timeless appeal.
+              </p>
+            </div>
+            <div className="flex justify-center items-center gap-3 pt-2">
+              <span className="w-1.5 h-1.5 bg-[#8B6914] rotate-45"></span>
+              <div className="h-[1px] w-12 bg-neutral-300"></div>
+              <span className="w-1.5 h-1.5 bg-[#8B6914] rotate-45"></span>
+            </div>
+          </div>
+        </section>
+
         {/* CLOSING & SUSTAINABILITY */}
         <section className="bg-surface py-16 md:py-20 lg:py-24">
           <div className="bg-primary-container text-on-primary shadow-inner">
@@ -307,6 +330,7 @@ export default function LeatherGoods() {
                     "Finishing processes",
                     "Technical sheets & certifications",
                     "Manufacturing facility details",
+                    "And more",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-4">
                       <span
@@ -325,10 +349,19 @@ export default function LeatherGoods() {
                   ))}
                 </ul>
 
-                <div className="pt-4 border-t border-white/10">
-                  <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
-                    … Please get in touch with us, and we will respond promptly.
-                  </p>
+                <div className="pt-6 border-t border-white/10">
+                  <div className="flex items-start gap-3">
+                    <span className="material-symbols-outlined text-light-gold shrink-0 mt-0.5" style={{ fontVariationSettings: "'FILL' 1", color: "#dfc06f" }}>
+                      forward_to_inbox
+                    </span>
+                    <p className="font-body-md font-bold text-white/90 leading-relaxed text-[15px]">
+                      Please{" "}
+                      <a href="/contact" className="text-light-gold underline decoration-light-gold/40 hover:decoration-light-gold transition-all duration-300">
+                        get in touch
+                      </a>{" "}
+                      with us, and we will respond promptly.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

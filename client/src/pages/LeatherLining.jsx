@@ -352,6 +352,7 @@ export default function LeatherLining() {
                     "Finishing processes",
                     "Technical sheets & certifications",
                     "Manufacturing facility details",
+                    "And more",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-4">
                       <span
@@ -369,10 +370,19 @@ export default function LeatherLining() {
                     </li>
                   ))}
                 </ul>
-                <div className="pt-4 border-t border-white/10">
-                  <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
-                    … Please get in touch with us, and we will respond promptly.
-                  </p>
+                <div className="pt-6 border-t border-white/10">
+                  <div className="flex items-start gap-3">
+                    <span className="material-symbols-outlined text-light-gold shrink-0 mt-0.5" style={{ fontVariationSettings: "'FILL' 1", color: "#dfc06f" }}>
+                      forward_to_inbox
+                    </span>
+                    <p className="font-body-md font-bold text-white/90 leading-relaxed text-[15px]">
+                      Please{" "}
+                      <a href="/contact" className="text-light-gold underline decoration-light-gold/40 hover:decoration-light-gold transition-all duration-300">
+                        get in touch
+                      </a>{" "}
+                      with us, and we will respond promptly.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

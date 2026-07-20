@@ -113,10 +113,9 @@ export default function AviationLeather() {
               Aviation Leather Solutions
             </h1>
             <div className="w-20 h-[2px] bg-matte-gold mb-6"></div>
-            <p className="font-body text-sm md:text-lg text-white/95 max-w-2xl leading-relaxed">
-              The global aviation industry continues to grow and innovate, with
-              increasing emphasis on comfort, design, performance, and
-              sustainability.
+            <p className="font-body text-sm md:text-lg text-white/95 max-w-2xl leading-relaxed tracking-[0.08em] uppercase italic shadow-[0_0_30px_rgba(0,0,0,0.25)] px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm">
+              The finest journeys are defined not only by where they take you,
+              but by how they make you feel along the way
             </p>
           </div>
           {/* Scroll Down Indicator */}
@@ -527,32 +526,18 @@ export default function AviationLeather() {
           </div>
         </section>
 
-        {/* Section 10: Care & Sustainability (Single Image av14 - split layout, image left) */}
-        <section className="w-full mx-auto px-6 md:px-12 lg:px-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
-            <div className="flex items-center justify-center w-full order-last lg:order-first">
-              <blockquote className="relative w-full max-w-[450px] rounded-xl border border-matte-gold/30 bg-gradient-to-br from-[#FBF6EC] to-[#F0E6CE] p-10 md:p-12 shadow-lg">
-                <span
-                  className="material-symbols-outlined text-matte-gold text-5xl leading-none mb-4 block"
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  format_quote
-                </span>
-                <p className="font-display text-xl md:text-2xl lg:text-[28px] italic text-primary leading-snug">
-                  “The finest journeys are defined not only by where they take
-                  you, but by how they make you feel along the way.”
-                </p>
-                <div className="w-16 h-[2px] bg-matte-gold mt-8"></div>
-              </blockquote>
-            </div>
-            <div className="space-y-6">
+        {/* Section 10: Care & Sustainability */}
+        <section className="w-full mx-auto px-6 md:px-12 lg:px-24 py-16 md:py-20 lg:py-24">
+          <div className="rounded-[32px]  p-8 md:p-10 lg:p-14 shadow-[0_20px_70px_rgba(0,0,0,0.06)]">
+            <div className="max-w-4xl mx-auto space-y-6">
               <span className="inline-block text-matte-gold font-label-caps tracking-[0.2em] uppercase text-xs font-semibold">
                 10 / Ecology
               </span>
               <h2 className="font-display text-2xl md:text-4xl text-primary uppercase tracking-wide font-bold">
                 Care &amp; Sustainability
               </h2>
-              <div className="font-body-md text-neutral-600 leading-relaxed space-y-6">
+              <div className="w-16 h-[2px] bg-matte-gold"></div>
+              <div className="font-body-md text-neutral-600 leading-relaxed space-y-5">
                 <p>
                   Our portfolio includes a growing range of sustainable leather
                   solutions — chrome-free, metal-free, and responsibly
@@ -563,15 +548,18 @@ export default function AviationLeather() {
                   internationally recognised certifications including Leather
                   Working Group (LWG) accreditation, ensuring full traceability,
                   regulatory compliance, and continuous innovation for aviation
-                  interiors. At VIVOSA, we carefully select manufacturers whose
-                  leather begins as a by-product of the European beef industry —
-                  raw hides that would otherwise go to waste are transformed
-                  into a premium, sustainable material. Co-products from the
-                  tanning process are then supplied to other industries,
-                  including technical manufacturing and food production, where
-                  they serve as valuable raw materials. This circular approach
-                  keeps waste out of landfill and ensures every part of the hide
-                  is put to good use.
+                  interiors.
+                </p>
+                <p>
+                  At VIVOSA, we carefully select manufacturers whose leather
+                  begins as a by-product of the European beef industry — raw
+                  hides that would otherwise go to waste are transformed into a
+                  premium, sustainable material. Co-products from the tanning
+                  process are then supplied to other industries, including
+                  technical manufacturing and food production, where they serve
+                  as valuable raw materials. This circular approach keeps waste
+                  out of landfill and ensures every part of the hide is put to
+                  good use.
                 </p>
                 <p>
                   At VIVOSA, we carefully select manufacturers whose leather

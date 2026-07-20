@@ -92,20 +92,64 @@ export default function Automotive() {
           <img
             alt="Luxury Automotive Leather Interior"
             className="absolute inset-0 w-full h-full object-cover object-bottom"
-            src="/images/automotive_hero2.jpeg"
+            src="/images/Gemini_Generated_Image_yzulyfyzulyfyzul.png"
             fetchpriority="high"
           />
         </section>
-
         {/* Section 1B: HERO TEXT - Below the image */}
-
+        <section className="bg-surface py-20 md:py-28 px-margin-desktop">
+          <div className="max-w-5xl mx-auto text-center space-y-8">
+            <p className="font-display text-[24px] md:text-[32px] text-primary leading-tight uppercase tracking-wide">
+              Our manufacturing partner: crafting the foundations of luxury
+              through precision and environmental responsibility.
+            </p>
+            <div className="w-16 h-[1.5px] bg-matte-gold mx-auto" />
+            <p className="font-body-lg text-body-lg text-on-surface-variant italic leading-relaxed max-w-3xl mx-auto">
+              It's not just a leather interior. It's a masterpiece—crafted with
+              care, finished with a touch of love, and{" "}
+              <span className="text-primary font-semibold not-italic">
+                designed for lasting luxury
+              </span>
+              .
+            </p>
+          </div>
+        </section>
+        {/* Section 1C: LEGACY */}
+        <section className="bg-white py-16 md:py-20 lg:py-24 px-margin-desktop">
+          <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-gutter items-center">
+            <div>
+              <h2 className="font-display text-[28px] md:text-[36px] text-primary leading-tight uppercase tracking-wide">
+                A Legacy of Excellence in Automotive Leather
+              </h2>
+            </div>
+            <div className="space-y-5 text-on-surface-variant leading-relaxed">
+              <p className="font-body-lg text-body-lg">
+                <strong>
+                  At VIVOSA, we supply premium automotive leather crafted by
+                  partner tanneries with over 50 years of expertise.
+                </strong>{" "}
+                We collaborate with industry leaders who produce refined,
+                durable, and luxurious leather while placing environmental
+                responsibility at the heart of every stage of production.
+              </p>
+              <p className="font-body-md text-body-md">
+                Their commitment includes protecting the planet, conserving
+                natural resources, ensuring safe working conditions, and
+                respecting the people behind every craft. All production
+                complies with strict European and international regulations.
+              </p>
+              <p className="font-body-md text-body-md">
+                Both quality and environmental management systems are fully
+                certified, including Leather Working Group (LWG) certification,
+                ensuring responsible, ethical, and sustainable manufacturing.
+              </p>
+            </div>
+          </div>
+        </section>
         {/* Section 2: INTRO 1 */}
         <section className="bg-primary-container py-16 md:py-20 lg:py-24 px-margin-desktop">
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-gutter items-center">
             <div className="pr-12 text-on-primary">
-              <span className="font-label-caps text-label-caps text-on-primary-container tracking-widest block mb-4 uppercase">
-                QUALITY CONTROL STANDARDS
-              </span>
               <h2 className="font-headline-xl text-headline-xl text-on-primary mb-8">
                 Engineering Luxury Behind the Wheel
               </h2>
@@ -132,7 +176,6 @@ export default function Automotive() {
             </div>
           </div>
         </section>
-
         {/* Section 3: INTRO 2 */}
         <section className="bg-surface py-16 md:py-20 lg:py-24 px-margin-desktop">
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-gutter items-center">
@@ -184,52 +227,17 @@ export default function Automotive() {
             </div>
           </div>
         </section>
-
-        {/* Section 4: STRIP */}
-        <section className="bg-[#1C1C1C] py-16 px-margin-desktop">
-          <div className="max-w-container-max mx-auto overflow-hidden">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-              <img
-                alt="Laser Cutting"
-                className="w-full h-64 object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1QTi71gjxsfVOpWmmBLyTdFqyMIm1rGNf_ykXD483bY__SVeSMTOGS2XqWscOzT_W-gLuiRwYUL8c3-HCagjoqmArfVCOXuaafi6QisuUVmYWfoeE7UOvEICb454MLNdMQat217MPqvSwF6MGGVCwOSM52hfg7iTfokQsJv7kJsbCsNRXwBJ4E9kuPuNQiP0S9PmUnGwFh8hK2z_H72Cyr3Hl0HQ655pQFdAUgtMzOCFR4WvdskXyiqAlopfo61wq4F-t_WkXFr4"
-              />
-              <img
-                alt="Hand Stitching"
-                className="w-full h-64 object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1KVfDcvJZJMwaOLOmTC1KcjzxOtKMyCNd2G0woZUy2H4WosJWvlMjFj_K0ti2UJt0pBlwDOtZ38MLL99TmP3TfeKH5JWArzfSUmT9uMYq4eN4IfNP7ols5pjx3Rj7fxIm8kFpx6-x8nYCiG1x78VlzwdwE3a7O5WMzd72ALgIVF6tBNRNFDs2ZT43Yt6TafUSIBRH3F-3lPATwWzb8P72TO-EDZDzk1ZHwIhZjqqVTo2QabQuGsX9DNsrxoFjOJGNIiDleG_3-jk"
-              />
-              <img
-                alt="Stitching Facility"
-                className="w-full h-64 object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWh6dE1_QUPmO9NpthcxJowMucmPASgN16uFAaMtXpX7YgVl4UI5ZPyQ0zzoc_Ux7EVFyJYC-uOLKJUIHfVEESe9b9XJQo-y5dQ_xwY5G31JN1NZRVwjUx4yztNbRDrX4--_xRI8BN8o1NTCxwPRPdBz7RpUOnZMm4yfGkGgXAIVf1H5BwNyM_LcyozEQNIiYRvW5YIwLlas88tskdOBC9MflzLQZG5THOgATP28SGXBIrSToY2yP0I8kcGF9HVJHfd93bJK04LXM"
-              />
-              <img
-                alt="Finished Rolls"
-                className="w-full h-64 object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8cz2eKqi4Adw-xGfRF2mr2hKZvqwalL4F9l1R1Q7UntIwwTUGYq8mVAmQhmDnlBw0fcSQahiSCkPW6X2EbsTdFequ_EQmZO8istIVx-B7H69QEeRWJjwK2IJCG4DXeovbxDW9GvhS7O1XA3UpgomlhGVBLstB_j8gDjHSxc6eNHO86RmUZaFzHUXQD1iMqHPJ_31Aw1b6-WpccRNZIPZEKx8unNkIbvRe2Mv26sudDV3RmiB88QymBrIRXk2OX-E1-inmN4Q9jYs"
-              />
-            </div>
-            <div className="text-center">
-              <p className="font-body-md text-body-md text-on-secondary/50 max-w-3xl mx-auto italic leading-relaxed">
-                Additionally, some of our manufacturers offer dedicated cutting
-                and stitching facilities, where you can cut and stitch leather
-                exactly to your design specifications.
-              </p>
-            </div>
-          </div>
-        </section>
-
         {/* Section 5: BELIEF */}
         <section className="bg-white py-16 md:py-20 lg:py-24 px-margin-desktop">
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter">
             <div className="flex items-center">
               <blockquote className="font-headline-xl text-[22px] md:text-[26px] lg:text-[28px] italic text-on-background leading-snug pr-12">
-                "Our sister company has been combining history, uniqueness, and
-                durable leather for 50 years. With lively designs that you can
-                fully customize in shape, colours, and style, we continue to
-                create sustainably and ethically, building a better world in the
-                automotive sector."
+                "Our sister tannery company has been combining history,
+                uniqueness, and durable leather for 50 years, with lively
+                designs that you can fully customize based on shape, colour, and
+                style — continuing to create sustainably and ethically, offering
+                excellent features, and building a better world for the
+                automotive interior."
               </blockquote>
             </div>
             <div className="bg-primary text-on-primary p-12 flex flex-col justify-center">
@@ -266,7 +274,40 @@ export default function Automotive() {
             </div>
           </div>
         </section>
-
+        {/* Section 4: STRIP */}
+        <section className="bg-[#1C1C1C] py-16 px-margin-desktop">
+          <div className="max-w-container-max mx-auto overflow-hidden">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+              <img
+                alt="Laser Cutting"
+                className="w-full h-64 object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1QTi71gjxsfVOpWmmBLyTdFqyMIm1rGNf_ykXD483bY__SVeSMTOGS2XqWscOzT_W-gLuiRwYUL8c3-HCagjoqmArfVCOXuaafi6QisuUVmYWfoeE7UOvEICb454MLNdMQat217MPqvSwF6MGGVCwOSM52hfg7iTfokQsJv7kJsbCsNRXwBJ4E9kuPuNQiP0S9PmUnGwFh8hK2z_H72Cyr3Hl0HQ655pQFdAUgtMzOCFR4WvdskXyiqAlopfo61wq4F-t_WkXFr4"
+              />
+              <img
+                alt="Hand Stitching"
+                className="w-full h-64 object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1KVfDcvJZJMwaOLOmTC1KcjzxOtKMyCNd2G0woZUy2H4WosJWvlMjFj_K0ti2UJt0pBlwDOtZ38MLL99TmP3TfeKH5JWArzfSUmT9uMYq4eN4IfNP7ols5pjx3Rj7fxIm8kFpx6-x8nYCiG1x78VlzwdwE3a7O5WMzd72ALgIVF6tBNRNFDs2ZT43Yt6TafUSIBRH3F-3lPATwWzb8P72TO-EDZDzk1ZHwIhZjqqVTo2QabQuGsX9DNsrxoFjOJGNIiDleG_3-jk"
+              />
+              <img
+                alt="Stitching Facility"
+                className="w-full h-64 object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWh6dE1_QUPmO9NpthcxJowMucmPASgN16uFAaMtXpX7YgVl4UI5ZPyQ0zzoc_Ux7EVFyJYC-uOLKJUIHfVEESe9b9XJQo-y5dQ_xwY5G31JN1NZRVwjUx4yztNbRDrX4--_xRI8BN8o1NTCxwPRPdBz7RpUOnZMm4yfGkGgXAIVf1H5BwNyM_LcyozEQNIiYRvW5YIwLlas88tskdOBC9MflzLQZG5THOgATP28SGXBIrSToY2yP0I8kcGF9HVJHfd93bJK04LXM"
+              />
+              <img
+                alt="Finished Rolls"
+                className="w-full h-64 object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8cz2eKqi4Adw-xGfRF2mr2hKZvqwalL4F9l1R1Q7UntIwwTUGYq8mVAmQhmDnlBw0fcSQahiSCkPW6X2EbsTdFequ_EQmZO8istIVx-B7H69QEeRWJjwK2IJCG4DXeovbxDW9GvhS7O1XA3UpgomlhGVBLstB_j8gDjHSxc6eNHO86RmUZaFzHUXQD1iMqHPJ_31Aw1b6-WpccRNZIPZEKx8unNkIbvRe2Mv26sudDV3RmiB88QymBrIRXk2OX-E1-inmN4Q9jYs"
+              />
+            </div>
+            <div className="text-center">
+              <p className="font-body-md text-body-md text-on-secondary/50 max-w-3xl mx-auto italic leading-relaxed">
+                Additionally, some of our manufacturers offer dedicated cutting
+                and stitching facilities, where you can cut and stitch leather
+                exactly to your design specifications.
+              </p>
+            </div>
+          </div>
+        </section>
         {/* Section 6: APPLICATIONS */}
         <section className="bg-surface py-16 md:py-20 lg:py-24 px-margin-desktop">
           <div className="max-w-container-max mx-auto">
@@ -279,7 +320,7 @@ export default function Automotive() {
                 craftsmanship, care, and responsibility."
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-16 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-16 items-center">
               <div className="space-y-6 text-on-surface-variant leading-relaxed">
                 <p className="font-body-lg text-body-lg text-neutral-700">
                   <strong>We believe quality control</strong> means checking and
@@ -296,6 +337,33 @@ export default function Automotive() {
                   producing leather for the automotive sector.
                 </p>
                 <p className="font-body-md text-body-md text-neutral-600">
+                  <storng>We look forward</storng> to collaborating with you on
+                  your next project, as we value meaningful partnerships and
+                  enjoy working together to ensure your goals are successfully
+                  achieved. Through ethical sourcing, we provide superior
+                  finished leather for a wide variety of automotive interior
+                  applications, including:
+                </p>
+              </div>
+              <div className="order-1 md:order-2 flex justify-center">
+                <img
+                  alt="Heritage and Quality"
+                  className="w-3/4 md:w-4/5 object-cover rounded-xl"
+                  src="/images/Gemini_Generated_Image_8h8usv8h8usv8h8u.png"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* Section 6B: CAPABILITY */}
+        <section className="bg-white py-16 md:py-20 lg:py-24 px-margin-desktop">
+          <div className="max-w-container-max mx-auto">
+            <div className="max-w-4xl mx-auto space-y-10 md:space-y-12">
+              <div className="space-y-4 md:space-y-6 text-center md:text-left">
+                <span className="font-label-caps text-label-caps text-matte-gold tracking-[0.2em] uppercase text-xs">
+                  Capability
+                </span>
+                <p className="font-body-lg text-body-lg text-neutral-700 leading-relaxed">
                   <strong>We look forward to</strong> collaborating with you on
                   your next project, as we value meaningful partnerships and
                   enjoy working together to ensure your goals are successfully
@@ -304,7 +372,7 @@ export default function Automotive() {
                   applications, including:
                 </p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
                 {[
                   "Seats, Armrests, and Headrests (full or partial coverage)",
                   "Steering Wheels",
@@ -317,9 +385,9 @@ export default function Automotive() {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="rounded-xl border border-outline-variant/40 bg-white p-4 shadow-sm transition-all duration-500 hover:border-matte-gold hover:shadow-md"
+                    className="rounded-xl border border-outline-variant/40 bg-white p-3 md:p-4 shadow-sm transition-all duration-500 hover:border-matte-gold hover:shadow-md"
                   >
-                    <span className="font-body-md text-body-md font-semibold text-primary leading-relaxed">
+                    <span className="font-body-md text-[12px] md:text-body-md font-semibold text-primary leading-relaxed block">
                       {item}
                     </span>
                   </div>
@@ -410,7 +478,6 @@ export default function Automotive() {
             </div>
           </div>
         </section>
-
         {/* Section 8: CLOSING - Craftsmanship, Collaboration & Responsibility */}
         <section className="bg-primary py-24 px-margin-desktop text-on-primary">
           <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -444,76 +511,78 @@ export default function Automotive() {
             </div>
           </div>
         </section>
-
         {/* Section 8B: Design | Features | Care & Sustainability */}
-        <section className="bg-surface-container py-24 px-margin-desktop border-t border-b border-neutral-100">
-          <div className="max-w-container-max mx-auto space-y-16">
-            <div className="text-center space-y-4">
+        <section className="bg-surface-container py-16 md:py-20 lg:py-24 px-margin-desktop">
+          <div className="max-w-container-max mx-auto">
+            <div className="text-center mb-12 md:mb-16">
               <span className="font-label-caps text-label-caps text-matte-gold tracking-widest uppercase text-xs">
                 Performance & Ecology
               </span>
-              <h2 className="font-display text-[32px] md:text-[44px] text-primary leading-tight uppercase tracking-wide">
+              <h2 className="font-display text-[28px] md:text-[36px] text-primary leading-tight uppercase tracking-wide mt-4">
                 Design | Features | Care &amp; Sustainability
               </h2>
             </div>
 
-            {/* 3-Image Gallery Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="overflow-hidden shadow-md border border-neutral-200 bg-white p-2">
-                <img
-                  src="/images/automotive1.png"
-                  alt="Automotive Interior Design 1"
-                  className="w-full h-80 object-cover hover:scale-105 transition-transform duration-700"
-                />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+              {/* Left: Images */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="overflow-hidden shadow-md border border-neutral-200 bg-white p-1.5 col-span-2">
+                  <img
+                    src="/images/automotive1.png"
+                    alt="Automotive Interior Design 1"
+                    className="w-full h-64 md:h-72 object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="overflow-hidden shadow-md border border-neutral-200 bg-white p-1.5">
+                  <img
+                    src="/images/automotive2.png"
+                    alt="Automotive Interior Design 2"
+                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="overflow-hidden shadow-md border border-neutral-200 bg-white p-1.5">
+                  <img
+                    src="/images/automotive3.png"
+                    alt="Automotive Interior Design 3"
+                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
               </div>
-              <div className="overflow-hidden shadow-md border border-neutral-200 bg-white p-2">
-                <img
-                  src="/images/automotive2.png"
-                  alt="Automotive Interior Design 2"
-                  className="w-full h-80 object-cover hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="overflow-hidden shadow-md border border-neutral-200 bg-white p-2">
-                <img
-                  src="/images/automotive3.png"
-                  alt="Automotive Interior Design 3"
-                  className="w-full h-80 object-cover hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-            </div>
 
-            {/* Content Text Block */}
-            <div className="max-w-4xl mx-auto space-y-8 text-neutral-600 leading-relaxed font-body text-base md:text-lg">
-              <p>
-                There is a rich variety of option including from vegetable
-                tanning, chrome-free, and metal-free processes, alongside
-                specialised technical finishes including anti-stain, easy-clean,
-                fire-retardant, and other advanced performance treatments.
-                Optional Sanitized® technology, available upon request,
-                eliminates up to 99% of bacteria and viruses, delivering
-                enhanced hygiene and long-lasting protection for premium
-                interior environments.
-              </p>
-              <p>
-                We don't just supply leather — we deliver a complete material
-                solution, backed by expertise, certified compliance, and a
-                genuine commitment to pushing automotive interiors forward. We
-                welcome bespoke customisation requests, ensuring every solution
-                aligns with the relevant industry standards and regulations.
-                Whatever your brief, our team is ready to turn your
-                specifications into something exceptional.
-              </p>
-              <p className="border-l-4 border-matte-gold pl-6 py-2 italic text-neutral-500 bg-[#FBFBFA]">
-                Our manufacturing partners are fully committed to
-                environmentally responsible leather production — through
-                conscious tanning processes, reduced chemical impact, and
-                certified compliance — developing safer, more sustainable
-                leather solutions for the modern automotive interior.
-              </p>
+              {/* Right: Content */}
+              <div className="space-y-6 text-neutral-600 leading-relaxed font-body text-base md:text-lg">
+                <p>
+                  There is a rich variety of option including from vegetable
+                  tanning, chrome-free, and metal-free processes, alongside
+                  specialised technical finishes including anti-stain,
+                  easy-clean, fire-retardant, and other advanced performance
+                  treatments. Optional Sanitized® technology, available upon
+                  request, eliminates up to 99% of bacteria and viruses,
+                  delivering enhanced hygiene and long-lasting protection for
+                  premium interior environments.
+                </p>
+                <p>
+                  We don't just supply leather — we deliver a complete material
+                  solution, backed by expertise, certified compliance, and a
+                  genuine commitment to pushing automotive interiors forward. We
+                  welcome bespoke customisation requests, ensuring every solution
+                  aligns with the relevant industry standards and regulations.
+                  Whatever your brief, our team is ready to turn your
+                  specifications into something exceptional.
+                </p>
+                <div className="border-l-4 border-matte-gold pl-6 py-3 italic font-bold text-neutral-500 bg-[#FBFBFA]">
+                  <p>
+                    Our manufacturing partners are fully committed to
+                    environmentally responsible leather production — through
+                    conscious tanning processes, reduced chemical impact, and
+                    certified compliance — developing safer, more sustainable
+                    leather solutions for the modern automotive interior.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
-
         {/* Quality & Sustainability Section */}
         <section className="bg-surface py-16 md:py-20 lg:py-24">
           <div className="bg-primary-container text-on-primary shadow-inner">
@@ -552,6 +621,7 @@ export default function Automotive() {
                     "Finishing processes",
                     "Technical sheets & certifications",
                     "Manufacturing facility details",
+                    "And more",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-4">
                       <span
@@ -569,10 +639,28 @@ export default function Automotive() {
                     </li>
                   ))}
                 </ul>
-                <div className="pt-4 border-t border-white/10">
-                  <p className="font-body-md text-white/90 italic leading-relaxed text-[14px]">
-                    … Please get in touch with us, and we will respond promptly.
-                  </p>
+                <div className="pt-6 border-t border-white/10">
+                  <div className="flex items-start gap-3">
+                    <span
+                      className="material-symbols-outlined text-light-gold shrink-0 mt-0.5"
+                      style={{
+                        fontVariationSettings: "'FILL' 1",
+                        color: "#dfc06f",
+                      }}
+                    >
+                      forward_to_inbox
+                    </span>
+                    <p className="font-body-md font-bold text-white/90 leading-relaxed text-[15px]">
+                      Please{" "}
+                      <a
+                        href="/contact"
+                        className="text-light-gold underline decoration-light-gold/40 hover:decoration-light-gold transition-all duration-300"
+                      >
+                        get in touch
+                      </a>{" "}
+                      with us, and we will respond promptly.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
