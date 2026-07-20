@@ -88,10 +88,10 @@ export default function Automotive() {
     <div className="bg-background text-on-background font-body-md selection:bg-on-primary-container selection:text-primary">
       <main>
         {/* Section 1: HERO - Full-width Image */}
-        <section className="relative w-full h-[60vh] md:h-screen overflow-hidden">
+        <section className="relative w-full h-[70vh] md:h-screen overflow-hidden">
           <img
             alt="Luxury Automotive Leather Interior"
-            className="absolute inset-0 w-full h-full object-cover object-bottom"
+            className="absolute inset-0 w-full h-full object-cover object-center"
             src="/images/Gemini_Generated_Image_yzulyfyzulyfyzul.png"
             fetchpriority="high"
           />
@@ -149,8 +149,8 @@ export default function Automotive() {
         {/* Section 2: INTRO 1 */}
         <section className="bg-primary-container py-16 md:py-20 lg:py-24 px-margin-desktop">
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-gutter items-center">
-            <div className="pr-12 text-on-primary">
-              <h2 className="font-headline-xl text-headline-xl text-on-primary mb-8">
+            <div className="text-on-primary">
+              <h2 className="font-headline-xl text-headline-xl text-on-primary mb-6 md:mb-8">
                 Engineering Luxury Behind the Wheel
               </h2>
               <p className="font-body-lg text-body-lg text-on-primary/90 mb-6 leading-relaxed">
@@ -231,7 +231,7 @@ export default function Automotive() {
         <section className="bg-white py-16 md:py-20 lg:py-24 px-margin-desktop">
           <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter">
             <div className="flex items-center">
-              <blockquote className="font-headline-xl text-[22px] md:text-[26px] lg:text-[28px] italic text-on-background leading-snug pr-12">
+              <blockquote className="font-headline-xl text-[20px] md:text-[26px] lg:text-[28px] italic text-on-background leading-snug md:pr-12">
                 "Our sister tannery company has been combining history,
                 uniqueness, and durable leather for 50 years, with lively
                 designs that you can fully customize based on shape, colour, and
@@ -240,7 +240,7 @@ export default function Automotive() {
                 automotive interior."
               </blockquote>
             </div>
-            <div className="bg-primary text-on-primary p-12 flex flex-col justify-center">
+            <div className="bg-primary text-on-primary p-8 md:p-12 flex flex-col justify-center">
               <h3 className="font-label-caps text-label-caps text-matte-gold mb-6 tracking-widest uppercase">
                 OUR PHILOSOPHY
               </h3>
@@ -275,27 +275,27 @@ export default function Automotive() {
           </div>
         </section>
         {/* Section 4: STRIP */}
-        <section className="bg-[#1C1C1C] py-16 px-margin-desktop">
+        <section className="bg-[#1C1C1C] py-12 md:py-16 px-margin-desktop">
           <div className="max-w-container-max mx-auto overflow-hidden">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8 md:mb-12">
               <img
                 alt="Laser Cutting"
-                className="w-full h-64 object-cover"
+                className="w-full h-48 md:h-64 object-cover"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1QTi71gjxsfVOpWmmBLyTdFqyMIm1rGNf_ykXD483bY__SVeSMTOGS2XqWscOzT_W-gLuiRwYUL8c3-HCagjoqmArfVCOXuaafi6QisuUVmYWfoeE7UOvEICb454MLNdMQat217MPqvSwF6MGGVCwOSM52hfg7iTfokQsJv7kJsbCsNRXwBJ4E9kuPuNQiP0S9PmUnGwFh8hK2z_H72Cyr3Hl0HQ655pQFdAUgtMzOCFR4WvdskXyiqAlopfo61wq4F-t_WkXFr4"
               />
               <img
                 alt="Hand Stitching"
-                className="w-full h-64 object-cover"
+                className="w-full h-48 md:h-64 object-cover"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1KVfDcvJZJMwaOLOmTC1KcjzxOtKMyCNd2G0woZUy2H4WosJWvlMjFj_K0ti2UJt0pBlwDOtZ38MLL99TmP3TfeKH5JWArzfSUmT9uMYq4eN4IfNP7ols5pjx3Rj7fxIm8kFpx6-x8nYCiG1x78VlzwdwE3a7O5WMzd72ALgIVF6tBNRNFDs2ZT43Yt6TafUSIBRH3F-3lPATwWzb8P72TO-EDZDzk1ZHwIhZjqqVTo2QabQuGsX9DNsrxoFjOJGNIiDleG_3-jk"
               />
               <img
                 alt="Stitching Facility"
-                className="w-full h-64 object-cover"
+                className="w-full h-48 md:h-64 object-cover"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWh6dE1_QUPmO9NpthcxJowMucmPASgN16uFAaMtXpX7YgVl4UI5ZPyQ0zzoc_Ux7EVFyJYC-uOLKJUIHfVEESe9b9XJQo-y5dQ_xwY5G31JN1NZRVwjUx4yztNbRDrX4--_xRI8BN8o1NTCxwPRPdBz7RpUOnZMm4yfGkGgXAIVf1H5BwNyM_LcyozEQNIiYRvW5YIwLlas88tskdOBC9MflzLQZG5THOgATP28SGXBIrSToY2yP0I8kcGF9HVJHfd93bJK04LXM"
               />
               <img
                 alt="Finished Rolls"
-                className="w-full h-64 object-cover"
+                className="w-full h-48 md:h-64 object-cover"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8cz2eKqi4Adw-xGfRF2mr2hKZvqwalL4F9l1R1Q7UntIwwTUGYq8mVAmQhmDnlBw0fcSQahiSCkPW6X2EbsTdFequ_EQmZO8istIVx-B7H69QEeRWJjwK2IJCG4DXeovbxDW9GvhS7O1XA3UpgomlhGVBLstB_j8gDjHSxc6eNHO86RmUZaFzHUXQD1iMqHPJ_31Aw1b6-WpccRNZIPZEKx8unNkIbvRe2Mv26sudDV3RmiB88QymBrIRXk2OX-E1-inmN4Q9jYs"
               />
             </div>
@@ -320,7 +320,7 @@ export default function Automotive() {
                 craftsmanship, care, and responsibility."
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-16 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-8 md:gap-16 items-center">
               <div className="space-y-6 text-on-surface-variant leading-relaxed">
                 <p className="font-body-lg text-body-lg text-neutral-700">
                   <strong>We believe quality control</strong> means checking and
@@ -337,7 +337,7 @@ export default function Automotive() {
                   producing leather for the automotive sector.
                 </p>
                 <p className="font-body-md text-body-md text-neutral-600">
-                  <storng>We look forward</storng> to collaborating with you on
+                  <strong>We look forward</strong> to collaborating with you on
                   your next project, as we value meaningful partnerships and
                   enjoy working together to ensure your goals are successfully
                   achieved. Through ethical sourcing, we provide superior
@@ -406,7 +406,7 @@ export default function Automotive() {
                   <span className="font-label-caps text-label-caps text-outline block mb-4 tracking-widest uppercase">
                     SPECIFICATIONS
                   </span>
-                  <h2 className="font-display text-[32px] md:text-headline-xl text-primary leading-tight uppercase tracking-wide">
+                  <h2 className="font-display text-[26px] md:text-headline-xl text-primary leading-tight uppercase tracking-wide">
                     Explore Interior Excellence
                   </h2>
                 </div>
@@ -479,9 +479,9 @@ export default function Automotive() {
           </div>
         </section>
         {/* Section 8: CLOSING - Craftsmanship, Collaboration & Responsibility */}
-        <section className="bg-primary py-24 px-margin-desktop text-on-primary">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="font-display text-[32px] md:text-[44px] text-white leading-tight uppercase tracking-wide">
+        <section className="bg-primary py-16 md:py-24 px-margin-desktop text-on-primary">
+          <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
+            <h2 className="font-display text-[26px] md:text-[44px] text-white leading-tight uppercase tracking-wide">
               Craftsmanship & Collaboration
             </h2>
             <div className="w-16 h-[1px] bg-matte-gold mx-auto"></div>
@@ -530,21 +530,21 @@ export default function Automotive() {
                   <img
                     src="/images/automotive1.png"
                     alt="Automotive Interior Design 1"
-                    className="w-full h-64 md:h-72 object-cover hover:scale-105 transition-transform duration-700"
+                    className="w-full h-48 md:h-72 object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
                 <div className="overflow-hidden shadow-md border border-neutral-200 bg-white p-1.5">
                   <img
                     src="/images/automotive2.png"
                     alt="Automotive Interior Design 2"
-                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-700"
+                    className="w-full h-40 md:h-48 object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
                 <div className="overflow-hidden shadow-md border border-neutral-200 bg-white p-1.5">
                   <img
                     src="/images/automotive3.png"
                     alt="Automotive Interior Design 3"
-                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-700"
+                    className="w-full h-40 md:h-48 object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
               </div>
@@ -584,9 +584,9 @@ export default function Automotive() {
           </div>
         </section>
         {/* Quality & Sustainability Section */}
-        <section className="bg-surface py-16 md:py-20 lg:py-24">
+        <section className="bg-surface">
           <div className="bg-primary-container text-on-primary shadow-inner">
-            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20 lg:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20 lg:py-24 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24 items-center">
               <div>
                 <h2 className="font-display-lg text-headline-xl-mobile md:text-headline-xl text-on-primary-container mb-8 leading-tight">
                   Quality &amp; Sustainability in Leather Supply
