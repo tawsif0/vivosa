@@ -145,12 +145,12 @@ export default function LeatherLining() {
         <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20 lg:py-24 grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
           <div
             ref={sliderRef}
-            className="relative overflow-hidden aspect-square group will-change-transform"
+            className="relative overflow-hidden aspect-square group will-change-transform flex items-center justify-center"
           >
             {slides.map((src, index) => (
               <img
                 key={src}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                className={`absolute inset-0 w-full h-full object-contain object-center transition-opacity duration-1000 ${
                   index === currentSlide ? "opacity-100" : "opacity-0"
                 }`}
                 alt={`Premium Vivosa lining leather ${index + 1}`}
@@ -372,12 +372,21 @@ export default function LeatherLining() {
                 </ul>
                 <div className="pt-6 border-t border-white/10">
                   <div className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-light-gold shrink-0 mt-0.5" style={{ fontVariationSettings: "'FILL' 1", color: "#dfc06f" }}>
+                    <span
+                      className="material-symbols-outlined text-light-gold shrink-0 mt-0.5"
+                      style={{
+                        fontVariationSettings: "'FILL' 1",
+                        color: "#dfc06f",
+                      }}
+                    >
                       forward_to_inbox
                     </span>
                     <p className="font-body-md font-bold text-white/90 leading-relaxed text-[15px]">
                       Please{" "}
-                      <a href="/contact" className="text-light-gold underline decoration-light-gold/40 hover:decoration-light-gold transition-all duration-300">
+                      <a
+                        href="/contact"
+                        className="text-light-gold underline decoration-light-gold/40 hover:decoration-light-gold transition-all duration-300"
+                      >
                         get in touch
                       </a>{" "}
                       with us, and we will respond promptly.

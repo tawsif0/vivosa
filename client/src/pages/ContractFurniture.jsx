@@ -111,14 +111,12 @@ export default function ContractFurniture() {
           {/* Left: Collage (60%) */}
           <div className="w-full md:w-3/5 bg-surface-container-low relative flex items-center justify-center p-6 md:p-20 overflow-hidden min-h-[300px] md:min-h-[500px]">
             <div className="relative w-full h-full max-w-4xl aspect-[4/3] md:aspect-[4/3] flex items-center justify-center">
-              {/* Image 2: Chair */}
-              <div className="absolute w-2/3 md:w-2/3 aspect-[4/4] rotate-2 translate-x-6 translate-y-6 md:translate-x-12 md:translate-y-12 z-20 bg-white p-2 md:p-3 shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-700 ease-out cursor-pointer">
-                <img
-                  alt="Designer leather chair"
-                  className="w-full h-full object-cover"
-                  src="/images/contract-furniture/Gemini_Generated_Image_l0f914l0f914l0f9.png"
-                />
-              </div>
+              {/* Image 2: Chair - show full image without wrapper styles */}
+              <img
+                alt="Designer leather chair"
+                className="w-full h-full object-cover block"
+                src="/images/contract-furniture/Gemini_Generated_Image_l0f914l0f914l0f9.png"
+              />
               {/* Image 3: Detail */}
             </div>
           </div>
@@ -467,11 +465,11 @@ export default function ContractFurniture() {
           <div className="max-w-container-max mx-auto">
             <div className="bg-primary text-on-primary p-10 md:p-16 border-l-4 border-light-gold shadow-xl text-center md:text-left">
               <p className="font-headline-sm md:font-headline-md text-headline-sm md:text-headline-md font-bold leading-relaxed text-white/90">
-                Our manufacturing partners are fully committed to environmentally
-                responsible leather production — through conscious tanning
-                processes, reduced chemical impact, and certified compliance —
-                developing safer, more sustainable leather solutions for the
-                modern furniture world.
+                Our manufacturing partners are fully committed to
+                environmentally responsible leather production — through
+                conscious tanning processes, reduced chemical impact, and
+                certified compliance — developing safer, more sustainable
+                leather solutions for the modern furniture world.
               </p>
             </div>
           </div>
@@ -535,12 +533,21 @@ export default function ContractFurniture() {
                 </ul>
                 <div className="pt-6 border-t border-white/10">
                   <div className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-light-gold shrink-0 mt-0.5" style={{ fontVariationSettings: "'FILL' 1", color: "#dfc06f" }}>
+                    <span
+                      className="material-symbols-outlined text-light-gold shrink-0 mt-0.5"
+                      style={{
+                        fontVariationSettings: "'FILL' 1",
+                        color: "#dfc06f",
+                      }}
+                    >
                       forward_to_inbox
                     </span>
                     <p className="font-body-md font-bold text-white/90 leading-relaxed text-[15px]">
                       Please{" "}
-                      <a href="/contact" className="text-light-gold underline decoration-light-gold/40 hover:decoration-light-gold transition-all duration-300">
+                      <a
+                        href="/contact"
+                        className="text-light-gold underline decoration-light-gold/40 hover:decoration-light-gold transition-all duration-300"
+                      >
                         get in touch
                       </a>{" "}
                       with us, and we will respond promptly.

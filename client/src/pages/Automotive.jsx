@@ -169,7 +169,7 @@ export default function Automotive() {
                 <img
                   alt="Rawhide Selection at Tannery"
                   className="w-full aspect-[4/3] object-cover"
-                  src="/images/luxury_wheel.jpeg"
+                  src="/images/Gemini_Generated_Image_2ugmwb2ugmwb2ugm.png"
                   loading="lazy"
                 />
               </div>
@@ -320,7 +320,7 @@ export default function Automotive() {
                 craftsmanship, care, and responsibility."
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-8 md:gap-16 items-center">
+            <div className="grid grid-cols-1 gap-8 md:gap-16 items-start">
               <div className="space-y-6 text-on-surface-variant leading-relaxed">
                 <p className="font-body-lg text-body-lg text-neutral-700">
                   <strong>We believe quality control</strong> means checking and
@@ -329,14 +329,14 @@ export default function Automotive() {
                   not. At VIVOSA, our team takes full responsibility for
                   ensuring these standards are met accurately.
                 </p>
-                <p className="font-body-md text-body-md text-neutral-600">
+                <p className="font-body-md text-body-md text-neutral-700">
                   <strong>As the global environment</strong> is rapidly
                   changing, we must consider this when developing innovations.
                   We collaborate with some of the most renowned manufacturers
                   worldwide, many of whom are European and highly skilled in
                   producing leather for the automotive sector.
                 </p>
-                <p className="font-body-md text-body-md text-neutral-600">
+                <p className="font-body-md text-body-md text-neutral-700">
                   <strong>We look forward</strong> to collaborating with you on
                   your next project, as we value meaningful partnerships and
                   enjoy working together to ensure your goals are successfully
@@ -345,11 +345,11 @@ export default function Automotive() {
                   applications, including:
                 </p>
               </div>
-              <div className="order-1 md:order-2 flex justify-center">
+              <div className="w-full flex justify-center">
                 <img
                   alt="Heritage and Quality"
-                  className="w-3/4 md:w-4/5 object-cover rounded-xl"
-                  src="/images/Gemini_Generated_Image_8h8usv8h8usv8h8u.png"
+                  className="w-full max-w-[640px] sm:max-w-[520px] md:max-w-[720px] h-auto object-cover rounded-xl"
+                  src="/images/Gemini_Generated_Image_q0zd9oq0zd9oq0zd.png"
                 />
               </div>
             </div>
